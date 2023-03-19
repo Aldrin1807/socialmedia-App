@@ -25,7 +25,6 @@ function Post(){
               <Dropdown.Toggle variant="link" id="dropdown-basic">
                 ...
               </Dropdown.Toggle>
-      
               <Dropdown.Menu>
                 <Dropdown.Item href="#">Report Post</Dropdown.Item>
               </Dropdown.Menu>
@@ -36,9 +35,9 @@ function Post(){
         <div className="post-footer">
           <div className="likes-container">
           {liked ? (
-            <AiFillHeart style={{ fontSize: '24px' }} onClick={handleLikeClick} />
+            <AiFillHeart style={{ fontSize: '24px',cursor: 'pointer' }} onClick={handleLikeClick} />
             ) : (
-            <AiOutlineHeart style={{ fontSize: '24px' }} onClick={handleLikeClick}/>
+            <AiOutlineHeart style={{ fontSize: '24px',cursor: 'pointer' }} onClick={handleLikeClick}/>
             )}
             <span className="likes-count">{likes} likes</span>
           </div>

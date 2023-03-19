@@ -1,4 +1,11 @@
 
-#items{
-    width: 1000px;
+#logo-pic{
+    background:url('../assets/logo.png');
+}
+.gap-2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
 }

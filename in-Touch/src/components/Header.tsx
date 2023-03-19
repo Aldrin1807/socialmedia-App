@@ -3,23 +3,30 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button,Form, FormControl } from 'react-bootstrap';
+import { Button,Form, FormControl,Image } from 'react-bootstrap';
 import  './Header.css';
 import { useState } from 'react';
+import '../../public/logo.png';
 
 function Header(){
-  const[logged,setLogged] = useState(true);
+  const[logged,setLogged] = useState(false);
      return(
       <>
       <Navbar bg="light" variant="light" expand="lg" className="p-3">
         <Container>
-          <Navbar.Brand href="/home">Logo</Navbar.Brand>
+          <Navbar.Brand href="/home">
+            <Image 
+            src='../../public/logo.png'
+            style={{height:'50px',width:'50px'}}
+            roundedCircle
+            />
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto" id='items'>
               <Nav.Link href="/home">Home</Nav.Link>
-              <Nav.Item className="mx-auto">
-            <Form className="d-flex">
+              <Nav.Item className="">
+              <Form className="d-flex justify-content-center">
               <FormControl
                 type="search"
                 placeholder="Search Users"
@@ -43,8 +50,8 @@ function Header(){
                 </NavDropdown>
               ) : (
                 <>
-                  <Nav.Link className="btn btn-primary text-light" href="/login">Login</Nav.Link>
-                  <Nav.Link className="btn btn-primary text-light" href="/register">Sign up</Nav.Link>
+                  <Nav.Link className="btn btn-primary text-light"style={{width: "100px" }} href="/login">Login</Nav.Link>
+                  <Nav.Link className="btn btn-primary text-light"style={{width: "100px" }} href="/register">Sign up</Nav.Link>
                 </>
               )}
             </Nav>
