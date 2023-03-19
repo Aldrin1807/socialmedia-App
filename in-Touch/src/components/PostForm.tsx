@@ -7,7 +7,7 @@ function PostForm(){
   return (
     <div className='post-container'>
          <form id='create-post'>
-                <FormControl type="text" placeholder="What's on your mind today?"  style={{ width: '100%',height:'100px' }}  />
+                <FormControl as="textarea" rows={5} placeholder="What's on your mind today?"  style={{ width: '100%',height:'100px' }}  />
                 <MDBFile label='Want to add an image?' size='sm' id='formFileSm' />
                 <Button variant="outline-primary" className='butoni-post'>Post</Button>
         </form>

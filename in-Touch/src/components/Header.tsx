@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Form, FormControl,Image } from 'react-bootstrap';
 import  './Header.css';
 import { useState } from 'react';
-import '../../public/logo.png';
+import '../assets/logo.png';
+import { VscAccount } from "react-icons/vsc";
 
 function Header(){
   const[logged,setLogged] = useState(true);
@@ -16,7 +17,7 @@ function Header(){
         <Container>
           <Navbar.Brand href="/home">
             <Image 
-            src='../../public/logo.png'
+            src='../assets/logo.png'
             style={{height:'50px',width:'50px'}}
             roundedCircle
             />
@@ -42,7 +43,7 @@ function Header(){
               {logged ? (
                 <NavDropdown
                   id="user-dropdown"
-                  title={<img src='#' alt="User Profile" className="rounded-circle" />}
+                  title={<VscAccount style={{fontSize:'30px', color: '#4b6cb7'}}/>}
                   align="end"
                   menuVariant="light"
                 >

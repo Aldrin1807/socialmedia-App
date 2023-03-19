@@ -1,6 +1,6 @@
 import './Posts.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button, Dropdown, FormControl } from 'react-bootstrap';
+import { Button, Dropdown, FormControl,Image } from 'react-bootstrap';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import  {useState} from 'react';
 import Comment from './Comment';
@@ -31,6 +31,7 @@ function Post(){
             </Dropdown>
           </span>
         </div>
+        <img src="https://image-placeholder.com/images/actual-size/320x320.png" style={{width:'675px',height:'300px'}} />
         <p className="post-text">This is my first post on my new blog! I'm excited to share my thoughts and ideas with everyone. Stay tuned for more updates!</p>
         <div className="post-footer">
           <div className="likes-container">

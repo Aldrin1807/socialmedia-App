@@ -2,7 +2,6 @@ import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FormControl, Button ,Image} from 'react-bootstrap';
 import { CiUser } from "react-icons/ci";
-import '../../public/wlp.png';
 import { MDBInput } from 'mdb-react-ui-kit';
 
 function Login(){
