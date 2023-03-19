@@ -1,0 +1,12 @@
+#create-post{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+.butoni-post{
+    margin: 0 auto;
+    margin-top: 5px;
+    height: 50px;
+    width: 200px;
+}

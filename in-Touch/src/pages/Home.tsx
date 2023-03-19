@@ -1,7 +1,16 @@
+import PostForm from "../components/PostForm";
+import Post from "../components/Posts";
+
 function Home(){
     return(
-        <div>
-            <h1>Home Page</h1>
+        <div className='container'>
+            <PostForm />
+           <Post />
+           <Post />
+           <Post />
+           <Post />
+           <Post />
+           <Post />
         </div>
     )
 }
