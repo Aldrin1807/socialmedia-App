@@ -10,7 +10,7 @@ function Login(){
         <div className="login">
         <div className="form">
           <form noValidate>
-
+            <CiUser className='login-icon'/>
             <span>Login</span>
             <input
               type="email"

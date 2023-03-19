@@ -9,7 +9,7 @@ import { useState } from 'react';
 import '../../public/logo.png';
 
 function Header(){
-  const[logged,setLogged] = useState(false);
+  const[logged,setLogged] = useState(true);
      return(
       <>
       <Navbar bg="light" variant="light" expand="lg" className="p-3">
@@ -23,10 +23,11 @@ function Header(){
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+          <Nav.Link href="/home">Home</Nav.Link>
             <Nav className="me-auto" id='items'>
-              <Nav.Link href="/home">Home</Nav.Link>
-              <Nav.Item className="">
-              <Form className="d-flex justify-content-center">
+              
+              <Nav.Item>
+              <Form className="d-flex" id='search-forma'>
               <FormControl
                 type="search"
                 placeholder="Search Users"
