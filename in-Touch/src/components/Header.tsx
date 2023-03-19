@@ -47,7 +47,9 @@ function Header(){
                   menuVariant="light"
                 >
                   <NavDropdown.Item href="/profile">Edit Profile</NavDropdown.Item>
-                  <NavDropdown.Item >Sign out</NavDropdown.Item>
+                  <NavDropdown.Item onClick={function(){
+                    setLogged(false);
+                  }} >Sign out</NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <>

@@ -7,7 +7,6 @@ import Login from './pages/Login'
 import PageNotFound from './pages/PageNotFound'
 import Profile from './pages/Profile'
 import Register from './pages/Register'
-
 function App() {
   return (
     <div className="App">
