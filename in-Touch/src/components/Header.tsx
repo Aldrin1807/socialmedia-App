@@ -17,7 +17,7 @@ function Header(){
         <Container>
           <Navbar.Brand href="/home">
             <Image 
-            src='../assets/logo.png'
+            className='header-img'
             style={{height:'50px',width:'50px'}}
             roundedCircle
             />

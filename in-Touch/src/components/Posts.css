@@ -1,5 +1,6 @@
 .post-container {
     margin: 0 auto;
+    background-color: white;
     margin-top: 50px;
     border: 1px solid #ccc;
     padding: 10px;
@@ -20,7 +21,9 @@
     margin-right: 10px;
     flex-shrink: 0;
   }
- 
+  .post-img{
+    max-width: 100%;
+  }
   .report-icon {
     display: inline-block;
   }

@@ -6,6 +6,10 @@ import { MDBInput } from 'mdb-react-ui-kit';
 
 function Login(){
     return(
+      <div className='all-content'>
+        <div className='login-text'>
+            <h1>Sign in or create an account</h1>
+        </div>
         <div className="login">
         <div className="form">
           <form noValidate>
@@ -29,7 +33,7 @@ function Login(){
           </form>
         </div>
       </div>
-        
+      </div>
     )
 }
 export default Login;

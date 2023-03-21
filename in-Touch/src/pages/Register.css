@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+
+.sign-up{
+    width: 360px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+.two-inputs{
+    display: flex;
+    justify-content: space-between;
+}
+.two-inputs input{
+    width: 120px;
+}
+.paragraph{
+    font-family: 'Comfortaa', cursive;
+}
