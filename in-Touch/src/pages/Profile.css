@@ -1,0 +1,57 @@
+
+.image-banner{
+    background-image: url('https://image-placeholder.com/images/actual-size/1920x1080.png');
+    height: 20vh;
+}
+
+.menu{
+    border: 1px solid #ccc;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+}
+.navi{
+    margin-top: 5px;
+    padding: 50px;
+}
+.profile-pic{
+    border: 1px solid white;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+}
+.user-followers{
+    border: solid;
+    margin-top: 10px;
+    height: 90px;
+}
+.nav-items{
+    display: flex;
+    justify-content: space-around;
+}
+.col-md-4{
+    background-color: #f8f9fa;
+}
+#content{
+    
+    margin-top: 5px;
+}
+
+.lista-fllw-user{
+    text-align: center;
+    width: 100px;
+}
+.left{
+    border: solid 1px #ccc;
+    height: 100%;
+    margin-top: 5%;
+    text-align: start;
+}
+.right{
+    border: solid 1px #ccc;
+    height: 100%;
+    margin-top: 5%;
+    text-align: end;
+}

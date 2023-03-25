@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
+body{
+  background: linear-gradient(to top, #ffffff 0%, #ace0f9 100%);
+  background-repeat: no-repeat;
+}
 
 .all-content{
   margin: 0 auto;
   background-repeat: no-repeat;
   width: 70vw;
-  height: 80vh;
+  height: 90vh;
   display: flex;
   flex-wrap: wrap;
 }

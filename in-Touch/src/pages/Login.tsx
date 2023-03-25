@@ -16,16 +16,16 @@ function Login(){
             <CiUser className='login-icon'/>
             <span>Login</span>
             <input
-              type="email"
+              type="text"
               name="email"
-              placeholder="Enter your email"
+              placeholder="Email or username"
               className="form-control inp_text"
               id="email"
             />
             <input
               type="password"
               name="password"
-              placeholder="Enter your password"
+              placeholder="Password"
               className="form-control"
             />
             <p>Don't have an Account? <a href='/register'>Sign up here!</a></p>

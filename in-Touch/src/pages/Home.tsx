@@ -4,11 +4,12 @@ import Footer from '../components/Footer';
 import GoUp from "../components/GoUp";
 import {Link} from "react-scroll";
 
+
 function Home(){
     return(
         <>
-            <div className='container'>
-            <PostForm />
+        <div className='container'>
+           <PostForm />
            <Post />
            <Post />
            <Post />
@@ -20,10 +21,9 @@ function Home(){
                 spy={true}
                 smooth={true}
                 offset={-70}
-                duration={500}
+                duration={900}
             ><GoUp /></Link>
         </div>
-       
         <div>
             <Footer />
         </div>
