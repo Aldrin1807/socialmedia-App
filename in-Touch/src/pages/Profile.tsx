@@ -118,6 +118,25 @@ function Profile() {
             </div>
             <div className="col-md-4">
               <div className="profile-posts">
+                <Nav
+                  fill
+                  id="nav-header"
+                  variant="tabs"
+                  defaultActiveKey="/home"
+                >
+                  <Nav.Item>
+                    <Nav.Link href="/home">My Posts</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="link-1">Followers</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="link-2">Following</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link eventKey="disabled">Photos</Nav.Link>
+                  </Nav.Item>
+                </Nav>
                 <PostForm />
                 <Post />
                 <Post />
@@ -126,15 +145,40 @@ function Profile() {
             <div className="col-md-4">
               <div className="right">
                 <h2>Suggested users</h2>
-                <ul>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                </ul>
+                <aside className="right-container">
+                  <div>
+                    <img
+                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                      alt=""
+                      className="friend-img"
+                    />
+                    <span>aldring</span>
+                  </div>
+                  <div>
+                    <img
+                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                      alt=""
+                      className="friend-img"
+                    />
+                    <span>aldring</span>
+                  </div>
+                  <div>
+                    <img
+                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                      alt=""
+                      className="friend-img"
+                    />
+                    <span>aldring</span>
+                  </div>
+                  <div>
+                    <img
+                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                      alt=""
+                      className="friend-img"
+                    />
+                    <span>aldring</span>
+                  </div>
+                </aside>
               </div>
             </div>
           </div>
