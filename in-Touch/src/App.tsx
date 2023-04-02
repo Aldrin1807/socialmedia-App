@@ -6,8 +6,9 @@ import EditProfile  from "./pages/EditProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
-import Profile from "./pages/Profile";
+import Profile from "../src/pages/Profile";
 import Register from "./pages/Register";
+
 
 function App() {
   return (
