@@ -1,6 +1,6 @@
 import "../components/EditProfile.css";
 
-export function EditProfile() {
+ function EditProfile() {
   return (
     <div className="container">
       <div className="row flex-lg-nowrap">
@@ -299,3 +299,5 @@ export function EditProfile() {
     </div>
   );
 }
+
+export default EditProfile

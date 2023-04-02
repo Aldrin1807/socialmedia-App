@@ -11,35 +11,66 @@ import {
 import Post from "../components/Posts";
 import PostForm from "../components/PostForm";
 
+
 function Profile() {
   return (
     <>
-      <div className="container">
-        <Navbar bg="light" variant="light" expand="lg" className="navi">
-          <Image
-            src="https://image-placeholder.com/images/actual-size/75x100.png"
-            className="profile-pic"
-          />
-
-          <h3>@Username</h3>
-          <h3>followers</h3>
-
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav" className="nav-items">
-            <Nav.Link href="#">
-              <h3>Text</h3>
-            </Nav.Link>
-            <Nav.Link href="#">
-              <h3>Text</h3>
-            </Nav.Link>
-            <Nav.Link href="#">
-              <Button variant="primary" className="butoni-edit">
-                Edit Profile
-              </Button>
-            </Nav.Link>
-          </Navbar.Collapse>
-        </Navbar>
-
+    <div className="container db-social">
+    <div className="jumbotron jumbotron-fluid"></div>
+    <div className="container-fluid">
+        <div className="row justify-content-center">
+            <div className="col-xl-11">
+                <div className="widget head-profile has-shadow">
+                    <div className="widget-body pb-0">
+                        <div className="row d-flex align-items-center">
+                            <div className="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center" id='white'>
+                                <ul>
+                                    <li>
+                                        <div className="counter">246</div>
+                                        <div className="heading">Following</div>
+                                    </li>
+                                    <li>
+                                        <div className="counter">246</div>
+                                        <div className="heading">Followers</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="col-xl-4 col-md-4 d-flex justify-content-center" id='white'>
+                                <div className="image-default">
+                                    <img className="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." />
+                                </div>
+                                <div className="infos">
+                                    <h2>Name Surname</h2>
+                                    <div >@username</div>
+                                </div>
+                            </div>
+                            <div className="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center" id='white'>
+                                <div className="follow">
+                                    <a className="btn btn-shadow" href="#"><i className="la la-user-plus"></i>Add Friend</a>
+                                    <div className="actions dark">
+                                        <div className="dropdown">
+                                            <button type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="dropdown-toggle">
+                                                <i className="la la-ellipsis-h"></i>
+                                            </button>
+                                            <div className="dropdown-menu" x-placement="bottom-start">
+                                                <a href="#" className="dropdown-item">
+                                                  Report
+                                                </a>
+                                                <a href="#" className="dropdown-item">
+                                                  Block
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         <div className="container" id="content">
           <div className="row">
             <div className="col-md-4">
@@ -125,22 +156,12 @@ function Profile() {
             </div>
             <div className="col-md-4">
               <div className="right">
-                <h2>Suggested users</h2>
-                <ul>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                  <li>test</li>
-                </ul>
+                
               </div>
             </div>
           </div>
         </div>
-      </div>
     </>
-  );
+  )
 }
 export default Profile;
