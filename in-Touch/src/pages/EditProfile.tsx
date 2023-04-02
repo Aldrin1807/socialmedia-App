@@ -4,40 +4,7 @@ import "../components/EditProfile.css";
   return (
     <div className="container">
       <div className="row flex-lg-nowrap">
-        <div className="col-12 col-lg-auto mb-3" style={{ width: "200px" }}>
-          <div className="card p-3">
-            <div className="e-navlist e-navlist--active-bg">
-              <ul className="nav">
-                <li className="nav-item">
-                  <a className="nav-link px-2 active" href="#">
-                    <i className="fa fa-fw fa-bar-chart mr-1"></i>
-                    <span>Overview</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link px-2"
-                    href="https://www.bootdey.com/snippets/view/bs4-crud-users"
-                    target="__blank"
-                  >
-                    <i className="fa fa-fw fa-th mr-1"></i>
-                    <span>CRUD</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link px-2"
-                    href="https://www.bootdey.com/snippets/view/bs4-edit-profile-page"
-                    target="__blank"
-                  >
-                    <i className="fa fa-fw fa-cog mr-1"></i>
-                    <span>Settings</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        
 
         <div className="col">
           <div className="row">
@@ -72,22 +39,11 @@ import "../components/EditProfile.css";
                             John Smith
                           </h4>
                           <p className="mb-0">@johnny.s</p>
-                          <div className="text-muted">
-                            <small>Last seen 2 hours ago</small>
-                          </div>
                           <div className="mt-2">
                             <button className="btn btn-primary" type="button">
                               <i className="fa fa-fw fa-camera"></i>
                               <span>Change Photo</span>
                             </button>
-                          </div>
-                        </div>
-                        <div className="text-center text-sm-right">
-                          <span className="badge badge-secondary">
-                            administrator
-                          </span>
-                          <div className="text-muted">
-                            <small>Joined 09 Dec 2017</small>
                           </div>
                         </div>
                       </div>
@@ -104,28 +60,41 @@ import "../components/EditProfile.css";
                         <form className="form" style={{ maxWidth: "none" }}>
                           <div className="row">
                             <div className="col">
+                              <div id="first-form">
                               <div className="row">
                                 <div className="col">
                                   <div className="form-group">
-                                    <label>Full Name</label>
+                                    <label>First Name</label>
                                     <input
                                       className="form-control"
                                       type="text"
                                       name="name"
-                                      placeholder="John Smith"
-                                      value="John Smith"
+                                      placeholder="First Name"
+                                     
                                     />
                                   </div>
                                 </div>
+                                <div className="col">
+                                  <div className="form-group">
+                                    <label>Last Name</label>
+                                    <input
+                                      className="form-control"
+                                      type="text"
+                                      name="lname"
+                                      placeholder="Last Name"
+                                  
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="row">
                                 <div className="col">
                                   <div className="form-group">
                                     <label>Username</label>
                                     <input
                                       className="form-control"
                                       type="text"
-                                      name="username"
-                                      placeholder="johnny.s"
-                                      value="johnny.s"
+                                      placeholder="username"
                                     />
                                   </div>
                                 </div>
@@ -156,7 +125,8 @@ import "../components/EditProfile.css";
                               </div>
                             </div>
                           </div>
-                          <div className="row">
+                          </div>
+                          <div className="row" id="formes">
                             <div className="col-12 col-sm-6 mb-3">
                               <div className="mb-2">
                                 <b>Change Password</b>
@@ -189,67 +159,13 @@ import "../components/EditProfile.css";
                                 <div className="col">
                                   <div className="form-group">
                                     <label>
-                                      Confirm{" "}
-                                      <span className="d-none d-xl-inline">
-                                        Password
-                                      </span>
+                                      Confirm Password
                                     </label>
                                     <input
                                       className="form-control"
                                       type="password"
                                       placeholder="••••••"
                                     />
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="col-12 col-sm-5 offset-sm-1 mb-3">
-                              <div className="mb-2">
-                                <b>Keeping in Touch</b>
-                              </div>
-                              <div className="row">
-                                <div className="col">
-                                  <label>Email Notifications</label>
-                                  <div className="custom-controls-stacked px-2">
-                                    <div className="custom-control custom-checkbox">
-                                      <input
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        id="notifications-blog"
-                                      />
-                                      <label
-                                        className="custom-control-label"
-                                        htmlFor="notifications-blog"
-                                      >
-                                        Blog posts
-                                      </label>
-                                    </div>
-                                    <div className="custom-control custom-checkbox">
-                                      <input
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        id="notifications-news"
-                                      />
-                                      <label
-                                        className="custom-control-label"
-                                        htmlFor="notifications-news"
-                                      >
-                                        Newsletter
-                                      </label>
-                                    </div>
-                                    <div className="custom-control custom-checkbox">
-                                      <input
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        id="notifications-offers"
-                                      />
-                                      <label
-                                        className="custom-control-label"
-                                        htmlFor="notifications-offers"
-                                      >
-                                        Personal Offers
-                                      </label>
-                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -266,30 +182,6 @@ import "../components/EditProfile.css";
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-12 col-md-3 mb-3">
-              <div className="card mb-3">
-                <div className="card-body">
-                  <div className="px-xl-3">
-                    <button className="btn btn-block btn-secondary">
-                      <i className="fa fa-sign-out"></i>
-                      <span>Logout</span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-body">
-                  <h6 className="card-title font-weight-bold">Support</h6>
-                  <p className="card-text">
-                    Get fast, free help from our friendly assistants.
-                  </p>
-                  <button type="button" className="btn btn-primary">
-                    Contact Us
-                  </button>
                 </div>
               </div>
             </div>

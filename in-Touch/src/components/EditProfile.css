@@ -1,7 +1,12 @@
 body {
   background: #f8f8f8;
 }
-label {
-  /* margin-right: 100%; */
+#formes{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-~
+#first-form{
+  max-width: 600px;
+  margin: 0 auto;
+}

@@ -110,9 +110,7 @@
     padding: 10px 30px;
   }
 }
-.dropdown-menu{
-  display: none; position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 35px, 0px);
-}
+
 .db-social .jumbotron {
   margin: 0;
   background-repeat: no-repeat;
@@ -123,6 +121,9 @@
   height: 300px;
   position: relative;
   padding: 0;
+}
+#contenti{
+  padding: 20px;
 }
 
 .container-fluid {
@@ -271,4 +272,7 @@
 }
 #white{
   background-color: white;
+}
+.lista{
+  margin-top: 50px;
 }

@@ -2,8 +2,7 @@ import PostForm from "../components/PostForm";
 import Post from "../components/Posts";
 import Footer from "../components/Footer";
 import GoUp from "../components/GoUp";
-import { Link } from "react-router-dom";
-
+import {Link} from "react-scroll";
 function Home() {
   return (
     <>
