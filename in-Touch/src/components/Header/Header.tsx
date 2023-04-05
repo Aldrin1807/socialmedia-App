@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Form, FormControl,Image } from 'react-bootstrap';
 import  './Header.css';
 import { useState } from 'react';
-import '../../assets/logo.png';
+
 import { VscAccount } from "react-icons/vsc";
 
 function Header(){
@@ -42,15 +42,18 @@ function Header(){
             <Nav className="gap-2">
               {logged ? (
                 <NavDropdown
-                  id="user-dropdown"
-                  title={<VscAccount style={{fontSize:'30px', color: '#4b6cb7'}}/>}
-                  align="end"
-                  menuVariant="light"
-                >
-                  <NavDropdown.Item href='/profile'>Edit Profile</NavDropdown.Item>
-                    <NavDropdown.Item onClick={function(){
-                    setLogged(false);
-                  }} >Sign out</NavDropdown.Item>
+                id="user-dropdown"
+                title={<VscAccount style={{fontSize:'30px', color: '#4b6cb7'}}/>}
+                align="end"
+                menuVariant="light"
+              >
+                <NavDropdown.Item href='/profile'>Account</NavDropdown.Item>
+                
+                <NavDropdown.Item href='/editprofile'>Edit Profile</NavDropdown.Item>
+                
+                <NavDropdown.Item onClick={function(){
+                  setLogged(false);
+                }} >Sign out</NavDropdown.Item>
                 </NavDropdown>
               ) : (
                 <>
