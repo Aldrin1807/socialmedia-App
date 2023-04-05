@@ -10,6 +10,7 @@ import {
 } from "react-bootstrap";
 import Post from "../../components/Post/Posts";
 import PostForm from "../../components/Post/PostForm";
+import Suggested from "../../components/Other/Suggested";
 
 
 function Profile() {
@@ -37,16 +38,16 @@ function Profile() {
                             </div>
                             <div className="col-xl-4 col-md-4 d-flex justify-content-center" id='white'>
                                 <div className="image-default">
-                                    <img className="rounded-circle" src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="..." />
+                                    <img className="rounded-circle" src="https://image-placeholder.com/images/actual-size/57x57.png" alt="..." />
                                 </div>
                                 <div className="infos">
-                                    <h2>Name Surname</h2>
+                                    <h2>Aldrin Islami</h2>
                                     <div >@username</div>
                                 </div>
                             </div>
                             <div className="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center" id='white'>
                                 <div className="follow">
-                                    <a className="btn btn-shadow" href="#"><i className="la la-user-plus"></i>Follow</a>
+                                    <a className="btn btn-shadow" id="follow-butoni" href="#">Follow</a>
                                 </div>
                             </div>
                         </div>
@@ -138,10 +139,10 @@ function Profile() {
                   fill
                   id="nav-header"
                   variant="tabs"
-                  defaultActiveKey="/home"
+                  defaultActiveKey="#"
                 >
                   <Nav.Item>
-                    <Nav.Link href="/home">My Posts</Nav.Link>
+                    <Nav.Link href="#">Posts</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link eventKey="disabled">Followers</Nav.Link>
@@ -154,41 +155,8 @@ function Profile() {
             </div>
             <div className="col-md-4">
               <div className="right">
-                <h2>Suggested users</h2>
-                <aside className="right-container">
-                  <div>
-                    <img
-                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                      alt=""
-                      className="friend-img"
-                    />
-                    <span>aldring</span>
-                  </div>
-                  <div>
-                    <img
-                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                      alt=""
-                      className="friend-img"
-                    />
-                    <span>aldring</span>
-                  </div>
-                  <div>
-                    <img
-                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                      alt=""
-                      className="friend-img"
-                    />
-                    <span>aldring</span>
-                  </div>
-                  <div>
-                    <img
-                      src="https://images.pexels.com/photos/13149219/pexels-photo-13149219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                      alt=""
-                      className="friend-img"
-                    />
-                    <span>aldring</span>
-                  </div>
-                </aside>
+                <h1 className="display-6">Suggested users</h1>
+                  <Suggested />
               </div>
             </div>
           </div>

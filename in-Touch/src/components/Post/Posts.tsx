@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Dropdown, FormControl,Image } from 'react-bootstrap';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import  {useState} from 'react';
+import {FaRegComment} from 'react-icons/fa';
 import Comment from '../Comments/Comment';
 
   
 
 function Post(){
-    const[liked,setLiked] = useState(true);
+    const[liked,setLiked] = useState(false);
     const handleLikeClick = () => {
-
         setLiked(!liked);
         !liked?setLikes(likes+1):setLikes(likes-1);
       };
@@ -34,15 +34,18 @@ function Post(){
         <img src="https://image-placeholder.com/images/actual-size/320x320.png" className='post-img' style={{width:'675px',height:'300px'}} />
         <p className="post-text">This is my first post on my new blog! I'm excited to share my thoughts and ideas with everyone. Stay tuned for more updates!</p>
         <div className="post-footer">
-          <div className="likes-container">
-          {liked ? (
-            <AiFillHeart style={{ fontSize: '24px',cursor: 'pointer' }} onClick={handleLikeClick} />
-            ) : (
-            <AiOutlineHeart style={{ fontSize: '24px',cursor: 'pointer' }} onClick={handleLikeClick}/>
-            )}
-            <span className="likes-count">{likes} likes</span>
-          </div>
           <span className="timestamp">3:00 PM - 18 Mar 2023</span>
+          <div className='nums-container'>
+              <p><b>{likes}</b> Likes</p>
+              <p><b>2</b> Comments</p>
+          </div>
+          <hr />
+          <div className="likes-container">
+            
+            {liked?(<AiFillHeart onClick={handleLikeClick}/>):(<AiOutlineHeart onClick={handleLikeClick}/>)}
+            
+          </div>
+          <hr />
         </div>
         <form id='comment'>
                 <FormControl type="text" placeholder="Add a comment..."  style={{ width: '70%',height:'50px' }}  />
