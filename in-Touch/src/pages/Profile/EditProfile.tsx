@@ -111,18 +111,6 @@ import "./EditProfile.css";
                                   </div>
                                 </div>
                               </div>
-                              <div className="row">
-                                <div className="col mb-3">
-                                  <div className="form-group">
-                                    <label>About</label>
-                                    <textarea
-                                      className="form-control"
-                                      rows={5}
-                                      placeholder="My Bio"
-                                    ></textarea>
-                                  </div>
-                                </div>
-                              </div>
                             </div>
                           </div>
                           </div>
@@ -172,7 +160,7 @@ import "./EditProfile.css";
                             </div>
                           </div>
                           <div className="row">
-                            <div className="col d-flex justify-content-end">
+                            <div className="col d-flex justify-content-center">
                               <button className="btn btn-primary" type="submit">
                                 Save Changes
                               </button>
