@@ -1,4 +1,4 @@
-import './Login.css';
+import '../Login/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FormControl, Button ,Image} from 'react-bootstrap';
 import './Register.css';

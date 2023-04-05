@@ -1,7 +1,7 @@
-import PostForm from "../components/PostForm";
-import Post from "../components/Posts";
-import Footer from "../components/Footer";
-import GoUp from "../components/GoUp";
+import PostForm from "../components/Post/PostForm";
+import Post from "../components/Post/Posts";
+import Footer from "../components/Footer/Footer";
+import GoUp from "../components/Other/GoUp";
 import {Link} from "react-scroll";
 function Home() {
   return (

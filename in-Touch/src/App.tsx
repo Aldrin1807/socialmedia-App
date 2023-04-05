@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
-import Header from "./components/Header";
-import EditProfile  from "./pages/EditProfile";
+import Header from "./components/Header/Header";
+import EditProfile  from "./pages/Profile/EditProfile";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound";
-import Profile from "../src/pages/Profile";
-import Register from "./pages/Register";
+import Profile from "./pages/Profile/Profile";
+import Register from "./pages/Register/Register";
 
 
 function App() {

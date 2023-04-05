@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Form, FormControl,Image } from 'react-bootstrap';
 import  './Header.css';
 import { useState } from 'react';
-import '../assets/logo.png';
+import '../../assets/logo.png';
 import { VscAccount } from "react-icons/vsc";
 
 function Header(){

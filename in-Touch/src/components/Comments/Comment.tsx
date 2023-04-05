@@ -1,4 +1,4 @@
-import './Posts.css';
+import '../Post/Posts.css';
 
 const comm = [
     { user: '@user1', text: 'Pershendetje' },

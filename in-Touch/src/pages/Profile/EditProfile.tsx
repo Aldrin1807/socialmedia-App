@@ -1,4 +1,4 @@
-import "../components/EditProfile.css";
+import "./EditProfile.css";
 
  function EditProfile() {
   return (

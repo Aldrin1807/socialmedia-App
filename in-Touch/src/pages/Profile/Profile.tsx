@@ -8,8 +8,8 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import Post from "../components/Posts";
-import PostForm from "../components/PostForm";
+import Post from "../../components/Post/Posts";
+import PostForm from "../../components/Post/PostForm";
 
 
 function Profile() {
@@ -144,13 +144,7 @@ function Profile() {
                     <Nav.Link href="/home">My Posts</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link eventKey="link-1">Followers</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="link-2">Following</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="disabled">Photos</Nav.Link>
+                    <Nav.Link eventKey="disabled">Followers</Nav.Link>
                   </Nav.Item>
                 </Nav>
                 <PostForm />
