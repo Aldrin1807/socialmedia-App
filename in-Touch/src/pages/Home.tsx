@@ -141,6 +141,8 @@ function Home() {
         <Post />
         <Post />
         <Post />
+        
+      </div>
         <Link
           activeClass="active"
           to="container"
@@ -152,11 +154,6 @@ function Home() {
           <GoUp />
         </Link>
       </div>
-      <div className="right">
-        cscscscscs
-      </div>
-      </div>
-
       <div>
         <Footer />
       </div>

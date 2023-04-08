@@ -48,55 +48,18 @@
   text-align: center;
   width: 100px;
 }
-.left {
-  border: solid 1px #ccc;
-  height: 100%;
-  margin-top: 5%;
-  text-align: start;
-}
+
 .right {
-  border: solid 1px #ccc;
   height: 100%;
   margin-top: 5%;
   text-align: end;
-  padding: 5px;
+  padding: 20px;
   text-align: center;
 }
 .display-6{
   font-size: 30px;
 }
-.leftSectionNav {
-  border: solid 1px #ccc;
-  margin-top: 5%;
-  display: grid;
-  gap: 2rem;
-  justify-items: start;
-  padding: 20px 30px;
-}
-.leftSectionNav div {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 2rem;
-  align-items: center;
-  justify-items: start;
-  padding: 4px;
-  width: 100%;
-}
-.iconsClass {
-  width: 30px;
-  height: 30px;
-}
-.right-container {
-  display: grid;
-  gap: 5px;
-}
-.right-container div {
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  gap: 4rem;
-  background-color: rgb(167, 167, 167);
-}
+
 .friend-img {
   width: 45px;
   height: 45px;
@@ -177,12 +140,7 @@
 .db-social .widget-body {
   padding: 1rem 1.4rem;
 }
-.widget-body {
-  padding: 1.4rem;
-}
-.pb-0, .py-0 {
-  padding-bottom: 0!important;
-}
+
 .db-social .image-default img {
   width: 120px;
   position: absolute;
@@ -205,62 +163,18 @@
   font-weight: 600;
   margin-bottom: .2rem;
 }
-.db-social .location {
-  color: #aea9c3;
-  font-size: 1rem;
-}
+
 .db-social .follow .btn {
   padding: 10px 30px;
 }
-.btn:not(:disabled):not(.disabled) {
-  cursor: pointer;
-}
+
 .btn-shadow, .btn-shadow a {
   color: #5d5386;
   background-color: #fff;
   border-color: #fff;
   box-shadow: 0 1px 15px 1px rgba(52,40,104,.15);
 }
-.db-social .head-profile .actions {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: .5rem;
-}
-.actions {
-  z-index: 999;
-  display: block;
-}
-.actions.dark .dropdown-toggle {
-  color: #2c304d;
-}
-.actions .dropdown-toggle {
-  color: #98a8b4;
-  background: none;
-  border: none;
-  padding: 0;
-  font-size: 1.7rem;
-}
-.actions .dropdown-menu {
-  border: none;
-  min-width: auto;
-  font-size: 1rem;
-  border-radius: 4px;
-  padding: 1.4rem 1.8rem;
-  text-align: left;
-  box-shadow: 1px 1px 30px rgba(0,0,0,.15);
-}
 
-.actions .dropdown-menu .dropdown-item {
-  padding: .5rem 0;
-}
-.actions .dropdown-menu a {
-  color: #2c304d;
-  font-weight: 500;
-}
-
-.db-social .head-profile li:first-child {
-  padding-left: 0;
-}
 .db-social .head-profile li {
   display: inline-block;
   text-align: center;
@@ -271,10 +185,6 @@
   font-size: 1.4rem;
   font-weight: 600;
 }
-.db-social .head-profile li .heading {
-
-  font-size: 1rem;
-}
 #white{
   background-color: white;
 }
@@ -283,4 +193,9 @@
 }
 #follow-butoni{
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.left-side{
+  text-align: center;
+  padding: 20px;
+  margin-top: 5%;
 }

@@ -9,6 +9,7 @@ function Login(){
       <div className='all-content'>
         <div className='login-text'>
             <h1>Sign in or create an account</h1>
+            <p className='lead'>Connect with friends and the world around you on InTouch</p>
         </div>
         <div className="login">
         <div className="form">

@@ -36,18 +36,19 @@ import "./EditProfile.css";
                       <div className="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                         <div className="text-center text-sm-left mb-2 mb-sm-0">
                           <h4 className="pt-sm-2 pb-1 mb-0 text-nowrap">
-                            John Smith
+                            Aldrin Islami
                           </h4>
-                          <p className="mb-0">@johnny.s</p>
+                          <p className="mb-0">@username</p>
                           <div className="mt-2">
-                            <button className="btn btn-primary" type="button">
-                              <i className="fa fa-fw fa-camera"></i>
-                              <span>Change Photo</span>
-                            </button>
+                          <label className='btn btn-primary' htmlFor="fileInput">
+                            <input type="file" id="fileInput" hidden />
+                            <i className="fa fa-fw fa-camera"></i> Upload
+                          </label>
                           </div>
                         </div>
                       </div>
                     </div>
+                    
                     <ul className="nav nav-tabs">
                       <li className="nav-item">
                         <a href="" className="active nav-link">
