@@ -6,13 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Form, FormControl,Image } from 'react-bootstrap';
 import  './Header.css';
 import { useState } from 'react';
-
 import { VscAccount } from "react-icons/vsc";
-
 
 
 function Header(){
 
+  const handleClick = () => {
+    window.location.href = "/search"; // replace with the URL of the search page
+  };
   const[logged,setLogged] = useState(true);
      return(
       <>
@@ -29,7 +30,6 @@ function Header(){
           <Navbar.Collapse id="basic-navbar-nav">
           <Nav.Link href="/home">Home</Nav.Link>
             <Nav className="me-auto" id='items'>
-              
               <Nav.Item>
               <Form className="d-flex" id='search-forma'>
               <FormControl
@@ -38,7 +38,7 @@ function Header(){
                 className="me-2"
                 aria-label="Search Users"
               />
-              <Button variant="outline-primary">Search</Button>
+              <Button variant="outline-primary" onClick={handleClick}>Search</Button>
             </Form>
         </Nav.Item>
             </Nav>

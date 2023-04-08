@@ -2,13 +2,20 @@ import './Posts.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button, Dropdown, FormControl,Image } from 'react-bootstrap';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import  {useState} from 'react';
+import  {useRef, useState} from 'react';
 import {FaRegComment} from 'react-icons/fa';
 import Comment from '../Comments/Comment';
+import { VscComment } from 'react-icons/vsc';
 
   
 
 function Post(){
+  const inputRef = useRef<HTMLInputElement>(null);
+    function handleClick() {
+      if (inputRef.current) {
+        inputRef.current.focus();
+      }
+    }
     const[liked,setLiked] = useState(false);
     const handleLikeClick = () => {
         setLiked(!liked);
@@ -43,12 +50,12 @@ function Post(){
           <div className="likes-container">
             
             {liked?(<AiFillHeart style={{color:'red'}} onClick={handleLikeClick}/>):(<AiOutlineHeart style={{color:'black'}} onClick={handleLikeClick}/>)}
-            
+            <VscComment onClick={handleClick} />
           </div>
           <hr />
         </div>
         <form id='comment'>
-                <FormControl type="text" placeholder="Add a comment..."  style={{ width: '70%',height:'50px' }}  />
+                <FormControl type="text" placeholder="Add a comment..."  style={{ width: '70%',height:'50px' }} ref={inputRef} />
                 <Button variant="outline-primary">Comment</Button>
         </form>
         <div className="comments-section">

@@ -8,6 +8,7 @@ import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
+import Search from "./components/Other/Search";
 
 
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
         <Route path="/editProfile" element={<EditProfile />} />
+        <Route path="/search" element={<Search />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
