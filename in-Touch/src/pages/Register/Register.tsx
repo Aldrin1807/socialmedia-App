@@ -3,6 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FormControl, Button ,Image} from 'react-bootstrap';
 import './Register.css';
 import { CiUser } from 'react-icons/ci';
+import { MDBFile } from 'mdb-react-ui-kit';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/js/all.min.js';
+
 
 function Register(){
     return(
@@ -49,6 +53,11 @@ function Register(){
               placeholder="Password"
               className="form-control"
             />
+            <p>Add a Profile Pic (Optional)</p>
+            <label className='btn btn-primary' htmlFor="fileInput">
+              <input type="file" id="fileInput" hidden />
+              <i className="fas fa-image"></i> Upload
+            </label>
             <p>Already have an account? <a href='/login'>Sign in here!</a></p>
             <Button variant="outline-primary" className='butoni-post'>Sign up</Button>
           </form>

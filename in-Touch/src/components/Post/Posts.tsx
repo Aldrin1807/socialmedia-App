@@ -42,7 +42,7 @@ function Post(){
           <hr />
           <div className="likes-container">
             
-            {liked?(<AiFillHeart onClick={handleLikeClick}/>):(<AiOutlineHeart onClick={handleLikeClick}/>)}
+            {liked?(<AiFillHeart style={{color:'red'}} onClick={handleLikeClick}/>):(<AiOutlineHeart style={{color:'black'}} onClick={handleLikeClick}/>)}
             
           </div>
           <hr />
