@@ -63,7 +63,6 @@ function Suggested(){
                 <div className="friend-img"><img src="https://bootdey.com/img/Content/avatar/avatar8.png" alt="" /></div>
                 <div className="friend-info">
                     <h4>Fritjof Inderjit</h4>
-                 
                 </div>
             </a>
         </li>

@@ -3,7 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import EditProfile from "./pages/Profile/EditProfile";
-import Home from "./pages/Register/Home";
+import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile/Profile";
