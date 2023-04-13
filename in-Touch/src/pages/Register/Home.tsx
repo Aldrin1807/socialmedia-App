@@ -76,7 +76,6 @@ function Home() {
             <span className="sidebarFriendName"> Elon Bytyqi </span>
            </li> 
            
-           
             <li className="sidebarFriend">
             <img  className="sidebarFriendImg" src="https://scontent.fprn13-1.fna.fbcdn.net/v/t39.30808-6/245439280_2002313759944268_2903570815791595081_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=JyrmZ7iW-1IAX8UGp8-&_nc_ht=scontent.fprn13-1.fna&oh=00_AfAgHHL_wE-rR3-oWlTBBNB76dA_4wKqbhkUBPqSld5YqQ&oe=64362562" alt="" />
             <span className="sidebarFriendName"> Elon Bytyqi </span>
