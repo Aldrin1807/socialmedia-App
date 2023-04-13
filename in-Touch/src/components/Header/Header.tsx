@@ -12,7 +12,7 @@ import { VscAccount } from "react-icons/vsc";
 function Header(){
 
   const handleClick = () => {
-    window.location.href = "/search"; // replace with the URL of the search page
+      window.location.href = `/search`;
   };
   const[logged,setLogged] = useState(true);
      return(
@@ -37,6 +37,7 @@ function Header(){
                 placeholder="Search Users"
                 className="me-2"
                 aria-label="Search Users"
+                id="searchInput"
               />
               <Button variant="outline-primary" onClick={handleClick}>Search</Button>
             </Form>

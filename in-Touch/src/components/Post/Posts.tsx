@@ -70,7 +70,6 @@ function Post() {
             />
           )}
           <VscComment onClick={handleClick} />
-          <VscBookmark></VscBookmark>
         </div>
         <hr />
       </div>
