@@ -4,34 +4,38 @@ import Footer from "../components/Footer/Footer";
 import GoUp from "../components/Other/GoUp";
 import {Link} from "react-scroll";
 import "./Home.css";
+import Suggested from "../components/Other/Suggested";
 
-import { FaRss,
-        FaRegCommentAlt,
-         FaPlayCircle,
-         FaUserFriends,
-         FaBookmark,
-         FaQuestionCircle,
-         FaClipboard,
-         FaCalendarDay,
-         FaCertificate} from "react-icons/fa";
 
 function Home() {
+
   return (
     <>
-      <div className="container">
-        <PostForm />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        
-      
+    
+    <div className="home-content">
+    <div className="row">
+        <div className="col-md-3">
         
         </div>
-      
-
+        <div className="col-md-6">
+            <div className="container">
+            <PostForm />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+            </div>
+        </div>
+        <div className="col-md-3" id="right">
+            <h1 className="display-6">Suggested Users</h1>
+            <Suggested />
+          
+        </div>
+    </div>
+    </div>
+     
         <Link
           activeClass="active"
           to="container"
