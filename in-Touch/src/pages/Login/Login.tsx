@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function Login(){
+  localStorage.clear();
   const navigate = useNavigate();
   const apiUrl = "https://localhost:44386/api/Users/login"
   const [error,setError]=useState(false);
@@ -32,12 +33,13 @@ function Login(){
         emailorUsername : data.EmailorUsername,
         password : data.Password
       }).then((response) => {
-        if(response.data.status=='Success'){
+        if(response.data>0){
+          console.log(response.data)
+          localStorage.setItem("UserId",response.data);
           navigate('/home');
         }else{
-          setLoginError(response.data.message || 'An error occurred.');
+          setLoginError('An error occurred.');
         }
-        console.log(response.data);
       })
     }else{
       console.log('false');
@@ -78,7 +80,6 @@ function Login(){
               {loginError && <p className="error">{loginError}</p>}
             <Button variant="outline-primary" className='butoni-post' onClick={handleLogin}>Login</Button>
           </form>
-         
         </div>
       </div>
       </div>

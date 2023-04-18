@@ -5,10 +5,28 @@ import GoUp from "../components/Other/GoUp";
 import {Link} from "react-scroll";
 import "./Home.css";
 import Suggested from "../components/Other/Suggested";
-
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import Loader from "../components/Other/Loader";
 
 function Home() {
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
+
+      setTimeout(() => {
+        const user = localStorage.getItem("UserId");
+        if (!user) {
+          navigate("/login");
+        }
+        setIsLoading(false);
+      }, 1000);
+    
+  if(isLoading) {
+    return (
+      <Loader />
+    );
+  }
   return (
     <>
     

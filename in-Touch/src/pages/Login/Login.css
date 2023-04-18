@@ -79,3 +79,7 @@ body{
     font-size: 70px;
     color: #4b6cb7;
 }
+.error{
+  color: red;
+  text-decoration: underline;
+}

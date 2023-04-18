@@ -1,5 +1,5 @@
 
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import EditProfile from "./pages/Profile/EditProfile";
@@ -10,11 +10,18 @@ import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
 import Search from "./components/Other/Search";
 import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
+import Loader from "./components/Other/Loader";
 
 function App() {
+  const location = useLocation();
+  const excluded = ["/login","/register","/loader"];
+  const notHeader = () =>{
+    const currentPath = location.pathname;
+    return !excluded.includes(currentPath);
+  }
   return (
     <div className="App">
-      <Header />
+       {notHeader() && <Header />}
       <Routes>
         <Route index element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
@@ -24,6 +31,7 @@ function App() {
         <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/loader" element={<Loader />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>

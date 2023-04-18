@@ -8,11 +8,12 @@ import  './Header.css';
 import { useState } from 'react';
 import { VscAccount } from "react-icons/vsc";
 
+import { useNavigate } from 'react-router-dom';
 
 function Header(){
-
+  const navigate = useNavigate();
   const handleClick = () => {
-      window.location.href = `/search`;
+      navigate('/search');
   };
   const[logged,setLogged] = useState(true);
      return(
@@ -41,10 +42,9 @@ function Header(){
               />
               <Button variant="outline-primary" onClick={handleClick}>Search</Button>
             </Form>
-        </Nav.Item>
+          </Nav.Item>
             </Nav>
             <Nav className="gap-2">
-              {logged ? (
                 <NavDropdown
                 id="user-dropdown"
                 title={<VscAccount style={{fontSize:'30px', color: '#4b6cb7'}}/>}
@@ -52,19 +52,12 @@ function Header(){
                 menuVariant="light"
               >
                 <NavDropdown.Item href='/profile'>Account</NavDropdown.Item>
-                
                 <NavDropdown.Item href='/editprofile'>Edit Profile</NavDropdown.Item>
-                
                 <NavDropdown.Item onClick={function(){
-                  setLogged(false);
+                    localStorage.clear();
+                  navigate('/login');
                 }} >Sign out</NavDropdown.Item>
                 </NavDropdown>
-              ) : (
-                <>
-                  <Nav.Link className="btn btn-primary text-light"style={{width: "100px" }} href="/login">Login</Nav.Link>
-                  <Nav.Link className="btn btn-primary text-light"style={{width: "100px" }} href="/register">Sign up</Nav.Link>
-                </>
-              )}
             </Nav>
           </Navbar.Collapse>
         </Container>
