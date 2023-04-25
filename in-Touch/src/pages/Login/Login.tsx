@@ -14,6 +14,7 @@ function Login(){
   const [Eerror,setEError]=useState(false);
   const [modal,setModal] = useState(false);
   const [loginError, setLoginError] = useState('');
+  const [remember,setRemember] = useState(false);
   const [data,setData]=useState({
     EmailorUsername:'',
     Password:''
@@ -22,6 +23,9 @@ function Login(){
     e.persist();  
       setData({ ...data, [e.target.name]: e.target.value });
   } 
+  const handleCheckboxChange = (event:any) => {
+    setRemember(event.target.checked);
+  }
   const handleLogin =()=>{
     const uValid = data.EmailorUsername.length>3;
     const pValid = data.Password.length>=8;
@@ -35,7 +39,7 @@ function Login(){
       }).then((response) => {
         if(response.data>0){
           console.log(response.data)
-          localStorage.setItem("UserId",response.data);
+          remember? localStorage.setItem("UserId",response.data):sessionStorage.setItem("UserId",response.data);
           navigate('/home');
         }else{
           setLoginError('An error occurred.');
@@ -76,6 +80,15 @@ function Login(){
               value={data.Password}
               onChange={onChange}
             />
+            
+            <div className='checkbox-remember'>
+            <input type="checkbox" name="remember-me" id="remember-me-checkbox" 
+             checked={remember} 
+             onChange={handleCheckboxChange} 
+              />
+            <p className='remember-text'>Remember me</p>
+            </div>
+            
             <p>Don't have an Account? <a href='/register'>Sign up here!</a></p>
               {loginError && <p className="error">{loginError}</p>}
             <Button variant="outline-primary" className='butoni-post' onClick={handleLogin}>Login</Button>

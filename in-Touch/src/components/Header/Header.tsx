@@ -15,7 +15,7 @@ function Header(){
   const handleClick = () => {
       navigate('/search');
   };
-  const[logged,setLogged] = useState(true);
+ 
      return(
       <>
       <Navbar bg="light" variant="light" expand="lg" className="p-3">
@@ -55,6 +55,7 @@ function Header(){
                 <NavDropdown.Item href='/editprofile'>Edit Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick={function(){
                     localStorage.clear();
+                    sessionStorage.clear();
                   navigate('/login');
                 }} >Sign out</NavDropdown.Item>
                 </NavDropdown>

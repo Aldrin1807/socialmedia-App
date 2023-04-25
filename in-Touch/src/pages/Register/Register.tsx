@@ -31,6 +31,10 @@ function Register() {
     e.persist();  
       setFormData({ ...formData, [e.target.name]: e.target.value });
   } 
+  const onFChange = (event:any) => {
+    const file = event.target.files[0];
+    setFormData({ ...formData, profilePic: file });
+  };
     const handleRegister = (e:any) =>{
       e.preventDefault();
       const FirstLastNameRegex = /^[a-zA-Z]{3,}$/;
@@ -56,7 +60,7 @@ function Register() {
           Email: formData.email,
           Password: formData.password,
           role: 0,
-          profile_img: 'test'
+          profile_img: formData.profilePic
         }).then((response) => {
           console.log(response.data);
           if (response.data.status === 'Success') {
@@ -147,13 +151,11 @@ function Register() {
           {Passworderror?
           <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
             <p>Add a Profile Pic (Optional)</p>
-            <label className="btn btn-primary" htmlFor="fileInput">
-              <input type="file" id="fileInput" hidden 
-              value={formData.profilePic}
-              onChange={onChange}
+              <input type="file" id="fileInput"
+                value={formData.profilePic}
+                onChange={onFChange}
               />
               <i className="fas fa-image"></i> Upload
-            </label>
             <p>
               Already have an account? <a href="/login">Sign in here!</a>
             </p>

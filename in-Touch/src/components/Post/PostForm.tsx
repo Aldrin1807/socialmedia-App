@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { Form, Button, FormControl } from "react-bootstrap";
 import "./PostForm.css";
 
-function PostForm() {
+function PostForm(props:any) {
+  
   return (
     <div className="post-container">
       <form id="create-post">

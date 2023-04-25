@@ -12,10 +12,11 @@ import Loader from "../components/Other/Loader";
 function Home() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
-
-
+  var user = localStorage.getItem("UserId");
+  if(!user){
+    user = sessionStorage.getItem("UserId");
+  }
       setTimeout(() => {
-        const user = localStorage.getItem("UserId");
         if (!user) {
           navigate("/login");
         }
@@ -37,7 +38,7 @@ function Home() {
         </div>
         <div className="col-md-6">
             <div className="container">
-            <PostForm />
+            <PostForm Uid={user} />
             <Post />
             <Post />
             <Post />
