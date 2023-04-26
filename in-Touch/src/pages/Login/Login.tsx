@@ -12,7 +12,7 @@ function Login(){
   const apiUrl = "https://localhost:44386/api/Users/login"
   const [error,setError]=useState(false);
   const [Eerror,setEError]=useState(false);
-  const [modal,setModal] = useState(false);
+  const [isLoading,setIsLoading] = useState(false);
   const [loginError, setLoginError] = useState('');
   const [remember,setRemember] = useState(false);
   const [data,setData]=useState({
@@ -27,15 +27,17 @@ function Login(){
     setRemember(event.target.checked);
   }
   const handleLogin =()=>{
+    
     const uValid = data.EmailorUsername.length>3;
     const pValid = data.Password.length>=8;
     setError(!pValid);
     setEError(!uValid);
     
     if(uValid && pValid){
+      setIsLoading(true);
       axios.post(apiUrl, {
-        emailorUsername : data.EmailorUsername,
-        password : data.Password
+        EmailorUsername : data.EmailorUsername,
+        Password : data.Password
       }).then((response) => {
         if(response.data>0){
           console.log(response.data)
@@ -43,10 +45,12 @@ function Login(){
           navigate('/home');
         }else{
           setLoginError('An error occurred.');
+          setIsLoading(false);
         }
       })
     }else{
       console.log('false');
+      
     }
   }
     return(
@@ -91,7 +95,9 @@ function Login(){
             
             <p>Don't have an Account? <a href='/register'>Sign up here!</a></p>
               {loginError && <p className="error">{loginError}</p>}
-            <Button variant="outline-primary" className='butoni-post' onClick={handleLogin}>Login</Button>
+            <Button variant="outline-primary" className='butoni-post' onClick={handleLogin} disabled={isLoading}>
+              {isLoading ? 'Loading...' : 'Login'} 
+            </Button>
           </form>
         </div>
       </div>

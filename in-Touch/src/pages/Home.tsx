@@ -38,7 +38,7 @@ function Home() {
         </div>
         <div className="col-md-6">
             <div className="container">
-            <PostForm Uid={user} />
+            <PostForm userID={user} />
             <Post />
             <Post />
             <Post />

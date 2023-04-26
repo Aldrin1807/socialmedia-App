@@ -17,7 +17,7 @@ function Register() {
     userName: '',
     email: '',
     password: '',
-    profilePic: ''
+    imageFile:null
   });
   const [FirstLasterror,setFirstLasterror] = useState(false);
   const [Usererror,setUsererror] = useState(false);
@@ -25,17 +25,21 @@ function Register() {
   const [Passworderror,setPassworderror] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [error, setError] = useState(false);
-
+  const [isLoading,setIsLoading] = useState(false);
 
   const onChange = (e:any) => {  
-    e.persist();  
-      setFormData({ ...formData, [e.target.name]: e.target.value });
+    const {name,value} = e.target;  
+      setFormData({ ...formData, [name]:value });
   } 
-  const onFChange = (event:any) => {
-    const file = event.target.files[0];
-    setFormData({ ...formData, profilePic: file });
+  const handleFileChange = (event:any) => {
+    setFormData({
+      ...formData,
+      imageFile: event.target.files[0]
+    });
   };
+ 
     const handleRegister = (e:any) =>{
+      setIsLoading(true);
       e.preventDefault();
       const FirstLastNameRegex = /^[a-zA-Z]{3,}$/;
       const UserNameRegex = /^[a-zA-Z0-9]{3,}$/;
@@ -53,15 +57,20 @@ function Register() {
       setPassworderror(!passwordValid);
   
       if (firstNameValid && lastNameValid && userNameValid && emailValid && passwordValid) {
-          axios.post(apiUrl, {
-          FirstName: formData.firstName,
-          LastName: formData.lastName,
-          Username: formData.userName,
-          Email: formData.email,
-          Password: formData.password,
-          role: 0,
-          profile_img: formData.profilePic
-        }).then((response) => {
+          setIsLoading(true);
+          const form = new FormData();
+          form.append('FirstName',formData.firstName)
+          form.append('LastName',formData.lastName)
+          form.append('Username',formData.userName)
+          form.append('Email',formData.email)
+          form.append('Password',formData.password)
+          if (formData.imageFile) {
+            form.append('Image', formData.imageFile);
+          }
+          form.append('role','0')
+        
+          axios.post(apiUrl, form
+            ).then((response) => {
           console.log(response.data);
           if (response.data.status === 'Success') {
             setIsModalOpen(true);
@@ -73,7 +82,10 @@ function Register() {
         .catch((error) => {
           console.error(error);
         });
+      }else{
+        setIsLoading(false);
       }
+     
     }
     const handleCloseModal = () => {
       setIsModalOpen(false);
@@ -151,16 +163,15 @@ function Register() {
           {Passworderror?
           <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
             <p>Add a Profile Pic (Optional)</p>
-              <input type="file" id="fileInput"
-                value={formData.profilePic}
-                onChange={onFChange}
+              <input type="file" id="fileInput" accept="image/*"
+              onChange={handleFileChange} 
               />
               <i className="fas fa-image"></i> Upload
             <p>
               Already have an account? <a href="/login">Sign in here!</a>
             </p>
             <Button variant="outline-primary" className="butoni-post" onClick={handleRegister}>
-              Sign up
+            {isLoading ? 'Signing up...' : 'Sign up'} 
             </Button>
           </form>
           <Modal show={isModalOpen} onHide={handleCloseModal}>
