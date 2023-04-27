@@ -5,10 +5,29 @@ import GoUp from "../components/Other/GoUp";
 import {Link} from "react-scroll";
 import "./Home.css";
 import Suggested from "../components/Other/Suggested";
-
+import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import Loader from "../components/Other/Loader";
 
 function Home() {
-
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+  var user = localStorage.getItem("UserId");
+  if(!user){
+    user = sessionStorage.getItem("UserId");
+  }
+      setTimeout(() => {
+        if (!user) {
+          navigate("/login");
+        }
+        setIsLoading(false);
+      }, 1000);
+    
+  if(isLoading) {
+    return (
+      <Loader />
+    );
+  }
   return (
     <>
     
@@ -19,7 +38,7 @@ function Home() {
         </div>
         <div className="col-md-6">
             <div className="container">
-            <PostForm />
+            <PostForm userID={user} />
             <Post />
             <Post />
             <Post />

@@ -79,3 +79,19 @@ body{
     font-size: 70px;
     color: #4b6cb7;
 }
+.error{
+  color: red;
+  text-decoration: underline;
+}
+.checkbox-remember{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+#remember-me-checkbox{
+  width: 15px;
+}
+.remember-text{
+  margin-top: 23px;
+}
