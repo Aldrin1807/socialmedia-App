@@ -1,5 +1,5 @@
 .userList {
-   display: flex;
+    flex: 4;
   }
   
   .userListUser {
@@ -28,11 +28,4 @@
   .userListDelete{
       color: red;
       cursor: pointer;
-  }
-  .tables{
-    margin-left: 10pc;
-    margin-top: 10px;
-    width: 40pc;
-    cursor: pointer;
-    
   }

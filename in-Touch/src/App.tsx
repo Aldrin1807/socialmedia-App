@@ -11,7 +11,6 @@ import Register from "./pages/Register/Register";
 import Search from "./components/Other/Search";
 import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
 import Loader from "./components/Other/Loader";
-import UserList from "./components/Other/UserList";
 
 
 function App() {
@@ -34,7 +33,6 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/loader" element={<Loader />} />
-        <Route path="/users" element={<UserList />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
