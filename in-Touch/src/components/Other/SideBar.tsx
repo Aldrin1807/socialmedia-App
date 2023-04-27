@@ -7,12 +7,12 @@ import {
   MdStorefront,
   MdReportGmailerrorred,
   MdOutlineFeedback,
-  MdManageAccounts,
-  MdReport,
+  MdOutlinePostAdd
+  
 } from "react-icons/md";
 import { BiUser, BiMessageDetail } from "react-icons/bi";
 import { AiOutlineTransaction, AiOutlineMail } from "react-icons/ai";
-import { GrAnalytics } from "react-icons/gr";
+import { GiSuspicious } from "react-icons/gi";
 function SideBar() {
   return (
     <div className="sidebar">
@@ -24,10 +24,10 @@ function SideBar() {
               <MdLineStyle className="sidebarIcon"></MdLineStyle> Home
             </li>
             <li className="sidebarListItem">
-              <MdTimeline className="sidebarIcon"> </MdTimeline> Analytics
+              <GiSuspicious className="sidebarIcon"> </GiSuspicious> Suspicious
             </li>
             <li className="sidebarListItem">
-              <MdTrendingUp className="sidebarIcon"></MdTrendingUp> Sales
+              <MdOutlinePostAdd className="sidebarIcon"></MdOutlinePostAdd> Posts
             </li>
           </ul>
         </div>
@@ -35,15 +35,15 @@ function SideBar() {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active">
+              <a href="/users">
+
               <BiUser className="sidebarIcon"></BiUser> Users 
+              </a>
             </li>
             <li className="sidebarListItem">
               <MdStorefront className="sidebarIcon"> </MdStorefront> Products
             </li>
-            <li className="sidebarListItem">
-              <AiOutlineTransaction className="sidebarIcon"></AiOutlineTransaction>{" "}
-              Transactions
-            </li>{" "}
+            
             <li className="sidebarListItem">
               <MdReportGmailerrorred className="sidebarIcon"></MdReportGmailerrorred>{" "}
               Reports
@@ -66,21 +66,7 @@ function SideBar() {
             </li>
           </ul>
         </div>{" "}
-        <div className="sidebarMenu">
-          <h3 className="sidebarTitle">Staff</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem active">
-              <MdManageAccounts className="sidebarIcon"></MdManageAccounts>{" "}
-              Manage
-            </li>
-            <li className="sidebarListItem">
-              <GrAnalytics className="sidebarIcon"> </GrAnalytics> Analytics
-            </li>
-            <li className="sidebarListItem">
-              <MdReport className="sidebarIcon"></MdReport> Reports
-            </li>
-          </ul>
-        </div>
+        
       </div>
     </div>
   );
