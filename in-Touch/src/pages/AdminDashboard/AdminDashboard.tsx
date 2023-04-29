@@ -9,10 +9,7 @@ export function AdminDashboard() {
   return (
     <div className="admin-container">
       <SideBar></SideBar>
-      <Router>
-        <AdminDashboardMain></AdminDashboardMain>
-       <UserList></UserList>
-      </Router>
+      
     </div>
   );
 }

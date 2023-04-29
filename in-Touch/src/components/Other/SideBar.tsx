@@ -24,21 +24,19 @@ function SideBar() {
               <MdLineStyle className="sidebarIcon"></MdLineStyle> Home
             </li>
             <li className="sidebarListItem">
-              <MdTimeline className="sidebarIcon"> </MdTimeline> Analytics
+              <BiUser className="sidebarIcon"> </BiUser> <a href="/users">Users</a>
             </li>
             <li className="sidebarListItem">
-              <MdTrendingUp className="sidebarIcon"></MdTrendingUp> Sales
+              <MdTrendingUp className="sidebarIcon"></MdTrendingUp> Posts
             </li>
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem active">
-              <BiUser className="sidebarIcon"></BiUser> Users 
-            </li>
+            
             <li className="sidebarListItem">
-              <MdStorefront className="sidebarIcon"> </MdStorefront> Products
+              <MdStorefront className="sidebarIcon"> </MdStorefront> Suspicious
             </li>
             <li className="sidebarListItem">
               <AiOutlineTransaction className="sidebarIcon"></AiOutlineTransaction>{" "}

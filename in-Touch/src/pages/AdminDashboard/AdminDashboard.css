@@ -7,7 +7,7 @@
 
 /*-------------------SideBar----------------------*/
 .sidebar {
-  flex: 1;
+  width: 20pc;
   height: 100vh;
   background-color: rgb(205, 205, 205);
   position: sticky;
