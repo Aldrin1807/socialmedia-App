@@ -1,0 +1,48 @@
+[33m7bb56e9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m changes
+[33mfe09ad5[m hh
+[33mba0a6f5[m Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+[33mc175ff1[m ss
+[33m564ca6d[m Image Upload for Registered user done
+[33madf2c23[m implemented remember me, and other stuff
+[33mac1f703[m Added user Id to the local storage
+[33m593dee9[m Merge branches 'main' and 'main' of
+[33mce2213d[m commit
+[33mf91a1ff[m h
+[33m17a19a4[m login and register done
+[33mc769e5d[m Login and register logic doen
+[33m5eb8600[m finished Dashboard design
+[33m7fc0021[m fixed Home path
+[33mf6dba80[m Merge branches 'main' and 'main' of https://github.com/Aldrin1807/socialmedia-App
+[33m1d65e07[m small change
+[33mdd78e2a[m changge
+[33madede30[m Delete Home.tsx
+[33md6c06f8[m Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+[33m1df5399[m created sidebar for admindashboard
+[33m861178b[m Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+[33mbf3e624[m changes
+[33m893f8c3[m added icon to post, implemented search page,
+[33mc215c3b[m small fixes
+[33m197d8ce[m minor fixes
+[33m6139705[m minor changes
+[33m08a660d[m minor changes
+[33mb48f1b1[m ri-organizimi i folderave per secilin komponent
+[33m5327b71[m fixed edit profile and other stuff
+[33mb91b15d[m Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+[33mfee210b[m profile change
+[33mf6fd1aa[m profilePage-edit
+[33m5ad868e[m edited ProfilePage
+[33m8941ced[m edited profiloe page
+[33mdd40812[m Aids second commit
+[33m3677cc7[m Aids commit
+[33mc4fa923[m changes
+[33mf75ad77[m Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+[33m96714ee[m Krijimi i login page,register dhe footerit
+[33m2a9a3ec[m register
+[33m80ca41a[m Header icon and post image added
+[33m60ef3b4[m modified
+[33mf24744e[m small changes
+[33m4296745[m login page, and fixed header
+[33m00a00e4[m added post, postform, and some changes on header
+[33mace5340[m Added pages and organized routes
+[33m4419e61[m first-commit
+[33m7700044[m Initial commit
