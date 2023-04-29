@@ -1,8 +1,17 @@
+
 .userList {
-    flex: 4;
+    display: flex;
   }
   
-  .userListUser {
+  .table{
+    margin-top: 1pc;
+    margin-left: 1pc;
+    margin-right: 4pc;
+    height: auto;
+    
+  }
+  
+  /*.userListUser {
     display: flex;
     align-items: center;
   }
@@ -28,4 +37,4 @@
   .userListDelete{
       color: red;
       cursor: pointer;
-  }
+  }/*

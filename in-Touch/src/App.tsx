@@ -16,7 +16,7 @@ import UserList from "./components/Other/UserList";
 
 function App() {
   const location = useLocation();
-  const excluded = ["/login","/register","/loader"];
+  const excluded = ["/login","/register","/loader","/dashboard"];
   const notHeader = () =>{
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);

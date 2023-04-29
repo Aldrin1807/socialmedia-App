@@ -28,6 +28,7 @@
   list-style: none;
   padding: 5px;
 }
+
 .sidebarListItem {
   padding: 5px;
   margin-top: 10px;
@@ -39,10 +40,20 @@
   gap: 1rem;
 }
 .sidebarListItem.active,
-.sidebarListItem:hover {
+/* .sidebarListItem:hover {
   background-color: rgb(227, 227, 227);
-}
+} */
 .sidebarIcon {
   margin-right: 5px;
   font-size: 20px !important;
+  
+}
+.sidebarIcon :hover{
+ color:rgb(46, 105, 164);
+
+
+}
+a{
+  color: rgb(113, 94, 94);
+  text-decoration: none;
 }

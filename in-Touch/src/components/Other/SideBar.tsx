@@ -21,30 +21,32 @@ function SideBar() {
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active">
-              <MdLineStyle className="sidebarIcon"></MdLineStyle> Home
+              <MdLineStyle className="sidebarIcon"></MdLineStyle> <a href="/home">  Home</a>
             </li>
-            <li className="sidebarListItem">
-              <BiUser className="sidebarIcon"> </BiUser> <a href="/users">Users</a>
-            </li>
-            <li className="sidebarListItem">
-              <MdTrendingUp className="sidebarIcon"></MdTrendingUp> Posts
-            </li>
+           
+           
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
+          <li className="sidebarListItem">
+              <BiUser className="sidebarIcon"> </BiUser> <a href="/users">Users</a>
+            </li>
             
             <li className="sidebarListItem">
-              <MdStorefront className="sidebarIcon"> </MdStorefront> Suspicious
+              <MdStorefront className="sidebarIcon"> </MdStorefront> Posts
             </li>
-            <li className="sidebarListItem">
+            {/* <li className="sidebarListItem">
               <AiOutlineTransaction className="sidebarIcon"></AiOutlineTransaction>{" "}
               Transactions
-            </li>{" "}
+            </li>{" "} */}
             <li className="sidebarListItem">
               <MdReportGmailerrorred className="sidebarIcon"></MdReportGmailerrorred>{" "}
               Reports
+            </li>
+            <li className="sidebarListItem">
+              <MdReport className="sidebarIcon"></MdReport> Suspicios
             </li>
           </ul>
         </div>
@@ -62,9 +64,10 @@ function SideBar() {
               <BiMessageDetail className="sidebarIcon"></BiMessageDetail>{" "}
               Messages
             </li>
+            
           </ul>
         </div>{" "}
-        <div className="sidebarMenu">
+        {/* <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active">
@@ -78,7 +81,7 @@ function SideBar() {
               <MdReport className="sidebarIcon"></MdReport> Reports
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );
