@@ -12,6 +12,7 @@ import Search from "./components/Other/Search";
 import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
 import Loader from "./components/Other/Loader";
 
+
 function App() {
   const location = useLocation();
   const excluded = ["/login","/register","/loader"];

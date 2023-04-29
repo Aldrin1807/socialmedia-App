@@ -1,0 +1,283 @@
+[33mcommit 7bb56e9766fe492452bc0991f2f9c03ce287b81c[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Thu Apr 27 23:04:51 2023 +0200
+
+    changes
+
+[33mcommit fe09ad58cefd4ff91c23d5df53e8e9880c704b39[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Thu Apr 27 12:15:28 2023 +0200
+
+    hh
+
+[33mcommit ba0a6f556b5f5fdfd1265be7255f5b00e03c197c[m
+Merge: c175ff1 564ca6d
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Thu Apr 27 10:18:18 2023 +0200
+
+    Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+
+[33mcommit c175ff160b905ac30287ba7a012dfc0e56435397[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Thu Apr 27 10:18:05 2023 +0200
+
+    ss
+
+[33mcommit 564ca6ddf90c6a466314886981810fd7746d0840[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Wed Apr 26 23:42:28 2023 +0200
+
+    Image Upload for Registered user done
+
+[33mcommit adf2c23d56896a39a38eadd2b0481fbe775bf6a3[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Tue Apr 25 20:36:03 2023 +0200
+
+    implemented remember me, and other stuff
+
+[33mcommit ac1f70398e7718a8aeae60afcec8c21878d66d5a[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Tue Apr 18 17:52:17 2023 +0200
+
+    Added user Id to the local storage
+
+[33mcommit 593dee9d0b3f0a6bd960791204332edf91150fe1[m
+Merge: ce2213d 17a19a4
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Thu Apr 13 15:09:33 2023 +0200
+
+    Merge branches 'main' and 'main' of
+
+[33mcommit ce2213d5a12cb50264be6724714b0b463cff2e38[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Thu Apr 13 15:05:42 2023 +0200
+
+    commit
+
+[33mcommit f91a1ff3f7d9b6e3956a919d1b9d802ecbcd2c9b[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Thu Apr 13 14:44:51 2023 +0200
+
+    h
+
+[33mcommit 17a19a4835741a7504697355c94c7cdab36e5899[m
+Merge: c769e5d 5eb8600
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Thu Apr 13 14:27:52 2023 +0200
+
+    login and register done
+
+[33mcommit c769e5da051e0a6852c11d9dea490cbb4437c71b[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Thu Apr 13 14:25:10 2023 +0200
+
+    Login and register logic doen
+
+[33mcommit 5eb8600c7bf3da8a26abec73f8a7d2fed69e2d6d[m
+Author: Aid Maliqi <aid.maliqi04@gmail.com>
+Date:   Mon Apr 10 18:23:32 2023 +0200
+
+    finished Dashboard design
+
+[33mcommit 7fc00211d6a411bf01f6e1eefda7c6e0c21bfc29[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Apr 9 13:51:33 2023 +0200
+
+    fixed Home path
+
+[33mcommit f6dba80161c8b75f4d252f27a765bce79e7e9aa4[m
+Merge: 1d65e07 dd78e2a
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Apr 9 13:39:29 2023 +0200
+
+    Merge branches 'main' and 'main' of https://github.com/Aldrin1807/socialmedia-App
+
+[33mcommit 1d65e07c99811cb3ced5159eebfa6dd1cff52f45[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Apr 9 13:39:11 2023 +0200
+
+    small change
+
+[33mcommit dd78e2ae34738247da47d63b6635427404d3772b[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Sun Apr 9 02:42:12 2023 +0200
+
+    changge
+
+[33mcommit adede3046c19e5e56cdd8431a39c3d4404a4f85f[m
+Author: ElonBytyqi <119785607+ElonBytyqi@users.noreply.github.com>
+Date:   Sun Apr 9 01:24:24 2023 +0200
+
+    Delete Home.tsx
+
+[33mcommit d6c06f881a65b223707db31fa159c36a2128df05[m
+Merge: 1df5399 861178b
+Author: Aid Maliqi <aid.maliqi04@gmail.com>
+Date:   Sun Apr 9 01:10:28 2023 +0200
+
+    Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+
+[33mcommit 1df5399bdd1e7f0ce4203041e817bb8ebde4de87[m
+Author: Aid Maliqi <aid.maliqi04@gmail.com>
+Date:   Sun Apr 9 01:10:23 2023 +0200
+
+    created sidebar for admindashboard
+
+[33mcommit 861178bc76e504a2086438d40555ff56465649a9[m
+Merge: bf3e624 893f8c3
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Sun Apr 9 01:10:04 2023 +0200
+
+    Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+
+[33mcommit bf3e62476dfcfec49c55fbec436db1b1bab4e8a6[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Sun Apr 9 01:09:33 2023 +0200
+
+    changes
+
+[33mcommit 893f8c3fd856c77c51a05c19e4e02ce7b743dfb5[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sat Apr 8 22:03:53 2023 +0200
+
+    added icon to post, implemented search page,
+
+[33mcommit c215c3bc46475557679b604764d085e0f0e35d3e[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sat Apr 8 15:36:42 2023 +0200
+
+    small fixes
+
+[33mcommit 197d8cec9ffdcd50dd5e30459d54e91ad4198f11[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Thu Apr 6 01:28:13 2023 +0200
+
+    minor fixes
+
+[33mcommit 61397059f314e63228197500dfef6656b4f02e80[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Thu Apr 6 01:20:10 2023 +0200
+
+    minor changes
+
+[33mcommit 08a660d947bc6785c95f95b65559885cce04313d[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Thu Apr 6 01:13:25 2023 +0200
+
+    minor changes
+
+[33mcommit b48f1b13d1f7219e7866133c0cfa92520b0ab2fa[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Wed Apr 5 23:44:32 2023 +0200
+
+    ri-organizimi i folderave per secilin komponent
+
+[33mcommit 5327b71396144d19665f9443a14b60cbf7564736[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Apr 2 13:19:38 2023 +0200
+
+    fixed edit profile and other stuff
+
+[33mcommit b91b15d45b8068cd647b8121fd4719af529ded21[m
+Merge: fee210b f6fd1aa
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Apr 2 12:24:38 2023 +0200
+
+    Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+
+[33mcommit fee210bc419696dd32bcd73b0d0539ad425c95a8[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Apr 2 12:22:11 2023 +0200
+
+    profile change
+
+[33mcommit f6fd1aa5b78dea3363ae80ee08758fbbc5f2bb47[m
+Author: FIRST_AID LAST_MALIQI <aid.maliqi04@gmail.com>
+Date:   Sat Apr 1 11:40:38 2023 +0200
+
+    profilePage-edit
+
+[33mcommit 5ad868e9bbfa57ef759afff489a71b2b72c46b5a[m
+Author: FIRST_AID LAST_MALIQI <aid.maliqi04@gmail.com>
+Date:   Sat Apr 1 11:36:53 2023 +0200
+
+    edited ProfilePage
+
+[33mcommit 8941ced11384f69b67452906a2341c9aa1cb1970[m
+Author: Aid Maliqi <aid.maliqi04@gmail.com>
+Date:   Fri Mar 31 18:38:14 2023 +0200
+
+    edited profiloe page
+
+[33mcommit dd40812c2b757fbd2629590c4192c25656269b59[m
+Author: Aid Maliqi <aid.maliqi04@gmail.com>
+Date:   Sun Mar 26 18:43:08 2023 +0200
+
+    Aids second commit
+
+[33mcommit 3677cc7012ac5b9c40559ad028f8f670be4d28d2[m
+Author: Aid Maliqi <aid.maliqi04@gmail.com>
+Date:   Sun Mar 26 18:42:07 2023 +0200
+
+    Aids commit
+
+[33mcommit c4fa923dc916d2bd9ae8faed23e8fcac6e1ca4f1[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sat Mar 25 14:08:23 2023 +0100
+
+    changes
+
+[33mcommit f75ad77bb9fe1b0514b6d209b1003c4aff76678d[m
+Merge: 96714ee 2a9a3ec
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Tue Mar 21 16:20:11 2023 +0100
+
+    Merge branch 'main' of https://github.com/Aldrin1807/socialmedia-App
+
+[33mcommit 96714eeb4700a58bc474177688483f52a98ba108[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Tue Mar 21 16:18:30 2023 +0100
+
+    Krijimi i login page,register dhe footerit
+
+[33mcommit 2a9a3ec04ed2fff525f4e6c446240b2383a47ea0[m
+Author: ElonBytyqi <elon.bytyqi@hotmail.com>
+Date:   Mon Mar 20 15:33:16 2023 +0100
+
+    register
+
+[33mcommit 80ca41a613098e97d8655a4fb44be94c81847575[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Mar 19 18:06:08 2023 +0100
+
+    Header icon and post image added
+
+[33mcommit 60ef3b45d4e9e21598565496991b18b300bd0af5[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Mar 19 17:03:45 2023 +0100
+
+    modified
+
+[33mcommit f24744ecdcc82b5ff1cb918d4712de33b010dec0[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Mar 19 16:21:24 2023 +0100
+
+    small changes
+
+[33mcommit 429674523160f994f1f91de87a79853426809953[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Mar 19 16:08:33 2023 +0100
+
+    login page, and fixed header
+
+[33mcommit 00a00e4856513b04251078c030bb76aa4686626f[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sun Mar 19 13:57:28 2023 +0100
+
+    added post, postform, and some changes on header
+
+[33mcommit ace53405413f7a5b9f049d59de3022ed53c418c4[m
+Author: Aldrin1807 <ai58914@ubt-uni.net>
+Date:   Sat Mar 18 22:31:17 2023 +0100
+
+    Added pages and

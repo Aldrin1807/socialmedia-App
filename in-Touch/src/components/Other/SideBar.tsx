@@ -1,4 +1,5 @@
 import "../../pages/AdminDashboard/AdminDashboard.css";
+
 import {
   MdLineStyle,
   MdTimeline,
@@ -34,7 +35,7 @@ function SideBar() {
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active">
-              <BiUser className="sidebarIcon"></BiUser> Users
+              <BiUser className="sidebarIcon"></BiUser> Users 
             </li>
             <li className="sidebarListItem">
               <MdStorefront className="sidebarIcon"> </MdStorefront> Products
