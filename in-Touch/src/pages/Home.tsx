@@ -8,10 +8,21 @@ import Suggested from "../components/Other/Suggested";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import Loader from "../components/Other/Loader";
+import axios from "axios";
 
 function Home() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
+  type Post = {
+    id: number;
+    content: string;
+    imagePath: string;
+    image: string | null;
+    postDate: string;
+    userID: number;
+  };
+  
+  const [PostData, setPostData] = useState<Post[]>([]);
   var user = localStorage.getItem("UserId");
   if(!user){
     user = sessionStorage.getItem("UserId");
@@ -28,6 +39,16 @@ function Home() {
       <Loader />
     );
   }
+  
+  const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${user}`;
+
+    axios.get(apiUrl).then((response) => {
+      setPostData(response.data)
+    }).catch((error) => {
+      console.error(error);
+    });
+
+    console.log(PostData)
   return (
     <>
     
@@ -39,12 +60,14 @@ function Home() {
         <div className="col-md-6">
             <div className="container">
             <PostForm userID={user} />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
-            <Post />
+            {PostData && PostData.map(post => (
+            <Post
+              postId={post.id}
+              content={post.content}
+              imagePath={post.imagePath}
+              postDate={post.postDate}
+            />
+          ))}
             </div>
         </div>
         <div className="col-md-3" id="right">

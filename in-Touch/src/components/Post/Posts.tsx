@@ -7,7 +7,7 @@ import { FaRegComment } from "react-icons/fa";
 import Comment from "../Comments/Comment";
 import { VscComment, VscBookmark } from "react-icons/vsc";
 
-function Post() {
+function Post(props:any) {
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClick() {
     if (inputRef.current) {
@@ -20,6 +20,7 @@ function Post() {
     !liked ? setLikes(likes + 1) : setLikes(likes - 1);
   };
   const [likes, setLikes] = useState(10);
+  
   return (
     <div className="post-container">
       <div className="post-header">
@@ -41,16 +42,15 @@ function Post() {
         </span>
       </div>
       <img
-        src="https://image-placeholder.com/images/actual-size/320x320.png"
+        src={`https://localhost:44386/Post Images/${props.imagePath}`}
         className="post-img"
         style={{ width: "675px", height: "300px" }}
       />
       <p className="post-text">
-        This is my first post on my new blog! I'm excited to share my thoughts
-        and ideas with everyone. Stay tuned for more updates!
+       {props.content}
       </p>
       <div className="post-footer">
-        <span className="timestamp">3:00 PM - 18 Mar 2023</span>
+        <span className="timestamp">{props.postDate}</span>
         <div className="nums-container">
           <p>
             <b>{likes}</b> Likes
