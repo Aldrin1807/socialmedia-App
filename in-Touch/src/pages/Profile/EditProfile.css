@@ -1,12 +1,17 @@
 body {
   background: #f8f8f8;
 }
-#formes{
+#formes {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#first-form{
+#first-form {
   max-width: 573px;
   margin: 0 auto;
+}
+.profile-pic {
+  height: inherit;
+  width: inherit;
+  object-fit: cover;
 }

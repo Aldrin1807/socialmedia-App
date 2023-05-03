@@ -1,4 +1,3 @@
-
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
@@ -12,25 +11,49 @@ import Search from "./components/Other/Search";
 import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
 import Loader from "./components/Other/Loader";
 import UserList from "./components/Other/UserList";
-
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { TUser } from "./types/types";
 
 function App() {
+  const [User, setUser] = useState<TUser | null>(null);
+
+  var userID = localStorage.getItem("UserId");
+  if (!userID) {
+    userID = sessionStorage.getItem("UserId");
+  }
+  useEffect(() => {
+    async function fetchUser() {
+      try {
+        const response = await axios.get(
+          `https://localhost:44386/api/Users/${userID}`
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    fetchUser();
+  }, []);
+
   const location = useLocation();
-  const excluded = ["/login","/register","/loader","/dashboard"];
-  const notHeader = () =>{
+  const excluded = ["/login", "/register", "/loader", "/dashboard"];
+  const notHeader = () => {
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);
-  }
+  };
+
   return (
     <div className="App">
-       {notHeader() && <Header />}
+      {notHeader() && <Header />}
       <Routes>
         <Route index element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/editProfile" element={<EditProfile />} />
+        <Route path="/editProfile" element={<EditProfile User={User} setUser={setUser} />} />
         <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/users" element={<UserList />} />
