@@ -2,12 +2,32 @@
 .userList {
     display: flex;
   }
+  .tablees{
+    width: 80px;
+  }
   
   .table{
     margin-top: 1pc;
     margin-left: 1pc;
     margin-right: 4pc;
     height: auto;
+    
+  }
+  .delete-button{
+    color: rgb(183, 45, 45);
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 8px;
+
+   
+   
+  }
+  .edit-button{
+    color: rgb(15, 197, 163);
+    width: 26px;
+    height: 20px;
+    cursor: pointer;
     
   }
   
