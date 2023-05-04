@@ -51,13 +51,15 @@ function PostForm(props:any) {
               Image : null,
               userID  : props.userID
             })
-            window.location.reload()
+            setIsLoading(false);
+            const fileInput = document.getElementById('formFileSm') as HTMLInputElement;
+            fileInput.value = '';
           }
-      
       }) .catch((error) => {
         console.error(error);
       });
     }
+   
   }
   return (
     <div className="post-container">

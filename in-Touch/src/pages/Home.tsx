@@ -11,6 +11,11 @@ import Loader from "../components/Other/Loader";
 import axios from "axios";
 
 function Home() {
+  var user = localStorage.getItem("UserId");
+  if(!user){
+    user = sessionStorage.getItem("UserId");
+  }
+  const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${user}`;
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
   type Post = {
@@ -23,10 +28,7 @@ function Home() {
   };
   
   const [PostData, setPostData] = useState<Post[]>([]);
-  var user = localStorage.getItem("UserId");
-  if(!user){
-    user = sessionStorage.getItem("UserId");
-  }
+  
       setTimeout(() => {
         if (!user) {
           navigate("/login");
@@ -40,15 +42,19 @@ function Home() {
     );
   }
   
-  const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${user}`;
 
-    axios.get(apiUrl).then((response) => {
-      setPostData(response.data)
-    }).catch((error) => {
-      console.error(error);
-    });
 
-    console.log(PostData)
+    axios.get(apiUrl)
+      .then((response:any) => {
+        setPostData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    
+   
+    
+
   return (
     <>
     
@@ -77,7 +83,6 @@ function Home() {
         </div>
     </div>
     </div>
-     
         <Link
           activeClass="active"
           to="container"
