@@ -42,15 +42,19 @@ function Home() {
     );
   }
   
-  const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${user}`;
 
-    axios.get(apiUrl).then((response) => {
-      setPostData(response.data)
-    }).catch((error) => {
-      console.error(error);
-    });
 
-    console.log(PostData)
+    axios.get(apiUrl)
+      .then((response:any) => {
+        setPostData(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    
+   
+    
+
   return (
     <>
       <div className="home-content">
@@ -75,18 +79,18 @@ function Home() {
             <Suggested />
           </div>
         </div>
-    </div>
-    </div>
-        <Link
-          activeClass="active"
-          to="container"
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={900}
-        >
-          <GoUp />
-        </Link>
+      </div>
+
+      <Link
+        activeClass="active"
+        to="container"
+        spy={true}
+        smooth={true}
+        offset={-70}
+        duration={900}
+      >
+        <GoUp />
+      </Link>
       <div>
         <Footer />
       </div>
