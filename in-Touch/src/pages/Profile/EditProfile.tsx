@@ -9,6 +9,8 @@ type Props = {
 };
 
 function EditProfile({ User, setUser }: Props) {
+  const [updatedUser, setUpdatedUser] = useState({});
+  console.log(updatedUser);
   function Img() {
     if (User === null || User.image === null) {
       return "https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg";
@@ -16,66 +18,51 @@ function EditProfile({ User, setUser }: Props) {
       return User.image;
     }
   }
-  const [newUser, setNewUser] = useState({
-   
-  });
-  // const newUser = {
-
-  //   firstName: string;
-  //   lastName: string;
-  //   username: string;
-  //   email: string;
-  //   password: string;
-
-  //   image: string | null;
-
-  // }
-
-  // const handleInputChange = (event: { target: { name: any; value: any } }) => {
-  //   setUser({
-  //     ...newUser,
-  //     [event.target.name]: event.target.value,
-  //   });
-  // };
 
   const handleInputChange = (event: { target: { name: any; value: any } }) => {
     const { name, value } = event.target;
-    setNewUser(() => ({
-      ...User,
-      [name]: value,
-    }));
+
+    let newuser = {
+      id: User?.id,
+      firstName: name === "firstName" ? value : User?.firstName,
+      lastName: name === "lastName" ? value : User?.lastName,
+      username: name === "username" ? value : User?.username,
+      email: name === "email" ? value : User?.email,
+      password: name === "password" ? value : User?.password,
+      imagePath: User?.imagePath,
+      image: User?.image,
+      role: User?.role,
+    };
+    setUpdatedUser(newuser);
+  };
+  const handleInputChange1 = (event: { target: { name: any; value: any } }) => {
+    const { name, value } = event.target;
+
+    let newuser = {
+      id: User?.id,
+      firstName: name === "firstName" ? value : User?.firstName,
+      lastName: name === "lastName" ? value : User?.lastName,
+      username: name === "username" ? value : User?.username,
+      email: name === "email" ? value : User?.email,
+      password: name === "password" ? value : User?.password,
+      imagePath: User?.imagePath,
+      image: User?.image,
+      role: User?.role,
+    };
+    setUpdatedUser(newuser);
   };
 
   const handleSubmit = (event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    // Filter out any empty fields from the form data object
-    // const filteredFormData = Object.fromEntries(
-    //   Object.entries(User).filter(([_, value]) => value !== "")
-    // );
-
-    // Make the PUT request with the filtered form data
     axios
       .put(
-        `https://localhost:44386/api/Users/Update-user?id=${User?.id}`,
-        newUser
+        `https://localhost:44386/api/Users/Update-user${User?.id}`,
+        updatedUser
       )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
-
-  const checkpasword = (e: {
-    preventDefault: () => void;
-    target: { value: string | undefined };
-  }) => {
-    e.preventDefault();
-    if (User?.password === e.target.value) {
-      return true;
-    }
+      .then((response) => console.log(response))
+      .then(setUser(updatedUser))
+      .catch((error) => console.log(error));
   };
   return (
     <div className="container">
@@ -139,7 +126,51 @@ function EditProfile({ User, setUser }: Props) {
                         <form
                           className="form"
                           style={{ maxWidth: "none" }}
-                          onSubmit={handleSubmit}
+                          onSubmit={(e) => {
+                            e.preventDefault();
+                            let newuser = new FormData();
+
+                            newuser.append(
+                              "firstName",
+                              e.target.firstName.value
+                            );
+                            newuser.append("lastName", e.target.lastName.value);
+                            newuser.append("username", e.target.username.value);
+                            newuser.append("email", e.target.email.value);
+                            newuser.append("password", e.target.password.value);
+                            //{
+                            //   id: User?.id,
+                            //   firstName: e.target.firstName.value
+                            //     ? e.target.firstName.value
+                            //     : User?.firstName,
+                            //   lastName: e.target.lastName.value
+                            //     ? e.target.lastName.value
+                            //     : User?.lastName,
+                            //   username: e.target.username.value
+                            //     ? e.target.username.value
+                            //     : User?.username,
+                            //   email: e.target.email.value
+                            //     ? e.target.email.value
+                            //     : User?.email,
+                            //   password: e.target.password.value
+                            //     ? e.target.password.value
+                            //     : User?.password,
+                            //   imagePath: User?.imagePath,
+                            //   image: User?.image,
+                            //   role: User?.role,
+                            // };
+                            let new2 = {
+                              firstName: e.target.firstName.value,
+                            };
+                            axios
+                              .put(
+                                `https://localhost:44386/api/Users/Update-user${User?.id}`,
+                                newuser
+                              )
+                              .then((response) => console.log(response))
+                              .then(setUser(newuser))
+                              .catch((error) => console.log(error));
+                          }}
                         >
                           <div className="row">
                             <div className="col">
@@ -151,10 +182,9 @@ function EditProfile({ User, setUser }: Props) {
                                       <input
                                         className="form-control"
                                         type="text"
-                                        name="firstname"
-                                        value={User}
+                                        name="firstName"
                                         placeholder="First Name"
-                                        onChange={handleInputChange}
+                                        // onBlur={handleInputChange}
                                       />
                                     </div>
                                   </div>
@@ -164,10 +194,9 @@ function EditProfile({ User, setUser }: Props) {
                                       <input
                                         className="form-control"
                                         type="text"
-                                        name="lastname"
-                                        value={newUser.User?.lastName}
+                                        name="lastName"
                                         placeholder="Last Name"
-                                        onChange={handleInputChange}
+                                        // onBlur={handleInputChange}
                                       />
                                     </div>
                                   </div>
@@ -179,9 +208,9 @@ function EditProfile({ User, setUser }: Props) {
                                       <input
                                         className="form-control"
                                         type="text"
-                                        value={newUser.User?.username}
+                                        name="username"
                                         placeholder="username"
-                                        onChange={handleInputChange}
+                                        // onBlur={handleInputChange}
                                       />
                                     </div>
                                   </div>
@@ -193,9 +222,8 @@ function EditProfile({ User, setUser }: Props) {
                                       <input
                                         className="form-control"
                                         type="text"
-                                        value={newUser.User?.email}
                                         placeholder="user@example.com"
-                                        onChange={handleInputChange}
+                                        // onBlur={handleInputChange}
                                         name="email"
                                       />
                                     </div>
@@ -217,8 +245,6 @@ function EditProfile({ User, setUser }: Props) {
                                       className="form-control"
                                       type="password"
                                       placeholder="••••••"
-                                      value={newUser.User?.password}
-                                      onChange={checkpasword}
                                     />
                                   </div>
                                 </div>
@@ -231,8 +257,8 @@ function EditProfile({ User, setUser }: Props) {
                                       className="form-control"
                                       type="password"
                                       placeholder="••••••"
-                                      value={newUser.User?.password}
-                                      onChange={handleInputChange}
+                                      name="password"
+                                      // onBlur={handleInputChange}
                                     />
                                   </div>
                                 </div>
@@ -245,8 +271,7 @@ function EditProfile({ User, setUser }: Props) {
                                       className="form-control"
                                       type="password"
                                       placeholder="••••••"
-                                      value={newUser.User?.password}
-                                      onChange={handleInputChange}
+                                      // onBlur={handleInputChange}
                                     />
                                   </div>
                                 </div>
