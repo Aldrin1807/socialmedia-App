@@ -7,6 +7,8 @@ import { MDBFile } from "mdb-react-ui-kit";
 import axios from 'axios'; 
 import {  useState } from "react";
 import { useNavigate  } from 'react-router-dom';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function Register() {
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ function Register() {
   const [Usererror,setUsererror] = useState(false);
   const [Emailerror,setEmailerror] = useState(false);
   const [Passworderror,setPassworderror] = useState(false);
+  const [FileError,setFileError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [error, setError] = useState(false);
   const [isLoading,setIsLoading] = useState(false);
@@ -50,13 +53,15 @@ function Register() {
       const userNameValid = UserNameRegex.test(formData.userName);
       const emailValid = EmailRegex.test(formData.email);
       const passwordValid = formData.password.length >= 8;
+      const fileValid = formData.imageFile!=null;
   
       setFirstLasterror(!firstNameValid || !lastNameValid);
       setUsererror(!userNameValid);
       setEmailerror(!emailValid);
       setPassworderror(!passwordValid);
+      setFileError(!fileValid);
   
-      if (firstNameValid && lastNameValid && userNameValid && emailValid && passwordValid) {
+      if (firstNameValid && lastNameValid && userNameValid && emailValid && passwordValid&& fileValid) {
           setIsLoading(true);
           const form = new FormData();
           form.append('FirstName',formData.firstName)
@@ -162,11 +167,12 @@ function Register() {
           />
           {Passworderror?
           <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
-            <p>Add a Profile Pic (Optional)</p>
-              <input type="file" id="fileInput" accept="image/*"
+            <p>Add a Profile Pic (Required!)</p>
+              <input type="file" id="fileInput" accept="image/* "
               onChange={handleFileChange} 
+              style={{color: FileError ? 'red' : 'inherit' }}
               />
-              <i className="fas fa-image"></i> Upload
+               
             <p>
               Already have an account? <a href="/login">Sign in here!</a>
             </p>

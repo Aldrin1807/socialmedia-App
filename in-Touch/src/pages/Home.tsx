@@ -42,8 +42,10 @@ function Home() {
           <div className="col-md-6">
             <div className="container">
               <PostForm userID={user} />
-              {PostData &&
-                PostData.map((post) => (
+              {PostData && PostData.length > 0 ? (
+
+              <div>
+                {PostData.map((post) => (
                   <Post
                     postId={post.id}
                     content={post.content}
@@ -52,6 +54,12 @@ function Home() {
                     user={false}
                   />
                 ))}
+              </div>
+            ) : (
+              <div style={{ width: '100%', height: '35vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <p className="lead" >No posts available. See suggested users or search for users and follow to see posts.</p>
+              </div>
+            )}
             </div>
           </div>
           <div className="col-md-3" id="right">
@@ -60,7 +68,8 @@ function Home() {
           </div>
         </div>
       </div>
-
+      
+      {PostData && PostData.length > 0 && (
       <Link
         activeClass="active"
         to="container"
@@ -71,6 +80,7 @@ function Home() {
       >
         <GoUp />
       </Link>
+    )}
       <div>
         <Footer />
       </div>
