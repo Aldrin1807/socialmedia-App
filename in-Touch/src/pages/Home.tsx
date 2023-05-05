@@ -11,13 +11,8 @@ import Loader from "../components/Other/Loader";
 import axios from "axios";
 
 function Home() {
-  var user = localStorage.getItem("UserId");
-  if(!user){
-    user = sessionStorage.getItem("UserId");
-  }
+  const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
   const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${user}`;
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
   type Post = {
     id: number;
     content: string;
@@ -28,22 +23,6 @@ function Home() {
   };
 
   const [PostData, setPostData] = useState<Post[]>([]);
-  
-      setTimeout(() => {
-        if (!user) {
-          navigate("/login");
-        }
-        setIsLoading(false);
-      }, 1000);
-    
-  if(isLoading) {
-    return (
-      <Loader />
-    );
-  }
-  
-
-
     axios.get(apiUrl)
       .then((response:any) => {
         setPostData(response.data);
@@ -70,6 +49,7 @@ function Home() {
                     content={post.content}
                     imagePath={post.imagePath}
                     postDate={post.postDate}
+                    user={false}
                   />
                 ))}
             </div>
