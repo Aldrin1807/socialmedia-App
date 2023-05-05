@@ -97,3 +97,21 @@
 
   cursor: pointer;
 }
+#alerti{
+  width: 20%;
+  
+}
+.profile-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+}
+
+.profile-link:hover{
+  color: black;
+}
+.comment-link:hover{
+  color: black;
+}
