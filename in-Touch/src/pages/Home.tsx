@@ -11,13 +11,8 @@ import Loader from "../components/Other/Loader";
 import axios from "axios";
 
 function Home() {
-  var user = localStorage.getItem("UserId");
-  if(!user){
-    user = sessionStorage.getItem("UserId");
-  }
+  const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
   const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${user}`;
-  const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
   type Post = {
     id: number;
     content: string;
@@ -28,22 +23,6 @@ function Home() {
   };
 
   const [PostData, setPostData] = useState<Post[]>([]);
-  
-      setTimeout(() => {
-        if (!user) {
-          navigate("/login");
-        }
-        setIsLoading(false);
-      }, 1000);
-    
-  if(isLoading) {
-    return (
-      <Loader />
-    );
-  }
-  
-
-
     axios.get(apiUrl)
       .then((response:any) => {
         setPostData(response.data);
@@ -63,15 +42,24 @@ function Home() {
           <div className="col-md-6">
             <div className="container">
               <PostForm userID={user} />
-              {PostData &&
-                PostData.map((post) => (
+              {PostData && PostData.length > 0 ? (
+
+              <div>
+                {PostData.map((post) => (
                   <Post
                     postId={post.id}
                     content={post.content}
                     imagePath={post.imagePath}
                     postDate={post.postDate}
+                    user={false}
                   />
                 ))}
+              </div>
+            ) : (
+              <div style={{ width: '100%', height: '35vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <p className="lead" >No posts available. See suggested users or search for users and follow to see posts.</p>
+              </div>
+            )}
             </div>
           </div>
           <div className="col-md-3" id="right">
@@ -80,7 +68,8 @@ function Home() {
           </div>
         </div>
       </div>
-
+      
+      {PostData && PostData.length > 0 && (
       <Link
         activeClass="active"
         to="container"
@@ -91,6 +80,7 @@ function Home() {
       >
         <GoUp />
       </Link>
+    )}
       <div>
         <Footer />
       </div>

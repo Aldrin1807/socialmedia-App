@@ -7,14 +7,41 @@ import { Button,Form, FormControl,Image } from 'react-bootstrap';
 import  './Header.css';
 import { useState } from 'react';
 import { VscAccount } from "react-icons/vsc";
-
+import Loader from "../Other/Loader";
 import { useNavigate } from 'react-router-dom';
 
 function Header(){
+  const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
   const navigate = useNavigate();
-  const handleClick = () => {
-      navigate('/search');
+
+
+
+  const [searchQuery,setSearchQuery] = useState('');
+  const [error,setError]= useState(false);
+  const onChange = (event:any) => {
+    setSearchQuery(event.target.value);
   };
+  const handleClick = () => {
+    const queryValid = searchQuery.length>1;
+    if(queryValid){
+      navigate(`/search?query=${searchQuery}`);
+      setError(false);
+    }else{
+      setError(true);
+    }
+  };
+  setTimeout(() => {
+    if (!user) {
+      navigate("/login");
+    }
+    setIsLoading(false);
+  }, 1000);
+  const [isLoading, setIsLoading] = useState(true);
+if(isLoading) {
+return (
+  <Loader />
+);
+}
  
      return(
       <>
@@ -39,6 +66,9 @@ function Header(){
                 className="me-2"
                 aria-label="Search Users"
                 id="searchInput"
+                value={searchQuery}
+                onChange={onChange}
+                style={{borderColor: error ? 'red' : undefined }}
               />
               <Button variant="outline-primary" onClick={handleClick}>Search</Button>
             </Form>

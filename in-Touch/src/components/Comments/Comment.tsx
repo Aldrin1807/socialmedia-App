@@ -13,17 +13,18 @@ function Comment(props:any){
 
   const [comments, setComments] = useState([]);
 
+  useEffect(() => {
   axios.get(getUrl)
   .then((response:any)=>{
     setComments(response.data);
   })
+},[comments])
   
-
   return (
     <ul>
       {comments.map((comment: any) => (
         <li key={comment.id}>
-          <span className="comment-username">@{comment.username}</span>
+          <span className="comment-username"><a className='comment-link' href={`/profile?user=${comment.userId}`}>@{comment.username}</a></span>
           <span className="comment-text">{comment.comment}</span>
         </li>
       ))}

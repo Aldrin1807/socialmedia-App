@@ -21,6 +21,7 @@ function Post(props:any) {
  const commUrl = `https://localhost:44386/api/Comments/make-comment`;
  const reportUrl= `https://localhost:44386/api/Reports/make-report`;
  const commLikeUrl=`https://localhost:44386/api/Comments/get-nr-comments?postId=${props.postId}`;
+ const deleteUrl=`https://localhost:44386/api/Posts/delete-post?postId=${props.postId}`;
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClick() {
     if (inputRef.current) {
@@ -52,15 +53,7 @@ function Post(props:any) {
     }
   };
 
-  const [commentCount,setCommentCount]=useState(0);
-
- axios.get(commLikeUrl)
- .then((response:any)=>{
-  setCommentCount(response.data);
-  console.log(response.data);
- })
-
-  
+ 
   const [commentValue,setCommentValue] = useState('');
 
   const handleComment=()=>{
@@ -76,6 +69,17 @@ function Post(props:any) {
       })
     }
   }
+
+  const [commentCount,setCommentCount]=useState(0);
+
+
+  useEffect(()=>{
+   axios.get(commLikeUrl)
+   .then((response:any)=>{
+    setCommentCount(response.data);
+   })
+  },[commentValue])
+  
 
 
 
@@ -102,22 +106,24 @@ function Post(props:any) {
   };
   
   const [userInfo,setUserInfo] = useState({
+    id:'',
     username:'',
     image : ''
   })
   
-
+ useEffect(()=>{
     axios.get(isLikeUrl)
       .then((response:any)=>{
         setLiked(response.data);
       })
-
+    },[liked])
     
   
       useEffect(() => {
         axios.get(userUrl)
-      .then((response:any)=>{
+        .then((response:any)=>{
         setUserInfo({
+          id:response.data.id,
           username:response.data.username,
           image:response.data.imagePath
         })
@@ -130,15 +136,20 @@ function Post(props:any) {
 
 const [likes, setLikes] = useState(0);
 
+useEffect(()=>{
     axios.get(getUrl)
       .then((response:any) => {
         setLikes(response.data);
       })
-
+    },[liked])
 
       const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCommentValue(event.target.value);
       };
+
+      const handleDelete =()=>{
+        axios.delete(deleteUrl)
+      }
 
   return (
     <div className="post-container">
@@ -154,6 +165,7 @@ const [likes, setLikes] = useState(0);
         </Alert>
       )}
       <div className="post-header">
+        <a href={`/profile?user=${userInfo.id}`} className="profile-link">
         <img
           src={`https://localhost:44386/User Images/${userInfo.image}`}
           alt="User Profile"
@@ -161,13 +173,16 @@ const [likes, setLikes] = useState(0);
           style={{ width: "70px", height: "70px" }}
         />
         <h4 className="username">@{userInfo.username}</h4>
+        </a>
         <span className="report-icon">
           <Dropdown>
             <Dropdown.Toggle variant="link" id="dropdown-basic">
               ...
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onClick={handleReport} >Report Post</Dropdown.Item>
+          
+              {props.user?(<Dropdown.Item onClick={handleDelete}>Delete Post</Dropdown.Item>):
+              (  <Dropdown.Item onClick={handleReport} >Report Post</Dropdown.Item>)}
             </Dropdown.Menu>
           </Dropdown>
         </span>
