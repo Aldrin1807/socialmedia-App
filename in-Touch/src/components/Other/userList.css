@@ -3,7 +3,7 @@
     display: flex;
   }
   .tablees{
-    width: 80px;
+    width: 70px;
   }
   
   .table{
@@ -11,6 +11,9 @@
     margin-left: 1pc;
     margin-right: 4pc;
     height: auto;
+    justify-content: space-between;
+    
+    
     
   }
   .delete-button{
@@ -28,6 +31,33 @@
     width: 26px;
     height: 20px;
     cursor: pointer;
+    
+  }
+  .id{
+    width: 20px;
+  }
+  .firstname{
+    width: 10pc;
+  }
+  .lastname{
+    width: 10pc;
+  }
+  .username{
+    width: 10pc;
+  }
+  .email{
+    width: 15pc;
+  }
+  .role{
+    width: 15px;
+  }
+  
+  
+  
+  
+  .btn-danger {
+    
+    margin-left: 10px;
     
   }
   
