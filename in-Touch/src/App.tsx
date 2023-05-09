@@ -14,6 +14,7 @@ import UserList from "./components/Other/UserList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { TUser } from "./types/types";
+import Editprofilee from "./pages/Profile/Editprofilee";
 
 function App() {
   const [id,setId ] = useState(null);
@@ -29,7 +30,13 @@ function App() {
   }, [setId]);
 
   const location = useLocation();
-  const excluded = ["/login", "/register", "/loader", "/dashboard"];
+  const excluded = [
+    "/login",
+    "/register",
+    "/loader",
+    "/dashboard",
+    "/editProfile",
+  ];
   const notHeader = () => {
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);
@@ -46,6 +53,11 @@ function App() {
         <Route path="/register" element={<Register />} />
         {/* <Route path="/editProfile" element={<EditProfile id={id}  />} /> */}
         <Route path="/search" element={<Search  id={id}/>} />
+        <Route
+          path="/editProfile"
+          element={<Editprofilee User={User} setUser={setUser} />}
+        />
+        <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/loader" element={<Loader />} />
