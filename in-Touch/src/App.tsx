@@ -39,13 +39,7 @@ function App() {
   }, []);
 
   const location = useLocation();
-  const excluded = [
-    "/login",
-    "/register",
-    "/loader",
-    "/dashboard",
-    "/editProfile",
-  ];
+  const excluded = ["/login", "/register", "/loader", "/dashboard", "/home"];
   const notHeader = () => {
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);

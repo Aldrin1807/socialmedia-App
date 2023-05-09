@@ -15,25 +15,25 @@ import { AiOutlineTransaction, AiOutlineMail } from "react-icons/ai";
 import { GrAnalytics } from "react-icons/gr";
 function SideBar() {
   return (
-    <div className="sidebar">
+    <div className="sidebar1">
       <div className="sidebarWrapper">
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Dashboard</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active">
-              <MdLineStyle className="sidebarIcon"></MdLineStyle> <a href="/home">  Home</a>
+              <MdLineStyle className="sidebarIcon"></MdLineStyle>{" "}
+              <a href="/home"> Home</a>
             </li>
-           
-           
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-          <li className="sidebarListItem">
-              <BiUser className="sidebarIcon"> </BiUser> <a href="/users">Users</a>
+            <li className="sidebarListItem">
+              <BiUser className="sidebarIcon"> </BiUser>{" "}
+              <a href="/users">Users</a>
             </li>
-            
+
             <li className="sidebarListItem">
               <MdStorefront className="sidebarIcon"> </MdStorefront> Posts
             </li>
@@ -64,7 +64,6 @@ function SideBar() {
               <BiMessageDetail className="sidebarIcon"></BiMessageDetail>{" "}
               Messages
             </li>
-            
           </ul>
         </div>{" "}
         {/* <div className="sidebarMenu">

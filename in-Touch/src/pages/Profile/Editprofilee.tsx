@@ -1,16 +1,16 @@
 import "./EditProfile.css";
-import "../../css/animate.css"
-import "../../css/app.css"
+// import "../../css/animate.css"
+// import "../../css/app.css"
 
-import "../../css/bootstrap.min.css"
-import "../../css/default.css"
-import "../../css/footer-v1.css"
-import "../../css/header-default.css"
-import "../../css/jquery.mCustomScrollbar.css"
-import "../../css/style.css"
-import "../../css/sky-forms.css"
-import "../../css/style-switcher.css"
-import "../../css/line-icons.css"
+// import "../../css/bootstrap.min.css"
+// import "../../css/default.css"
+// import "../../css/footer-v1.css"
+// import "../../css/header-default.css"
+// import "../../css/jquery.mCustomScrollbar.css"
+// import "../../css/style.css"
+// import "../../css/sky-forms.css"
+// import "../../css/style-switcher.css"
+// import "../../css/line-icons.css"
 
 import { TUser } from "../../types/types";
 import { useState } from "react";
@@ -139,7 +139,6 @@ function Editprofilee({ User, setUser }: Props) {
               Change Password
             </a>
           </li>
-         
         </ul>
         <div className="tab-content">
           <div id="profile" className="profile-edit tab-pane fade in active">
