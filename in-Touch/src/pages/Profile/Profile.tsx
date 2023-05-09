@@ -15,28 +15,29 @@ import Followers from "../../components/Other/Followers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
+import ExpiredModal from "../../components/Other/ExpiredModal";
 
 
 function Profile(props:any) {
   const params = new URLSearchParams(window.location.search);
   const userId =  params.get("user");
-  
-  const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
-  const [viewedUser, setViewedUser] = useState(userId ?? user);
-  const isCurrentUser = viewedUser === user;
+  const [postChanged,setPostChanged] = useState(true);
+  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+
+  const [viewedUser, setViewedUser] = useState(userId ?? props.id);
+  const isCurrentUser = viewedUser == props.id;
 
   const [apiUrls,setApiUrls]=useState({
     apiUrl:`https://localhost:44386/api/Posts/get-user-post?userId=${viewedUser}`,
     followsUrl:`https://localhost:44386/api/Users/get-user-followers-follows?userId=${viewedUser}`,
     userUrl:`https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
-    followedUrl:`https://localhost:44386/api/Users/is-following?userOne=${user}&userTwo=${userId}`
+    followedUrl:`https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`
   });
 
 
-  const[userFollow,setUserFollow]=useState({
-    follows: 0,
-    followers:0
-  })
+  const [expiredModal,setExpiredModal] = useState(false);
+
+  
 
   const[userData,setUserData]= useState({
     username:'',
@@ -44,11 +45,13 @@ function Profile(props:any) {
     lastname:'',
     image:''
   })
-  const [isFollowed,setIsFollowed] = useState(true)
 
   useEffect(() => {
-  axios.get(apiUrls.userUrl)
+  axios.get(apiUrls.userUrl,{
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
   .then((response:any)=>{
+    console.log(response.status)
     setUserData({
       username:response.data.username,  
       firstname:response.data.firstName,
@@ -57,8 +60,17 @@ function Profile(props:any) {
     })
   })
 },[])
+
+
+const [isFollowed,setIsFollowed] = useState(true)
+const[userFollow,setUserFollow]=useState({
+  follows: 0,
+  followers:0
+})
 useEffect(() => {
-  axios.get(apiUrls.followsUrl)
+  axios.get(apiUrls.followsUrl,{
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
   .then((response:any)=>{
     let container = response.data;
     setUserFollow({
@@ -66,7 +78,10 @@ useEffect(() => {
       followers:container[1]
     })
   })
-  axios.get(apiUrls.followedUrl)
+  axios.get(apiUrls.followedUrl,
+    {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
   .then((response:any)=>{
       setIsFollowed(response.data);
   })
@@ -84,9 +99,12 @@ useEffect(() => {
   const [PostData, setPostData] = useState<Post[]>([]);
 
   useEffect(()=>{
-  axios.get(apiUrls.apiUrl)
+  axios.get(apiUrls.apiUrl,{
+    headers: { 'Authorization': `Bearer ${token}` }
+  })
   .then((response:any)=>{
     setPostData(response.data);
+    setPostChanged(!postChanged);
   })
 },[PostData])
 
@@ -95,18 +113,22 @@ useEffect(() => {
 
 const handleFollow = () =>{
   if(!isFollowed){
-    axios.post('https://localhost:44386/api/Follows/follow-user',{
-      followerId:user,
-      followingId:userId
+    axios.post('https://localhost:44386/api/Follows/follow-user', {
+      followerId: props.id,
+      followingId: userId
+    }, {
+      headers: { 'Authorization': `Bearer ${token}` }
     }).then(()=>{
       setIsFollowed(true);
     })
   }else{
     axios.delete("https://localhost:44386/api/Follows/unfollow-user",{
+      headers: { 'Authorization': `Bearer ${token}` },
       data :{
-        followerId : user,
+        followerId : props.id,
         followingId : userId
       }
+    
     }).then(()=>{
       setIsFollowed(false);
     })
@@ -115,6 +137,7 @@ const handleFollow = () =>{
 
   return (
     <>
+    <ExpiredModal show={expiredModal} />
     <div className="container db-social">
     <div className="jumbotron jumbotron-fluid"></div>
     <div className="container-fluid">
@@ -150,7 +173,7 @@ const handleFollow = () =>{
                                 <div className="follow">
                                     {isCurrentUser?(<Button variant="outline-primary" className="butoni-post" href="/editProfile">Edit</Button>)
                                     :
-                                    (isFollowed?(<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Following</Button>)
+                                    (isFollowed?(<Button variant="primary" className="butoni-post" onClick={handleFollow}>Following</Button>)
                                     :
                                     (<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>)
                                     )}
@@ -168,7 +191,7 @@ const handleFollow = () =>{
             <div className="col-md-4">
               <div className="left-side"> 
                 <h1 className="display-6">Followers</h1>
-                  <Followers />
+                  <Followers id={props.id} />
               </div>
             </div>
             <div className="col-md-4">
@@ -183,7 +206,7 @@ const handleFollow = () =>{
                     <Nav.Link href="#">Posts</Nav.Link>
                   </Nav.Item>
                 </Nav>
-                {isCurrentUser?(<PostForm userID={user} />):null}
+                {isCurrentUser?(<PostForm userID={props.id} />):null}
                 {PostData &&
                 PostData.map((post) => (
                   <Post
@@ -192,6 +215,8 @@ const handleFollow = () =>{
                     imagePath={post.imagePath}
                     postDate={post.postDate}
                     user={isCurrentUser}
+                    id={props.id}
+                    change={postChanged}
                   />
                 ))}
               </div>
@@ -199,7 +224,7 @@ const handleFollow = () =>{
             <div className="col-md-4">
               <div className="right">
                 <h1 className="display-6">Suggested users</h1>
-                  <Suggested />
+                  <Suggested id={props.id} />
               </div>
             </div>
           </div>

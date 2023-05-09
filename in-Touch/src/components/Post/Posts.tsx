@@ -9,14 +9,11 @@ import { VscComment, VscBookmark } from "react-icons/vsc";
 import axios from "axios";
 
 function Post(props:any) {
-  var user = localStorage.getItem("UserId");
-  if(!user){
-    user = sessionStorage.getItem("UserId");
-  }
+  
  const getUrl = `https://localhost:44386/api/Likes/get-post-likes?id=${props.postId}`;
  const postUrl = `https://localhost:44386/api/Likes/like-post`;
  const delUrl = `https://localhost:44386/api/Likes/unlike-post`;
- const isLikeUrl =`https://localhost:44386/api/Likes/is-liked?userId=${user}&postId=${props.postId}`;
+ const isLikeUrl =`https://localhost:44386/api/Likes/is-liked?userId=${props.id}&postId=${props.postId}`;
  const userUrl = `https://localhost:44386/api/Posts/get-user-post-info?postId=${props.postId}`;
  const commUrl = `https://localhost:44386/api/Comments/make-comment`;
  const reportUrl= `https://localhost:44386/api/Reports/make-report`;
@@ -34,7 +31,7 @@ function Post(props:any) {
   const handleLikeClick = () => {
     if(!liked){
       axios.post(postUrl,{
-        userId: user,
+        userId: props.id,
         postId: props.postId
       })
       .then(()=>{
@@ -43,7 +40,7 @@ function Post(props:any) {
     }else{
       axios.delete(delUrl,{
         data: {
-          userId: user,
+          userId: props.id,
           postId: props.postId
         }
       })
@@ -60,7 +57,7 @@ function Post(props:any) {
     const commentValid = commentValue.length>1;
     if(commentValid){
       axios.post(commUrl,{
-        userId: user,
+        userId: props.id,
         postId: props.postId,
         comment: commentValue
       })
@@ -78,7 +75,7 @@ function Post(props:any) {
    .then((response:any)=>{
     setCommentCount(response.data);
    })
-  },[commentValue])
+  },[props.change])
   
 
 
@@ -93,7 +90,7 @@ function Post(props:any) {
 
   const handleReport = () => {
     axios.post(reportUrl,{
-      userId: user,
+      userId: props.id,
       postId: props.postId
     }).then((response:any)=>{
       setReportText(response.data);
@@ -116,7 +113,7 @@ function Post(props:any) {
       .then((response:any)=>{
         setLiked(response.data);
       })
-    },[liked])
+    },[liked,props.change])
     
   
       useEffect(() => {
@@ -141,7 +138,7 @@ useEffect(()=>{
       .then((response:any) => {
         setLikes(response.data);
       })
-    },[liked])
+},[liked,props.change])
 
       const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCommentValue(event.target.value);

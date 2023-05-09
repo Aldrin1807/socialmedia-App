@@ -16,26 +16,17 @@ import axios from "axios";
 import { TUser } from "./types/types";
 
 function App() {
-  const [User, setUser] = useState<TUser | null>(null);
+  const [id,setId ] = useState(null);
 
-  var userID = localStorage.getItem("UserId");
-  if (!userID) {
-    userID = sessionStorage.getItem("UserId");
-  }
+  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+
   useEffect(() => {
-    async function fetchUser() {
-      try {
-        const response = await axios.get(
-          `https://localhost:44386/api/Users/${userID}`
-        );
-        setUser(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    fetchUser();
-  }, []);
+    axios.get(
+          `https://localhost:44386/api/Users/get-user-id?token=${token}`
+        ).then((response:any)=>{
+          setId(response.data);
+        })
+  }, [setId]);
 
   const location = useLocation();
   const excluded = ["/login", "/register", "/loader", "/dashboard"];
@@ -49,12 +40,12 @@ function App() {
       {notHeader() && <Header />}
       <Routes>
         <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/home" element={<Home id={id} />} />
+        <Route path="/login" element={<Login  />} />
+        <Route path="/profile" element={id ? <Profile id={id} /> : null} />
         <Route path="/register" element={<Register />} />
-        <Route path="/editProfile" element={<EditProfile User={User} setUser={setUser} />} />
-        <Route path="/search" element={<Search />} />
+        {/* <Route path="/editProfile" element={<EditProfile id={id}  />} /> */}
+        <Route path="/search" element={<Search  id={id}/>} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/loader" element={<Loader />} />

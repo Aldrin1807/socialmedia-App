@@ -3,11 +3,13 @@ import './Search.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
-function Search (){
+function Search (props:any){
     const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
     const params = new URLSearchParams(window.location.search);
     const query =  params.get("query");
-    const getUrl = `https://localhost:44386/api/Users/search?userId=${user}&query=${query}`;
+    const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+
+    const getUrl = `https://localhost:44386/api/Users/search?userId=${props.id}&query=${query}`;
 
     type User = {
         id: number;
@@ -23,7 +25,9 @@ function Search (){
     const[userData,setUserData] = useState<User[]>([]);
     
     useEffect(()=>{
-        axios.get(getUrl)
+        axios.get(getUrl,{
+            headers: { 'Authorization': `Bearer ${token}` }
+      })
         .then((response:any)=>{
             setUserData(response.data);
         })

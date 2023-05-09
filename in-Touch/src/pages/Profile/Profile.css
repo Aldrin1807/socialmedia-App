@@ -181,12 +181,13 @@
   padding: 0 1rem;
 }
 .db-social .head-profile li .counter {
-  color: #2c304d;
+  color: black;
   font-size: 1.4rem;
   font-weight: 600;
 }
 #white{
   background-color: white;
+  color: black;
 }
 .lista{
   margin-top: 50px;
