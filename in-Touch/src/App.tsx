@@ -53,11 +53,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         {/* <Route path="/editProfile" element={<EditProfile id={id}  />} /> */}
         <Route path="/search" element={<Search  id={id}/>} />
-        <Route
-          path="/editProfile"
-          element={<Editprofilee User={User} setUser={setUser} />}
-        />
-        <Route path="/search" element={<Search />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/loader" element={<Loader />} />
