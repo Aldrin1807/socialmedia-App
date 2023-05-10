@@ -27,7 +27,7 @@ function App() {
         ).then((response:any)=>{
           setId(response.data);
         })
-  }, [setId]);
+  }, [token]);
 
   const location = useLocation();
   const excluded = ["/login", "/register", "/loader", "/dashboard"];
