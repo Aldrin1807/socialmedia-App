@@ -63,6 +63,7 @@ function Profile(props:any) {
 
 
 const [isFollowed,setIsFollowed] = useState(true)
+const [followRequest,setFollowRequest] = useState(false)
 const[userFollow,setUserFollow]=useState({
   follows: 0,
   followers:0
@@ -134,6 +135,10 @@ const handleFollow = () =>{
     })
   }
 }
+
+  const handleFollowRequest = () =>{
+
+  }
 
   return (
     <>

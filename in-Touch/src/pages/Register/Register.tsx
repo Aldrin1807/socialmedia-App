@@ -13,12 +13,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Register() {
   const navigate = useNavigate();
   const apiUrl = "https://localhost:44386/api/Users/register"
+
+  const [accountType, setAccountType] = useState('public');
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     userName: '',
     email: '',
     password: '',
+    isPrivate:false,
     imageFile:null
   });
   const [FirstLasterror,setFirstLasterror] = useState(false);
@@ -37,6 +40,7 @@ function Register() {
   const handleFileChange = (event:any) => {
     setFormData({
       ...formData,
+      isPrivate: accountType =="private",
       imageFile: event.target.files[0]
     });
   };
@@ -69,6 +73,7 @@ function Register() {
           form.append('Username',formData.userName)
           form.append('Email',formData.email)
           form.append('Password',formData.password)
+          form.append('isPrivate',formData.isPrivate?'true':'false')
           if (formData.imageFile) {
             form.append('Image', formData.imageFile);
           }
@@ -167,6 +172,17 @@ function Register() {
           />
           {Passworderror?
           <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
+          <label className="account-text">Account Type:</label><br />
+          <div className="account-type">
+            <div>
+          <input type="radio" id="public" name="accountType" value="public" checked={accountType === 'public'} onChange={() => setAccountType('public')} />
+          <label htmlFor="public">Public</label>
+          </div>
+          <div>
+          <input type="radio" id="private" name="accountType" value="private" checked={accountType === 'private'} onChange={() => setAccountType('private')} />
+          <label htmlFor="private">Private</label>
+          </div>
+          </div>
             <p>Add a Profile Pic (Required!)</p>
             <label htmlFor="fileInput" className="image-input" style={FileError ? { borderColor: 'red' } : undefined} >
               <input type="file" id="fileInput" accept="image/*" onChange={handleFileChange} hidden />
