@@ -23,9 +23,7 @@ function Login(){
     e.persist();  
       setData({ ...data, [e.target.name]: e.target.value });
   } 
-  const handleCheckboxChange = (event:any) => {
-    setRemember(event.target.checked);
-  }
+
   const handleLogin =()=>{
     
     const uValid = data.EmailorUsername.length>3;
@@ -41,7 +39,7 @@ function Login(){
       }).then((response) => {
         if(response.data){
         console.log(response.data)
-         remember? localStorage.setItem("token",response.data):sessionStorage.setItem("token",response.data);
+          localStorage.setItem("token",response.data);
          navigate('/home');
         }else{
           setLoginError('An error occurred.');
@@ -84,14 +82,6 @@ function Login(){
               value={data.Password}
               onChange={onChange}
             />
-            
-            <div className='checkbox-remember'>
-            <input type="checkbox" name="remember-me" id="remember-me-checkbox" 
-             checked={remember} 
-             onChange={handleCheckboxChange} 
-              />
-            <p className='remember-text'>Remember me</p>
-            </div>
             
             <p>Don't have an Account? <a href='/register'>Sign up here!</a></p>
               {loginError && <p className="error">{loginError}</p>}

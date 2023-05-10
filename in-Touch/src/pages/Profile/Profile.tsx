@@ -16,13 +16,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import ExpiredModal from "../../components/Other/ExpiredModal";
+import PrivateAcc from "../../components/Private Account/PrivateAcc";
 
 
 function Profile(props:any) {
   const params = new URLSearchParams(window.location.search);
   const userId =  params.get("user");
   const [postChanged,setPostChanged] = useState(true);
-  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const [viewedUser, setViewedUser] = useState(userId ?? props.id);
   const isCurrentUser = viewedUser == props.id;
@@ -31,7 +32,8 @@ function Profile(props:any) {
     apiUrl:`https://localhost:44386/api/Posts/get-user-post?userId=${viewedUser}`,
     followsUrl:`https://localhost:44386/api/Users/get-user-followers-follows?userId=${viewedUser}`,
     userUrl:`https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
-    followedUrl:`https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`
+    followedUrl:`https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
+    requestedUrl:`https://localhost:44386/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`
   });
 
 
@@ -43,6 +45,7 @@ function Profile(props:any) {
     username:'',
     firstname:'',
     lastname:'',
+    isPrivate:false,
     image:''
   })
 
@@ -56,6 +59,7 @@ function Profile(props:any) {
       username:response.data.username,  
       firstname:response.data.firstName,
       lastname:response.data.lastName,
+      isPrivate:response.data.isPrivate,
       image:response.data.imagePath
     })
   })
@@ -63,6 +67,7 @@ function Profile(props:any) {
 
 
 const [isFollowed,setIsFollowed] = useState(true)
+
 const[userFollow,setUserFollow]=useState({
   follows: 0,
   followers:0
@@ -135,6 +140,44 @@ const handleFollow = () =>{
   }
 }
 
+const [followRequest,setFollowRequest] = useState(false)
+  
+useEffect(()=>{
+  axios.get(apiUrls.requestedUrl
+   // ,{
+      //   headers: { 'Authorization': `Bearer ${token}` }
+      // }
+  ).then((response:any)=>{
+    setFollowRequest(response.data);
+  })
+
+},[])
+
+  const handleFollowRequest = () =>{
+    if(!followRequest){
+      axios.post('https://localhost:44386/api/FollowRequests/request-follow',{
+        followRequestId:props.id,
+        followRequestedId : userId
+      }
+      // ,{
+      //   headers: { 'Authorization': `Bearer ${token}` }
+      // }
+      ).then(()=>{
+        setFollowRequest(true);
+      })
+    }else{
+      axios.delete('https://localhost:44386/api/FollowRequests/unrequest-follow',{
+        // headers: { 'Authorization': `Bearer ${token}` },
+      data :{
+        followRequestId : props.id,
+        followRequestedId : userId
+      }
+      }).then(()=>{
+        setFollowRequest(false);
+      })
+    }
+  }
+
   return (
     <>
     <ExpiredModal show={expiredModal} />
@@ -175,7 +218,12 @@ const handleFollow = () =>{
                                     :
                                     (isFollowed?(<Button variant="primary" className="butoni-post" onClick={handleFollow}>Following</Button>)
                                     :
-                                    (<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>)
+                                    (!userData.isPrivate?(<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>):
+                                    (
+                                      !followRequest?(
+                                      <Button variant="outline-primary" className="butoni-post" onClick={handleFollowRequest}>Request Follow</Button>):
+                                      (<Button variant="primary" className="butoni-post" onClick={handleFollowRequest}>Follow Requested</Button>)
+                                    ))
                                     )}
                                 </div>
                             </div>
@@ -187,6 +235,7 @@ const handleFollow = () =>{
     </div>
     </div>
         <div className="container" id="content">
+          {isFollowed || !userData.isPrivate?(
           <div className="row">
             <div className="col-md-4">
               <div className="left-side"> 
@@ -227,8 +276,15 @@ const handleFollow = () =>{
                   <Suggested id={props.id} />
               </div>
             </div>
+           
           </div>
+           ):(
+            <div className="row">
+              <PrivateAcc />
+            </div>
+            )}
         </div>
+          
     </>
   )
 }

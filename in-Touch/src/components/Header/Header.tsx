@@ -11,7 +11,7 @@ import Loader from "../Other/Loader";
 import { useNavigate } from 'react-router-dom';
 
 function Header(){
-  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
 
@@ -45,7 +45,7 @@ return (
  
      return(
       <>
-      <Navbar bg="]" variant="light" expand="lg" className="p-3">
+      <Navbar bg="light" variant="light" expand="lg" className="p-3">
         <Container>
           <Navbar.Brand href="/home">
             <Image 

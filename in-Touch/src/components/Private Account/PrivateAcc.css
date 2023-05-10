@@ -1,0 +1,9 @@
+.private-acc{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.private-acc p{
+    font-family: 'Comfortaa', cursive;
+}

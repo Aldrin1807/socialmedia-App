@@ -34,3 +34,19 @@
     align-items: center;
     justify-content: center;
   }
+  .account-type{
+
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  .account-type label{
+    font-family: 'Comfortaa', cursive;
+    font-size: small;
+  }
+  .account-text{
+    font-family: 'Comfortaa', cursive;
+    font-size: 15px;
+  }
