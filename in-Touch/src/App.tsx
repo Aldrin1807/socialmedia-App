@@ -17,20 +17,20 @@ import { TUser } from "./types/types";
 import Editprofilee from "./pages/Profile/Editprofilee";
 
 function App() {
-  const [id,setId ] = useState(null);
+  const [id, setId] = useState(null);
 
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios.get(
-          `https://localhost:44386/api/Users/get-user-id?token=${token}`
-        ).then((response:any)=>{
-          setId(response.data);
-        })
+    axios
+      .get(`https://localhost:44386/api/Users/get-user-id?token=${token}`)
+      .then((response: any) => {
+        setId(response.data);
+      });
   }, [token]);
 
   const location = useLocation();
-  const excluded = ["/login", "/register", "/loader", "/dashboard"];
+  const excluded = ["/login", "/register", "/loader", "/dashboard", "/home"];
   const notHeader = () => {
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);
@@ -42,11 +42,11 @@ function App() {
       <Routes>
         <Route index element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home id={id} />} />
-        <Route path="/login" element={<Login  />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/profile" element={id ? <Profile id={id} /> : null} />
         <Route path="/register" element={<Register />} />
         {/* <Route path="/editProfile" element={<EditProfile id={id}  />} /> */}
-        <Route path="/search" element={<Search  id={id}/>} />
+        <Route path="/search" element={<Search id={id} />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/loader" element={<Loader />} />

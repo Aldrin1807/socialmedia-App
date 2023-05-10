@@ -5,8 +5,8 @@
   --color-light: hsl(252, 30%, 95%);
   --color-gray: hsl(252, 15%, 65%);
   --color-primary: hsla(231, 100%, 55%, 0.752);
-  /* --color-secondary: hsl(252, 100%, 90%); */
-  /* --color-success: hsl(120, 95%, 65%); */
+  --color-secondary: hsl(252, 100%, 90%);
+  --color-success: hsl(120, 95%, 65%);
   --color-danger: hsl(0, 95%, 65%);
   --color-dark: hsl(252, 30%, 17%);
   --color-black: hsl(252, 30%, 10%);
@@ -218,6 +218,36 @@ img {
 }
 .ledt .notification-poput small {
   display: block;
+}
+
+/**/
+
+#right .friend-requests {
+  margin-top: 1rem;
+}
+
+#right .friend-requests h4 {
+  color: var(--color-gray);
+  margin: 1rem 0;
+}
+#right .request {
+  background-color: var(--color-white);
+  padding: var(--card-padding);
+  border-radius: var(--card-border-radius);
+  margin-bottom: 0.7rem;
+}
+#right .request .info {
+  display: flex;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+#right .request .action {
+  display: flex;
+  gap: 1rem;
+}
+.btn-decline:hover {
+  background-color: var(--color-danger);
+  color: var(--color-white);
 }
 @media screen and (max-width: 767px) {
   .left {
