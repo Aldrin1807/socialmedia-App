@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import ExpiredModal from "../../components/Other/ExpiredModal";
+import PrivateAcc from "../../components/Private Account/PrivateAcc";
 
 
 function Profile(props:any) {
@@ -43,6 +44,7 @@ function Profile(props:any) {
     username:'',
     firstname:'',
     lastname:'',
+    isPrivate:false,
     image:''
   })
 
@@ -56,6 +58,7 @@ function Profile(props:any) {
       username:response.data.username,  
       firstname:response.data.firstName,
       lastname:response.data.lastName,
+      isPrivate:response.data.isPrivate,
       image:response.data.imagePath
     })
   })
@@ -63,7 +66,7 @@ function Profile(props:any) {
 
 
 const [isFollowed,setIsFollowed] = useState(true)
-const [followRequest,setFollowRequest] = useState(false)
+
 const[userFollow,setUserFollow]=useState({
   follows: 0,
   followers:0
@@ -136,6 +139,7 @@ const handleFollow = () =>{
   }
 }
 
+const [followRequest,setFollowRequest] = useState(false)
   const handleFollowRequest = () =>{
 
   }
@@ -180,7 +184,10 @@ const handleFollow = () =>{
                                     :
                                     (isFollowed?(<Button variant="primary" className="butoni-post" onClick={handleFollow}>Following</Button>)
                                     :
-                                    (<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>)
+                                    (!userData.isPrivate?(<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>):
+                                    (
+                                      <Button variant="outline-primary" className="butoni-post" onClick={handleFollowRequest}>Request Follow</Button>
+                                    ))
                                     )}
                                 </div>
                             </div>
@@ -192,6 +199,7 @@ const handleFollow = () =>{
     </div>
     </div>
         <div className="container" id="content">
+          {isFollowed || !userData.isPrivate?(
           <div className="row">
             <div className="col-md-4">
               <div className="left-side"> 
@@ -232,8 +240,15 @@ const handleFollow = () =>{
                   <Suggested id={props.id} />
               </div>
             </div>
+           
           </div>
+           ):(
+            <div className="row">
+              <PrivateAcc />
+            </div>
+            )}
         </div>
+          
     </>
   )
 }
