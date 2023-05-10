@@ -40,11 +40,12 @@ function Home(props: any) {
       })
       .then((response: any) => {
         setPostData(response.data);
+
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [PostData]);
+  }, [props.id]);
 
   return (
     <>
@@ -113,7 +114,7 @@ function Home(props: any) {
           </div>
           <div className="col-md-3 " id="right">
             <Suggested id={props.id} className="sugg" />
-            <Requests id={props.id} />
+            <Requests id={props.id}  />
           </div>
         </div>
       </div>
