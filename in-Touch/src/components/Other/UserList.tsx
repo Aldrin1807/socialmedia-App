@@ -39,16 +39,16 @@ function UserList() {
         <SideBar />
       </div>
       <div className="table">
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover>
           <thead>
             <tr>
-              <th className="id">id</th>
+              <th className="id">Id</th>
               <th className="firstname">First Name</th>
               <th className="lastname">Last Name</th>
               <th className="username">Username</th>
               <th className="email">Email</th>
               <th className="role">Role</th>
-              <th className="manag">Manage</th>
+              <th className="manage">Manage</th>
             </tr>
           </thead>
           <tbody>
@@ -62,8 +62,8 @@ function UserList() {
                 <td>{role}</td>
                 <td className="tablees">
                   
-                  <button type="button" className="btn btn-success">Edit </button> 
-                  <button type="button" className="btn btn-danger" onClick={
+                  <button type="button" className="edit-button">Edit </button> 
+                  <button type="button" className="delete-button" onClick={
                     ()=>{handleDelete(id)}
                   }>
                    Delete  

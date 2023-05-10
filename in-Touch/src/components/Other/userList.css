@@ -1,7 +1,10 @@
 
 .userList {
     display: flex;
-  }
+  
+background-color:white;
+  
+}
   .tablees{
     width: 70px;
   }
@@ -17,9 +20,11 @@
     
   }
   .delete-button{
-    color: rgb(183, 45, 45);
-    width: 26px;
-    height: 20px;
+    color: white;
+    background-color: rgb(187, 59, 59);
+    border-radius: 20px;
+    width: 66px;
+    height: 40px;
     cursor: pointer;
     margin-right: 8px;
 
@@ -27,29 +32,38 @@
    
   }
   .edit-button{
-    color: rgb(15, 197, 163);
-    width: 26px;
-    height: 20px;
+    color: white;
+    background-color: rgb(31, 111, 65);
+    border-radius: 20px;
+    width: 66px;
+    height: 40px;
     cursor: pointer;
+    margin-right: 8px;
     
   }
   .id{
-    width: 20px;
+    width: 10px;
   }
   .firstname{
-    width: 10pc;
+    width: 5pc;
   }
   .lastname{
-    width: 10pc;
+    width: 5pc;
   }
   .username{
-    width: 10pc;
+    width: 5pc;
   }
   .email{
-    width: 15pc;
+    width: 5pc;
   }
   .role{
-    width: 15px;
+    width: 6px;
+  }
+  .manage{
+    width: 5pc;
+  }
+  .button{
+    width: 5px;
   }
   
   
