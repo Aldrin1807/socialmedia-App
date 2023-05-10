@@ -11,10 +11,12 @@ import Search from "./components/Search/Search";
 import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
 import Loader from "./components/Other/Loader";
 import UserList from "./components/Other/UserList";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { TUser } from "./types/types";
 import Editprofilee from "./pages/Profile/Editprofilee";
+import PostList from "./components/Other/PostList";
 
 function App() {
   const [id, setId] = useState(null);
@@ -39,6 +41,7 @@ function App() {
   return (
     <div className="App">
       {notHeader() && <Header />}
+      
       <Routes>
         <Route index element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home id={id} />} />
@@ -49,6 +52,7 @@ function App() {
         <Route path="/search" element={<Search id={id} />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/users" element={<UserList />} />
+        <Route path="/posts" element={<PostList/>}/>
         <Route path="/loader" element={<Loader />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

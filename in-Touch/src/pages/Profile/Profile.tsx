@@ -189,23 +189,48 @@ function Profile(props: any) {
         <div className="container-fluid">
           <div className="row justify-content-center">
             <div className="col-xl-11">
-              <div className="widget head-profile has-shadow">
-                <div className="widget-body pb-0">
-                  <div className="row d-flex align-items-center" id="contenti">
-                    <div
-                      className="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center"
-                      id="white"
-                    >
-                      <ul className="lista">
-                        <li>
-                          <div className="counter">{userFollow.follows}</div>
-                          <div className="heading">Following</div>
-                        </li>
-                        <li>
-                          <div className="counter">{userFollow.followers}</div>
-                          <div className="heading">Followers</div>
-                        </li>
-                      </ul>
+                <div className="widget head-profile has-shadow">
+                    <div className="widget-body pb-0">
+                        <div className="row d-flex align-items-center" id="contenti">
+                            <div className="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center" id='white'>
+                                <ul className="lista">
+                                    <li>
+                                        <div className="counter">{userFollow.follows}</div>
+                                        <div className="heading">Following</div>
+                                    </li>
+                                    <li>
+                                        <div className="counter">{userFollow.followers}</div>
+                                        <div className="heading">Followers</div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="col-xl-4 col-md-4 d-flex justify-content-center" id='white'>
+                                <div className="image-default">
+                                    <img className="rounded-circle" src={`https://localhost:44386/User Images/${userData.image}`} alt="..."
+                                       style={{ width: "150px", height: "150px" }}
+                                    />
+                                </div>
+                                <div className="infos">
+                                    <h2>{userData.firstname + ' ' +userData.lastname}</h2>
+                                    <div >@{userData.username}</div>
+                                </div>
+                            </div>
+                            <div className="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center" id='white'>
+                                <div className="follow">
+                                    {isCurrentUser?(<Button variant="outline-primary" className="butoni-post" href="/editProfile">Edit</Button>)
+                                    :
+                                    (isFollowed?(<Button variant="primary" className="butoni-post" onClick={handleFollow}>Following</Button>)
+                                    :
+                                    (!userData.isPrivate?(<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>):
+                                    (
+                                      !followRequest?(
+                                      <Button variant="outline-primary" className="butoni-post" style={{padding:'5%'}} onClick={handleFollowRequest}>Request Follow</Button>):
+                                      (<Button variant="primary" className="butoni-post" style={{padding:'5%'}} onClick={handleFollowRequest}>Follow Requested</Button>)
+                                    ))
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div
                       className="col-xl-4 col-md-4 d-flex justify-content-center"
@@ -354,10 +379,7 @@ function Profile(props: any) {
             </div>
             <div className="col-md-4">
               <div className="right">
-                <h1 className="display-6">Suggested users</h1>
-                <Suggested id={props.id} />
-                <h1 className="display-6">Followers</h1>
-                <Followers id={props.id} />
+                  <Suggested id={props.id} />
               </div>
             </div>
           </div>

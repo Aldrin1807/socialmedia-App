@@ -35,7 +35,8 @@ function SideBar() {
             </li>
 
             <li className="sidebarListItem">
-              <MdStorefront className="sidebarIcon"> </MdStorefront> Posts
+              <MdStorefront className="sidebarIcon"> </MdStorefront> 
+              <a href="/posts">Posts</a>
             </li>
             {/* <li className="sidebarListItem">
               <AiOutlineTransaction className="sidebarIcon"></AiOutlineTransaction>{" "}

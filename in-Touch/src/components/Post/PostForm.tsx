@@ -74,6 +74,7 @@ function PostForm(props:any) {
           name="Content"
           onChange={onChange}
           value={values.Content}
+          className="input"
         />
         <Button variant="outline-primary" className="butoni-post" onClick={makePost}>
         {isLoading ? 'Posting...' : 'Post'} 
