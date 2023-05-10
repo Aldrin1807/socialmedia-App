@@ -3,6 +3,10 @@
     justify-content: space-between;
     align-self: center;
     padding: 10px;
+   
+}
+.post-container{
+    box-shadow: 2px 2px 9px #ccc;
 }
 .butoni-post{
     margin: 0 auto;

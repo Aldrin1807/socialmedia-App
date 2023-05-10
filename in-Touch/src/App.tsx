@@ -39,6 +39,7 @@ function App() {
   return (
     <div className="App">
       {notHeader() && <Header />}
+      
       <Routes>
         <Route index element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home id={id} />} />

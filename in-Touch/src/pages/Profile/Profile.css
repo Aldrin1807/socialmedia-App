@@ -54,7 +54,7 @@
   margin-top: 5%;
   text-align: end;
   padding: 20px;
-  text-align: center;
+  text-align: left;
 }
 .display-6{
   font-size: 30px;
@@ -63,7 +63,7 @@
 .friend-img {
   width: 45px;
   height: 45px;
-  outline: 3px solid black;
+  outline: 0.1px solid black;
   border-radius: 50%;
 }
 

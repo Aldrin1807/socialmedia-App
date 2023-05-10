@@ -221,8 +221,8 @@ useEffect(()=>{
                                     (!userData.isPrivate?(<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>):
                                     (
                                       !followRequest?(
-                                      <Button variant="outline-primary" className="butoni-post" onClick={handleFollowRequest}>Request Follow</Button>):
-                                      (<Button variant="primary" className="butoni-post" onClick={handleFollowRequest}>Follow Requested</Button>)
+                                      <Button variant="outline-primary" className="butoni-post" style={{padding:'5%'}} onClick={handleFollowRequest}>Request Follow</Button>):
+                                      (<Button variant="primary" className="butoni-post" style={{padding:'5%'}} onClick={handleFollowRequest}>Follow Requested</Button>)
                                     ))
                                     )}
                                 </div>
@@ -272,7 +272,6 @@ useEffect(()=>{
             </div>
             <div className="col-md-4">
               <div className="right">
-                <h1 className="display-6">Suggested users</h1>
                   <Suggested id={props.id} />
               </div>
             </div>

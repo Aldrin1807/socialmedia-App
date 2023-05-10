@@ -30,11 +30,12 @@ function Suggested(props:any){
           });
       }, [props.id]);
     return(
-        <>
+        <div className="suggested-card">
+        <h5 style={{textAlign:'center'}}>Suggested for you</h5>
         <ul className="friend-list clearfix" id='lista'>
                     {userData.map((user) => (
-                <li key={user.id}>
-                    <a href={`/profile?user=${user.id}`}>
+                <li key={user.id} className="list-item">
+                    <a href={`/profile?user=${user.id}`} className="suggested">
                     <div className="friend-img">
                         <img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
                     </div>
@@ -46,7 +47,7 @@ function Suggested(props:any){
                 </li>
                 ))}
     </ul>
-    </>
+    </div>
 
     )
 }

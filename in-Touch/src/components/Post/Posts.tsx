@@ -218,7 +218,10 @@ useEffect(()=>{
         </div>
         <hr />
       </div>
+      <h5 style={{textAlign:'center'}}>Comments</h5>
+      <hr />
       <form id="comment">
+        
         <FormControl
           type="text"
           placeholder="Add a comment..."
@@ -230,8 +233,6 @@ useEffect(()=>{
         <Button variant="outline-primary" onClick={handleComment} >Comment</Button>
       </form>
       <div className="comments-section">
-        <h5>Comments</h5>
-        <hr />
         <Comment 
         postId={props.postId}
         />

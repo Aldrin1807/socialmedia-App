@@ -1,10 +1,15 @@
-#lista-suggested{
-    border: solid;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+
+.suggested-card{
+    margin-top: 11px;
+    box-shadow: 2px 2px 9px #ccc;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    padding: 10px;
+    background-color: white;
 }
-.friend-info{
-    text-align: left;
+.list-item{
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    padding: 3px;
+    background-color: white;
 }

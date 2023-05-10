@@ -19,6 +19,7 @@ import {
   MdOutlineSettings,
 } from "react-icons/md";
 import Header from "../components/Header/Header";
+import Requests from "../components/Requests/Requests";
 
 function Home(props: any) {
   const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${props.id}`;
@@ -43,7 +44,7 @@ function Home(props: any) {
       .catch((error) => {
         console.error(error);
       });
-  }, []);
+  }, [PostData]);
 
   return (
     <>
@@ -66,22 +67,18 @@ function Home(props: any) {
               <div className="sidebar">
                 <a href="" className="menu-item">
                   <AiOutlineHome id="Icons"></AiOutlineHome>
-                  <h3>Home</h3>{" "}
+                  <h3>Home</h3>
                 </a>
-                <a href="" className="active menu-item">
+                <a href="" className="menu-item">
                   <MdOutlineExplore id="Icons"></MdOutlineExplore>
-
                   <h3>Explore</h3>
                 </a>
                
-              </div>
-              <label htmlFor="create-post" className="btn btn-primary">
-                Create
-              </label>
+              </div>         
             </div>
           </div>
           <div className="col-md-6 col-sm-10 ">
-            <div className="container">
+            <div className="container" id="postet" >
               <PostForm userID={props.id} />
               {PostData && PostData.length > 0 ? (
                 <div>
@@ -115,29 +112,8 @@ function Home(props: any) {
             </div>
           </div>
           <div className="col-md-3 " id="right">
-            <h1 className="display-6">Suggested Users</h1>
-            <Suggested id={props.id} />
-            <div className="friend-requests">
-              <h4>Requests</h4>
-              <div className="request">
-                <div className="info">
-                  <div className="profile-photo">
-                    <img
-                      src="https://images.pexels.com/photos/8451490/pexels-photo-8451490.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1260&amp;h=750&amp;dpr=1"
-                      alt=""
-                    />
-                  </div>
-                  <div>
-                    <h5>aid maliqi</h5>
-                    <p className="text-bold">8 mutal friends</p>
-                  </div>
-                </div>
-                <div className="action">
-                  <button className="btn btn-primary">Accept</button>
-                  <button className="btn btn-decline">Decline</button>
-                </div>
-              </div>
-            </div>
+            <Suggested id={props.id} className="sugg" />
+            <Requests />
           </div>
         </div>
       </div>
