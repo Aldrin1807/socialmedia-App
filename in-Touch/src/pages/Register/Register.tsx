@@ -183,10 +183,10 @@ function Register() {
           <label htmlFor="private">Private</label>
           </div>
           </div>
-            <p>Add a Profile Pic (Required!)</p>
+
             <label htmlFor="fileInput" className="image-input" style={FileError ? { borderColor: 'red' } : undefined} >
               <input type="file" id="fileInput" accept="image/*" onChange={handleFileChange} hidden />
-              {formData.imageFile ? <p>{formData.imageFile.name}</p> : <p>Upload image here</p>}
+              {formData.imageFile ? <p>{formData.imageFile.name}</p> : <p>Upload image here. <b>Required!</b></p>}
             </label>
             <p>
               Already have an account? <a href="/login">Sign in here!</a>

@@ -19,7 +19,7 @@ import Editprofilee from "./pages/Profile/Editprofilee";
 function App() {
   const [id,setId ] = useState(null);
 
-  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     axios.get(

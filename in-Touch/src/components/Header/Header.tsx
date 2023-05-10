@@ -11,7 +11,7 @@ import Loader from "../Other/Loader";
 import { useNavigate } from 'react-router-dom';
 
 function Header(){
-  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
 

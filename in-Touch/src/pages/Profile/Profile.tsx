@@ -23,7 +23,7 @@ function Profile(props:any) {
   const params = new URLSearchParams(window.location.search);
   const userId =  params.get("user");
   const [postChanged,setPostChanged] = useState(true);
-  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const [viewedUser, setViewedUser] = useState(userId ?? props.id);
   const isCurrentUser = viewedUser == props.id;
@@ -32,7 +32,8 @@ function Profile(props:any) {
     apiUrl:`https://localhost:44386/api/Posts/get-user-post?userId=${viewedUser}`,
     followsUrl:`https://localhost:44386/api/Users/get-user-followers-follows?userId=${viewedUser}`,
     userUrl:`https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
-    followedUrl:`https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`
+    followedUrl:`https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
+    requestedUrl:`https://localhost:44386/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`
   });
 
 
@@ -140,6 +141,18 @@ const handleFollow = () =>{
 }
 
 const [followRequest,setFollowRequest] = useState(false)
+  
+useEffect(()=>{
+  axios.get(apiUrls.requestedUrl
+   // ,{
+      //   headers: { 'Authorization': `Bearer ${token}` }
+      // }
+  ).then((response:any)=>{
+    setFollowRequest(response.data);
+  })
+
+},[])
+
   const handleFollowRequest = () =>{
     if(!followRequest){
       axios.post('https://localhost:44386/api/FollowRequests/request-follow',{
