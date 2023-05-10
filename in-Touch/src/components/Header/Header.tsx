@@ -11,7 +11,7 @@ import Loader from "../Other/Loader";
 import { useNavigate } from 'react-router-dom';
 
 function Header(){
-  const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
+  const token = localStorage.getItem("token")??sessionStorage.getItem("token");
   const navigate = useNavigate();
 
 
@@ -31,7 +31,7 @@ function Header(){
     }
   };
   setTimeout(() => {
-    if (!user) {
+    if (!token) {
       navigate("/login");
     }
     setIsLoading(false);
@@ -45,7 +45,7 @@ return (
  
      return(
       <>
-      <Navbar bg="light" variant="light" expand="lg" className="p-3">
+      <Navbar bg="]" variant="light" expand="lg" className="p-3">
         <Container>
           <Navbar.Brand href="/home">
             <Image 

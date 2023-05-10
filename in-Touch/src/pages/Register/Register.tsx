@@ -168,11 +168,10 @@ function Register() {
           {Passworderror?
           <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
             <p>Add a Profile Pic (Required!)</p>
-              <input type="file" id="fileInput" accept="image/* "
-              onChange={handleFileChange} 
-              style={{color: FileError ? 'red' : 'inherit' }}
-              />
-               
+            <label htmlFor="fileInput" className="image-input" style={FileError ? { borderColor: 'red' } : undefined} >
+              <input type="file" id="fileInput" accept="image/*" onChange={handleFileChange} hidden />
+              {formData.imageFile ? <p>{formData.imageFile.name}</p> : <p>Upload image here</p>}
+            </label>
             <p>
               Already have an account? <a href="/login">Sign in here!</a>
             </p>

@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import "./Suggested.css"
 import axios from "axios";
-function Followers(){
+import { FiChevronsUp, FiChevronsDown} from "react-icons/fi";
+
+function Followers(props:any){
   const params = new URLSearchParams(window.location.search);
   const userId =  params.get("user");
-  
-  const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
-  const viewedUser = userId ?? user;
+
+  const viewedUser = userId ?? props.id;
     const getUrl = `https://localhost:44386/api/Users/user-followers?userId=${viewedUser}`;
-    
+    const token = localStorage.getItem("token")??sessionStorage.getItem("token");
     type User = {
         id: number;
         firstName: string;
@@ -23,7 +24,10 @@ function Followers(){
     const[userData,setUserData] = useState<User[]>([]);
  
    useEffect(()=>{
-        axios.get(getUrl)
+        axios.get(getUrl,
+            {
+                headers: { 'Authorization': `Bearer ${token}` }
+          })
         .then((response:any)=>{
             setUserData(response.data);
         })
@@ -51,8 +55,8 @@ function Followers(){
                         </li>
                     ))}
                     </ul>
-                    {!showAll && (
-                    <button onClick={toggleShowAll}>See All</button>
+                    {(!showAll&&userData.length >5) &&  (
+                    <button onClick={toggleShowAll} style={{border:'none',fontSize:'30px',backgroundColor:'transparent'}}> <FiChevronsDown /></button>
                     )}
                     {showAll && (
                     <ul className="friend-list clearfix" id="lista">
@@ -68,7 +72,7 @@ function Followers(){
                             </a>
                         </li>
                         ))}
-                          <button onClick={toggleShowAll}>See less</button>
+                          <button onClick={toggleShowAll} style={{border:'none',fontSize:'30px',backgroundColor:'transparent'}}> <FiChevronsUp /></button>
                     </ul>
                     )}
       </>

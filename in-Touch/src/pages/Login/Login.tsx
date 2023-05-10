@@ -39,10 +39,10 @@ function Login(){
         EmailorUsername : data.EmailorUsername,
         Password : data.Password
       }).then((response) => {
-        if(response.data>0){
-          console.log(response.data)
-          remember? localStorage.setItem("UserId",response.data):sessionStorage.setItem("UserId",response.data);
-          navigate('/home');
+        if(response.data){
+        console.log(response.data)
+         remember? localStorage.setItem("token",response.data):sessionStorage.setItem("token",response.data);
+         navigate('/home');
         }else{
           setLoginError('An error occurred.');
           setIsLoading(false);

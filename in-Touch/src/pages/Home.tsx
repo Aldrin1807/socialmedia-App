@@ -20,10 +20,8 @@ import {
 } from "react-icons/md";
 import Header from "../components/Header/Header";
 
-function Home() {
-  const user =
-    localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
-  const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${user}`;
+function Home(props: any) {
+  const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${props.id}`;
   type Post = {
     id: number;
     content: string;
@@ -36,7 +34,9 @@ function Home() {
   const [PostData, setPostData] = useState<Post[]>([]);
   useEffect(() => {
     axios
-      .get(apiUrl)
+      .get(apiUrl, {
+        headers: { Authorization: `Bearer ${props.token}` },
+      })
       .then((response: any) => {
         setPostData(response.data);
       })
@@ -139,7 +139,7 @@ function Home() {
           </div>
           <div className="col-md-6 col-sm-10 ">
             <div className="container">
-              <PostForm userID={user} />
+              <PostForm userID={props.id} />
               {PostData && PostData.length > 0 ? (
                 <div>
                   {PostData.map((post) => (
@@ -149,6 +149,7 @@ function Home() {
                       imagePath={post.imagePath}
                       postDate={post.postDate}
                       user={false}
+                      id={props.id}
                     />
                   ))}
                 </div>
@@ -172,7 +173,7 @@ function Home() {
           </div>
           <div className="col-md-3 " id="right">
             <h1 className="display-6">Suggested Users</h1>
-            <Suggested />
+            <Suggested id={props.id} />
           </div>
         </div>
       </div>

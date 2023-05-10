@@ -5,9 +5,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
  
-function Suggested(){
-    const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
-
+function Suggested(props:any){
+    const token = localStorage.getItem("token")??sessionStorage.getItem("token");
     type User = {
         id: number;
         firstName: string;
@@ -23,11 +22,13 @@ function Suggested(){
 
     useEffect(() => {
         axios
-          .get(`https://localhost:44386/api/Users/suggested-users?userId=${user}`)
+          .get(`https://localhost:44386/api/Users/suggested-users?userId=${props.id}`,{
+                headers: { 'Authorization': `Bearer ${token}` }
+          })
           .then((response: any) => {
             setUserData(response.data);
           });
-      }, [user]);
+      }, [props.id]);
     return(
         <>
         <ul className="friend-list clearfix" id='lista'>

@@ -25,3 +25,12 @@
     margin: 0 auto;
     margin-top: 300px;
   }
+  .image-input{
+    border: 0.5px dashed;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
