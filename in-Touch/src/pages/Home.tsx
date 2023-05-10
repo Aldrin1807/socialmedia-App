@@ -113,7 +113,7 @@ function Home(props: any) {
           </div>
           <div className="col-md-3 " id="right">
             <Suggested id={props.id} className="sugg" />
-            <Requests />
+            <Requests id={props.id} />
           </div>
         </div>
       </div>
