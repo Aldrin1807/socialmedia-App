@@ -10,12 +10,12 @@ import {
 } from "react-bootstrap";
 import Post from "../../components/Post/Posts";
 import PostForm from "../../components/Post/PostForm";
-import Suggested from "../../components/Other/Suggested";
+import Suggested from "../../components/Suggested/Suggested";
 import Followers from "../../components/Other/Followers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
-import ExpiredModal from "../../components/Other/ExpiredModal";
+import ExpiredModal from "../../components/Modals/ExpiredModal";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 
 
