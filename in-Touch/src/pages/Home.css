@@ -1,0 +1,274 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+:root {
+  --color-dark: hsl(252, 30%, 17%);
+  --color-white: hsl(252, 30%, 100%);
+  --color-light: hsl(252, 30%, 95%);
+  --color-gray: hsl(252, 15%, 65%);
+  --color-primary: hsl(252, 75%, 60%);
+  /* --color-secondary: hsl(252, 100%, 90%); */
+  /* --color-success: hsl(120, 95%, 65%); */
+  --color-danger: hsl(0, 95%, 65%);
+  --color-dark: hsl(252, 30%, 17%);
+  --color-black: hsl(252, 30%, 10%);
+
+  --border-radius: 2rem;
+  --card-border-radius: 1rem;
+  --btn-padding: 0.6rem 2rem;
+  --search-padding: 0.6rem 1rem;
+  --card-padding: 1rem;
+
+  --sticky-top-left: 5.4rem;
+  --sticky-top-right: -18rem;
+}
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  border: none;
+}
+
+.home-content {
+  font-family: "Poppins", sans-serif;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  /* overflow-x: hidden; */
+}
+
+.home-content {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.profile-photo {
+  width: 2.7rem;
+  height: 2.7rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile-photo img {
+  height: inherit !important;
+}
+img {
+  display: block;
+  width: 100%;
+}
+.btn {
+  display: inline-block;
+  padding: var(--btn-padding);
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all 300ms ease;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+.text-bold {
+  font-weight: 500;
+  color: var(--color-gray);
+}
+
+.text-muted {
+  color: var(--color-gray);
+}
+
+.home-content .col-md-3 .left {
+  height: min-content;
+  position: sticky;
+  top: var(--sticky-top-left);
+  margin: 1rem;
+}
+.home-content .col-md-3 .left .profile {
+  padding: var(--card-padding);
+  background-color: var(--color-white);
+  border-radius: var(--card-border-radius);
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+/**/
+.home-content {
+  width: 98.3vw;
+}
+
+#right {
+  margin-top: 1.5%;
+  padding: 20px;
+}
+#right h1 {
+  text-align: center;
+}
+
+/*------sidebar------*/
+
+.left .sidebar {
+  margin-top: 1rem;
+  background-color: var(--color-white);
+  border-radius: var(--card-border-radius);
+}
+.left .sidebar .menu-item {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+  cursor: pointer;
+  transition: all 300ms ease;
+  position: relative;
+}
+
+.left .sidebar .menu-item:hover {
+  background-color: var(--color-light);
+}
+.left .sidebar #Icons {
+  font-size: 1.4rem;
+  color: var(--color-gray);
+  margin-left: 2rem;
+  position: relative;
+}
+.notification-count {
+  background-color: var(--color-danger);
+  color: rgb(249, 247, 247);
+  font-size: 0.7rem;
+  width: fit-content;
+  border-radius: 0.8rem;
+  padding: 0.1rem 0.4rem;
+  position: absolute;
+  top: -0.2rem;
+  right: -0.3rem;
+  z-index: 5;
+}
+.left .sidebar h3 {
+  margin-left: 1.5rem;
+  font-size: 1rem;
+}
+.left .sidebar .active {
+  background-color: var(--color-light);
+}
+.left .sidebar .active #Icons,
+.left .sidebar.active h3 {
+  color: var(--color-primary) !important;
+}
+
+.left .sidebar .active::before {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 100%;
+  position: absolute;
+  background-color: var(--color-primary);
+}
+.left .sidebar .menu-item:first-child.active {
+  border-top-right-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+.left .sidebar .menu-item:first-child.active {
+  border-bottom-left-radius: var(--card-border-radius);
+  overflow: hidden;
+}
+.left .btn {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+/*not*/
+
+.left .notifications-popup {
+  position: absolute;
+  top: 0;
+  left: 110%;
+  width: 30rem;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius);
+  padding: var(--card-padding);
+  box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60%, 25%);
+  z-index: 8;
+  display: none;
+}
+
+.left .notification-poput::before {
+  content: "";
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block;
+  background-color: var(--color-white);
+  position: absolute;
+  left: -0.6rem;
+  transform: rotate(45deg);
+}
+
+.left .notification-poput > div {
+  display: flex;
+  align-items: start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.ledt .notification-poput small {
+  display: block;
+}
+@media screen and (max-width: 767px) {
+  .left {
+    width: 5rem;
+    z-index: 5;
+  }
+  .home-content .col-md-3 .left .profile {
+    display: none;
+  }
+  .left .btn {
+    display: none;
+  }
+  .left h3 {
+    display: none;
+  }
+  .home-content .col-md-3 .left {
+    position: fixed;
+    top: 0;
+  }
+  .left .notifications-popup {
+    position: absolute;
+    left: -20rem;
+    width: 20rem;
+  }
+  .left .notifications-popup::before {
+    display: absolute;
+    top: 1.3rem;
+    left: calc(20rem - 0.6rem);
+    display: block;
+  }
+}
+@media screen and (max-width: 575px) {
+  .container {
+    padding-left: 20%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .left {
+    width: 3rem;
+  }
+  .left .sidebar .menu-item {
+    height: 3rem;
+
+    justify-content: space-around;
+  }
+  .left .sidebar #Icons {
+    margin-left: 0;
+  }
+  .left .sidebar .active::before {
+    width: 0.3rem;
+
+    margin-right: 100%;
+  }
+}
