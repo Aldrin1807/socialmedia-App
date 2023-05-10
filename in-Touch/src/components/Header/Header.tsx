@@ -45,7 +45,7 @@ return (
  
      return(
       <>
-      <Navbar bg="]" variant="light" expand="lg" className="p-3">
+      <Navbar bg="light" variant="light" expand="lg" className="p-3">
         <Container>
           <Navbar.Brand href="/home">
             <Image 
