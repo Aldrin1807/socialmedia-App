@@ -141,7 +141,28 @@ const handleFollow = () =>{
 
 const [followRequest,setFollowRequest] = useState(false)
   const handleFollowRequest = () =>{
-
+    if(!followRequest){
+      axios.post('https://localhost:44386/api/FollowRequests/request-follow',{
+        followRequestId:props.id,
+        followRequestedId : userId
+      }
+      // ,{
+      //   headers: { 'Authorization': `Bearer ${token}` }
+      // }
+      ).then(()=>{
+        setFollowRequest(true);
+      })
+    }else{
+      axios.delete('https://localhost:44386/api/FollowRequests/unrequest-follow',{
+        // headers: { 'Authorization': `Bearer ${token}` },
+      data :{
+        followRequestId : props.id,
+        followRequestedId : userId
+      }
+      }).then(()=>{
+        setFollowRequest(false);
+      })
+    }
   }
 
   return (
@@ -186,7 +207,9 @@ const [followRequest,setFollowRequest] = useState(false)
                                     :
                                     (!userData.isPrivate?(<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>):
                                     (
-                                      <Button variant="outline-primary" className="butoni-post" onClick={handleFollowRequest}>Request Follow</Button>
+                                      !followRequest?(
+                                      <Button variant="outline-primary" className="butoni-post" onClick={handleFollowRequest}>Request Follow</Button>):
+                                      (<Button variant="primary" className="butoni-post" onClick={handleFollowRequest}>Follow Requested</Button>)
                                     ))
                                     )}
                                 </div>
