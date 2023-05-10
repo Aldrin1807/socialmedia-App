@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Suggested.css"
+import "../Suggested/Suggested.css"
 import axios from "axios";
 import { FiChevronsUp, FiChevronsDown} from "react-icons/fi";
 

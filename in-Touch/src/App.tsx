@@ -7,7 +7,7 @@ import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
-import Search from "./components/Other/Search";
+import Search from "./components/Search/Search";
 import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
 import Loader from "./components/Other/Loader";
 import UserList from "./components/Other/UserList";

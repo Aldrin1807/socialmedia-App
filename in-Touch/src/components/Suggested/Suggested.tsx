@@ -1,5 +1,5 @@
 import "./Suggested.css"
-import './Search.css'
+import '../Search/Search.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from "react";
 import axios from "axios";

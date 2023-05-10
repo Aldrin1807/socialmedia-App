@@ -5,10 +5,7 @@ import axios from 'axios';
 
 
 function Comment(props:any){
-  var user = localStorage.getItem("UserId");
-  if(!user){
-    user = sessionStorage.getItem("UserId");
-  }
+ 
   const getUrl = `https://localhost:44386/api/Comments/get-post-comments?postId=${props.postId}`;
 
   const [comments, setComments] = useState([]);
@@ -24,8 +21,19 @@ function Comment(props:any){
     <ul>
       {comments.map((comment: any) => (
         <li key={comment.id}>
-          <span className="comment-username"><a className='comment-link' href={`/profile?user=${comment.userId}`}>@{comment.username}</a></span>
-          <span className="comment-text">{comment.comment}</span>
+           <div className="comment-container">
+            <div className="comment-image">
+              <a className='comment-link' href={`/profile?user=${comment.userId}`}>
+                <img src={`https://localhost:44386/User Images/${comment.imagePath}`} alt="" />
+              </a>
+            </div>
+            <div className="comment-details">
+              <span className="comment-username">
+                <a className='comment-link' href={`/profile?user=${comment.userId}`}>@{comment.username}</a>
+              </span>
+              <span className="comment-text">{comment.comment}</span>
+            </div>
+          </div>
         </li>
       ))}
     </ul>

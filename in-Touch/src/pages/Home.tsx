@@ -4,7 +4,7 @@ import Footer from "../components/Footer/Footer";
 import GoUp from "../components/Other/GoUp";
 import { Link } from "react-scroll";
 import "./Home.css";
-import Suggested from "../components/Other/Suggested";
+import Suggested from "../components/Suggested/Suggested";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loader from "../components/Other/Loader";
