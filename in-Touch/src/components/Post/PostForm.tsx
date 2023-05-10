@@ -1,8 +1,9 @@
-import { MDBFile } from 'mdb-react-ui-kit';
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import { Form, Button, FormControl } from "react-bootstrap";
 import "./PostForm.css";
 import axios from 'axios';
+import { CiImageOn } from "react-icons/ci";
 
 function PostForm(props:any) {
   const apiUrl = 'https://localhost:44386/api/Posts/make-post'
@@ -13,6 +14,7 @@ function PostForm(props:any) {
     Image : null,
     userID  : props.userID
   })
+  
   const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {  
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
@@ -68,16 +70,20 @@ function PostForm(props:any) {
           as="textarea"
           rows={5}
           placeholder="What's on your mind today?"
-          style={{ width: "100%", height: "100px", borderColor: error ? 'red' : undefined }}
+          style={{ width: "100%", height: "60px", borderColor: error ? 'red' : undefined }}
           name="Content"
           onChange={onChange}
           value={values.Content}
         />
-        <MDBFile label='Want to add an image?' size='sm' id='formFileSm' onChange={handleFileChange} /> 
         <Button variant="outline-primary" className="butoni-post" onClick={makePost}>
         {isLoading ? 'Posting...' : 'Post'} 
         </Button>
       </form>
+      <input type="file" id="fileInput" accept="image/*" onChange={handleFileChange} hidden />
+      <label htmlFor="fileInput" className='add-image'>
+        <CiImageOn className='image-icon' />
+        {values.Image?<p className='image-p'>{values.Image.name}</p>:<p className='image-p'>Add an image</p>}
+      </label>
     </div>
   );
 }

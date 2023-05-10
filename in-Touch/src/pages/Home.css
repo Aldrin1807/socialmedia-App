@@ -280,9 +280,7 @@ img {
   }
 }
 @media screen and (max-width: 575px) {
-  .container {
-    padding-left: 20%;
-  }
+  
 }
 @media screen and (max-width: 450px) {
   .left {

@@ -73,64 +73,7 @@ function Home(props: any) {
 
                   <h3>Explore</h3>
                 </a>
-                <a href="" className="menu-item" id="notifications">
-                  {" "}
-                  <MdNotificationsNone id="Icons"></MdNotificationsNone>{" "}
-                  <small className="notification-count">9+</small>
-                  <h3>Notifications</h3>
-                  <div className="notifications-popup">
-                    <div>
-                      <div className="profile-photo">
-                        <img
-                          src="https://images.pexels.com/photos/8451490/pexels-photo-8451490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          alt=""
-                        />
-                      </div>
-                      <div className="notification-body">
-                        <b>Mo Salah</b> accepted yur friend request
-                        <small className="text-muted">2 days Ago</small>
-                      </div>
-                    </div>
-                    <div>
-                      <div className="profile-photo">
-                        <img
-                          src="https://images.pexels.com/photos/8451490/pexels-photo-8451490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                          alt=""
-                        />
-                      </div>
-                      <div className="notification-body">
-                        <b>Mo Salah</b> accepted yur friend request
-                        <small className="text-muted">2 days Ago</small>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                <a href="" className="menu-item" id="messages-notifications">
-                  {" "}
-                  <BiMessageDetail id="Icons"></BiMessageDetail>{" "}
-                  <small className="notification-count">6</small>
-                  <h3>Message</h3>
-                </a>{" "}
-                <a href="" className="menu-item">
-                  {" "}
-                  <MdBookmarkBorder id="Icons"></MdBookmarkBorder>
-                  <h3>BookMarks</h3>
-                </a>{" "}
-                <a href="" className="menu-item">
-                  {" "}
-                  <AiOutlinePieChart id="Icons"></AiOutlinePieChart>
-                  <h3>Analytics</h3>
-                </a>{" "}
-                <a href="" className="menu-item">
-                  {" "}
-                  <MdOutlineColorLens id="Icons"></MdOutlineColorLens>
-                  <h3>Theme</h3>
-                </a>{" "}
-                <a href="" className="menu-item">
-                  {" "}
-                  <MdOutlineSettings id="Icons"></MdOutlineSettings>
-                  <h3>Settings</h3>
-                </a>{" "}
+               
               </div>
               <label htmlFor="create-post" className="btn btn-primary">
                 Create

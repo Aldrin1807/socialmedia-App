@@ -1,12 +1,28 @@
 #create-post{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-self: center;
+    padding: 10px;
 }
 .butoni-post{
     margin: 0 auto;
     margin-top: 5px;
     height: 50px;
-    width: 200px;
+    width: 150px;
+    margin-left: 5px;
+}
+.image-input{
+    margin-top: 5px;
+}
+.add-image{
+    width: 21%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-icon{
+    font-size: 35px;
+}
+.image-p{
+    margin-top: 12px;
 }
