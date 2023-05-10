@@ -56,7 +56,7 @@
   padding: 20px;
   text-align: left;
 }
-.display-6{
+.display-6 {
   font-size: 30px;
 }
 
@@ -85,12 +85,12 @@
   background-attachment: fixed;
   background-size: cover;
   background-position: bottom center;
-  color: #fff!important;
+  color: #fff !important;
   height: 300px;
   position: relative;
   padding: 0;
 }
-#contenti{
+#contenti {
   padding: 20px;
 }
 
@@ -111,11 +111,11 @@
   margin-bottom: 30px;
 }
 .has-shadow {
-  box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
+  box-shadow: 0 1px 15px 1px rgba(52, 40, 104, 0.08);
 }
 .db-social .head-profile:before {
   content: "";
-  background: rgba(255,255,255,.6);
+  background: rgba(255, 255, 255, 0.6);
   height: 20px;
   width: 90%;
   position: absolute;
@@ -127,7 +127,7 @@
 }
 .db-social .head-profile:after {
   content: "";
-  background: rgba(255,255,255,.3);
+  background: rgba(255, 255, 255, 0.3);
   height: 20px;
   width: 80%;
   position: absolute;
@@ -148,7 +148,7 @@
   left: 0;
   right: 0;
   margin: 0 auto;
-  box-shadow: 0 0 0 6px rgba(255,255,255,1);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 1);
   z-index: 10;
 }
 .db-social .infos {
@@ -161,18 +161,19 @@
   color: #2c304d;
   font-size: 1.6rem;
   font-weight: 600;
-  margin-bottom: .2rem;
+  margin-bottom: 0.2rem;
 }
 
 .db-social .follow .btn {
   padding: 10px 30px;
 }
 
-.btn-shadow, .btn-shadow a {
+.btn-shadow,
+.btn-shadow a {
   color: #5d5386;
   background-color: #fff;
   border-color: #fff;
-  box-shadow: 0 1px 15px 1px rgba(52,40,104,.15);
+  box-shadow: 0 1px 15px 1px rgba(52, 40, 104, 0.15);
 }
 
 .db-social .head-profile li {
@@ -185,18 +186,81 @@
   font-size: 1.4rem;
   font-weight: 600;
 }
-#white{
+#white {
   background-color: white;
   color: black;
 }
-.lista{
+.lista {
   margin-top: 50px;
 }
-#follow-butoni{
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+#follow-butoni {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-.left-side{
+.left-side {
   text-align: center;
   padding: 20px;
   margin-top: 5%;
+}
+
+/*left side*/
+
+.left-side {
+  padding: 15px;
+  padding-top: 0px;
+  background-color: rgb(247, 245, 245);
+}
+.button-container {
+  display: flex;
+}
+.update-section aside div {
+  display: grid;
+  padding: 5px 10px;
+  align-items: baseline;
+  grid-template-columns: 35px 1fr auto;
+  justify-items: start;
+  gap: 3.3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.126);
+  padding: 0px 0px 10px 0px;
+  margin-top: 15px;
+}
+.update-section aside {
+  margin: 30px 0px 10px 0px;
+}
+.update-section {
+  display: none;
+}
+.update-section h1 {
+  font-size: 25px;
+}
+.update-section h3 {
+  font-size: 16px;
+}
+.update-type {
+  font-weight: 600;
+}
+.user-data {
+  font-size: 14px;
+}
+#edit-icon {
+  color: #3832d8;
+  font-size: 17px;
+  cursor: pointer;
+}
+.button-container {
+  border-bottom: 4px solid #0d6efd;
+}
+.btn1 {
+  padding: 8px 0px;
+  width: 50%;
+  font-size: 14.4px;
+  background-color: white;
+}
+.btn1:hover {
+  background-color: #0d6efd;
+  transition: 400ms ease;
+  color: white;
+}
+.active {
+  background-color: #0d6efd;
+  color: white;
 }
