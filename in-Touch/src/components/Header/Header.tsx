@@ -5,15 +5,50 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button,Form, FormControl,Image } from 'react-bootstrap';
 import  './Header.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { VscAccount } from "react-icons/vsc";
 import Loader from "../Other/Loader";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import swal from "sweetalert";
 
 function Header(){
   const token = localStorage.getItem("token");
+  const tokenUrl = `https://localhost:44386/api/Users/is-token-available?token=${token}`
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const interval = setInterval(checkTokenAvailability, 30 * 1000); 
+
+    return () => {
+      clearInterval(interval); 
+    };
+  }, []);
+
+  const checkTokenAvailability = () => {
+    axios.get(tokenUrl)
+      .then((response) => {
+        const tokenAvailable = response.data;
+        if (!tokenAvailable) {
+          showTokenUnavailableNotification();
+        }
+      })
+      .catch((error) => {
+        console.error('Error checking token availability:', error);
+      });
+  };
+
+  const showTokenUnavailableNotification = () => {
+    swal({
+      title: "Login Expired",
+      text: "Please log in again to access this page.",
+      icon: "info",
+      buttons: false,
+      timer: 3000,
+    }).then(() => {
+      navigate("/login");
+    });
+  };
 
 
   const [searchQuery,setSearchQuery] = useState('');

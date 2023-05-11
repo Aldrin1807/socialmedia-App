@@ -102,7 +102,7 @@ function Post(props:any) {
           postId: props.postId
         }).then((response) => {
           if (response.data.status === "Success") {
-            swal("Success!", "The post has been reported.", "success");
+            swal("Success!", "The post has been reported. Our team will review it shortly.", "success");
           } else {
             swal("Oops! Something went wrong.", response.data.message, "error");
           }
