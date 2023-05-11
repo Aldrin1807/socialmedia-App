@@ -11,6 +11,7 @@ import { useSearchParams } from "react-router-dom";
 import ExpiredModal from "../../components/Modals/ExpiredModal";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
+import { Modal } from "../../components/Modals/Modal";
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
@@ -181,9 +182,11 @@ function Profile(props: any) {
         });
     }
   };
-
-  
-
+  const [centredModal, setCentredModal] = useState(false);
+  // const handleModal = () => {
+  //   return <Modal centredModal={centredModal} setCentredModal={setCentredModal}></Modal>;
+  // };
+  const toggleShow = () => setCentredModal(!centredModal);
   return (
     <>
       <ExpiredModal show={expiredModal} />
@@ -349,7 +352,7 @@ function Profile(props: any) {
           </div>
         </div>
       </div>
-
+      <Modal centredModal={centredModal} setCentredModal={setCentredModal}></Modal>
       <div className="container" id="content">
         {isFollowed || !userData.isPrivate ? (
           <div className="row">
@@ -357,7 +360,7 @@ function Profile(props: any) {
               <div className="left-side">
                 <div className="button-container">
                   <button
-                     className={active === 0 ? 'btn1 active' : 'btn1'}
+                    className={active === 0 ? "btn1 active" : "btn1"}
                     onClick={() => {
                       setActive(0);
                     }}
@@ -365,7 +368,7 @@ function Profile(props: any) {
                     Edit Profile
                   </button>
                   <button
-                     className={active === 1 ? 'btn1 active' : 'btn1'}
+                    className={active === 1 ? "btn1 active" : "btn1"}
                     onClick={() => {
                       setActive(1);
                     }}
@@ -385,7 +388,10 @@ function Profile(props: any) {
                         {" "}
                         <h3 className="update-type">Firstname:</h3>{" "}
                         <span className="user-data">{userData.firstname}</span>{" "}
-                        <BiEditAlt id="edit-icon"></BiEditAlt>
+                        <BiEditAlt
+                          id="edit-icon"
+                          onClick={toggleShow}
+                        ></BiEditAlt>
                       </div>
                       <div>
                         {" "}
@@ -399,7 +405,6 @@ function Profile(props: any) {
                         <span className="user-data">{userData.username}</span>{" "}
                         <BiEditAlt id="edit-icon"></BiEditAlt>
                       </div>
-                     
                     </aside>
                   </div>
                 ) : (

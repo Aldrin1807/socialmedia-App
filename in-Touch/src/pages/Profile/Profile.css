@@ -4,7 +4,7 @@
 }
 
 .menu {
-  border: 1px solid #E3EBF6;
+  border: 1px solid #e3ebf6;
   height: 70px;
   display: flex;
   justify-content: space-between;
@@ -239,10 +239,14 @@
 .update-section aside {
   margin: 30px 0px 10px 0px;
 }
-
+.update-section {
+  border: 1px solid rgb(208, 208, 208);
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 1px 15px 1px rgba(52, 40, 104, 0.08);
+}
 .left-side h1 {
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: 1.25rem;
 }
 .left-side h3 {
   font-size: 14px;
