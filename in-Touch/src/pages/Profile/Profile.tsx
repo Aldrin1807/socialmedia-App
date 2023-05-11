@@ -334,13 +334,13 @@ function Profile(props: any) {
                         {" "}
                         <h3 className="update-type">Lastname:</h3>{" "}
                         <span className="user-data">{userData.lastname}</span>{" "}
-                        <BiEditAlt id="edit-icon"></BiEditAlt>
+                        <BiEditAlt id="edit-icon" onClick={toggleShow}></BiEditAlt>
                       </div>
                       <div>
                         {" "}
                         <h3 className="update-type">Username:</h3>{" "}
                         <span className="user-data">{userData.username}</span>{" "}
-                        <BiEditAlt id="edit-icon"></BiEditAlt>
+                        <BiEditAlt id="edit-icon" onClick={toggleShow}></BiEditAlt>
                       </div>
                     </aside>
                   </div>
