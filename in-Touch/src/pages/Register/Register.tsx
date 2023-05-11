@@ -9,6 +9,7 @@ import {  useState } from "react";
 import { useNavigate  } from 'react-router-dom';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import swal from "sweetalert";
 
 function Register() {
   const navigate = useNavigate();
@@ -29,8 +30,7 @@ function Register() {
   const [Emailerror,setEmailerror] = useState(false);
   const [Passworderror,setPassworderror] = useState(false);
   const [FileError,setFileError] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [error, setError] = useState(false);
+
   const [isLoading,setIsLoading] = useState(false);
 
   const onChange = (e:any) => {  
@@ -83,10 +83,12 @@ function Register() {
             ).then((response) => {
           console.log(response.data);
           if (response.data.status === 'Success') {
-            setIsModalOpen(true);
+            swal("User registered successfully!", "Please login with your new account.", "success")
+            .then(() => {
+              navigate('/login');
+            });
           } else {
-            setIsModalOpen(true);
-            setError(response.data.message);
+            swal("Registration Failed", response.data.message, "error");
         }
         })
         .catch((error) => {
@@ -97,10 +99,7 @@ function Register() {
       }
      
     }
-    const handleCloseModal = () => {
-      setIsModalOpen(false);
-      error?window.location.reload():navigate('/login');
-    };
+   
 
   return (
     <div className="container">
@@ -195,21 +194,6 @@ function Register() {
             {isLoading ? 'Signing up...' : 'Sign up'} 
             </Button>
           </form>
-          <Modal show={isModalOpen} onHide={handleCloseModal}>
-            <Modal.Body>
-                { error ? <div className="alert alert-danger">{error}</div> : (
-                    <div className="text-center">
-                        <h1 className="display-6">User registered successfully!</h1>
-                        <p>Please login with your new account.</p>
-                    </div>
-                )}
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="primary" onClick={handleCloseModal}>
-                Continue
-              </Button>
-            </Modal.Footer>
-          </Modal>
         </div>
       </div>
     </div>
