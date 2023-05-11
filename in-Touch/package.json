@@ -31,7 +31,8 @@
     "react-search-box": "^3.0.0",
     "recharts": "^2.5.0",
     "simple-react-validator": "^1.6.2",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.4.8"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
