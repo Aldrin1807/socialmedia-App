@@ -44,7 +44,7 @@ function Home(props: any) {
       .catch((error) => {
         console.error(error);
       });
-  }, [PostData]);
+  }, []);
 
   return (
     <>
