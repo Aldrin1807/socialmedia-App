@@ -23,6 +23,7 @@ import Requests from "../components/Requests/Requests";
 
 function Home(props: any) {
   const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${props.id}`;
+  const userUrl =`https://localhost:44386/api/Users/get-user-info?id=${props.id}`;
   type Post = {
     id: number;
     content: string;
@@ -31,22 +32,31 @@ function Home(props: any) {
     postDate: string;
     userID: number;
   };
-
+  const [userData, setUserData] = useState({
+    username: "",
+    firstname: "",
+    lastname: "",
+    email:"",
+    image: ""
+  });
   const [PostData, setPostData] = useState<Post[]>([]);
   useEffect(() => {
     axios
       .get(apiUrl, {
-        headers: { Authorization: `Bearer ${props.token}` },
+        headers: { Authorization: `Bearer ${props.token}` }
       })
       .then((response: any) => {
         setPostData(response.data);
-
       })
       .catch((error) => {
         console.error(error);
       });
   }, [props.id]);
 
+
+
+  
+ 
   return (
     <>
       <div className="home-content">
@@ -56,13 +66,13 @@ function Home(props: any) {
               <a href="" className="profile">
                 <div className="profile-photo">
                   <img
-                    src="https://images.pexels.com/photos/8451490/pexels-photo-8451490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                    src=""
                     alt=""
                   />
                 </div>
                 <div className="handle">
-                  <h4>Diana ayi</h4>
-                  <p className="text-muted">@dayi</p>
+                  <h4>{userData.firstname}</h4>
+                  <p className="text-muted">@{userData.username}</p>
                 </div>
               </a>
               <div className="sidebar">
@@ -80,7 +90,7 @@ function Home(props: any) {
           </div>
           <div className="col-md-6 col-sm-10 ">
             <div className="container" id="postet" >
-              <PostForm userID={props.id} />
+          {props.id?(<PostForm userID={props.id} />):null} 
               {PostData && PostData.length > 0 ? (
                 <div>
                   {PostData.map((post) => (

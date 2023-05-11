@@ -7,7 +7,7 @@ function Search (props:any){
     const user = localStorage.getItem("UserId") ?? sessionStorage.getItem("UserId");
     const params = new URLSearchParams(window.location.search);
     const query =  params.get("query");
-    const token = localStorage.getItem("token")
+    const token = sessionStorage.getItem("token")
 
     const getUrl = `https://localhost:44386/api/Users/search?userId=${props.id}&query=${query}`;
 

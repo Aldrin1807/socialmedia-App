@@ -21,7 +21,7 @@ import PostList from "./components/Other/PostList";
 function App() {
   const [id, setId] = useState(null);
 
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
 
   useEffect(() => {
     axios
@@ -29,6 +29,7 @@ function App() {
       .then((response: any) => {
         setId(response.data);
       });
+    
   }, [token]);
 
   const location = useLocation();
@@ -44,7 +45,7 @@ function App() {
       
       <Routes>
         <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home id={id} />} />
+        <Route path="/home" element={<Home id={id}  />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={id ? <Profile id={id} /> : null} />
         <Route path="/register" element={<Register />} />

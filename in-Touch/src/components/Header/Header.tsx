@@ -13,7 +13,7 @@ import axios from 'axios';
 import swal from "sweetalert";
 
 function Header(){
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const tokenUrl = `https://localhost:44386/api/Users/is-token-available?token=${token}`
   const navigate = useNavigate();
 
