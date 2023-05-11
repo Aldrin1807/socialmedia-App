@@ -26,14 +26,16 @@
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-icons": "^4.8.0",
-    "react-router-dom": "^6.10.0",
+    "react-router-dom": "^6.11.1",
     "react-scroll": "^1.8.9",
     "react-search-box": "^3.0.0",
     "recharts": "^2.5.0",
-    "simple-react-validator": "^1.6.2"
+    "simple-react-validator": "^1.6.2",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
+    "@types/react-bootstrap": "^0.32.32",
     "@types/react-dom": "^18.0.11",
     "@types/react-icons": "^3.0.0",
     "@types/react-scroll": "^1.8.6",

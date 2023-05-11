@@ -9,30 +9,29 @@ import {
   MDBModalBody,
   MDBModalFooter,
 } from 'mdb-react-ui-kit';
+import axios from 'axios';
 
 export function DeletePost(props:any){
-    const { showModal, setDeleteModal } = props.showModal;
 
-    const toggleShow = () => {
-        setDeleteModal(!showModal);
-      };
-      
-    
+      const toggleShow = () => props.setDeleteModal(!props.deleteModal);
+      const handleDelete = () =>{
+        axios.delete(props.deleteUrl);
+        toggleShow();
+      }
     return (
       <>
-      <MDBModal show={showModal} setShow={toggleShow} tabIndex='-1'>
-
+      <MDBModal show={props.deleteModal} setShow={props.setDeleteModal} tabIndex='-1'>
           <MDBModalDialog>
             <MDBModalContent>
               <MDBModalHeader>
-                <MDBModalTitle>Are you sure</MDBModalTitle>
+                <MDBModalTitle>Are you sure you want to delete this Post</MDBModalTitle>
                 <MDBBtn className='btn-close' color='none' onClick={toggleShow}></MDBBtn>
               </MDBModalHeader>
               <MDBModalFooter>
-                <MDBBtn color='danger' onClick={toggleShow}>
-                  Close
+                <MDBBtn color='primary' onClick={toggleShow}>
+                  Cancel
                 </MDBBtn>
-                <MDBBtn>Save changes</MDBBtn>
+                <MDBBtn color='danger' onClick={handleDelete}>Delete</MDBBtn>
               </MDBModalFooter>
             </MDBModalContent>
           </MDBModalDialog>
@@ -48,8 +47,6 @@ export function Modal({centredModal, setCentredModal}: any) {
       const toggleShow = () => setCentredModal(!centredModal);
       return (
         <>
-          
-    
           <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
             <MDBModalDialog centered>
               <MDBModalContent>

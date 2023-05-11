@@ -104,7 +104,7 @@ function Profile(props: any) {
         setPostData(response.data);
         setPostChanged(!postChanged);
       });
-  }, []);
+  }, [PostData]);
 
   const handleFollow = () => {
     if (!isFollowed) {
