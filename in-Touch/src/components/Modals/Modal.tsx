@@ -8,6 +8,7 @@ import {
   MDBModalTitle,
   MDBModalBody,
   MDBModalFooter,
+  MDBInput,
 } from "mdb-react-ui-kit";
 
 export function Modal({centredModal, setCentredModal}: any) {
@@ -22,7 +23,7 @@ export function Modal({centredModal, setCentredModal}: any) {
         <MDBModalDialog centered>
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBModalTitle>Modal title</MDBModalTitle>
+              <MDBModalTitle>Change </MDBModalTitle>
               <MDBBtn
                 className="btn-close"
                 color="none"
@@ -30,11 +31,8 @@ export function Modal({centredModal, setCentredModal}: any) {
               ></MDBBtn>
             </MDBModalHeader>
             <MDBModalBody>
-              <p>
-                Cras mattis consectetur purus sit amet fermentum. Cras justo
-                odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
-                risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
+
+            <MDBInput  id='typeEmail' type='email' value="aaaa"/>
             </MDBModalBody>
             <MDBModalFooter>
               <MDBBtn color="secondary" onClick={toggleShow}>
