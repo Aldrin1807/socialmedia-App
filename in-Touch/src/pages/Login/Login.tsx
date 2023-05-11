@@ -38,7 +38,7 @@ function Login(){
         Password : data.Password
       }).then((response) => {
         if(response.data){
-        console.log(response.data)
+          console.log(response.data)
           localStorage.setItem("token",response.data);
          navigate('/home');
         }else{

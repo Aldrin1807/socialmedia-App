@@ -11,7 +11,7 @@ import { useSearchParams } from "react-router-dom";
 import ExpiredModal from "../../components/Modals/ExpiredModal";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
-import { Modal } from "../../components/Modals/Modal";
+import { Modal } from "../../components/Modals/Modals";
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
@@ -143,9 +143,9 @@ function Profile(props: any) {
     axios
       .get(
         apiUrls.requestedUrl
-        // ,{
-        //   headers: { 'Authorization': `Bearer ${token}` }
-        // }
+          ,{
+           headers: { 'Authorization': `Bearer ${token}` }
+         }
       )
       .then((response: any) => {
         setFollowRequest(response.data);
@@ -161,9 +161,9 @@ function Profile(props: any) {
             followRequestId: props.id,
             followRequestedId: userId,
           }
-          // ,{
-          //   headers: { 'Authorization': `Bearer ${token}` }
-          // }
+           ,{
+             headers: { 'Authorization': `Bearer ${token}` }
+           }
         )
         .then(() => {
           setFollowRequest(true);
@@ -171,7 +171,7 @@ function Profile(props: any) {
     } else {
       axios
         .delete("https://localhost:44386/api/FollowRequests/unrequest-follow", {
-          // headers: { 'Authorization': `Bearer ${token}` },
+          headers: { 'Authorization': `Bearer ${token}` },
           data: {
             followRequestId: props.id,
             followRequestedId: userId,
@@ -282,71 +282,8 @@ function Profile(props: any) {
                     </div>
                   </div>
                 </div>
-                <div
-                  className="col-xl-4 col-md-4 d-flex justify-content-center"
-                  id="white"
-                >
-                  <div className="image-default">
-                    <img
-                      className="rounded-circle"
-                      src={`https://localhost:44386/User Images/${userData.image}`}
-                      alt="..."
-                      style={{ width: "150px", height: "150px" }}
-                    />
-                  </div>
-                  <div className="infos">
-                    <h2>{userData.firstname + " " + userData.lastname}</h2>
-                    <div>@{userData.username}</div>
-                  </div>
-                </div>
-                <div
-                  className="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center"
-                  id="white"
-                >
-                  <div className="follow">
-                    {isCurrentUser ? (
-                      <Button
-                        variant="outline-primary"
-                        className="butoni-post"
-                        href="/editProfile"
-                      >
-                        Edit
-                      </Button>
-                    ) : isFollowed ? (
-                      <Button
-                        variant="primary"
-                        className="butoni-post"
-                        onClick={handleFollow}
-                      >
-                        Following
-                      </Button>
-                    ) : !userData.isPrivate ? (
-                      <Button
-                        variant="outline-primary"
-                        className="butoni-post"
-                        onClick={handleFollow}
-                      >
-                        Follow
-                      </Button>
-                    ) : !followRequest ? (
-                      <Button
-                        variant="outline-primary"
-                        className="butoni-post"
-                        onClick={handleFollowRequest}
-                      >
-                        Request Follow
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="primary"
-                        className="butoni-post"
-                        onClick={handleFollowRequest}
-                      >
-                        Follow Requested
-                      </Button>
-                    )}
-                  </div>
-                </div>
+               
+                
               </div>
             </div>
           </div>
@@ -354,7 +291,7 @@ function Profile(props: any) {
       </div>
       <Modal centredModal={centredModal} setCentredModal={setCentredModal}></Modal>
       <div className="container" id="content">
-        {isFollowed || !userData.isPrivate ? (
+        {isCurrentUser ||isFollowed || !userData.isPrivate ? (
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
