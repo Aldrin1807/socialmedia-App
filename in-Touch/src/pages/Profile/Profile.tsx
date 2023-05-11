@@ -17,6 +17,7 @@ function Profile(props: any) {
   const userId = params.get("user");
   const [postChanged, setPostChanged] = useState(true);
   const token = localStorage.getItem("token");
+  const [active, setActive] = useState(0);
 
   const [viewedUser, setViewedUser] = useState(userId ?? props.id);
   const isCurrentUser = viewedUser == props.id;
@@ -102,7 +103,7 @@ function Profile(props: any) {
         setPostData(response.data);
         setPostChanged(!postChanged);
       });
-  }, [PostData]);
+  }, []);
 
   const handleFollow = () => {
     if (!isFollowed) {
@@ -181,6 +182,8 @@ function Profile(props: any) {
     }
   };
 
+  
+
   return (
     <>
       <ExpiredModal show={expiredModal} />
@@ -189,48 +192,23 @@ function Profile(props: any) {
         <div className="container-fluid">
           <div className="row justify-content-center">
             <div className="col-xl-11">
-                <div className="widget head-profile has-shadow">
-                    <div className="widget-body pb-0">
-                        <div className="row d-flex align-items-center" id="contenti">
-                            <div className="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center" id='white'>
-                                <ul className="lista">
-                                    <li>
-                                        <div className="counter">{userFollow.follows}</div>
-                                        <div className="heading">Following</div>
-                                    </li>
-                                    <li>
-                                        <div className="counter">{userFollow.followers}</div>
-                                        <div className="heading">Followers</div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div className="col-xl-4 col-md-4 d-flex justify-content-center" id='white'>
-                                <div className="image-default">
-                                    <img className="rounded-circle" src={`https://localhost:44386/User Images/${userData.image}`} alt="..."
-                                       style={{ width: "150px", height: "150px" }}
-                                    />
-                                </div>
-                                <div className="infos">
-                                    <h2>{userData.firstname + ' ' +userData.lastname}</h2>
-                                    <div >@{userData.username}</div>
-                                </div>
-                            </div>
-                            <div className="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center" id='white'>
-                                <div className="follow">
-                                    {isCurrentUser?(<Button variant="outline-primary" className="butoni-post" href="/editProfile">Edit</Button>)
-                                    :
-                                    (isFollowed?(<Button variant="primary" className="butoni-post" onClick={handleFollow}>Following</Button>)
-                                    :
-                                    (!userData.isPrivate?(<Button variant="outline-primary" className="butoni-post" onClick={handleFollow}>Follow</Button>):
-                                    (
-                                      !followRequest?(
-                                      <Button variant="outline-primary" className="butoni-post" style={{padding:'5%'}} onClick={handleFollowRequest}>Request Follow</Button>):
-                                      (<Button variant="primary" className="butoni-post" style={{padding:'5%'}} onClick={handleFollowRequest}>Follow Requested</Button>)
-                                    ))
-                                    )}
-                                </div>
-                            </div>
-                        </div>
+              <div className="widget head-profile has-shadow">
+                <div className="widget-body pb-0">
+                  <div className="row d-flex align-items-center" id="contenti">
+                    <div
+                      className="col-xl-4 col-md-4 d-flex justify-content-lg-start justify-content-md-start justify-content-center"
+                      id="white"
+                    >
+                      <ul className="lista">
+                        <li>
+                          <div className="counter">{userFollow.follows}</div>
+                          <div className="heading">Following</div>
+                        </li>
+                        <li>
+                          <div className="counter">{userFollow.followers}</div>
+                          <div className="heading">Followers</div>
+                        </li>
+                      </ul>
                     </div>
                     <div
                       className="col-xl-4 col-md-4 d-flex justify-content-center"
@@ -282,6 +260,7 @@ function Profile(props: any) {
                           <Button
                             variant="outline-primary"
                             className="butoni-post"
+                            style={{ padding: "5%" }}
                             onClick={handleFollowRequest}
                           >
                             Request Follow
@@ -290,6 +269,7 @@ function Profile(props: any) {
                           <Button
                             variant="primary"
                             className="butoni-post"
+                            style={{ padding: "5%" }}
                             onClick={handleFollowRequest}
                           >
                             Follow Requested
@@ -299,59 +279,168 @@ function Profile(props: any) {
                     </div>
                   </div>
                 </div>
+                <div
+                  className="col-xl-4 col-md-4 d-flex justify-content-center"
+                  id="white"
+                >
+                  <div className="image-default">
+                    <img
+                      className="rounded-circle"
+                      src={`https://localhost:44386/User Images/${userData.image}`}
+                      alt="..."
+                      style={{ width: "150px", height: "150px" }}
+                    />
+                  </div>
+                  <div className="infos">
+                    <h2>{userData.firstname + " " + userData.lastname}</h2>
+                    <div>@{userData.username}</div>
+                  </div>
+                </div>
+                <div
+                  className="col-xl-4 col-md-4 d-flex justify-content-lg-end justify-content-md-end justify-content-center"
+                  id="white"
+                >
+                  <div className="follow">
+                    {isCurrentUser ? (
+                      <Button
+                        variant="outline-primary"
+                        className="butoni-post"
+                        href="/editProfile"
+                      >
+                        Edit
+                      </Button>
+                    ) : isFollowed ? (
+                      <Button
+                        variant="primary"
+                        className="butoni-post"
+                        onClick={handleFollow}
+                      >
+                        Following
+                      </Button>
+                    ) : !userData.isPrivate ? (
+                      <Button
+                        variant="outline-primary"
+                        className="butoni-post"
+                        onClick={handleFollow}
+                      >
+                        Follow
+                      </Button>
+                    ) : !followRequest ? (
+                      <Button
+                        variant="outline-primary"
+                        className="butoni-post"
+                        onClick={handleFollowRequest}
+                      >
+                        Request Follow
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="primary"
+                        className="butoni-post"
+                        onClick={handleFollowRequest}
+                      >
+                        Follow Requested
+                      </Button>
+                    )}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-      
+        </div>
+      </div>
+
       <div className="container" id="content">
         {isFollowed || !userData.isPrivate ? (
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
                 <div className="button-container">
-                  <button className="btn1 active">Edit Profile</button>
-                  <button className="btn1">Change Password</button>
+                  <button
+                     className={active === 0 ? 'btn1 active' : 'btn1'}
+                    onClick={() => {
+                      setActive(0);
+                    }}
+                  >
+                    Edit Profile
+                  </button>
+                  <button
+                     className={active === 1 ? 'btn1 active' : 'btn1'}
+                    onClick={() => {
+                      setActive(1);
+                    }}
+                  >
+                    Change Password
+                  </button>
                 </div>
-                <div className="update-section">
-                  <h1>Manage your Personal Information.</h1>
-                  <h3>
-                    Below are the name and email addresses on file for your
-                    account.
-                  </h3>
-                  <aside>
-                    <div>
-                      {" "}
-                      <h3 className="update-type">Firstname:</h3>{" "}
-                      <span className="user-data">Aid</span>{" "}
-                      <BiEditAlt id="edit-icon"></BiEditAlt>
-                    </div>
-                    <div>
-                      {" "}
-                      <h3 className="update-type">Lastname:</h3>{" "}
-                      <span className="user-data">Aid</span>{" "}
-                      <BiEditAlt id="edit-icon"></BiEditAlt>
-                    </div>
-                    <div>
-                      {" "}
-                      <h3 className="update-type">Username:</h3>{" "}
-                      <span className="user-data">Aid</span>{" "}
-                      <BiEditAlt id="edit-icon"></BiEditAlt>
-                    </div>
-                    <div>
-                      {" "}
-                      <h3 className="update-type">Email:</h3>{" "}
-                      <span className="user-data">Aid</span>{" "}
-                      <BiEditAlt id="edit-icon"></BiEditAlt>
-                    </div>
-                    <div>
-                      {" "}
-                      <h3 className="update-type">Username:</h3>{" "}
-                      <span className="user-data">Aid</span>{" "}
-                      <BiEditAlt id="edit-icon"></BiEditAlt>
-                    </div>
-                  </aside>
-                </div>
-                <div className="update-section1"></div>
+                {active == 0 ? (
+                  <div className="update-section">
+                    <h1>Manage your Personal Information.</h1>
+                    <h3>
+                      Below are the name and email addresses on file for your
+                      account.
+                    </h3>
+                    <aside>
+                      <div>
+                        {" "}
+                        <h3 className="update-type">Firstname:</h3>{" "}
+                        <span className="user-data">{userData.firstname}</span>{" "}
+                        <BiEditAlt id="edit-icon"></BiEditAlt>
+                      </div>
+                      <div>
+                        {" "}
+                        <h3 className="update-type">Lastname:</h3>{" "}
+                        <span className="user-data">{userData.lastname}</span>{" "}
+                        <BiEditAlt id="edit-icon"></BiEditAlt>
+                      </div>
+                      <div>
+                        {" "}
+                        <h3 className="update-type">Username:</h3>{" "}
+                        <span className="user-data">{userData.username}</span>{" "}
+                        <BiEditAlt id="edit-icon"></BiEditAlt>
+                      </div>
+                     
+                    </aside>
+                  </div>
+                ) : (
+                  <div className="update-section1">
+                    <h1>Manage your Security Settings</h1>
+                    <h3>Change your password.</h3>
+                    <aside>
+                      <form action="">
+                        <div>
+                          {" "}
+                          <h3 className="update-type">Email</h3>{" "}
+                          <input
+                            type="email"
+                            placeholder="Email address"
+                            name="email"
+                          />
+                        </div>
+                        <div>
+                          {" "}
+                          <h3 className="update-type">Password</h3>{" "}
+                          <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                          />
+                        </div>
+                        <div>
+                          {" "}
+                          <h3 className="update-type">Confirm Password</h3>{" "}
+                          <input
+                            type="password"
+                            id="Cpassword"
+                            name="Cpassword"
+                            placeholder="Confirm Password"
+                          />
+                        </div>
+                      </form>
+                    </aside>
+                  </div>
+                )}
               </div>
             </div>
             <div className="col-md-4">
@@ -378,7 +467,7 @@ function Profile(props: any) {
             </div>
             <div className="col-md-4">
               <div className="right">
-                  <Suggested id={props.id} />
+                <Suggested id={props.id} />
               </div>
             </div>
           </div>
