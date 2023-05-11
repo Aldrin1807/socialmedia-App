@@ -302,8 +302,7 @@ function Profile(props: any) {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+      
       <div className="container" id="content">
         {isFollowed || !userData.isPrivate ? (
           <div className="row">
