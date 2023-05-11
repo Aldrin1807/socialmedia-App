@@ -7,6 +7,7 @@ import { FaRegComment } from "react-icons/fa";
 import Comment from "../Comments/Comment";
 import { VscComment, VscBookmark } from "react-icons/vsc";
 import axios from "axios";
+import { DeletePost } from "../Modals/Modals";
 
 function Post(props:any) {
   
@@ -144,12 +145,21 @@ useEffect(()=>{
         setCommentValue(event.target.value);
       };
 
-      const handleDelete =()=>{
-        axios.delete(deleteUrl)
-      }
+    
+      const[deleteModal,setDeleteModal]= useState(false);
+      const handleDelete = () => {
+        setDeleteModal(true);
+      };
+      
+     
+      // const handleDelete =()=>{
+      //   // axios.delete(deleteUrl)
+      //   setDeleteModal(true)
+      // }
 
   return (
     <div className="post-container">
+        <DeletePost showModal={deleteModal} setDeleteModal={setDeleteModal} />
         {showReportSuccess && (
         <Alert
         variant={reportText.status=="Success" ? "success" : "danger"}
