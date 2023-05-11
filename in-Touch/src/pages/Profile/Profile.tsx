@@ -11,7 +11,7 @@ import { useSearchParams } from "react-router-dom";
 import ExpiredModal from "../../components/Modals/ExpiredModal";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
-import { Modal } from "../../components/Modals/Modal";
+import { Modal } from "../../components/Modals/Modals";
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
