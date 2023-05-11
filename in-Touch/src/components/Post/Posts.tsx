@@ -8,7 +8,7 @@ import Comment from "../Comments/Comment";
 import { VscComment, VscBookmark } from "react-icons/vsc";
 import axios from "axios";
 import { DeletePost } from "../Modals/Modals";
-
+import swal from "sweetalert";
 function Post(props:any) {
   
  const getUrl = `https://localhost:44386/api/Likes/get-post-likes?id=${props.postId}`;
@@ -88,17 +88,33 @@ function Post(props:any) {
     status:'',
     message:''
   });
-
   const handleReport = () => {
-    axios.post(reportUrl,{
-      userId: props.id,
-      postId: props.postId
-    }).then((response:any)=>{
-      setReportText(response.data);
-      setShowReportSuccess(true);
-    })
-    
+    swal({
+      title: "Are you sure?",
+      text: "Do you want to report this post?",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willReport) => {
+      if (willReport) {
+        axios.post(reportUrl, {
+          userId: props.id,
+          postId: props.postId
+        }).then((response) => {
+          if (response.data.status === "Success") {
+            swal("Success!", "The post has been reported. Our team will review it shortly.", "success");
+          } else {
+            swal("Oops! Something went wrong.", response.data.message, "error");
+          }
+        }).catch((error) => {
+          swal("Oops! Something went wrong.", error.message, "error");
+        });
+      } else {
+        swal("Reporting canceled!");
+      }
+    });
   };
+
   const handleClose = () => {
     setShowReportSuccess(false);
   };
@@ -146,20 +162,34 @@ useEffect(()=>{
       };
 
     
-      const[deleteModal,setDeleteModal]= useState(false);
-      const handleDelete = () => {
-        setDeleteModal(true);
-      };
-      
+
      
-      // const handleDelete =()=>{
-      //   // axios.delete(deleteUrl)
-      //   setDeleteModal(true)
-      // }
+      const handleDelete = () => {
+        swal({
+          title: "Are you sure?",
+          text: "Once deleted, you will not be able to recover this post!",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        }).then((willDelete) => {
+          if (willDelete) {
+            axios.delete(deleteUrl)
+              .then(() => {
+                swal("Poof! Your post has been deleted!", {
+                  icon: "success",
+                });
+              })
+              .catch((error) => {
+                swal("Oops! Something went wrong.", error.message, "error");
+              });
+          } else {
+            swal("Your post is safe!");
+          }
+        });
+      };
 
   return (
     <div className="post-container">
-        <DeletePost showModal={deleteModal} setDeleteModal={setDeleteModal} />
         {showReportSuccess && (
         <Alert
         variant={reportText.status=="Success" ? "success" : "danger"}
