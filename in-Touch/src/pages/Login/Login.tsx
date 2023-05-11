@@ -39,7 +39,7 @@ function Login(){
       }).then((response) => {
         if(response.data){
           console.log(response.data)
-          localStorage.setItem("token",response.data);
+          sessionStorage.setItem("token",response.data);
          navigate('/home');
         }else{
           setLoginError('An error occurred.');

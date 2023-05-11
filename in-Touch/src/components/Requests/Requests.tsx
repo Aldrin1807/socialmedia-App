@@ -8,8 +8,9 @@ function Requests (props:any){
     const handleAcceptUrl = `https://localhost:44386/api/FollowRequests/handle-accept`;
     const handleDeclineUrl =`https://localhost:44386/api/FollowRequests/handle-decline`;
     const [user,setUser] = useState([]);
-    const [accepted,setAccepted] = useState(false);
-    const [declined,setDeclined] = useState(true);
+
+    const [change,setChange] = useState(false);
+
 
     useEffect(()=>{
       axios.get(getRequestsUrl)
@@ -17,16 +18,17 @@ function Requests (props:any){
         setUser(response.data);
       })
       console.log(user);
-    },[])
+    },[props.id,change])
 
     const handleAccept = (userTwo: number) => {
-      const userOne = props.id;
-      const acceptUrl = `${handleAcceptUrl}?userOne=${userOne}&userTwo=${userTwo}`;
-  
-      axios.post(acceptUrl)
+
+      axios.post(handleAcceptUrl,{
+        followRequestId:userTwo,
+        followRequestedId:props.id
+      })
         .then((response: any) => {
           console.log('Accept request successful');
-          setAccepted(!accepted);
+          setChange(!change);
         })
         .catch((error: any) => {
           console.error('Error accepting request:', error);
@@ -34,13 +36,16 @@ function Requests (props:any){
     };
 
     const handleDecline = (userTwo: number) => {
-      const userOne = props.id;
-      const declineUrl = `${handleDeclineUrl}?userOne=${userOne}&userTwo=${userTwo}`;
-  
-      axios.delete(declineUrl)
+     
+      axios.delete(handleDeclineUrl,{
+        data:{
+        followRequestId:userTwo,
+        followRequestedId:props.id
+        }
+      })
         .then((response: any) => {
           console.log('Accept request successful');
-          setDeclined(!declined);
+          setChange(!change);
         })
         .catch((error: any) => {
           console.error('Error accepting request:', error);
@@ -74,7 +79,7 @@ function Requests (props:any){
               </li>
             ))
           ) : (
-            <li className="no-requests">No requests available.</li>
+            <li className="no-requests" style={{textAlign:'center'}}>No requests available.</li>
           )}
         </ul>
       </>

@@ -6,7 +6,7 @@ import axios from "axios";
 
  
 function Suggested(props:any){
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     type User = {
         id: number;
         firstName: string;

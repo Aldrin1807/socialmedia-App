@@ -17,7 +17,7 @@ function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
   const userId = params.get("user");
   const [postChanged, setPostChanged] = useState(true);
-  const token = localStorage.getItem("token");
+  const token = sessionStorage.getItem("token");
   const [active, setActive] = useState(0);
 
   const [viewedUser, setViewedUser] = useState(userId ?? props.id);

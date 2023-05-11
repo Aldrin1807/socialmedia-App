@@ -190,17 +190,6 @@ useEffect(()=>{
 
   return (
     <div className="post-container">
-        {showReportSuccess && (
-        <Alert
-        variant={reportText.status=="Success" ? "success" : "danger"}
-          dismissible
-          onClose={handleClose}
-          className="fixed-bottom"
-          id="alerti"
-        >
-          {reportText.message}
-        </Alert>
-      )}
       <div className="post-header">
         <a href={`/profile?user=${userInfo.id}`} className="profile-link">
         <img
