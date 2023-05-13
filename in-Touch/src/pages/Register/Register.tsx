@@ -83,7 +83,7 @@ function Register() {
             ).then((response) => {
           console.log(response.data);
           if (response.data.status === 'Success') {
-            swal("User registered successfully!", "Please login with your new account.", "success")
+            swal("Account registered successfully!", "Please login with your new account.", "success")
             .then(() => {
               navigate('/login');
             });

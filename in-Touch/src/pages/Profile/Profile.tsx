@@ -295,31 +295,8 @@ function Profile(props: any) {
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
-                <div className="button-container">
-                  <button
-                    className={active === 0 ? "btn1 active" : "btn1"}
-                    onClick={() => {
-                      setActive(0);
-                    }}
-                  >
-                    Edit Profile
-                  </button>
-                  <button
-                    className={active === 1 ? "btn1 active" : "btn1"}
-                    onClick={() => {
-                      setActive(1);
-                    }}
-                  >
-                    Change Password
-                  </button>
-                </div>
-                {active == 0 ? (
                   <div className="update-section">
-                    <h1>Manage your Personal Information.</h1>
-                    <h3>
-                      Below are the name and email addresses on file for your
-                      account.
-                    </h3>
+                    <h1>Personal Information.</h1>
                     <aside>
                       <div>
                         {" "}
@@ -344,45 +321,7 @@ function Profile(props: any) {
                       </div>
                     </aside>
                   </div>
-                ) : (
-                  <div className="update-section1">
-                    <h1>Manage your Security Settings</h1>
-                    <h3>Change your password.</h3>
-                    <aside>
-                      <form action="">
-                        <div>
-                          {" "}
-                          <h3 className="update-type">Email</h3>{" "}
-                          <input
-                            type="email"
-                            placeholder="Email address"
-                            name="email"
-                          />
-                        </div>
-                        <div>
-                          {" "}
-                          <h3 className="update-type">Password</h3>{" "}
-                          <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            placeholder="Password"
-                          />
-                        </div>
-                        <div>
-                          {" "}
-                          <h3 className="update-type">Confirm Password</h3>{" "}
-                          <input
-                            type="password"
-                            id="Cpassword"
-                            name="Cpassword"
-                            placeholder="Confirm Password"
-                          />
-                        </div>
-                      </form>
-                    </aside>
-                  </div>
-                )}
+               
               </div>
             </div>
             <div className="col-md-4">
