@@ -141,12 +141,9 @@ function Profile(props: any) {
 
   useEffect(() => {
     axios
-      .get(
-        apiUrls.requestedUrl
-          ,{
-           headers: { 'Authorization': `Bearer ${token}` }
-         }
-      )
+      .get(apiUrls.requestedUrl, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response: any) => {
         setFollowRequest(response.data);
       });
@@ -160,10 +157,10 @@ function Profile(props: any) {
           {
             followRequestId: props.id,
             followRequestedId: userId,
+          },
+          {
+            headers: { Authorization: `Bearer ${token}` },
           }
-           ,{
-             headers: { 'Authorization': `Bearer ${token}` }
-           }
         )
         .then(() => {
           setFollowRequest(true);
@@ -171,7 +168,7 @@ function Profile(props: any) {
     } else {
       axios
         .delete("https://localhost:44386/api/FollowRequests/unrequest-follow", {
-          headers: { 'Authorization': `Bearer ${token}` },
+          headers: { Authorization: `Bearer ${token}` },
           data: {
             followRequestId: props.id,
             followRequestedId: userId,
@@ -183,10 +180,8 @@ function Profile(props: any) {
     }
   };
   const [centredModal, setCentredModal] = useState(false);
-  // const handleModal = () => {
-  //   return <Modal centredModal={centredModal} setCentredModal={setCentredModal}></Modal>;
-  // };
-  const toggleShow = () => setCentredModal(!centredModal);
+
+  const toggleShow = (data) => setCentredModal(!centredModal);
   return (
     <>
       <ExpiredModal show={expiredModal} />
@@ -282,16 +277,17 @@ function Profile(props: any) {
                     </div>
                   </div>
                 </div>
-               
-                
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Modal centredModal={centredModal} setCentredModal={setCentredModal}></Modal>
+      <Modal
+        centredModal={centredModal}
+        setCentredModal={setCentredModal}
+      ></Modal>
       <div className="container" id="content">
-        {isCurrentUser ||isFollowed || !userData.isPrivate ? (
+        {isCurrentUser || isFollowed || !userData.isPrivate ? (
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
@@ -304,20 +300,45 @@ function Profile(props: any) {
                         <span className="user-data">{userData.firstname}</span>{" "}
                         <BiEditAlt
                           id="edit-icon"
-                          onClick={toggleShow}
+                          onClick={() => {
+                            toggleShow({
+                              name: "Firstname",
+                              type: "text",
+                              value: userData.firstname,
+                            });
+                          }}
                         ></BiEditAlt>
+                        {/* <Modal ></Modal> */}
                       </div>
                       <div>
                         {" "}
                         <h3 className="update-type">Lastname:</h3>{" "}
                         <span className="user-data">{userData.lastname}</span>{" "}
-                        <BiEditAlt id="edit-icon" onClick={toggleShow}></BiEditAlt>
+                        <BiEditAlt
+                          id="edit-icon"
+                          onClick={() => {
+                            toggleShow({
+                              name: "Lastname",
+                              type: "text",
+                              value: userData.firstname,
+                            });
+                          }}
+                        ></BiEditAlt>
                       </div>
                       <div>
                         {" "}
                         <h3 className="update-type">Username:</h3>{" "}
                         <span className="user-data">{userData.username}</span>{" "}
-                        <BiEditAlt id="edit-icon" onClick={toggleShow}></BiEditAlt>
+                        <BiEditAlt
+                          id="edit-icon"
+                          onClick={() => {
+                            toggleShow({
+                              name: "Username",
+                              type: "text",
+                              value: userData.firstname,
+                            });
+                          }}
+                        ></BiEditAlt>
                       </div>
                     </aside>
                   </div>
