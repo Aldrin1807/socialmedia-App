@@ -36,6 +36,7 @@ function Profile(props: any) {
   const [expiredModal, setExpiredModal] = useState(false);
 
   const [userData, setUserData] = useState({
+    id:'',
     username: "",
     firstname: "",
     lastname: "",
@@ -52,6 +53,7 @@ function Profile(props: any) {
       .then((response: any) => {
         console.log(response.status);
         setUserData({
+          id:response.data.id,
           username: response.data.username,
           firstname: response.data.firstName,
           lastname: response.data.lastName,

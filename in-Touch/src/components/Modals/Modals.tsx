@@ -3,6 +3,7 @@ import axios from "axios";
 import { Modal, Button, Form, ModalDialog } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
 import './Modals.css'
+import swal from "sweetalert";
 
 export function ChangePassword(props: any) {
   const [oldPasswordLengthError,setOldPasswordLengthError] = useState(false);
@@ -41,7 +42,37 @@ export function ChangePassword(props: any) {
     if(oldPasswordValid&&newPasswordValid&&confirmPasswordValid){
       setPasswordDontMatch(!passwordMatch);
       if(passwordMatch){
-        
+        swal({
+          title: 'Confirmation',
+          text: 'Are you sure you want to update your password?',
+          icon: 'warning',
+          buttons: ['Cancel', 'Yes, update it!'],
+          dangerMode: true,
+        }).then((confirmed) => {
+          if (confirmed) {
+            axios
+              .put('https://localhost:44386/api/Users/update-password', {
+                id: props.userId,
+                oldPassword: values.oldPassword,
+                newPassword: values.newPassword
+              })
+              .then((response:any) => {
+                if(response.data.status=="Success"){
+                swal({
+                  title: 'Password Updated',
+                  text: 'Your password has been successfully updated.',
+                  icon: 'success',
+                })
+                }else{
+                  swal({
+                    title: 'Error',
+                    text: `An error occurred while updating your password.${response.data.message}`,
+                    icon: 'error',
+                  });
+              }
+              })
+          }
+        });
       }
     }
     
@@ -66,19 +97,19 @@ export function ChangePassword(props: any) {
             <Form.Label>Current Password</Form.Label>
             <Form.Control type="password"  name="oldPassword" value={values.oldPassword} onChange={onChange} />
             {oldPasswordLengthError?
-            <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
+            <label htmlFor="" className="error-label">Password more than 8 characters less than 20</label>:''}
           </Form.Group>
           <Form.Group controlId="inputPasswordNew">
             <Form.Label>New Password</Form.Label>
             <Form.Control type="password"  name="newPassword" value={values.newPassword} onChange={onChange}/>
             {newPasswordLengthError?
-            <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
+            <label htmlFor="" className="error-label">Password more than 8 characters less than 20</label>:''}
           </Form.Group>
           <Form.Group controlId="inputPasswordNewVerify">
             <Form.Label>Verify New Password</Form.Label>
             <Form.Control type="password"  name="confirmPassword" value={values.confirmPassword} onChange={onChange}/>
             {confirmPasswordLengthError?
-            <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
+            <label htmlFor="" className="error-label">Password more than 8 characters less than 20</label>:''}
              {passwordDontMatch?
             <label htmlFor="" className="error-label">Passwords don't match. Please verify again.</label>:''}
           </Form.Group>
