@@ -11,7 +11,7 @@ import { useSearchParams } from "react-router-dom";
 import ExpiredModal from "../../components/Modals/ExpiredModal";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
-import { Modal } from "../../components/Modals/Modals";
+import { ChangePassword } from "../../components/Modals/Modals";
 import PersonalInfo from "../../components/Personal-Info/Personal-Info";
 
 function Profile(props: any) {
@@ -285,16 +285,14 @@ function Profile(props: any) {
           </div>
         </div>
       </div>
-      <Modal
-        centredModal={centredModal}
-        setCentredModal={setCentredModal}
-      ></Modal>
+
       <div className="container" id="content">
         {isCurrentUser || isFollowed || !userData.isPrivate ? (
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
                   <PersonalInfo userData = {userData} currentUser={isCurrentUser}/>
+
               </div>
             </div>
             <div className="col-md-4">

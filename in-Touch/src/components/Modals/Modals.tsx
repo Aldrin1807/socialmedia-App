@@ -1,98 +1,37 @@
 import React, { useState } from "react";
-import {
-  MDBBtn,
-  MDBModal,
-  MDBModalDialog,
-  MDBModalContent,
-  MDBModalHeader,
-  MDBModalTitle,
-  MDBModalBody,
-  MDBModalFooter,
-  MDBInput,
-} from "mdb-react-ui-kit";
 import axios from "axios";
+import { Modal, Button, Form } from 'react-bootstrap';
 
-export function DeletePost(props: any) {
-  const toggleShow = () => props.setDeleteModal(!props.deleteModal);
-  const handleDelete = () => {
-    axios.delete(props.deleteUrl);
-    toggleShow();
-  };
-  return (
-    <>
-      <MDBModal
-        show={props.deleteModal}
-        setShow={props.setDeleteModal}
-        tabIndex="-1"
-      >
-        <MDBModalDialog>
-          <MDBModalContent>
-            <MDBModalHeader>
-              <MDBModalTitle>
-                Are you sure you want to delete this Post
-              </MDBModalTitle>
-              <MDBBtn
-                className="btn-close"
-                color="none"
-                onClick={toggleShow}
-              ></MDBBtn>
-            </MDBModalHeader>
-            <MDBModalFooter>
-              <MDBBtn color="primary" onClick={toggleShow}>
-                Cancel
-              </MDBBtn>
-              <MDBBtn color="danger" onClick={handleDelete}>
-                Delete
-              </MDBBtn>
-            </MDBModalFooter>
-          </MDBModalContent>
-        </MDBModalDialog>
-      </MDBModal>
-    </>
-  );
-}
 
-export function Modal({ centredModal, setCentredModal, props }: any) {
-  //   const [centredModal, setCentredModal] = useState(false);
-  const [modalData, setModalData] = useState({
-    name: "",
-    type: "",
-    value: "",
-  });
-  const toggleShow = (data: any) => {
-    setCentredModal(!centredModal), setModalData(data);
+export function ChangePassword(props: any) {
+  const handleToggleModal = () => {
+    props.setShowModal(!props.showModal);
   };
 
   return (
-    <>
-      <MDBModal tabIndex="-1" show={centredModal} setShow={setCentredModal}>
-        <MDBModalDialog centered>
-          <MDBModalContent>
-            <MDBModalHeader>
-              <MDBModalTitle>Change {modalData.name} </MDBModalTitle>
-              <MDBBtn
-                className="btn-close"
-                color="none"
-                onClick={toggleShow}
-              ></MDBBtn>
-            </MDBModalHeader>
-            <MDBModalBody>
-              <MDBInput
-                label="Password input"
-                id="typePassword"
-                type={modalData.type}
-                value={modalData.value}
-              />
-            </MDBModalBody>
-            <MDBModalFooter>
-              <MDBBtn color="secondary" onClick={toggleShow}>
-                Close
-              </MDBBtn>
-              <MDBBtn>Save changes</MDBBtn>
-            </MDBModalFooter>
-          </MDBModalContent>
-        </MDBModalDialog>
-      </MDBModal>
-    </>
+    <Modal show={props.showModal} onHide={handleToggleModal} top>
+      <Modal.Header closeButton>
+        <Modal.Title>Change Password</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <Form.Group controlId="inputPasswordOld">
+            <Form.Label>Current Password</Form.Label>
+            <Form.Control type="password" />
+          </Form.Group>
+          <Form.Group controlId="inputPasswordNew">
+            <Form.Label>New Password</Form.Label>
+            <Form.Control type="password" />
+          </Form.Group>
+          <Form.Group controlId="inputPasswordNewVerify">
+            <Form.Label>Verify New Password</Form.Label>
+            <Form.Control type="password" />
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="outline-primary">Save</Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
