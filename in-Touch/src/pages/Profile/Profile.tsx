@@ -181,7 +181,7 @@ function Profile(props: any) {
   };
   const [centredModal, setCentredModal] = useState(false);
 
-  const toggleShow = (data) => setCentredModal(!centredModal);
+  const toggleShow = () => setCentredModal(!centredModal);
   return (
     <>
       <ExpiredModal show={expiredModal} />
