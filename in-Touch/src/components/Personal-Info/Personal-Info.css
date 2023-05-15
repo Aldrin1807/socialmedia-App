@@ -1,0 +1,21 @@
+.personal-info{
+    margin-top: 13.2%;
+    border: 1px solid #ccc;
+    border-radius: 9px;
+    padding: 10px;
+    background-color: white;
+    text-align: left;
+}
+.items{
+    padding: 10%;
+
+}
+.content{
+    font-size : 15px;
+ 
+}
+.change-pw{
+    color: blue;
+    font-size: smaller;
+    text-decoration: underline;
+}

@@ -12,6 +12,7 @@ import ExpiredModal from "../../components/Modals/ExpiredModal";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
 import { Modal } from "../../components/Modals/Modals";
+import PersonalInfo from "../../components/Personal-Info/Personal-Info";
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
@@ -37,6 +38,7 @@ function Profile(props: any) {
     username: "",
     firstname: "",
     lastname: "",
+    email:"",
     isPrivate: false,
     image: "",
   });
@@ -52,6 +54,7 @@ function Profile(props: any) {
           username: response.data.username,
           firstname: response.data.firstName,
           lastname: response.data.lastName,
+          email:response.data.email,
           isPrivate: response.data.isPrivate,
           image: response.data.imagePath,
         });
@@ -291,58 +294,7 @@ function Profile(props: any) {
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
-                  <div className="update-section">
-                    <h1>Personal Information.</h1>
-                    <aside>
-                      <div>
-                        {" "}
-                        <h3 className="update-type">Firstname:</h3>{" "}
-                        <span className="user-data">{userData.firstname}</span>{" "}
-                        <BiEditAlt
-                          id="edit-icon"
-                          onClick={() => {
-                            toggleShow({
-                              name: "Firstname",
-                              type: "text",
-                              value: userData.firstname,
-                            });
-                          }}
-                        ></BiEditAlt>
-                        {/* <Modal ></Modal> */}
-                      </div>
-                      <div>
-                        {" "}
-                        <h3 className="update-type">Lastname:</h3>{" "}
-                        <span className="user-data">{userData.lastname}</span>{" "}
-                        <BiEditAlt
-                          id="edit-icon"
-                          onClick={() => {
-                            toggleShow({
-                              name: "Lastname",
-                              type: "text",
-                              value: userData.firstname,
-                            });
-                          }}
-                        ></BiEditAlt>
-                      </div>
-                      <div>
-                        {" "}
-                        <h3 className="update-type">Username:</h3>{" "}
-                        <span className="user-data">{userData.username}</span>{" "}
-                        <BiEditAlt
-                          id="edit-icon"
-                          onClick={() => {
-                            toggleShow({
-                              name: "Username",
-                              type: "text",
-                              value: userData.firstname,
-                            });
-                          }}
-                        ></BiEditAlt>
-                      </div>
-                    </aside>
-                  </div>
-               
+                  <PersonalInfo userData = {userData} currentUser={isCurrentUser}/>
               </div>
             </div>
             <div className="col-md-4">

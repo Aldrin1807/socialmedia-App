@@ -56,6 +56,11 @@
   padding: 20px;
   text-align: left;
 }
+.left{
+  height: 100%;
+  margin-top: 5%;
+  padding: 20px;
+}
 .display-6 {
   font-size: 30px;
 }
