@@ -1,18 +1,23 @@
 import { BiEditAlt } from 'react-icons/bi'
 import './Personal-Info.css'
 import { useState } from 'react';
-import { ChangePassword } from '../Modals/Modals';
+import { ChangePassword, ChangePersonalInfo } from '../Modals/Modals';
 function PersonalInfo(props: any) {
-    const [showModal, setShowModal] = useState(false);
+    const [passModal, setPassModal] = useState(false);
+    const [pInfoModal, setPInfoModal] = useState(false);
   
     const handleToggleModal = () => {
-      setShowModal(!showModal);
+        setPassModal(!passModal);
     };
+    const handleInfoModal =()=>{
+        setPInfoModal(!pInfoModal);
+    }
   
     return (
       <div className="personal-info">
         <h1 style={{ textAlign: 'center' }}>
-          Personal Information {props.currentUser ? <BiEditAlt /> : null}
+          Personal Information {props.currentUser ? <BiEditAlt onClick={handleInfoModal} /> : null}
+          <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} />
         </h1>
         <div className="items">
           <p className="content">
@@ -33,7 +38,7 @@ function PersonalInfo(props: any) {
             </a>
           ) : null}
         </div>
-        <ChangePassword showModal={showModal} setShowModal={setShowModal} />
+        <ChangePassword showModal={passModal} setShowModal={setPassModal} />
       </div>
     );
   }

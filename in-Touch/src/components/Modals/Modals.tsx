@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Modal, Button, Form } from 'react-bootstrap';
-
+import { Modal, Button, Form, ModalDialog } from 'react-bootstrap';
+import "bootstrap/dist/css/bootstrap.min.css";
+import './Modals.css'
 
 export function ChangePassword(props: any) {
   const handleToggleModal = () => {
     props.setShowModal(!props.showModal);
   };
-
   return (
-    <Modal show={props.showModal} onHide={handleToggleModal} top>
+    <Modal show={props.showModal} onHide={handleToggleModal} top className="password-modal" >
       <Modal.Header closeButton>
         <Modal.Title>Change Password</Modal.Title>
       </Modal.Header>
@@ -33,5 +33,54 @@ export function ChangePassword(props: any) {
         <Button variant="outline-primary">Save</Button>
       </Modal.Footer>
     </Modal>
+  );
+}
+
+export function ChangePersonalInfo(props: any) {
+  const handleToggleModal = () => {
+    props.setShowModal(!props.showModal);
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    // Handle form submission and update personal information
+    // ...
+
+    // Close the modal
+    handleToggleModal();
+  };
+
+  return (
+    <Modal show={props.showModal} onHide={handleToggleModal} top className="pinfo-modal">
+      
+    <Modal.Header closeButton>
+      <Modal.Title>Update Personal Information</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <Form>
+        <Form.Group controlId="">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control type="text" />
+        </Form.Group>
+        <Form.Group controlId="">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control type="text"/>
+        </Form.Group>
+        <Form.Group controlId="">
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="text"  />
+        </Form.Group>
+        <Form.Group controlId="">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="text" />
+        </Form.Group>
+      </Form>
+    </Modal.Body>
+    <Modal.Footer>
+    <Button variant="outline-danger">Cancel</Button>
+      <Button variant="outline-primary">Update</Button>
+    </Modal.Footer>
+
+  </Modal>
   );
 }
