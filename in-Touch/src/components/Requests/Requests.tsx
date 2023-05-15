@@ -79,7 +79,7 @@ function Requests (props:any){
               </li>
             ))
           ) : (
-            <li className="no-requests" style={{textAlign:'center'}}>No requests available.</li>
+            <li className="no-requests" style={{textAlign:'center'}}>No requests atm.</li>
           )}
         </ul>
       </>

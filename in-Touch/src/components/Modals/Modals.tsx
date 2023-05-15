@@ -5,9 +5,56 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './Modals.css'
 
 export function ChangePassword(props: any) {
+  const [oldPasswordLengthError,setOldPasswordLengthError] = useState(false);
+  const [newPasswordLengthError,setNewPasswordLengthError] = useState(false);
+  const [confirmPasswordLengthError,setConfirmPasswordLengthError] = useState(false);
+  const [passwordDontMatch,setPasswordDontMatch] = useState(false);
   const handleToggleModal = () => {
+    setValues({
+      oldPassword : '',
+      newPassword : '',
+      confirmPassword : ''
+    })
+    setOldPasswordLengthError(false)
+    setNewPasswordLengthError(false)
+    setConfirmPasswordLengthError(false);
+    setPasswordDontMatch(false);
+
     props.setShowModal(!props.showModal);
+   
   };
+  const [values,setValues] = useState({
+    oldPassword : '',
+    newPassword : '',
+    confirmPassword : ''
+  })
+  const handleForm = () =>{
+    const oldPasswordValid = values.oldPassword.length >= 8 && values.oldPassword.length <= 20;
+    const newPasswordValid = values.newPassword.length >= 8 && values.newPassword.length <= 20;
+    const confirmPasswordValid = values.confirmPassword.length  >= 8 && values.confirmPassword.length <= 20;
+    const passwordMatch = values.newPassword===values.confirmPassword
+
+    setOldPasswordLengthError(!oldPasswordValid)
+    setNewPasswordLengthError(!newPasswordValid)
+    setConfirmPasswordLengthError(!confirmPasswordValid);
+
+    if(oldPasswordValid&&newPasswordValid&&confirmPasswordValid){
+      setPasswordDontMatch(!passwordMatch);
+      if(passwordMatch){
+        
+      }
+    }
+    
+
+  }
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
   return (
     <Modal show={props.showModal} onHide={handleToggleModal} top className="password-modal" >
       <Modal.Header closeButton>
@@ -17,21 +64,29 @@ export function ChangePassword(props: any) {
         <Form>
           <Form.Group controlId="inputPasswordOld">
             <Form.Label>Current Password</Form.Label>
-            <Form.Control type="password" />
+            <Form.Control type="password"  name="oldPassword" value={values.oldPassword} onChange={onChange} />
+            {oldPasswordLengthError?
+            <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
           </Form.Group>
           <Form.Group controlId="inputPasswordNew">
             <Form.Label>New Password</Form.Label>
-            <Form.Control type="password" />
+            <Form.Control type="password"  name="newPassword" value={values.newPassword} onChange={onChange}/>
+            {newPasswordLengthError?
+            <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
           </Form.Group>
           <Form.Group controlId="inputPasswordNewVerify">
             <Form.Label>Verify New Password</Form.Label>
-            <Form.Control type="password" />
+            <Form.Control type="password"  name="confirmPassword" value={values.confirmPassword} onChange={onChange}/>
+            {confirmPasswordLengthError?
+            <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
+             {passwordDontMatch?
+            <label htmlFor="" className="error-label">Passwords don't match. Please verify again.</label>:''}
           </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>
-      <Button variant="outline-danger">Cancel</Button>
-        <Button variant="outline-primary">Save</Button>
+      <Button variant="outline-danger" onClick={handleToggleModal}>Cancel</Button>
+        <Button variant="outline-primary" onClick={handleForm}>Save</Button>
       </Modal.Footer>
     </Modal>
   );
@@ -55,7 +110,7 @@ export function ChangePersonalInfo(props: any) {
     <Modal show={props.showModal} onHide={handleToggleModal} top className="pinfo-modal">
       
     <Modal.Header closeButton>
-      <Modal.Title>Update Personal Information</Modal.Title>
+    <Modal.Title>Update Personal Information</Modal.Title>
     </Modal.Header>
     <Modal.Body>
       <Form>

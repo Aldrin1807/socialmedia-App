@@ -13,6 +13,7 @@ import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
 import { ChangePassword } from "../../components/Modals/Modals";
 import PersonalInfo from "../../components/Personal-Info/Personal-Info";
+import { BiCamera } from 'react-icons/bi';
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);

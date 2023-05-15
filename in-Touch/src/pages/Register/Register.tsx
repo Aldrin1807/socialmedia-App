@@ -56,7 +56,7 @@ function Register() {
       const lastNameValid = FirstLastNameRegex.test(formData.lastName);
       const userNameValid = UserNameRegex.test(formData.userName);
       const emailValid = EmailRegex.test(formData.email);
-      const passwordValid = formData.password.length >= 8;
+      const passwordValid = formData.password.length >= 8 && formData.password.length <= 20;
       const fileValid = formData.imageFile!=null;
   
       setFirstLasterror(!firstNameValid || !lastNameValid);
