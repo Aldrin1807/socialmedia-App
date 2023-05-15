@@ -23,7 +23,7 @@ import Requests from "../components/Requests/Requests";
 
 function Home(props: any) {
   const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${props.id}`;
-  const userUrl =`https://localhost:44386/api/Users/get-user-info?id=${props.id}`;
+
   type Post = {
     id: number;
     content: string;
@@ -33,12 +33,15 @@ function Home(props: any) {
     userID: number;
   };
   const [userData, setUserData] = useState({
+    id:"",
     username: "",
     firstname: "",
     lastname: "",
     email:"",
-    image: ""
+    isPrivate: false,
+    image: "",
   });
+  const userUrl =`https://localhost:44386/api/Users/get-user-info?id=${props.id}`;
   const [PostData, setPostData] = useState<Post[]>([]);
   useEffect(() => {
     axios
@@ -51,6 +54,21 @@ function Home(props: any) {
       .catch((error) => {
         console.error(error);
       });
+
+      axios.get(userUrl,{
+        headers: { Authorization: `Bearer ${props.token}` }
+      }).then((response:any)=>{
+        setUserData({
+          id:response.data.id,
+          username: response.data.username,
+          firstname: response.data.firstName,
+          lastname: response.data.lastName,
+          email:response.data.email,
+          isPrivate: response.data.isPrivate,
+          image: response.data.imagePath,
+        });
+      })
+    
   }, [props.id]);
 
 
@@ -63,15 +81,15 @@ function Home(props: any) {
         <div className="row">
           <div className="col-sm-2 col-md-3 ">
             <div className="left">
-              <a href="" className="profile">
+              <a href={`/profile`} className="profile">
                 <div className="profile-photo">
                   <img
-                    src=""
+                    src={`https://localhost:44386/User Images/${userData.image}`}
                     alt=""
                   />
                 </div>
                 <div className="handle">
-                  <h4>{userData.firstname}</h4>
+                  <h4>{userData.firstname} {userData.lastname}</h4>
                   <p className="text-muted">@{userData.username}</p>
                 </div>
               </a>

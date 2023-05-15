@@ -237,7 +237,7 @@ function Profile(props: any) {
                           <Button
                             variant="outline-primary"
                             className="butoni-post"
-                            href="/editProfile"
+                            href="#"
                           >
                             Edit
                           </Button>

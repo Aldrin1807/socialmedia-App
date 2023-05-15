@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
-import EditProfile from "./pages/Profile/EditProfile";
 import Home from "./pages/Home";
 import Login from "./pages/Login/Login";
 import PageNotFound from "./pages/PageNotFound";
@@ -15,7 +14,7 @@ import UserList from "./components/Other/UserList";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { TUser } from "./types/types";
-import Editprofilee from "./pages/Profile/Editprofilee";
+
 import PostList from "./components/Other/PostList";
 
 function App() {
@@ -29,6 +28,8 @@ function App() {
       .then((response: any) => {
         setId(response.data);
       });
+
+    
     
   }, [token]);
 
@@ -45,11 +46,11 @@ function App() {
       
       <Routes>
         <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home id={id}  />} />
+        <Route path="/home" element={<Home id={id} token={token} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={id ? <Profile id={id} /> : null} />
         <Route path="/register" element={<Register />} />
-        {/* <Route path="/editProfile" element={<EditProfile id={id}  />} /> */}
+  
         <Route path="/search" element={<Search id={id} />} />
         <Route path="/dashboard" element={<AdminDashboard />} />
         <Route path="/users" element={<UserList />} />

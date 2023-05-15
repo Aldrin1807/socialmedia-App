@@ -82,7 +82,7 @@ img {
 .home-content .col-md-3 .left {
   height: min-content;
   position: sticky;
-  top: var(--sticky-top-left);
+  top: 2rem;
   margin: 1rem;
 }
 .home-content .col-md-3 .left .profile {

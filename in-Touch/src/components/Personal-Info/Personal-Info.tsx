@@ -32,6 +32,9 @@ function PersonalInfo(props: any) {
           <p className="content">
             Email: <b>{props.userData.email}</b>
           </p>
+          <p className="content">
+            Account type: <b>{props.userData.isPrivate?("Private"):("Public")}</b>
+          </p>
           {props.currentUser ? (
             <a className="change-pw" onClick={handleToggleModal}>
               Change Password { <BiEditAlt />}

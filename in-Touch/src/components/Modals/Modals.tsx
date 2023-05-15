@@ -30,6 +30,7 @@ export function ChangePassword(props: any) {
         </Form>
       </Modal.Body>
       <Modal.Footer>
+      <Button variant="outline-danger">Cancel</Button>
         <Button variant="outline-primary">Save</Button>
       </Modal.Footer>
     </Modal>
@@ -73,6 +74,23 @@ export function ChangePersonalInfo(props: any) {
         <Form.Group controlId="">
           <Form.Label>Email</Form.Label>
           <Form.Control type="text" />
+        </Form.Group>
+        <Form.Group controlId="">
+          <Form.Label>Account type</Form.Label>
+          <div style={{display:'flex',justifyContent:'flex-start'}}>
+            <Form.Check
+              type="radio"
+              id="public-radio"
+              name="visibility"
+              label="Public"
+            />
+            <Form.Check
+              type="radio"
+              id="private-radio"
+              name="visibility"
+              label="Private"
+            />
+          </div>
         </Form.Group>
       </Form>
     </Modal.Body>

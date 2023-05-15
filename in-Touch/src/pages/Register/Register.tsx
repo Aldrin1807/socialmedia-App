@@ -173,7 +173,7 @@ function Register() {
           <label htmlFor="" className="error-label">Password more than 8 characters</label>:''}
           <label className="account-text">Account Type:</label><br />
           <div className="account-type">
-            <div>
+          <div>
           <input type="radio" id="public" name="accountType" value="public" checked={accountType === 'public'} onChange={() => setAccountType('public')} />
           <label htmlFor="public">Public</label>
           </div>
