@@ -20,4 +20,5 @@
     color: blue;
     font-size: smaller;
     text-decoration: underline;
+    cursor: pointer;
 }

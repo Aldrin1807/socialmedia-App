@@ -37,12 +37,12 @@ function Login(){
         EmailorUsername : data.EmailorUsername,
         Password : data.Password
       }).then((response) => {
-        if(response.data){
-          console.log(response.data)
-          sessionStorage.setItem("token",response.data);
-         navigate('/home');
+        if(response.data.status=="Success"){
+          console.log(response.data.status)
+          sessionStorage.setItem("token",response.data.message);
+          navigate('/home');
         }else{
-          setLoginError('An error occurred.');
+          setLoginError(`${response.data.message}`);
           setIsLoading(false);
         }
       })

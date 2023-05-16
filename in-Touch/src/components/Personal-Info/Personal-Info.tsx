@@ -16,8 +16,8 @@ function PersonalInfo(props: any) {
     return (
       <div className="personal-info">
         <h1 style={{ textAlign: 'center' }}>
-          Personal Information {props.currentUser ? <BiEditAlt onClick={handleInfoModal} /> : null}
-          <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} />
+          Personal Information {props.currentUser ? <BiEditAlt onClick={handleInfoModal}  /> : null}
+          <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} userData={props.userData} />
         </h1>
         <div className="items">
           <p className="content">

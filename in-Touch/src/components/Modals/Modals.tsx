@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Modal, Button, Form, ModalDialog } from 'react-bootstrap';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -63,12 +63,14 @@ export function ChangePassword(props: any) {
                   text: 'Your password has been successfully updated.',
                   icon: 'success',
                 })
+                handleToggleModal()
                 }else{
                   swal({
                     title: 'Error',
-                    text: `An error occurred while updating your password.${response.data.message}`,
+                    text: `${response.data.message}`,
                     icon: 'error',
                   });
+                  handleToggleModal()
               }
               })
           }
@@ -126,16 +128,55 @@ export function ChangePassword(props: any) {
 export function ChangePersonalInfo(props: any) {
   const handleToggleModal = () => {
     props.setShowModal(!props.showModal);
+
   };
 
+
+  const [values, setValues] = useState({
+    id: '',
+    firstname: '',
+    lastname: '',
+    username: '',
+    email: '',
+    isPrivate: false
+  });
+  
+  useEffect(() => {
+    setValues({
+      id: props.userData.id,
+      firstname: props.userData.firstname,
+      lastname: props.userData.lastname,
+      username: props.userData.username,
+      email: props.userData.email,
+      isPrivate: props.userData.isPrivate
+    });
+  }, [props.userData]);
+
+
+  const radioOnChange = (isPrivateValue:any) => {
+    setValues(prevValues => ({
+      ...prevValues,
+      isPrivate: isPrivateValue
+    }));
+  };
+
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+ 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    // Handle form submission and update personal information
-    // ...
+    
 
-    // Close the modal
+
+
     handleToggleModal();
   };
+
 
   return (
     <Modal show={props.showModal} onHide={handleToggleModal} top className="pinfo-modal">
@@ -147,19 +188,19 @@ export function ChangePersonalInfo(props: any) {
       <Form>
         <Form.Group controlId="">
           <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" />
+          <Form.Control type="text" name="firstname" value={values.firstname} onChange={onChange} />
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text"/>
+          <Form.Control type="text" name="lastname" value={values.lastname} onChange={onChange}/>
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Username</Form.Label>
-          <Form.Control type="text"  />
+          <Form.Control type="text" name="username" value={values.username} onChange={onChange}/>
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="text" />
+          <Form.Control type="text"name="email"value={values.email} onChange={onChange}/>
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Account type</Form.Label>
@@ -169,12 +210,16 @@ export function ChangePersonalInfo(props: any) {
               id="public-radio"
               name="visibility"
               label="Public"
+              checked={!values.isPrivate}
+              onChange={() => radioOnChange(false)}
             />
             <Form.Check
               type="radio"
               id="private-radio"
               name="visibility"
               label="Private"
+              checked={values.isPrivate}
+              onChange={() => radioOnChange(true)}
             />
           </div>
         </Form.Group>
@@ -184,7 +229,6 @@ export function ChangePersonalInfo(props: any) {
     <Button variant="outline-danger">Cancel</Button>
       <Button variant="outline-primary">Update</Button>
     </Modal.Footer>
-
   </Modal>
   );
 }
