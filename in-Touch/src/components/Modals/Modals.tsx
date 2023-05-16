@@ -167,12 +167,63 @@ export function ChangePersonalInfo(props: any) {
       [name]: value,
     }));
   };
+  const [Firsterror,setFirsterror] = useState(true);
+  const [Lasterror,setLasterror] = useState(true);
+  const [Usererror,setUsererror] = useState(true);
+  const [Emailerror,setEmailerror] = useState(true);
  
+
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    
+   
 
+    const FirstLastNameRegex = /^[a-zA-Z]{3,}$/;
+    const UserNameRegex = /^[a-zA-Z0-9]{3,}$/;
+    const EmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+    const firstNameValid = FirstLastNameRegex.test(values.firstname);
+    const lastNameValid = FirstLastNameRegex.test(values.lastname);
+    const userNameValid = UserNameRegex.test(values.username);
+    const emailValid = EmailRegex.test(values.email);
+
+    setFirsterror(!firstNameValid);
+    setLasterror(!lastNameValid);
+    setUsererror(!userNameValid);
+    setEmailerror(!emailValid);
+
+    if(firstNameValid && lastNameValid && userNameValid && emailValid){
+      swal({
+        title: 'Confirmation',
+        text: 'Are you sure you want to update your data?',
+        icon: 'warning',
+        buttons: ['Cancel', 'Yes, update it!'],
+        dangerMode: true,
+      }).then((confirmed) => {
+        if (confirmed) {
+          axios
+            .put('', {
+              
+            })
+            .then((response:any) => {
+              if(response.data.status=="Success"){
+              swal({
+                title: 'Info Updated',
+                text: 'Your Personal Info has been successfully updated.',
+                icon: 'success',
+              })
+              handleToggleModal()
+              }else{
+                swal({
+                  title: 'Error',
+                  text: `${response.data.message}`,
+                  icon: 'error',
+                });
+                handleToggleModal()
+            }
+            })
+          }
+        });
+    }
 
     handleToggleModal();
   };
@@ -189,18 +240,26 @@ export function ChangePersonalInfo(props: any) {
         <Form.Group controlId="">
           <Form.Label>First Name</Form.Label>
           <Form.Control type="text" name="firstname" value={values.firstname} onChange={onChange} />
+          {Firsterror?
+          <label htmlFor="" className="error-label">First Name more than 3 characters</label>:''}
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Last Name</Form.Label>
           <Form.Control type="text" name="lastname" value={values.lastname} onChange={onChange}/>
+          {Lasterror?
+          <label htmlFor="" className="error-label">Last Name more than 3 characters</label>:''}
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Username</Form.Label>
           <Form.Control type="text" name="username" value={values.username} onChange={onChange}/>
+          {Usererror?
+          <label htmlFor="" className="error-label">Username more than 3 characters</label>:''}
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Email</Form.Label>
           <Form.Control type="text"name="email"value={values.email} onChange={onChange}/>
+          {Emailerror?
+          <label htmlFor="" className="error-label">Email invalid</label>:''}
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Account type</Form.Label>
@@ -227,7 +286,7 @@ export function ChangePersonalInfo(props: any) {
     </Modal.Body>
     <Modal.Footer>
     <Button variant="outline-danger">Cancel</Button>
-      <Button variant="outline-primary">Update</Button>
+      <Button variant="outline-primary" onClick={handleSubmit}>Update</Button>
     </Modal.Footer>
   </Modal>
   );
