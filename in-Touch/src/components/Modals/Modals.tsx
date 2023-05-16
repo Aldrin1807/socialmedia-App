@@ -126,10 +126,7 @@ export function ChangePassword(props: any) {
 }
 
 export function ChangePersonalInfo(props: any) {
-  const handleToggleModal = () => {
-    props.setShowModal(!props.showModal);
-
-  };
+ 
 
 
   const [values, setValues] = useState({
@@ -140,6 +137,18 @@ export function ChangePersonalInfo(props: any) {
     email: '',
     isPrivate: false
   });
+  const handleToggleModal = () => {
+    setValues({
+      id: props.userData.id,
+      firstname: props.userData.firstname,
+      lastname: props.userData.lastname,
+      username: props.userData.username,
+      email: props.userData.email,
+      isPrivate: props.userData.isPrivate
+    })
+    props.setShowModal(!props.showModal);
+
+  };
   
   useEffect(() => {
     setValues({
@@ -167,10 +176,10 @@ export function ChangePersonalInfo(props: any) {
       [name]: value,
     }));
   };
-  const [Firsterror,setFirsterror] = useState(true);
-  const [Lasterror,setLasterror] = useState(true);
-  const [Usererror,setUsererror] = useState(true);
-  const [Emailerror,setEmailerror] = useState(true);
+  const [Firsterror,setFirsterror] = useState(false);
+  const [Lasterror,setLasterror] = useState(false);
+  const [Usererror,setUsererror] = useState(false);
+  const [Emailerror,setEmailerror] = useState(false);
  
 
   const handleSubmit = (event: any) => {
@@ -191,6 +200,14 @@ export function ChangePersonalInfo(props: any) {
     setUsererror(!userNameValid);
     setEmailerror(!emailValid);
 
+    const sameData =
+    values.firstname === props.userData.firstname &&
+    values.lastname === props.userData.lastname &&
+    values.email === props.userData.email &&
+    values.isPrivate === props.userData.isPrivate;
+
+    console.log(sameData);
+
     if(firstNameValid && lastNameValid && userNameValid && emailValid){
       swal({
         title: 'Confirmation',
@@ -199,10 +216,19 @@ export function ChangePersonalInfo(props: any) {
         buttons: ['Cancel', 'Yes, update it!'],
         dangerMode: true,
       }).then((confirmed) => {
+        if(sameData){
+          swal('Same Data', 'The data is the same', 'info');
+  
+        }else{
         if (confirmed) {
           axios
-            .put('', {
-              
+            .put('https://localhost:44386/api/Users/update-user-info', {
+              id:values.id,
+              firstName : values.firstname,
+              lastName:values.lastname,
+              username:values.username,
+              email:values.email,
+              isPrivate:values.isPrivate
             })
             .then((response:any) => {
               if(response.data.status=="Success"){
@@ -222,10 +248,10 @@ export function ChangePersonalInfo(props: any) {
             }
             })
           }
+          }
         });
     }
 
-    handleToggleModal();
   };
 
 
@@ -285,7 +311,7 @@ export function ChangePersonalInfo(props: any) {
       </Form>
     </Modal.Body>
     <Modal.Footer>
-    <Button variant="outline-danger">Cancel</Button>
+    <Button variant="outline-danger" onClick={handleToggleModal}>Cancel</Button>
       <Button variant="outline-primary" onClick={handleSubmit}>Update</Button>
     </Modal.Footer>
   </Modal>
