@@ -41,27 +41,9 @@ function Followers(props:any){
     
     return (
       <>
+
                     <ul className="friend-list clearfix" id="lista">
-                    {userData.slice(0, 5).map(user => (
-                        <li key={user.id} className="list-item" >
-                         <a href={`/profile?user=${user.id}`} className="suggested">
-                            <div className="friend-img"><img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
-                                </div>
-                                <div className="friend-info">
-                                    <h4>{user.firstName + " " + user.lastName}</h4>
-                                    <p>@{user.username}</p>
-                                </div>
-                        </a>
-                        </li>
-                    ))}
-                    {(!showAll&&userData.length >5) &&  (
-                      <button onClick={toggleShowAll} style={{border:'none',fontSize:'30px',backgroundColor:'transparent'}}><FiChevronsDown /></button>
-                    )}
-                    </ul>
-                    
-                    {showAll && (
-                    <ul className="friend-list clearfix" id="lista">
-                        {userData.slice(5).map(user => (
+                        {userData.map(user => (
                         <li key={user.id} className="list-item">
                               <a href={`/profile?user=${user.id}`} className="suggested">
                             <div className="friend-img"><img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
@@ -72,10 +54,8 @@ function Followers(props:any){
                                 </div>
                             </a>
                         </li>
-                        ))}
-                          <button onClick={toggleShowAll} style={{border:'none',fontSize:'30px',backgroundColor:'transparent'}}> <FiChevronsUp /></button>
+                        ))} 
                     </ul>
-                    )}
       </>
     );
             }
