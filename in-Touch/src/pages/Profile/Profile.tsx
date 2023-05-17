@@ -8,12 +8,13 @@ import Followers from "../../components/Other/Followers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSearchParams } from "react-router-dom";
-import ExpiredModal from "../../components/Modals/ExpiredModal";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
-import { ChangePassword } from "../../components/Modals/Modals";
+import { ChangePassword, ChangePersonalInfo } from "../../components/Modals/Modals";
 import PersonalInfo from "../../components/Personal-Info/Personal-Info";
 import { BiCamera } from 'react-icons/bi';
+import Following from "../../components/Other/Following";
+import FFCard from "../../components/FF_Card/FF_Card";
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
@@ -185,12 +186,14 @@ function Profile(props: any) {
         });
     }
   };
-  const [centredModal, setCentredModal] = useState(false);
-
-  const toggleShow = () => setCentredModal(!centredModal);
+  const [pInfoModal, setPInfoModal] = useState(false);
+  
+  const handleInfoModal =()=>{
+    setPInfoModal(!pInfoModal);
+}
   return (
     <>
-      <ExpiredModal show={expiredModal} />
+      <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} userData={userData} />
       <div className="container db-social">
         <div className="jumbotron jumbotron-fluid"></div>
         <div className="container-fluid">
@@ -240,7 +243,7 @@ function Profile(props: any) {
                           <Button
                             variant="outline-primary"
                             className="butoni-post"
-                            href="#"
+                            onClick={handleInfoModal}
                           >
                             Edit
                           </Button>
@@ -322,7 +325,9 @@ function Profile(props: any) {
             </div>
             <div className="col-md-4">
               <div className="right">
-                <Suggested id={props.id} />
+                {/* <Suggested id={props.id} /> */}
+                {/* <Following id={props.id} /> */}
+                <FFCard id={props.id}/>
               </div>
             </div>
           </div>

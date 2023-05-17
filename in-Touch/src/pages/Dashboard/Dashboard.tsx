@@ -16,9 +16,7 @@ export const Dashboard = () => {
   };
   return (
     <>
-    <Header />
     <div className="d-flex" id="wrapper">
-      {/* Sidebar */}
       <div className="border-end" id="sidebar-wrapper">
         <Nav variant="pills" defaultActiveKey="#0" className="flex-column">
           <Nav.Link href="#0"onClick={() => handleNavClick(0)}>Dashboard</Nav.Link>

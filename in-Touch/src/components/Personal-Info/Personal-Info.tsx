@@ -4,20 +4,16 @@ import { useState } from 'react';
 import { ChangePassword, ChangePersonalInfo } from '../Modals/Modals';
 function PersonalInfo(props: any) {
     const [passModal, setPassModal] = useState(false);
-    const [pInfoModal, setPInfoModal] = useState(false);
   
     const handleToggleModal = () => {
         setPassModal(!passModal);
     };
-    const handleInfoModal =()=>{
-        setPInfoModal(!pInfoModal);
-    }
+  
   
     return (
       <div className="personal-info">
         <h1 style={{ textAlign: 'center' }}>
-          Personal Information {props.currentUser ? <BiEditAlt onClick={handleInfoModal}  /> : null}
-          <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} userData={props.userData} />
+          Personal Information
         </h1>
         <div className="items">
           <p className="content">

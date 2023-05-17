@@ -9,13 +9,12 @@ import Register from "./pages/Register/Register";
 import Search from "./components/Search/Search";
 import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
 import Loader from "./components/Other/Loader";
-import UserList from "./components/Other/UserList";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { TUser } from "./types/types";
 
-import PostList from "./components/Other/PostList";
+
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 
 function App() {
@@ -35,7 +34,7 @@ function App() {
   }, [token]);
 
   const location = useLocation();
-  const excluded = ["/login", "/register", "/loader", "/dashboard"];
+  const excluded = ["/login", "/register", "/loader"];
   const notHeader = () => {
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);
@@ -51,11 +50,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={id ? <Profile id={id} /> : null} />
         <Route path="/register" element={<Register />} />
-  
         <Route path="/search" element={<Search id={id} />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/users" element={<UserList />} />
-        <Route path="/posts" element={<PostList/>}/>
         <Route path="/loader" element={<Loader />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>

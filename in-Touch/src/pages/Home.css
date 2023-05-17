@@ -294,3 +294,11 @@ img {
     margin-right: 100%;
   }
 }
+.profile ,.menu-item{
+  color: black;
+  text-decoration: none;
+}
+.profile:hover{
+  color: black;
+  text-decoration: none;
+}

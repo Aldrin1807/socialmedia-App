@@ -9,7 +9,7 @@ function Followers(props:any){
 
   const viewedUser = userId ?? props.id;
     const getUrl = `https://localhost:44386/api/Users/user-followers?userId=${viewedUser}`;
-    const token = localStorage.getItem("token")??sessionStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     type User = {
         id: number;
         firstName: string;
@@ -43,8 +43,8 @@ function Followers(props:any){
       <>
                     <ul className="friend-list clearfix" id="lista">
                     {userData.slice(0, 5).map(user => (
-                        <li key={user.id}>
-                        <a href="#">
+                        <li key={user.id} className="list-item" >
+                        <a href="#"className="suggested">
                             <div className="friend-img"><img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
                                 </div>
                                 <div className="friend-info">
@@ -54,15 +54,16 @@ function Followers(props:any){
                         </a>
                         </li>
                     ))}
-                    </ul>
                     {(!showAll&&userData.length >5) &&  (
                     <button onClick={toggleShowAll} style={{border:'none',fontSize:'30px',backgroundColor:'transparent'}}> <FiChevronsDown /></button>
                     )}
+                    </ul>
+                    
                     {showAll && (
                     <ul className="friend-list clearfix" id="lista">
                         {userData.slice(5).map(user => (
-                        <li key={user.id}>
-                            <a href="#">
+                        <li key={user.id} className="list-item">
+                            <a href="#" className="suggested">
                             <div className="friend-img"><img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
                                 </div>
                                 <div className="friend-info">
