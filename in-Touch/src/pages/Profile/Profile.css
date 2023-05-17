@@ -206,7 +206,9 @@
 }
 
 /*left side*/
-
+.col-md-4{
+  background-color: white;
+}
 .left-side {
   background-color: transparent;
 }

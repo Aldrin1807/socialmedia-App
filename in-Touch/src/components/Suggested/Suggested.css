@@ -2,6 +2,7 @@
 .suggested-card{
     padding: 10px;
     background-color: white;
+    border-radius: 9px;
 }
 .list-item{
     /* border: 1px solid lightblue; */
@@ -9,4 +10,6 @@
 }
 .list-item:hover{
     border-bottom: 0.5px solid lightblue;
+    border-right: 0.5px solid lightblue;
+    border-radius: 9px;
 }

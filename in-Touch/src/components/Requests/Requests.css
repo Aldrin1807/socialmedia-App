@@ -1,14 +1,12 @@
 .friend-requests{
     padding: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 9px 9px #ccc;
     border-radius: 9px;
     background-color: white;
 }
 .request{
     border: 1px solid #ccc;
     border-radius: 9px;
-  
+
 }
 
   
