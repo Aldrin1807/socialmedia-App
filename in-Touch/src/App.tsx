@@ -16,6 +16,7 @@ import axios from "axios";
 import { TUser } from "./types/types";
 
 import PostList from "./components/Other/PostList";
+import { Dashboard } from "./pages/Dashboard/Dashboard";
 
 function App() {
   const [id, setId] = useState(null);
@@ -52,7 +53,7 @@ function App() {
         <Route path="/register" element={<Register />} />
   
         <Route path="/search" element={<Search id={id} />} />
-        <Route path="/dashboard" element={<AdminDashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/users" element={<UserList />} />
         <Route path="/posts" element={<PostList/>}/>
         <Route path="/loader" element={<Loader />} />

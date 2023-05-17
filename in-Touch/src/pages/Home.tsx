@@ -43,6 +43,7 @@ function Home(props: any) {
   });
   const userUrl =`https://localhost:44386/api/Users/get-user-info?id=${props.id}`;
   const [PostData, setPostData] = useState<Post[]>([]);
+  const [postChanged,setPostChanged] = useState(true)
   useEffect(() => {
     axios
       .get(apiUrl, {
@@ -50,6 +51,7 @@ function Home(props: any) {
       })
       .then((response: any) => {
         setPostData(response.data);
+        setPostChanged(!postChanged);
       })
       .catch((error) => {
         console.error(error);
@@ -119,6 +121,7 @@ function Home(props: any) {
                       postDate={post.postDate}
                       user={false}
                       id={props.id}
+                      change={postChanged}
                     />
                   ))}
                 </div>

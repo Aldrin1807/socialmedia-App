@@ -76,7 +76,7 @@ function Post(props:any) {
    .then((response:any)=>{
     setCommentCount(response.data);
    })
-  },[props.change])
+  },[commentValue,props.change])
   
 
 
@@ -115,9 +115,7 @@ function Post(props:any) {
     });
   };
 
-  const handleClose = () => {
-    setShowReportSuccess(false);
-  };
+
   
   const [userInfo,setUserInfo] = useState({
     id:'',
