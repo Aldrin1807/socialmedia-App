@@ -1,13 +1,13 @@
 .nav{
     display: flex;
     justify-content: center;
-
 }
 .text, .text:hover{
     color: black;
+    font-size: large;
 }
 .wrapper{
-    border: 1px solid lightblue;
-    border-top: none;
+    /* border: 1px solid lightblue;
+    border-top: none; */
     padding: 5%;
 }

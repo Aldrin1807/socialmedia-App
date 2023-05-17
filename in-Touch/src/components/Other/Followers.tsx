@@ -44,7 +44,7 @@ function Followers(props:any){
                     <ul className="friend-list clearfix" id="lista">
                     {userData.slice(0, 5).map(user => (
                         <li key={user.id} className="list-item" >
-                        <a href="#"className="suggested">
+                         <a href={`/profile?user=${user.id}`} className="suggested">
                             <div className="friend-img"><img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
                                 </div>
                                 <div className="friend-info">
@@ -55,7 +55,7 @@ function Followers(props:any){
                         </li>
                     ))}
                     {(!showAll&&userData.length >5) &&  (
-                    <button onClick={toggleShowAll} style={{border:'none',fontSize:'30px',backgroundColor:'transparent'}}> <FiChevronsDown /></button>
+                      <button onClick={toggleShowAll} style={{border:'none',fontSize:'30px',backgroundColor:'transparent'}}><FiChevronsDown /></button>
                     )}
                     </ul>
                     
@@ -63,7 +63,7 @@ function Followers(props:any){
                     <ul className="friend-list clearfix" id="lista">
                         {userData.slice(5).map(user => (
                         <li key={user.id} className="list-item">
-                            <a href="#" className="suggested">
+                              <a href={`/profile?user=${user.id}`} className="suggested">
                             <div className="friend-img"><img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
                                 </div>
                                 <div className="friend-info">

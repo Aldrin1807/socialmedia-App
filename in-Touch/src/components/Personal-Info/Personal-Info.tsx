@@ -2,6 +2,7 @@ import { BiEditAlt } from 'react-icons/bi'
 import './Personal-Info.css'
 import { useState } from 'react';
 import { ChangePassword, ChangePersonalInfo } from '../Modals/Modals';
+import { Nav } from 'react-bootstrap';
 function PersonalInfo(props: any) {
     const [passModal, setPassModal] = useState(false);
   
@@ -11,10 +12,9 @@ function PersonalInfo(props: any) {
   
   
     return (
-      <div className="personal-info">
-        <h1 style={{ textAlign: 'center' }}>
-          Personal Information
-        </h1>
+      <>
+       <h5>Personal Information</h5>
+       <hr />
         <div className="items">
           <p className="content">
             First Name: <b>{props.userData.firstname}</b>
@@ -38,7 +38,8 @@ function PersonalInfo(props: any) {
           ) : null}
         </div>
         <ChangePassword userId={props.userData.id} showModal={passModal} setShowModal={setPassModal} />
-      </div>
+    
+      </>
     );
   }
 export default PersonalInfo

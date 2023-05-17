@@ -1,15 +1,12 @@
 
 .suggested-card{
-    margin-top: 11px;
-    box-shadow: 2px 2px 9px #ccc;
-    border: 1px solid lightblue;
-    border-radius: 9px;
     padding: 10px;
     background-color: white;
 }
 .list-item{
-    border: 1px solid lightblue;
-    border-radius: 18px;
-    padding: 3px;
+    /* border: 1px solid lightblue; */
     background-color: white;
+}
+.list-item:hover{
+    border-bottom: 0.5px solid lightblue;
 }

@@ -1,19 +1,11 @@
 
-.personal-info{
-    background-color: white;
-    margin-top: 13.2%;
-    border: 1px solid #ccc;
-    border-radius: 9px;
-    padding: 10px;
+.items{
+    padding: 5%;
     background-color: white;
     text-align: left;
 }
-.items{
-    padding: 10%;
-
-}
 .content{
-    font-size : 15px;
+    font-size : 17px;
  
 }
 .change-pw{
@@ -21,4 +13,9 @@
     font-size: smaller;
     text-decoration: underline;
     cursor: pointer;
+}
+.nav{
+    display: flex;
+    justify-content: center;
+    
 }
