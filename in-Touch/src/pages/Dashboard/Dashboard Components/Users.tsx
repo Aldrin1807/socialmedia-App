@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import '../Dashboard.css';
@@ -51,7 +52,7 @@ export const Users = () => {
 
   return (
     <div>
-      <div>Users</div>
+      <div>Users </div>
       <div className='p-5'>
         <Table striped bordered hover responsive="md">
           <thead>
