@@ -1,15 +1,20 @@
 import { BiEditAlt } from 'react-icons/bi'
+import { AiOutlineCamera } from "react-icons/ai";
 import './Personal-Info.css'
 import { useState } from 'react';
-import { ChangePassword, ChangePersonalInfo } from '../Modals/Modals';
+import { ChangePassword, ChangePersonalInfo, ChangeProfilePicture } from '../Modals/Modals';
 import { Nav } from 'react-bootstrap';
 function PersonalInfo(props: any) {
     const [passModal, setPassModal] = useState(false);
-  
-    const handleToggleModal = () => {
+    const [prfModal,setPrfModal] =useState(false);
+
+    const handlePassModal = () => {
         setPassModal(!passModal);
     };
   
+    const handlePrfModal = ()=>{
+      setPrfModal(!prfModal);
+    }
   
     return (
       <>
@@ -32,11 +37,15 @@ function PersonalInfo(props: any) {
             Account type: <b>{props.userData.isPrivate?("Private"):("Public")}</b>
           </p>
           {props.currentUser ? (
-            <a className="change-pw" onClick={handleToggleModal}>
+            <div className='change'>
+            <a className="change-pw" onClick={handlePrfModal}>Change Profile Picture {<AiOutlineCamera />} </a>
+            <a className="change-pw" onClick={handlePassModal}>
               Change Password { <BiEditAlt />}
             </a>
+            </div>
           ) : null}
         </div>
+        <ChangeProfilePicture showModal={prfModal} setShowModal={setPrfModal} />
         <ChangePassword userId={props.userData.id} showModal={passModal} setShowModal={setPassModal} />
     
       </>
