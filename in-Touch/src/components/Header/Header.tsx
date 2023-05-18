@@ -117,7 +117,6 @@ return (
                 menuVariant="light"
               >
                 <NavDropdown.Item href='/profile'>Account</NavDropdown.Item>
-                <NavDropdown.Item href='/editprofile'>Edit Profile</NavDropdown.Item>
                 <NavDropdown.Item onClick={function(){
                     localStorage.clear();
                     sessionStorage.clear();
