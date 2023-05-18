@@ -27,6 +27,26 @@ export const Users = () => {
     }
   }, [token]);
 
+
+
+  const handleDelete = (id: number) => {
+    const newData = data.filter((user) => user.id !== id);
+    console.log(newData);
+  
+    axios.delete(`https://localhost:44386/api/Users/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(() => {
+        setData(newData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
   
 
   return (
@@ -56,7 +76,7 @@ export const Users = () => {
                 <td>{role}</td>
                 <td className="tablees">
                   <Button variant="success" className='Edit'>Edit</Button>{' '}
-                  <Button variant="danger" className='Delete' >Delete</Button>{' '}
+                  <Button variant="danger" className='Delete' onClick={() => handleDelete(id)} >Delete</Button>{' '}
                 </td>
               </tr>
             ))}
