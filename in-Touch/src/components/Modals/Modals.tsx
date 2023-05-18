@@ -124,7 +124,53 @@ export function ChangePassword(props: any) {
     </Modal>
   );
 }
+export function ChangeProfilePicture(props: any) {
+  const [emptyError, setEmptyError] = useState(false);
+  const [image, setImage] = useState<File | null>(null);
 
+  const handleToggleModal = () => {
+    setImage(null);
+    setEmptyError(false);
+    props.setShowModal(!props.showModal);
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setImage(event.target.files[0]);
+    }
+  };
+  const handleSubmit = () =>{
+    const fileValid = image!=null
+    setEmptyError(!fileValid)
+    if(fileValid){
+      const formData = new FormData();
+      formData.append('Image',image);
+      
+    }
+  }
+
+  return (
+    <Modal show={props.showModal} onHide={handleToggleModal} top className="profile-pic-modal">
+      <Modal.Header closeButton>
+        <Modal.Title>Change Password</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <label htmlFor="prfImage" className="image-input" style={emptyError ? { borderColor: 'red' } : undefined}>
+            <input type="file" id="prfImage" accept="image/*" onChange={handleFileChange} hidden />
+            {image ? <p>{image.name}</p> : <p>Upload image here. <b>Required!</b></p>}
+          </label>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="outline-danger" onClick={handleToggleModal}>
+          Cancel
+        </Button>
+        <Button variant="outline-primary"onClick={handleSubmit}>Save</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
 export function ChangePersonalInfo(props: any) {
  
 
