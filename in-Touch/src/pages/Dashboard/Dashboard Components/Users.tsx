@@ -4,6 +4,7 @@ import '../Dashboard.css';
 import { TUser } from '../../../types/types';
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
+
 export const Users = () => {
   const token = sessionStorage.getItem("token");
   const apiUrl = `https://localhost:44386/api/Users/get-users`;
@@ -26,25 +27,27 @@ export const Users = () => {
     }
   }, [token]);
 
+  
+
   return (
     <div>
       <div>Users</div>
-      <div className='p-5'>  
-        <Table striped bordered hover responsive="md">  
-          <thead>  
-            <tr className='tabelat'>  
-              <th >Id</th>  
-              <th>First Name</th>  
-              <th>Last Name</th>  
-              <th>Username</th>  
-              <th>Email</th>  
-              <th>Role</th>  
-              <th className='manage'>Manage</th>  
-            </tr>  
-          </thead>  
-          <tbody>  
+      <div className='p-5'>
+        <Table striped bordered hover responsive="md">
+          <thead>
+            <tr className='tabelat'>
+              <th>Id</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th className='manage'>Manage</th>
+            </tr>
+          </thead>
+          <tbody>
             {data.map(({ id, firstName, lastName, username, email, role }) => (
-              <tr key={id} className="">
+              <tr key={id} className="tables">
                 <td>{id}</td>
                 <td>{firstName}</td>
                 <td>{lastName}</td>
@@ -52,14 +55,14 @@ export const Users = () => {
                 <td>{email}</td>
                 <td>{role}</td>
                 <td className="tablees">
-                <Button variant="success" className='Edit'>Edit</Button>{' '}
-                <Button variant="danger" className='Delete'>Delete</Button>{' '}
+                  <Button variant="success" className='Edit'>Edit</Button>{' '}
+                  <Button variant="danger" className='Delete' >Delete</Button>{' '}
                 </td>
               </tr>
-            ))} 
-          </tbody>  
-        </Table>  
-      </div> 
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 };
