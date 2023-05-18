@@ -7,7 +7,6 @@ import PageNotFound from "./pages/PageNotFound";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
 import Search from "./components/Search/Search";
-import { AdminDashboard } from "./pages/AdminDashboard/AdminDashboard";
 import Loader from "./components/Other/Loader";
 
 import { useEffect, useState } from "react";
