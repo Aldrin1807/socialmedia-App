@@ -13,15 +13,16 @@ function FFCard (props:any) {
         <>
             <Nav variant="tabs" defaultActiveKey="" className="nav">
             <Nav.Item >
-                <Nav.Link href="" onClick={() => handleNavClick(0)} className={`text ${content === 0 ? 'active' : ''}`}>Followers</Nav.Link>
+                <Nav.Link href="" onClick={() => handleNavClick(0)} className={`text ${content === 0 ? 'active' : ''}`}>Following</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-                <Nav.Link href="" onClick={() => handleNavClick(1)} className={`text ${content === 1 ? 'active' : ''}`}>Following</Nav.Link>
+                <Nav.Link href="" onClick={() => handleNavClick(1)} className={`text ${content === 1 ? 'active' : ''}`}>Followers</Nav.Link>
             </Nav.Item>
             </Nav>
         <div className="wrapper">
-        {content === 0 && <Followers id={props.id}/>}
-        {content === 1 && <Following id={props.id} />}
+        {content === 0 && <Following id={props.id} />}
+        {content === 1 && <Followers id={props.id}/>}
+        
         </div>
         </>
     )

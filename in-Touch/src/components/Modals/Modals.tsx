@@ -108,7 +108,7 @@ export function ChangePassword(props: any) {
             <label htmlFor="" className="error-label">Password more than 8 characters less than 20</label>:''}
           </Form.Group>
           <Form.Group controlId="inputPasswordNewVerify">
-            <Form.Label>Verify New Password</Form.Label>
+            <Form.Label>Confirm New Password</Form.Label>
             <Form.Control type="password"  name="confirmPassword" value={values.confirmPassword} onChange={onChange}/>
             {confirmPasswordLengthError?
             <label htmlFor="" className="error-label">Password more than 8 characters less than 20</label>:''}

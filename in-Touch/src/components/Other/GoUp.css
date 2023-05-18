@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
 
 .go-up-icon{
-    margin-top: 10px;
     text-align: center;
     font-family: 'Comfortaa', cursive; 
     padding: 10px;
+    background-color: #b8e5fa;
 }
 .icon {
     font-size: 60px;

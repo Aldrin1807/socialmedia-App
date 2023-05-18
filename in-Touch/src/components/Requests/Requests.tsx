@@ -52,13 +52,14 @@ function Requests (props:any){
         });
     };
     
+    const [showAllRequests,setShowAllRequests] =useState(false)
    
     return (
       <>
         <ul className="friend-requests">
           <h5 style={{ textAlign: 'center' }}>Requests</h5>
           {user.length > 0 ? (
-            user.map((userData: any) => (
+            user.slice(0, showAllRequests ? user.length : 3).map((userData: any) => (
               <li className="request" key={userData.id}>
                 <div className="info">
                   <div className="profile-photo">
@@ -81,7 +82,12 @@ function Requests (props:any){
           ) : (
             <li className="no-requests" style={{textAlign:'center'}}>No requests atm.</li>
           )}
+          {user.length > 3 && (
+          <button className='butoni-less-all' onClick={() => setShowAllRequests(!showAllRequests)}>
+            {showAllRequests ? 'See less Requests' : 'See all Requests'}
+          </button>  )}
         </ul>
+        
       </>
     );
   }

@@ -309,9 +309,12 @@ function Profile(props: any) {
                   </Nav.Item>
                 </Nav>
                 {isCurrentUser ? <PostForm userID={props.id} /> : null}
-                {PostData &&
+                {PostData && PostData.length === 0 ? (
+                  <p style={{textAlign:'center',marginTop:'40px',fontWeight:'bold'}}>No posts yet.</p>
+                ) : (
                   PostData.map((post) => (
                     <Post
+                      key={post.id}
                       postId={post.id}
                       content={post.content}
                       imagePath={post.imagePath}
@@ -320,7 +323,8 @@ function Profile(props: any) {
                       id={props.id}
                       change={postChanged}
                     />
-                  ))}
+                  ))
+                )}
               </div>
             </div>
             <div className="col-md-4">
