@@ -66,7 +66,6 @@
 img {
   display: block;
   width: 100%;
-  
 }
 
 
@@ -89,8 +88,6 @@ img {
   padding: var(--card-padding);
   background-color: var(--color-white);
   border-radius: var(--card-border-radius);
-  border: 1px solid #ccc;
-      box-shadow: 2px 2px 9px #ccc;
   display: flex;
   align-items: center;
   column-gap: 1rem;
@@ -100,7 +97,7 @@ img {
 /**/
 .home-content {
   width: 100%;
-    background: linear-gradient(to top, #ffffff 0%, #b8e5fa 100%);
+  background-color: #b8e5fa;
     /* background: linear-gradient(to top, #dddddd, #999999); */
 }
 

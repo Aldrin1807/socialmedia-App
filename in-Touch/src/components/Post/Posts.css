@@ -9,6 +9,10 @@
     max-width: 700px;
     width: 100%;
   }
+  .butoni-less-all{
+    font-size: large;
+    background-color: white;
+  }
   
   .post-header {
     display: flex;

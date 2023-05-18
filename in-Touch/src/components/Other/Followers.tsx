@@ -41,7 +41,9 @@ function Followers(props:any){
     
     return (
       <>
-
+        {userData.length === 0 ? (
+          <p style={{textAlign:'center',fontWeight:'bold'}}>No Followers yet.</p>
+        ) : (
                     <ul className="friend-list clearfix" id="lista">
                         {userData.map(user => (
                         <li key={user.id} className="list-item">
@@ -56,6 +58,7 @@ function Followers(props:any){
                         </li>
                         ))} 
                     </ul>
+                     )}
       </>
     );
             }

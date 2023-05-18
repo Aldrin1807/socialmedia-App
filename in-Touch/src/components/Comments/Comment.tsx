@@ -16,10 +16,11 @@ function Comment(props:any){
     setComments(response.data);
   })
 },[comments])
+  const [showAllComments, setShowAllComments] = useState(false);
   
   return (
     <ul>
-      {comments.map((comment: any) => (
+      {comments.slice(0, showAllComments ? comments.length : 3).map((comment: any) => (
         <li key={comment.id}>
            <div className="comment-container">
             <div className="comment-image">
@@ -36,6 +37,11 @@ function Comment(props:any){
           </div>
         </li>
       ))}
+     {comments.length > 3 && (
+      <button className='butoni-less-all' onClick={() => setShowAllComments(!showAllComments)}>
+        {showAllComments ? 'See less' : 'See all comments'}
+      </button>
+    )}
     </ul>
   );
 
