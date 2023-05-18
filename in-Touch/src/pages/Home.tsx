@@ -102,7 +102,7 @@ function Home(props: any) {
                 </a>
                 <a href="" className="menu-item">
                   <MdOutlineExplore id="Icons"></MdOutlineExplore>
-                  <h3>Explore</h3>
+                  <h3>Lorem</h3>
                 </a>
                
               </div>         

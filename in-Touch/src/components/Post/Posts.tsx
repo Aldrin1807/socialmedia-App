@@ -141,7 +141,7 @@ function Post(props:any) {
         })
       })
 
-      }, []); 
+      }, [props.id]); 
    
   
 

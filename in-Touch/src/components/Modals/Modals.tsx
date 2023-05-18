@@ -189,7 +189,7 @@ export function ChangeProfilePicture(props: any) {
         <Form>
           <label htmlFor="prfImage" className="image-input" style={emptyError ? { borderColor: 'red' } : undefined}>
             <input type="file" id="prfImage" accept="image/*" onChange={handleFileChange} hidden />
-            {image ? <p>{image.name}</p> : <p>Upload image here. <b>Required!</b></p>}
+            {image ? <p>{image.name}</p> : <p>Upload image here.</p>}
           </label>
         </Form>
       </Modal.Body>

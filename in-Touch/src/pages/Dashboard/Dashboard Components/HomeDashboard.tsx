@@ -12,7 +12,7 @@ const HomeDashboard = () => {
             <p className="text-uppercase mar-btm text-sm">Users Registered</p>
             <FiUsers className="icons" />
             <hr />
-            <p className="h2 text-thin">254,487</p>
+            <p className="h2 text-thin">25</p>
           
         </div>
         </div>
@@ -23,7 +23,7 @@ const HomeDashboard = () => {
             <p className="text-uppercase mar-btm text-sm">Posts made</p>
             <TfiComments className="icons" />
             <hr />
-            <p className="h2 text-thin">873</p>
+            <p className="h2 text-thin">20</p>
           
         </div>
         </div>
@@ -35,7 +35,7 @@ const HomeDashboard = () => {
             
             <MdReportGmailerrorred className="icons" />
             <hr />
-            <p className="h2 text-thin">2,423</p>
+            <p className="h2 text-thin">5</p>
            
         </div>
         </div>
@@ -46,7 +46,7 @@ const HomeDashboard = () => {
             <p className="text-uppercase mar-btm text-sm">suspicious</p>
             <MdReportProblem className="icons" />
             <hr />
-            <p className="h2 text-thin">7,428</p>
+            <p className="h2 text-thin">2</p>
            
         </div>
         </div>
