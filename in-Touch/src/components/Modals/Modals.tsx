@@ -50,12 +50,13 @@ export function ChangePassword(props: any) {
           dangerMode: true,
         }).then((confirmed) => {
           if (confirmed) {
-            axios
-              .put('https://localhost:44386/api/Users/update-password', {
-                id: props.userId,
-                oldPassword: values.oldPassword,
-                newPassword: values.newPassword
-              })
+                axios.put('https://localhost:44386/api/Users/update-password', {
+                  id: props.userId,
+                  oldPassword: values.oldPassword,
+                  newPassword: values.newPassword
+                }, {
+                  headers: { 'Authorization': `Bearer ${props.token}` }
+                })
               .then((response:any) => {
                 if(response.data.status=="Success"){
                 swal({
@@ -144,15 +145,45 @@ export function ChangeProfilePicture(props: any) {
     setEmptyError(!fileValid)
     if(fileValid){
       const formData = new FormData();
+      formData.append('Id',props.userId);
       formData.append('Image',image);
-      
+      swal({
+        title: 'Confirmation',
+        text: 'Are you sure you want to update your Profile Picture?',
+        icon: 'warning',
+        buttons: ['Cancel', 'Yes, update it!'],
+        dangerMode: true,
+      }).then((confirmed) => {
+        if (confirmed) {
+          axios.put('https://localhost:44386/api/Users/update-profile-pic', formData, {
+            headers: { 'Authorization': `Bearer ${props.token}` }
+          })
+            .then((response:any) => {
+              if(response.data.status=="Success"){
+              swal({
+                title: 'Profile Picture Updated',
+                text: 'Your Profile Picture has been successfully updated.',
+                icon: 'success',
+              })
+              handleToggleModal()
+              }else{
+                swal({
+                  title: 'Error',
+                  text: `${response.data.message}`,
+                  icon: 'error',
+                });
+                handleToggleModal()
+            }
+            })
+        }
+      });
     }
   }
 
   return (
     <Modal show={props.showModal} onHide={handleToggleModal} top className="profile-pic-modal">
       <Modal.Header closeButton>
-        <Modal.Title>Change Password</Modal.Title>
+        <Modal.Title>Change Profile Picture</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -267,15 +298,16 @@ export function ChangePersonalInfo(props: any) {
   
         }else{
         if (confirmed) {
-          axios
-            .put('https://localhost:44386/api/Users/update-user-info', {
-              id:values.id,
-              firstName : values.firstname,
-              lastName:values.lastname,
-              username:values.username,
-              email:values.email,
-              isPrivate:values.isPrivate
-            })
+          axios.put('https://localhost:44386/api/Users/update-user-info', {
+            id: values.id,
+            firstName: values.firstname,
+            lastName: values.lastname,
+            username: values.username,
+            email: values.email,
+            isPrivate: values.isPrivate
+          }, {
+            headers: { 'Authorization': `Bearer ${props.token}` }
+          })
             .then((response:any) => {
               if(response.data.status=="Success"){
               swal({

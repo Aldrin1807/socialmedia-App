@@ -193,7 +193,7 @@ function Profile(props: any) {
 }
   return (
     <>
-      <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} userData={userData} />
+      <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} userData={userData} token={token} />
       <div className="container db-social">
         <div className="jumbotron jumbotron-fluid"></div>
         <div className="container-fluid">
@@ -297,7 +297,7 @@ function Profile(props: any) {
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
-                  <PersonalInfo userData = {userData} currentUser={isCurrentUser}/>
+                  <PersonalInfo userData = {userData} currentUser={isCurrentUser} token={token}/>
 
               </div>
             </div>
