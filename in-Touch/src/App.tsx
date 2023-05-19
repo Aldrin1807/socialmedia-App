@@ -29,7 +29,7 @@ function App() {
   }, [token]);
 
   const location = useLocation();
-  const excluded = ["/login", "/register", "/loader", "/profile"];
+  const excluded = ["/login", "/register", "/loader"];
   const notHeader = () => {
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);

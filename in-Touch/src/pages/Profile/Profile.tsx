@@ -18,7 +18,7 @@ import PersonalInfo from "../../components/Personal-Info/Personal-Info";
 import { BiCamera } from "react-icons/bi";
 import Following from "../../components/Other/Following";
 import FFCard from "../../components/FF_Card/FF_Card";
-import SavedPosts from "../../components/Post/SavedPosts";
+
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
@@ -37,7 +37,8 @@ function Profile(props: any) {
     userUrl: `https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
     followedUrl: `https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
     requestedUrl: `https://localhost:44386/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`,
-    savedPostsUrl: `https://localhost:44386/api/Users/users/${viewedUser}/savedposts`,
+    savedPostsUrl: `https://localhost:44386/api/SavedPosts/get-saved-posts?userId=${viewedUser}`,
+
   });
 
   const [expiredModal, setExpiredModal] = useState(false);
@@ -107,8 +108,7 @@ function Profile(props: any) {
     userID: number;
   };
   const [PostData, setPostData] = useState<Post[]>([]);
-  const [SavedPostData, setSavedPostData] = useState<Post[]>([]);
-
+  
   useEffect(() => {
     axios
       .get(apiUrls.apiUrl, {
@@ -119,16 +119,7 @@ function Profile(props: any) {
         setPostChanged(!postChanged);
       });
   }, [PostData]);
-  useEffect(() => {
-    axios
-      .get(apiUrls.savedPostsUrl, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response: any) => {
-        setSavedPostData(response.data);
-        setsavedPostChanged(!savedpostChanged);
-      });
-  }, [SavedPostData]);
+ 
   const handleFollow = () => {
     if (!isFollowed) {
       axios
@@ -212,6 +203,23 @@ function Profile(props: any) {
   const handleNavClick = (index: any) => {
     setContent(index);
   };
+
+  const [SavedPostData, setSavedPostData] = useState<Post[]>([]);
+
+
+  if(isCurrentUser){
+    useEffect(() => {
+      axios
+        .get(apiUrls.savedPostsUrl, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response: any) => {
+          setSavedPostData(response.data);
+          setPostChanged(!savedpostChanged);
+        });
+    }, [SavedPostData]);
+  }
+
   return (
     <>
       <ChangePersonalInfo
@@ -345,22 +353,21 @@ function Profile(props: any) {
                       <Nav.Link
                         href=""
                         onClick={() => handleNavClick(1)}
-                        className={`text ${content === 0 ? "active" : ""}`}
+                        className={`text ${content === 1 ? "active" : ""}`}
                       >
-                        SavedPosts
+                        Saved Posts
                       </Nav.Link>
                     </>
                   ) : (
                     <Nav.Link
                       href=""
-                      onClick={() => handleNavClick(0)}
-                      className={`text ${content === 0 ? "active" : ""}`}
+                      className={"active"}
                     >
                       Posts
                     </Nav.Link>
                   )}
                 </Nav>
-                {isCurrentUser ? <PostForm userID={props.id} /> : null}
+                {isCurrentUser&&content===0 ? <PostForm userID={props.id} /> : null}
                 {content === 0
                   ? // <p
                     //   style={{
@@ -384,15 +391,15 @@ function Profile(props: any) {
                       />
                     ))
                   : SavedPostData.map((post) => (
-                      <SavedPosts
+                      <Post
                         key={post.id}
                         postId={post.id}
                         content={post.content}
                         imagePath={post.imagePath}
                         postDate={post.postDate}
-                        user={isCurrentUser}
+                        user={false}
                         id={props.id}
-                        change={savedpostChanged}
+                        change={postChanged}
                       />
                     ))}
               </div>

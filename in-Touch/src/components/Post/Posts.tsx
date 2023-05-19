@@ -4,10 +4,10 @@ import { Alert, Button, Dropdown, FormControl, Image } from "react-bootstrap";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useEffect, useRef, useState } from "react";
 import { FaRegComment } from "react-icons/fa";
+import { BsBookmarkFill,BsBookmark } from "react-icons/bs";
 import Comment from "../Comments/Comment";
 import { VscComment, VscBookmark } from "react-icons/vsc";
 import axios from "axios";
-import { DeletePost } from "../Modals/Modals";
 import swal from "sweetalert";
 function Post(props:any) {
   
@@ -20,6 +20,7 @@ function Post(props:any) {
  const reportUrl= `https://localhost:44386/api/Reports/make-report`;
  const commLikeUrl=`https://localhost:44386/api/Comments/get-nr-comments?postId=${props.postId}`;
  const deleteUrl=`https://localhost:44386/api/Posts/delete-post?postId=${props.postId}`;
+ const isSaved = `https://localhost:44386/api/SavedPosts/is-liked?userId=${props.id}&postId=${props.postId}`
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClick() {
     if (inputRef.current) {
@@ -82,12 +83,7 @@ function Post(props:any) {
 
 
  
-  const [showReportSuccess, setShowReportSuccess] = useState(false);
 
-  const[reportText,setReportText]=useState({
-    status:'',
-    message:''
-  });
   const handleReport = () => {
     swal({
       title: "Are you sure?",
@@ -186,6 +182,35 @@ useEffect(()=>{
         });
       };
 
+      const[saved,setSaved] = useState(false)
+      const handleSave=()=>{
+        if(!saved){
+          axios.post('https://localhost:44386/api/SavedPosts/save-post',{
+            userId: props.id,
+            postId: props.postId
+          })
+          .then(()=>{
+              setSaved(true);
+          })
+        }else{
+          axios.delete('https://localhost:44386/api/SavedPosts/unsave-post',{
+            data: {
+              userId: props.id,
+              postId: props.postId
+            }
+          })
+          .then(()=>{
+              setSaved(false);
+          })
+        }
+      }
+      useEffect(()=>{
+          axios.get(isSaved)
+          .then((response:any)=>{
+            setSaved(response.data)
+          })
+      },[saved,props.change])
+
   return (
     <div className="post-container">
       <div className="post-header">
@@ -242,6 +267,13 @@ useEffect(()=>{
             />
           )}
           <VscComment onClick={handleClick} />
+
+          { !props.user?(
+          saved?(<BsBookmarkFill onClick={handleSave} />):(<BsBookmark onClick={handleSave} />)
+        ):(
+          null
+        )}
+          
         </div>
         <hr />
       </div>
