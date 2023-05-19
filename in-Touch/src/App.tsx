@@ -13,7 +13,6 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { TUser } from "./types/types";
 
-
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 
 function App() {
@@ -27,9 +26,6 @@ function App() {
       .then((response: any) => {
         setId(response.data);
       });
-
-    
-    
   }, [token]);
 
   const location = useLocation();
@@ -42,7 +38,7 @@ function App() {
   return (
     <div className="App">
       {notHeader() && <Header />}
-      
+
       <Routes>
         <Route index element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home id={id} token={token} />} />

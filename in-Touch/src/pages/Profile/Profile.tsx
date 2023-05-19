@@ -10,16 +10,21 @@ import axios from "axios";
 import { useSearchParams } from "react-router-dom";
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
 import { BiEditAlt } from "react-icons/bi";
-import { ChangePassword, ChangePersonalInfo } from "../../components/Modals/Modals";
+import {
+  ChangePassword,
+  ChangePersonalInfo,
+} from "../../components/Modals/Modals";
 import PersonalInfo from "../../components/Personal-Info/Personal-Info";
-import { BiCamera } from 'react-icons/bi';
+import { BiCamera } from "react-icons/bi";
 import Following from "../../components/Other/Following";
 import FFCard from "../../components/FF_Card/FF_Card";
+
 
 function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
   const userId = params.get("user");
   const [postChanged, setPostChanged] = useState(true);
+  const [savedpostChanged, setsavedPostChanged] = useState(true);
   const token = sessionStorage.getItem("token");
   const [active, setActive] = useState(0);
 
@@ -32,16 +37,18 @@ function Profile(props: any) {
     userUrl: `https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
     followedUrl: `https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
     requestedUrl: `https://localhost:44386/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`,
+    savedPostsUrl: `https://localhost:44386/api/SavedPosts/get-saved-posts?userId=${viewedUser}`,
+
   });
 
   const [expiredModal, setExpiredModal] = useState(false);
 
   const [userData, setUserData] = useState({
-    id:'',
+    id: "",
     username: "",
     firstname: "",
     lastname: "",
-    email:"",
+    email: "",
     isPrivate: false,
     image: "",
   });
@@ -54,11 +61,11 @@ function Profile(props: any) {
       .then((response: any) => {
         console.log(response.status);
         setUserData({
-          id:response.data.id,
+          id: response.data.id,
           username: response.data.username,
           firstname: response.data.firstName,
           lastname: response.data.lastName,
-          email:response.data.email,
+          email: response.data.email,
           isPrivate: response.data.isPrivate,
           image: response.data.imagePath,
         });
@@ -101,7 +108,7 @@ function Profile(props: any) {
     userID: number;
   };
   const [PostData, setPostData] = useState<Post[]>([]);
-
+  
   useEffect(() => {
     axios
       .get(apiUrls.apiUrl, {
@@ -112,7 +119,7 @@ function Profile(props: any) {
         setPostChanged(!postChanged);
       });
   }, [PostData]);
-
+ 
   const handleFollow = () => {
     if (!isFollowed) {
       axios
@@ -187,13 +194,40 @@ function Profile(props: any) {
     }
   };
   const [pInfoModal, setPInfoModal] = useState(false);
-  
-  const handleInfoModal =()=>{
+
+  const handleInfoModal = () => {
     setPInfoModal(!pInfoModal);
-}
+  };
+
+  const [content, setContent] = useState(0);
+  const handleNavClick = (index: any) => {
+    setContent(index);
+  };
+
+  const [SavedPostData, setSavedPostData] = useState<Post[]>([]);
+
+
+  if(isCurrentUser){
+    useEffect(() => {
+      axios
+        .get(apiUrls.savedPostsUrl, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response: any) => {
+          setSavedPostData(response.data);
+          setPostChanged(!savedpostChanged);
+        });
+    }, [SavedPostData]);
+  }
+
   return (
     <>
-      <ChangePersonalInfo showModal={pInfoModal} setShowModal={setPInfoModal} userData={userData} token={token} />
+      <ChangePersonalInfo
+        showModal={pInfoModal}
+        setShowModal={setPInfoModal}
+        userData={userData}
+        token={token}
+      />
       <div className="container db-social">
         <div className="jumbotron jumbotron-fluid"></div>
         <div className="container-fluid">
@@ -297,41 +331,84 @@ function Profile(props: any) {
           <div className="row">
             <div className="col-md-4">
               <div className="left-side">
-                  <PersonalInfo userData = {userData} currentUser={isCurrentUser} token={token}/>
-
+                <PersonalInfo
+                  userData={userData}
+                  currentUser={isCurrentUser}
+                  token={token}
+                />
               </div>
             </div>
             <div className="col-md-4">
               <div className="profile-posts">
                 <Nav fill id="nav-header" variant="tabs" defaultActiveKey="#">
-                  <Nav.Item>
-                    <Nav.Link href="#">Posts</Nav.Link>
-                  </Nav.Item>
+                  {isCurrentUser ? (
+                    <>
+                      <Nav.Link
+                        href=""
+                        onClick={() => handleNavClick(0)}
+                        className={`text ${content === 0 ? "active" : ""}`}
+                      >
+                        Posts
+                      </Nav.Link>
+                      <Nav.Link
+                        href=""
+                        onClick={() => handleNavClick(1)}
+                        className={`text ${content === 1 ? "active" : ""}`}
+                      >
+                        Saved Posts
+                      </Nav.Link>
+                    </>
+                  ) : (
+                    <Nav.Link
+                      href=""
+                      className={"active"}
+                    >
+                      Posts
+                    </Nav.Link>
+                  )}
                 </Nav>
-                {isCurrentUser ? <PostForm userID={props.id} /> : null}
-                {PostData && PostData.length === 0 ? (
-                  <p style={{textAlign:'center',marginTop:'40px',fontWeight:'bold'}}>No posts yet.</p>
-                ) : (
-                  PostData.map((post) => (
-                    <Post
-                      key={post.id}
-                      postId={post.id}
-                      content={post.content}
-                      imagePath={post.imagePath}
-                      postDate={post.postDate}
-                      user={isCurrentUser}
-                      id={props.id}
-                      change={postChanged}
-                    />
-                  ))
-                )}
+                {isCurrentUser&&content===0 ? <PostForm userID={props.id} /> : null}
+                {content === 0
+                  ? // <p
+                    //   style={{
+                    //     textAlign: "center",
+                    //     marginTop: "40px",
+                    //     fontWeight: "bold",
+                    //   }}
+                    // >
+                    //   No posts yet.
+                    // </p>
+                    PostData.map((post) => (
+                      <Post
+                        key={post.id}
+                        postId={post.id}
+                        content={post.content}
+                        imagePath={post.imagePath}
+                        postDate={post.postDate}
+                        user={isCurrentUser}
+                        id={props.id}
+                        change={postChanged}
+                      />
+                    ))
+                  : SavedPostData.map((post) => (
+                      <Post
+                        key={post.id}
+                        postId={post.id}
+                        content={post.content}
+                        imagePath={post.imagePath}
+                        postDate={post.postDate}
+                        user={false}
+                        id={props.id}
+                        change={postChanged}
+                      />
+                    ))}
               </div>
             </div>
             <div className="col-md-4">
               <div className="right">
                 {/* <Suggested id={props.id} /> */}
                 {/* <Following id={props.id} /> */}
-                <FFCard id={props.id}/>
+                <FFCard id={props.id} />
               </div>
             </div>
           </div>
