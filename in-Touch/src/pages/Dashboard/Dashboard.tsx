@@ -18,11 +18,11 @@ export const Dashboard = () => {
     <>
     <div className="d-flex" id="wrapper">
       <div className="border-end" id="sidebar-wrapper">
-        <Nav variant="pills" defaultActiveKey="#0" className="flex-column">
-          <Nav.Link href="#0"onClick={() => handleNavClick(0)}>Dashboard</Nav.Link>
-          <Nav.Link href="#1"onClick={() => handleNavClick(1)}>Manage Users</Nav.Link>
-          <Nav.Link href="#2"onClick={() => handleNavClick(2)}>Manage Reports</Nav.Link>
-          <Nav.Link href="#3"onClick={() => handleNavClick(3)}>Suspicious Posts</Nav.Link>
+        <Nav variant="pills" className="flex-column">
+          <Nav.Link className={`${content === 0 ? "active" : ""}`} onClick={() => handleNavClick(0)}>Dashboard</Nav.Link>
+          <Nav.Link className={`${content === 1 ? "active" : ""}`} onClick={() => handleNavClick(1)}>Manage Users</Nav.Link>
+          <Nav.Link className={`${content === 2 ? "active" : ""}`} onClick={() => handleNavClick(2)}>Manage Reports</Nav.Link>
+          <Nav.Link className={`${content === 3 ? "active" : ""}`} onClick={() => handleNavClick(3)}>Suspicious Posts</Nav.Link>
         </Nav>
       </div>
       <div id="page-content-wrapper">

@@ -137,7 +137,7 @@ function Post(props:any) {
         })
       })
 
-      }, [props.id]); 
+      }, [props.id,props.change]); 
    
   
 

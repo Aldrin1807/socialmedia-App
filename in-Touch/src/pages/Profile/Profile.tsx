@@ -368,16 +368,31 @@ function Profile(props: any) {
                   )}
                 </Nav>
                 {isCurrentUser&&content===0 ? <PostForm userID={props.id} /> : null}
+                {content === 0 && PostData.length===0?(
+                  <p
+                      style={{
+                        textAlign: "center",
+                        marginTop: "40px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      No posts yet.
+                    </p>
+                ):(null)}
+                {content === 1 && SavedPostData.length===0?(
+                  <p
+                      style={{
+                        textAlign: "center",
+                        marginTop: "40px",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      No saved posts yet.
+                    </p>
+                ):(null)}
                 {content === 0
-                  ? // <p
-                    //   style={{
-                    //     textAlign: "center",
-                    //     marginTop: "40px",
-                    //     fontWeight: "bold",
-                    //   }}
-                    // >
-                    //   No posts yet.
-                    // </p>
+                  ? 
+                    
                     PostData.map((post) => (
                       <Post
                         key={post.id}
