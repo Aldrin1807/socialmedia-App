@@ -335,52 +335,66 @@ function Profile(props: any) {
                 <Nav fill id="nav-header" variant="tabs" defaultActiveKey="#">
                   {isCurrentUser ? (
                     <>
-                      <Nav.Link href="#">Posts</Nav.Link>{" "}
-                      <Nav.Link href="#">SavedPosts</Nav.Link>{" "}
+                      <Nav.Link
+                        href=""
+                        onClick={() => handleNavClick(0)}
+                        className={`text ${content === 0 ? "active" : ""}`}
+                      >
+                        Posts
+                      </Nav.Link>
+                      <Nav.Link
+                        href=""
+                        onClick={() => handleNavClick(1)}
+                        className={`text ${content === 0 ? "active" : ""}`}
+                      >
+                        SavedPosts
+                      </Nav.Link>
                     </>
                   ) : (
-                    <Nav.Link href="#">Posts</Nav.Link>
+                    <Nav.Link
+                      href=""
+                      onClick={() => handleNavClick(0)}
+                      className={`text ${content === 0 ? "active" : ""}`}
+                    >
+                      Posts
+                    </Nav.Link>
                   )}
                 </Nav>
                 {isCurrentUser ? <PostForm userID={props.id} /> : null}
-                {content === 0 ? (
-                  // <p
-                  //   style={{
-                  //     textAlign: "center",
-                  //     marginTop: "40px",
-                  //     fontWeight: "bold",
-                  //   }}
-                  // >
-                  //   No posts yet.
-                  // </p>
-                  PostData.map((post) => (
-                    <Post
-                      key={post.id}
-                      postId={post.id}
-                      content={post.content}
-                      imagePath={post.imagePath}
-                      postDate={post.postDate}
-                      user={isCurrentUser}
-                      id={props.id}
-                      change={postChanged}
-                    />
-                  ))
-                ) : (
-                  // PostData.map((post) => (
-                  //   <Post
-                  //     key={post.id}
-                  //     postId={post.id}
-                  //     content={post.content}
-                  //     imagePath={post.imagePath}
-                  //     postDate={post.postDate}
-                  //     user={isCurrentUser}
-                  //     id={props.id}
-                  //     change={postChanged}
-                  //   />
-
-                  // ))
-                  <SavedPosts />
-                )}
+                {content === 0
+                  ? // <p
+                    //   style={{
+                    //     textAlign: "center",
+                    //     marginTop: "40px",
+                    //     fontWeight: "bold",
+                    //   }}
+                    // >
+                    //   No posts yet.
+                    // </p>
+                    PostData.map((post) => (
+                      <Post
+                        key={post.id}
+                        postId={post.id}
+                        content={post.content}
+                        imagePath={post.imagePath}
+                        postDate={post.postDate}
+                        user={isCurrentUser}
+                        id={props.id}
+                        change={postChanged}
+                      />
+                    ))
+                  : SavedPostData.map((post) => (
+                      <SavedPosts
+                        key={post.id}
+                        postId={post.id}
+                        content={post.content}
+                        imagePath={post.imagePath}
+                        postDate={post.postDate}
+                        user={isCurrentUser}
+                        id={props.id}
+                        change={savedpostChanged}
+                      />
+                    ))}
               </div>
             </div>
             <div className="col-md-4">
