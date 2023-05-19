@@ -76,7 +76,7 @@ export const Users = () => {
                 <td>{email}</td>
                 <td>{role}</td>
                 <td className="tablees">
-                  <Button variant="success" className='Edit'>Edit</Button>{' '}
+                  
                   <Button variant="danger" className='Delete' onClick={() => handleDelete(id)} >Delete</Button>{' '}
                 </td>
               </tr>
