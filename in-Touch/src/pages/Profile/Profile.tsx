@@ -24,6 +24,7 @@ function Profile(props: any) {
   const params = new URLSearchParams(window.location.search);
   const userId = params.get("user");
   const [postChanged, setPostChanged] = useState(true);
+  const [savedpostChanged, setsavedPostChanged] = useState(true);
   const token = sessionStorage.getItem("token");
   const [active, setActive] = useState(0);
 
@@ -36,7 +37,7 @@ function Profile(props: any) {
     userUrl: `https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
     followedUrl: `https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
     requestedUrl: `https://localhost:44386/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`,
-    savedPostsUrl : `https://localhost:44386/api/Users/users/${viewedUser}/savedposts`
+    savedPostsUrl: `https://localhost:44386/api/Users/users/${viewedUser}/savedposts`,
   });
 
   const [expiredModal, setExpiredModal] = useState(false);
@@ -118,7 +119,16 @@ function Profile(props: any) {
         setPostChanged(!postChanged);
       });
   }, [PostData]);
-
+  useEffect(() => {
+    axios
+      .get(apiUrls.savedPostsUrl, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response: any) => {
+        setSavedPostData(response.data);
+        setsavedPostChanged(!savedpostChanged);
+      });
+  }, [SavedPostData]);
   const handleFollow = () => {
     if (!isFollowed) {
       axios
@@ -353,7 +363,8 @@ function Profile(props: any) {
                       user={isCurrentUser}
                       id={props.id}
                       change={postChanged}
-                    />))
+                    />
+                  ))
                 ) : (
                   // PostData.map((post) => (
                   //   <Post
@@ -368,7 +379,7 @@ function Profile(props: any) {
                   //   />
 
                   // ))
-                  <SavedPosts/>
+                  <SavedPosts />
                 )}
               </div>
             </div>
