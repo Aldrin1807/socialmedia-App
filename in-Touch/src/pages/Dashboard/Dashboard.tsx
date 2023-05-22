@@ -7,7 +7,7 @@ import { Container, Nav } from 'react-bootstrap';
 import HomeDashboard from './Dashboard Components/HomeDashboard';
 import {ReportedPosts} from './Dashboard Components/ReportedPosts';
 import {ActiveUsers} from './Dashboard Components/Users'
-import { LockedUsers } from './Dashboard Components/LockedUsers';
+import { Messages } from './Dashboard Components/Messages';
 
 export const Dashboard = () => {
   const [content,setContent] = useState(0);
@@ -22,7 +22,7 @@ export const Dashboard = () => {
           <Nav.Link className={`${content === 0 ? "active" : ""}`} onClick={() => handleNavClick(0)}>Dashboard</Nav.Link>
           <Nav.Link className={`${content === 1 ? "active" : ""}`} onClick={() => handleNavClick(1)}>Active Users</Nav.Link>
           <Nav.Link className={`${content === 2 ? "active" : ""}`} onClick={() => handleNavClick(2)}>Reports</Nav.Link>
-          <Nav.Link className={`${content === 3 ? "active" : ""}`} onClick={() => handleNavClick(3)}>Locked Users</Nav.Link>
+          <Nav.Link className={`${content === 3 ? "active" : ""}`} onClick={() => handleNavClick(3)}>Messages</Nav.Link>
         </Nav>
       </div>
       <div id="page-content-wrapper">
@@ -30,7 +30,7 @@ export const Dashboard = () => {
             {content === 0 && <HomeDashboard />}
             {content === 1 && <ActiveUsers />}
             {content === 2 && <ReportedPosts />}
-            {content === 3 && <LockedUsers />}
+            {content === 3 && <Messages />}
         </div>
       </div>
     </div>

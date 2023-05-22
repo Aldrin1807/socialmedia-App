@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const LockedUsers = () => {
+export const Messages = () => {
   return (
     <div>LockedUsers</div>
   )

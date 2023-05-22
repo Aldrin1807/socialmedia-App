@@ -401,36 +401,26 @@ export const ContactTeam = (props:any) => {
   
   const handleToggleModal = () => {
     props.setShowModal(!props.showModal);
-    setValues({
-      usernameOrEmail : '',
-      message: ''
-    })
+    setMessage("");
   };
   const [emailError,setEmailError] = useState(false);
   const [messageError,setMessageError] = useState(false);
 
-  const [values,setValues] = useState({
-    usernameOrEmail : '',
-    message: ''
-  })
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const [message,setMessage] = useState('')
+  const onChange = (e:any) => {
     const { name, value } = e.target;
-    setValues((prevValues) => ({
-      ...prevValues,
-      [name]: value,
-    }));
+    setMessage(value);
   };
   const handleSubmit=()=>{
-    const EmailorUsernameValid = values.usernameOrEmail.length >= 3
-    const messageValid = values.message.length > 0
 
-    setEmailError(!EmailorUsernameValid);
+    const messageValid = message.length > 0
+
     setMessageError(!messageValid);
 
-    if(EmailorUsernameValid&&messageValid){
+    if(messageValid){
       axios.post('https://localhost:44386/api/Users/send-support-message',{
-        usernameOrEmail: values.usernameOrEmail,
-        message: values.message,
+        usernameOrEmail: props.EmailorUsername,
+        message: message,
       }).then((response:any)=>{
         if(response.data.status=="Success"){
           swal({
@@ -463,14 +453,8 @@ export const ContactTeam = (props:any) => {
       <Modal.Body>
         <Form>
         <Form.Group controlId="">
-          <Form.Label>Your email or username</Form.Label>
-          <Form.Control type="text"name="usernameOrEmail" value={values.usernameOrEmail} onChange={onChange}/>
-          {emailError?
-          <label htmlFor="" className="error-label">Please fill this</label>:''} 
-        </Form.Group>
-        <Form.Group controlId="">
           <Form.Label>Your Message</Form.Label>
-          <Form.Control type="text"name="message" value={values.message} onChange={onChange} />
+          <Form.Control type="text"name="message" value={message} onChange={onChange} />
            {messageError?
           <label htmlFor="" className="error-label">Message can't be empty</label>:''} 
         </Form.Group>

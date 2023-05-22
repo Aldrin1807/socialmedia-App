@@ -1,7 +1,6 @@
 .report-content {
     margin: 0 auto;
     width: 80%;
-    border: solid;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -11,12 +10,12 @@
   .buttons{
 
         display: flex;
-        justify-content:space-around;
-      
+        justify-content:flex-start;
         margin-top: 10px;
 
   }
   .reports-btn{
     width: 100px;
     height: 60px;
+    margin-left: 2px;
   }
