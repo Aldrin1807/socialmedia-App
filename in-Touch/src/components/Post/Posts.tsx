@@ -269,7 +269,7 @@ useEffect(()=>{
           <VscComment onClick={handleClick} />
 
           { !props.user?(
-          saved?(<BsBookmarkFill onClick={handleSave} />):(<BsBookmark onClick={handleSave} />)
+          saved?(<BsBookmarkFill onClick={handleSave} style={{fontSize:"30px"}} />):(<BsBookmark onClick={handleSave} style={{fontSize:"30px"}} />)
         ):(
           null
         )}

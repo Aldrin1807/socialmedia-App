@@ -5,6 +5,7 @@ import { FormControl, Button ,Image, Modal} from 'react-bootstrap';
 import { CiUser } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import swal from "sweetalert";
 
 function Login(){
   localStorage.clear();
@@ -13,7 +14,7 @@ function Login(){
   const [error,setError]=useState(false);
   const [Eerror,setEError]=useState(false);
   const [isLoading,setIsLoading] = useState(false);
-  const [loginError, setLoginError] = useState('');
+
   const [remember,setRemember] = useState(false);
   const [data,setData]=useState({
     EmailorUsername:'',
@@ -42,7 +43,7 @@ function Login(){
           sessionStorage.setItem("token",response.data.message);
           navigate('/home');
         }else{
-          setLoginError(`${response.data.message}`);
+          swal("Login Failed", response.data.message, "error");
           setIsLoading(false);
         }
       })
@@ -84,7 +85,6 @@ function Login(){
             />
             
             <p>Don't have an Account? <a href='/register'>Sign up here!</a></p>
-              {loginError && <p className="error">{loginError}</p>}
             <Button variant="outline-primary" className='butoni-post' onClick={handleLogin} disabled={isLoading}>
               {isLoading ? 'Loading...' : 'Login'} 
             </Button>

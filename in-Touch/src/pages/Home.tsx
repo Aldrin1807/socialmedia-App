@@ -11,6 +11,7 @@ import Loader from "../components/Other/Loader";
 import axios from "axios";
 import { AiOutlineHome, AiOutlinePieChart } from "react-icons/ai";
 import { BiMessageDetail } from "react-icons/bi";
+import swal from "sweetalert";
 import {
   MdOutlineExplore,
   MdNotificationsNone,
@@ -69,6 +70,13 @@ function Home(props: any) {
           isPrivate: response.data.isPrivate,
           image: response.data.imagePath,
         });
+      })
+
+      axios.get(`https://localhost:44386/api/Posts/check-deleted-post?userId=${props.id}`)
+      .then((response:any)=>{
+        if(response.data.status=="Error"){
+          swal("One or more of your posts has been deleted", response.data.message, "error");
+        }
       })
     
   }, [props.id]);

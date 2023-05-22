@@ -52,7 +52,6 @@ export const Users = () => {
 
   return (
     <div>
-      <div>Users </div>
       <div className='p-5'>
         <Table striped bordered hover responsive="md">
           <thead>

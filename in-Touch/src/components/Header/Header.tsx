@@ -85,8 +85,6 @@ return (
           <Navbar.Brand href="/home">
             <Image 
             className='header-img'
-            style={{height:'50px',width:'50px'}}
-            roundedCircle
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

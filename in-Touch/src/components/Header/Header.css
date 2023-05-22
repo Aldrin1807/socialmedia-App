@@ -3,10 +3,13 @@
    
 }
 .header-img{
-   background-image:url('https://image-placeholder.com/images/actual-size/57x57.png');
+   background:url('../../assets/logo.png');
    background-position: center;
-   background-size: 100%;
+   background-size: 120%;
    background-repeat: no-repeat;
+   border-radius: 50%;
+    height: 50px;
+    width: 50px;
 }
 .gap-2{
     display: flex;
