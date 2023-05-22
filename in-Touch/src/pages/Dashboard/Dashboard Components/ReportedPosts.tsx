@@ -1,7 +1,10 @@
 import React from 'react'
+import Reports from './Reports'
 
 export const ReportedPosts = () => {
   return (
-    <div>ReportedPosts</div>
+    <div>
+      <Reports />
+    </div>
   )
 }
