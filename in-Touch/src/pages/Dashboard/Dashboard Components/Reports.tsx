@@ -14,6 +14,7 @@ function Reports(props:any){
     madeBy: ''
   })
 
+  const [change,setChange]=useState(false);
 
     useEffect(() => {
       axios.get(`https://localhost:44386/api/Posts/get-post-info?postId=${props.postId}`)
@@ -26,7 +27,7 @@ function Reports(props:any){
         })
       })
 
-    }, [props.postId])
+    }, [props.postId,change])
 
     const handleDeleteReport = () => {
       swal({
@@ -57,6 +58,27 @@ function Reports(props:any){
     };
   
     const handleDeletePost =() =>{
+      swal({
+        title: 'Are you sure?',
+        text: 'Once deleted, the post cannot be recovered!',
+        icon: 'warning',
+        buttons: true,
+        dangerMode: true,
+      })
+        .then((confirmed) => {
+          if (confirmed) {
+            axios
+              .put(`https://localhost:44386/api/Posts/set-delete-attr?postId=${props.postId}`)
+              .then((response:any) => {
+                if(response.data.status=="Success"){
+                  swal(`${response.data.message}`," ", "success")
+                  setChange(!change)
+                }else{
+                  swal(`${response.data.message}`," ", "Error")
+                }
+              })
+          }
+        })
 
     }
     const handleLockUser=()=>{
@@ -79,7 +101,7 @@ function Reports(props:any){
         </div>
         <div className='buttons' > 
         <Button className='reports-btn btn-primary' onClick={handleDeleteReport}>Keep Post</Button>
-        <Button className='reports-btn btn-danger'>Delete Post</Button>
+        <Button className='reports-btn btn-danger' onClick={handleDeletePost}>Delete Post</Button>
         <Button className='reports-btn btn-danger'>Lock this User</Button>
         </div>
         </Accordion.Body>
