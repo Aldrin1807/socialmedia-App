@@ -96,3 +96,11 @@ body{
 .remember-text{
   margin-top: 23px;
 }
+.support {
+  position: absolute;
+  cursor: pointer;
+  font-size: 50px;
+  top: 90%;
+  left: 85%;
+}
+

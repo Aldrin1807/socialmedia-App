@@ -6,6 +6,8 @@ import { CiUser } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import swal from "sweetalert";
+import { MdOutlineSupportAgent } from 'react-icons/md';
+import { ContactTeam } from '../../components/Modals/Modals';
 
 function Login(){
   localStorage.clear();
@@ -52,13 +54,26 @@ function Login(){
       
     }
   }
+  const [contactModal,setContactModal]= useState(false);
+  const handleToggleModal = () => {
+    setContactModal(!contactModal);
+  };
     return(
+      
       <div className='all-content'>
+        <ContactTeam
+         showModal={contactModal}
+         setShowModal={setContactModal}
+        //  userData={userData}
+        //  token={token}
+       />
         <div className='login-text'>
             <h1>Sign in or create an account</h1>
             <p className='lead'>Connect with friends and the world around you on InTouch</p>
         </div>
-        
+        <div className='support'>
+          <MdOutlineSupportAgent onClick={handleToggleModal}  />
+        </div>
         <div className="login">
         <div className="form">
           <form noValidate>

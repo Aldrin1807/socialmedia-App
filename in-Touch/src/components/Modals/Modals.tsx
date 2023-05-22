@@ -395,3 +395,94 @@ export function ChangePersonalInfo(props: any) {
   </Modal>
   );
 }
+
+
+export const ContactTeam = (props:any) => {
+  
+  const handleToggleModal = () => {
+    props.setShowModal(!props.showModal);
+    setValues({
+      usernameOrEmail : '',
+      message: ''
+    })
+  };
+  const [emailError,setEmailError] = useState(false);
+  const [messageError,setMessageError] = useState(false);
+
+  const [values,setValues] = useState({
+    usernameOrEmail : '',
+    message: ''
+  })
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+  const handleSubmit=()=>{
+    const EmailorUsernameValid = values.usernameOrEmail.length >= 3
+    const messageValid = values.message.length > 0
+
+    setEmailError(!EmailorUsernameValid);
+    setMessageError(!messageValid);
+
+    if(EmailorUsernameValid&&messageValid){
+      axios.post('https://localhost:44386/api/Users/send-support-message',{
+        usernameOrEmail: values.usernameOrEmail,
+        message: values.message,
+      }).then((response:any)=>{
+        if(response.data.status=="Success"){
+          swal({
+            title: 'Message sent',
+            text: 'Our team will see your message and decide about your account',
+            icon: 'success',
+          })
+          handleToggleModal()
+        }else{
+          swal({
+            title: 'Message not sent',
+            text: `${response.data.message}`,
+            icon: 'error',
+          })
+          handleToggleModal()
+        }
+      })
+    }
+
+
+  }
+  return (
+    <>
+     <Modal show={props.showModal} onHide={handleToggleModal} top className="contact-modal">
+      <Modal.Header closeButton className="contact-header">
+        <p style={{marginTop:'-20px'}}>Send us a message about it, and why should we unlock it,</p>
+        <p>If your account has been locked.</p>
+        <Modal.Title>Send a Message</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+        <Form.Group controlId="">
+          <Form.Label>Your email or username</Form.Label>
+          <Form.Control type="text"name="usernameOrEmail" value={values.usernameOrEmail} onChange={onChange}/>
+          {emailError?
+          <label htmlFor="" className="error-label">Please fill this</label>:''} 
+        </Form.Group>
+        <Form.Group controlId="">
+          <Form.Label>Your Message</Form.Label>
+          <Form.Control type="text"name="message" value={values.message} onChange={onChange} />
+           {messageError?
+          <label htmlFor="" className="error-label">Message can't be empty</label>:''} 
+        </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="outline-danger" onClick={handleToggleModal}>
+          Cancel
+        </Button>
+        <Button variant="outline-primary" onClick={handleSubmit}>Send Message</Button>
+      </Modal.Footer>
+    </Modal>
+    </>
+  )
+}
