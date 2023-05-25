@@ -1,22 +1,20 @@
 import "./Profile.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Button, Container, Image, Nav, Navbar, Badge } from "react-bootstrap";
+import { Button,  Nav} from "react-bootstrap";
 import Post from "../../components/Post/Posts";
 import PostForm from "../../components/Post/PostForm";
-import Suggested from "../../components/Suggested/Suggested";
-import Followers from "../../components/Other/Followers";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSearchParams } from "react-router-dom";
+
 import PrivateAcc from "../../components/Private Account/PrivateAcc";
-import { BiEditAlt } from "react-icons/bi";
+
 import {
-  ChangePassword,
+
   ChangePersonalInfo,
 } from "../../components/Modals/Modals";
 import PersonalInfo from "../../components/Personal-Info/Personal-Info";
-import { BiCamera } from "react-icons/bi";
-import Following from "../../components/Other/Following";
+
 import FFCard from "../../components/FF_Card/FF_Card";
 
 

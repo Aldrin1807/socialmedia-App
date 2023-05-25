@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FiChevronsDown, FiChevronsUp } from "react-icons/fi";
 
 
 function Following(props:any){

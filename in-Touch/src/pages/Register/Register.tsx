@@ -1,14 +1,11 @@
 import "../Login/Login.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { FormControl, Button, Image, Modal, Spinner } from "react-bootstrap";
+import {  Button  } from "react-bootstrap";
 import "./Register.css";
 import { CiUser } from "react-icons/ci";
-import { MDBFile } from "mdb-react-ui-kit";
 import axios from 'axios'; 
 import {  useState } from "react";
 import { useNavigate  } from 'react-router-dom';
-import { faImage } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import swal from "sweetalert";
 
 function Register() {

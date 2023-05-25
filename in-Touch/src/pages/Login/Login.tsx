@@ -1,12 +1,11 @@
 import './Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useState } from 'react';
-import { FormControl, Button ,Image, Modal} from 'react-bootstrap';
+import {  Button} from 'react-bootstrap';
 import { CiUser } from "react-icons/ci";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import swal from "sweetalert";
-import { MdOutlineSupportAgent } from 'react-icons/md';
 import { ContactTeam } from '../../components/Modals/Modals';
 
 function Login(){

@@ -2,6 +2,6 @@ import React from 'react'
 
 export const Messages = () => {
   return (
-    <div>LockedUsers</div>
+    <div>Messages</div>
   )
 }

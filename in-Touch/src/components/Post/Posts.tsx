@@ -3,7 +3,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Alert, Button, Dropdown, FormControl, Image } from "react-bootstrap";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useEffect, useRef, useState } from "react";
-import { FaRegComment } from "react-icons/fa";
 import { BsBookmarkFill,BsBookmark } from "react-icons/bs";
 import Comment from "../Comments/Comment";
 import { VscComment, VscBookmark } from "react-icons/vsc";
@@ -137,7 +136,7 @@ function Post(props:any) {
         })
       })
 
-      }, [props.id,props.change]); 
+      }, [props.postId,props.change,props.id]); 
    
   
 

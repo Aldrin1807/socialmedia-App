@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "../Suggested/Suggested.css"
 import axios from "axios";
-import { FiChevronsUp, FiChevronsDown} from "react-icons/fi";
 
 function Followers(props:any){
   const params = new URLSearchParams(window.location.search);

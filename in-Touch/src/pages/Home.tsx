@@ -5,21 +5,16 @@ import GoUp from "../components/Other/GoUp";
 import { Link } from "react-scroll";
 import "./Home.css";
 import Suggested from "../components/Suggested/Suggested";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Loader from "../components/Other/Loader";
 import axios from "axios";
-import { AiOutlineHome, AiOutlinePieChart } from "react-icons/ai";
-import { BiMessageDetail } from "react-icons/bi";
+import { AiOutlineHome } from "react-icons/ai";
+
 import swal from "sweetalert";
 import {
   MdOutlineExplore,
-  MdNotificationsNone,
-  MdBookmarkBorder,
-  MdOutlineColorLens,
-  MdOutlineSettings,
+  
 } from "react-icons/md";
-import Header from "../components/Header/Header";
+
 import Requests from "../components/Requests/Requests";
 
 function Home(props: any) {
