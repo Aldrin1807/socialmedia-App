@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from 'react'
-import Reports from './Reports'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import Reports from "./Reports";
+import axios from "axios";
 
 export const ReportedPosts = () => {
-  const [reports,setReports] = useState([])
+  const [messages, setMessages] = useState([]);
 
-  useEffect(()=>{
-    axios.get('https://localhost:44386/api/Reports/get-reports')
-    .then((response:any)=>{
-      setReports(response.data);
-    })
-  },[reports])
-
+  useEffect(() => {
+    axios
+      .get("https://localhost:44386/api/SupportMessages/get-support-messages")
+      .then((response: any) => {
+        setMessages(response.data);
+      });
+  }, [messages]);
 
   return (
     <div>
-      {reports.map((report:any)=>(
+      {messages.map((report: any) => (
         <Reports postId={report.postId} userId={report.userId} />
       ))}
     </div>
-  )
-}
+  );
+};
