@@ -1,40 +1,94 @@
+import axios from "axios";
 import React from "react";
 import { Accordion, Button } from "react-bootstrap";
+import swal from "sweetalert";
 
-export const Messages = () => {
+export const Messages = (props: any) => {
+  const [change,setChange]=useState(false);
+
+  const handleDeleteMessage = () => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, the Message cannot be recovered!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirmed) => {
+      if (confirmed) {
+        axios
+          .delete(
+            "https://localhost:44386/api/SupportMessages/delete-support-message",
+            {
+              data: {
+                id: props.id,
+              },
+            }
+          )
+          .then((response: any) => {
+            if (response.data.status == "Success") {
+              swal("Post successfully kept!", " ", "success");
+            } else {
+              swal(`${response.data.message}`, " ", "Error");
+            }
+          });
+      }
+    });
+  };
+  const handleUnlockUser = () => {
+    swal({
+      title: "Are you sure?",
+      text: "Only you can lock it again!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((confirmed) => {
+      if (confirmed) {
+        axios
+          .put(
+            `https://localhost:44386/api/Users/unlock-account?userId=${props.userId}`
+          )
+          .then((response: any) => {
+            if (response.data.status == "Success") {
+              swal(`${response.data.message}`, " ", "success");
+              setChange(!change)
+            } else {
+              swal(`${response.data.message}`, " ", "Error");
+            }
+          });
+      }
+    });
+  };
+
   return (
     <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>
-          User with ID #{props.userId} has reported Post #{props.postId}
+          User with ID #{props.userId} has sent Message #{props.id}
         </Accordion.Header>
         <Accordion.Body>
           <div className="report-content">
-            <h2>Post #{props.postId}</h2>
-            {postData.imagePath && (
+            <h2>Message #{props.id}</h2>
+            {/* {postData.imagePath && (
               <img
                 src={`https://localhost:44386/Post Images/${postData.imagePath}`}
                 style={{ width: "200px", height: "200px" }}
                 alt=""
               />
-            )}
-            <p>{postData.content}</p>
+            )} */}
+            <p>{props.message}</p>
           </div>
           <div className="buttons">
             <Button
               className="reports-btn btn-primary"
-              onClick={handleDeleteReport}
+              onClick={handleUnlockUser}
             >
               Unlock User
             </Button>
             <Button
               className="reports-btn btn-danger"
-              onClick={handleDeletePost}
+              onClick={handleDeleteMessage}
             >
               Delete Message
-            </Button>
-            <Button className="reports-btn btn-danger" onClick={handleLockUser}>
-              Delete User{" "}
             </Button>
           </div>
         </Accordion.Body>
@@ -42,3 +96,7 @@ export const Messages = () => {
     </Accordion>
   );
 };
+function useState(arg0: boolean): [any, any] {
+  throw new Error("Function not implemented.");
+}
+
