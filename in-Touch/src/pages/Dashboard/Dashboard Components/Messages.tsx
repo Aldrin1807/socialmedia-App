@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { Accordion, Button } from "react-bootstrap";
 import swal from "sweetalert";
 
@@ -96,7 +96,5 @@ export const Messages = (props: any) => {
     </Accordion>
   );
 };
-function useState(arg0: boolean): [any, any] {
-  throw new Error("Function not implemented.");
-}
+
 
