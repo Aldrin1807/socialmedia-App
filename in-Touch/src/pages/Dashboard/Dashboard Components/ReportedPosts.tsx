@@ -3,19 +3,19 @@ import Reports from "./Reports";
 import axios from "axios";
 
 export const ReportedPosts = () => {
-  const [messages, setMessages] = useState([]);
+  const [reports, setReports] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://localhost:44386/api/SupportMessages/get-support-messages")
+      .get("https://localhost:44386/api/Reports/get-reports")
       .then((response: any) => {
-        setMessages(response.data);
+        setReports(response.data);
       });
-  }, [messages]);
+  }, [reports]);
 
   return (
     <div>
-      {messages.map((report: any) => (
+      {reports.map((report: any) => (
         <Reports postId={report.postId} userId={report.userId} />
       ))}
     </div>
