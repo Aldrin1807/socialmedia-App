@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import '../Post/Posts.css';
 import axios from 'axios';
-
+import { Dropdown } from 'react-bootstrap';
+import swal from "sweetalert";
 
 
 function Comment(props:any){
@@ -17,6 +18,34 @@ function Comment(props:any){
   })
 },[comments])
   const [showAllComments, setShowAllComments] = useState(false);
+
+
+  const handleDelete = (id:number) => {
+  swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not be able to recover this comment!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then((willDelete) => {
+    if (willDelete) {
+      axios.delete(`https://localhost:44386/api/Comments/delete-comment?id=${id}`)
+        .then((response:any) => {
+          if(response.data.status=="Success"){
+          swal("Poof! Your comment has been deleted!", {
+            icon: "success",
+          });}else{
+            swal(`${response.data.message}`, {
+              icon: "error",
+            })
+          }
+        })
+    } else {
+      swal("Your comment is safe!");
+    }
+  });
+};
+
   
   return (
     <ul>
@@ -34,6 +63,16 @@ function Comment(props:any){
               </span>
               <span className="comment-text">{comment.comment}</span>
             </div>
+            {props.user==comment.userId?(<div>
+            <Dropdown>
+              <Dropdown.Toggle variant="link" id="dropdown-basic">
+                ...
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={()=>handleDelete(comment.id)}>Delete Comment</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>):null}
           </div>
         </li>
       ))}

@@ -126,7 +126,10 @@ li {
 
 .comment-container {
   display: flex;
-  align-items: flex-start;
+  justify-content: space-between;
+}
+.comment-details{
+  flex: 2;
 }
 
 .comment-image {

@@ -293,6 +293,7 @@ useEffect(()=>{
       <div className="comments-section">
         <Comment 
         postId={props.postId}
+        user={props.id}
         />
       </div>
     </div>
