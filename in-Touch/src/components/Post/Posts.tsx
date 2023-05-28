@@ -292,8 +292,8 @@ useEffect(()=>{
       </form>
       <div className="comments-section">
         <Comment 
-        postId={props.postId}
-        user={props.id}
+          postId={props.postId}
+          user={props.id}
         />
       </div>
     </div>
