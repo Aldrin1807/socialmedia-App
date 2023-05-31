@@ -5,6 +5,7 @@ import { TUser } from '../../../types/types';
 
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
+import { BiMessageRoundedDetail } from "react-icons/bi";
 
 
 const HomeDashboard = () => {
@@ -59,6 +60,17 @@ const HomeDashboard = () => {
         </div>
     </div>
     <div className="col-md-3 col-sm-6 col-xs-12">
+        <div className="panel panel-primary panel-colorful">
+        <div className="panel-body text-center">
+            <p className="text-uppercase mar-btm text-sm">Messages</p>
+            <BiMessageRoundedDetail className="icons" />
+            <hr />
+            <p className="h2 text-thin">2</p>
+           
+        </div>
+        </div>
+    </div>        
+    <div className="col-md-3 col-sm-6 col-xs-12">
         <div className="panel panel-danger panel-colorful">
         <div className="panel-body text-center">
             <p className="text-uppercase mar-btm text-sm">Reports</p>
@@ -70,17 +82,7 @@ const HomeDashboard = () => {
         </div>
         </div>
     </div>
-    <div className="col-md-3 col-sm-6 col-xs-12">
-        <div className="panel panel-danger panel-colorful">
-        <div className="panel-body text-center">
-            <p className="text-uppercase mar-btm text-sm">suspicious</p>
-            <MdReportProblem className="icons" />
-            <hr />
-            <p className="h2 text-thin">2</p>
-           
-        </div>
-        </div>
-    </div>        
+    
     </div>
     </>
   )
