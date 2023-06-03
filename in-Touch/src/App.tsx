@@ -16,15 +16,21 @@ import { TUser } from "./types/types";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 
 function App() {
-  const [id, setId] = useState(null);
+  const [user, setUser] = useState({
+    id:'',
+    role:''
+  });
 
   const token = sessionStorage.getItem("token");
 
   useEffect(() => {
     axios
-      .get(`https://localhost:44386/api/Users/get-user-id?token=${token}`)
+      .get(`https://localhost:44386/api/Users/get-user-from-token?token=${token}`)
       .then((response: any) => {
-        setId(response.data);
+        setUser({
+          id:response.data.id,
+          role:response.data.role
+        });
       });
   }, [token]);
 
@@ -35,17 +41,18 @@ function App() {
     return !excluded.includes(currentPath);
   };
 
+
   return (
     <div className="App">
-      {notHeader() && <Header />}
+      {notHeader() && <Header id={user.id} role={user.role} />}
 
       <Routes>
         <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home id={id} token={token} />} />
+        <Route path="/home" element={<Home id={user.id} token={token} />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={id ? <Profile id={id} /> : null} />
+        <Route path="/profile" element={user.id ? <Profile id={user.id} /> : null} />
         <Route path="/register" element={<Register />} />
-        <Route path="/search" element={<Search id={id} />} />
+        <Route path="/search" element={<Search id={user.id} />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/loader" element={<Loader />} />
         <Route path="*" element={<PageNotFound />} />

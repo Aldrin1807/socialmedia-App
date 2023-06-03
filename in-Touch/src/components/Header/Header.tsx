@@ -12,12 +12,19 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import swal from "sweetalert";
 
-function Header(){
+function Header(props:any){
   const token = sessionStorage.getItem("token");
   const tokenUrl = `https://localhost:44386/api/Users/is-token-available?token=${token}`
   const navigate = useNavigate();
 
+ useEffect(()=>{
+  if(props.role==='1'){
+    navigate('/dashboard');
+  }
+ },[props.role]);
+ 
   useEffect(() => {
+  
     const interval = setInterval(checkTokenAvailability, 30 * 1000); 
 
     return () => {
@@ -66,11 +73,13 @@ function Header(){
     }
   };
   setTimeout(() => {
+    
     if (!token) {
       navigate("/login");
     }
     setIsLoading(false);
   }, 1000);
+  
   const [isLoading, setIsLoading] = useState(true);
 if(isLoading) {
 return (
