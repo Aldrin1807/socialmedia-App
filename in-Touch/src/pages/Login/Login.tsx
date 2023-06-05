@@ -14,7 +14,7 @@ import jwtDecode from 'jwt-decode';
 function Login(){
   localStorage.clear();
   const navigate = useNavigate();
-  const apiUrl = "https://localhost:44386/api/Users/login"
+  const apiUrl = "https://localhost:44386/api/Auth/login"
   const [error,setError]=useState(false);
   const [Eerror,setEError]=useState(false);
   const [isLoading,setIsLoading] = useState(false);
