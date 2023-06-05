@@ -17,11 +17,6 @@ function Header(props:any){
   const tokenUrl = `https://localhost:44386/api/Users/is-token-available?token=${token}`
   const navigate = useNavigate();
 
- useEffect(()=>{
-  if(props.role==='1'){
-    navigate('/dashboard');
-  }
- },[props.role]);
  
   useEffect(() => {
   
@@ -98,39 +93,60 @@ return (
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-          <Nav.Link href="/home">Home</Nav.Link>
+            {props.admin?(  <Nav.Link href="/dashboard">Dashboard</Nav.Link>):(<Nav.Link href="/home">Home</Nav.Link>)}
+          
             <Nav className="me-auto" id='items'>
-              <Nav.Item>
-              <Form className="d-flex" id='search-forma'>
-              <FormControl
-                type="search"
-                placeholder="Search Users"
-                className="me-2"
-                aria-label="Search Users"
-                id="searchInput"
-                value={searchQuery}
-                onChange={onChange}
-                style={{borderColor: error ? 'red' : undefined }}
-              />
-              <Button variant="outline-primary" onClick={handleClick}>Search</Button>
-            </Form>
-          </Nav.Item>
+              {props.admin?(null):(
+                <Nav.Item>
+                <Form className="d-flex" id='search-forma'>
+                <FormControl
+                  type="search"
+                  placeholder="Search Users"
+                  className="me-2"
+                  aria-label="Search Users"
+                  id="searchInput"
+                  value={searchQuery}
+                  onChange={onChange}
+                  style={{borderColor: error ? 'red' : undefined }}
+                />
+                <Button variant="outline-primary" onClick={handleClick}>Search</Button>
+              </Form>
+            </Nav.Item>
+              )}
+              
             </Nav>
-            <Nav className="gap-2">
-                <NavDropdown
-                id="user-dropdown"
-                title={<VscAccount style={{fontSize:'30px', color: '#4b6cb7'}}/>}
-                align="end"
-                menuVariant="light"
-              >
-                <NavDropdown.Item href='/profile'>Account</NavDropdown.Item>
-                <NavDropdown.Item onClick={function(){
-                    localStorage.clear();
-                    sessionStorage.clear();
-                  navigate('/login');
-                }} >Sign out</NavDropdown.Item>
-                </NavDropdown>
-            </Nav>
+            {props.admin?(
+               <Nav className="gap-2">
+               <NavDropdown
+               id="user-dropdown"
+               title={<VscAccount style={{fontSize:'30px', color: '#4b6cb7'}}/>}
+               align="end"
+               menuVariant="light"
+             >
+               <NavDropdown.Item onClick={function(){
+                   localStorage.clear();
+                   sessionStorage.clear();
+                 navigate('/login');
+               }} >Sign out</NavDropdown.Item>
+               </NavDropdown>
+               </Nav>
+            ):(
+              <Nav className="gap-2">
+              <NavDropdown
+              id="user-dropdown"
+              title={<VscAccount style={{fontSize:'30px', color: '#4b6cb7'}}/>}
+              align="end"
+              menuVariant="light"
+            >
+              <NavDropdown.Item href='/profile'>Account</NavDropdown.Item>
+              <NavDropdown.Item onClick={function(){
+                  localStorage.clear();
+                  sessionStorage.clear();
+                navigate('/login');
+              }} >Sign out</NavDropdown.Item>
+              </NavDropdown>
+              </Nav>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>

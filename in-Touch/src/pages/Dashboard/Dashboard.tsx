@@ -11,6 +11,7 @@ import { AiOutlineDashboard } from "react-icons/ai";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 import { FiUsers } from "react-icons/fi";
 import { MdReportGmailerrorred } from "react-icons/md";
+import Header from "../../components/Header/Header";
 
 export const Dashboard = () => {
   const [content, setContent] = useState(0);
@@ -19,6 +20,7 @@ export const Dashboard = () => {
   };
   return (
     <>
+    <Header admin={true} />
       <div className="d-flex" id="wrapper">
         <div className="border-end" id="sidebar-wrapper">
           <Nav variant="pills" className="flex-column" id="side-nav">
