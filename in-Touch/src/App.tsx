@@ -56,7 +56,7 @@ function App() {
         {user.role==='1'?(
           <Routes>
           <Route index element={<Navigate to="/dashboard" />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard token={token} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
@@ -70,6 +70,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/search" element={<Search id={user.id} />} />
           <Route path="/loader" element={<Loader />} />
+          <Route path="/dashboard" element={<Navigate to="/home" />}/>
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         )}

@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import Reports from "./Reports";
 import axios from "axios";
 
-export const ReportedPosts = () => {
+export const ReportedPosts = (props:any) => {
   const [reports, setReports] = useState([]);
 
   useEffect(() => {
     axios
-      .get("https://localhost:44386/api/Reports/get-reports")
+      .get("https://localhost:44386/api/Reports/get-reports", {
+        headers: {
+          Authorization: `Bearer ${props.token}`
+        }
+      })
       .then((response: any) => {
         setReports(response.data);
       });

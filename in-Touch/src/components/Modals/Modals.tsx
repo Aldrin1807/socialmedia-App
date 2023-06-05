@@ -418,7 +418,7 @@ export const ContactTeam = (props:any) => {
     setMessageError(!messageValid);
 
     if(messageValid){
-      axios.post('https://localhost:44386/api/Users/send-support-message',{
+      axios.post('https://localhost:44386/api/SupportMessages/send-support-message',{
         usernameOrEmail: props.EmailorUsername,
         message: message,
       }).then((response:any)=>{

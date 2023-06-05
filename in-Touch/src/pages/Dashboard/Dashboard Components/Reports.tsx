@@ -68,7 +68,11 @@ function Reports(props:any){
         .then((confirmed) => {
           if (confirmed) {
             axios
-              .put(`https://localhost:44386/api/Posts/set-delete-attr?postId=${props.postId}`)
+              .put(`https://localhost:44386/api/Posts/set-delete-attr?postId=${props.postId}`, {
+                headers: {
+                  Authorization: `Bearer ${token}`
+                }
+              })
               .then((response:any) => {
                 if(response.data.status=="Success"){
                   swal(`${response.data.message}`," ", "success")
@@ -93,7 +97,11 @@ function Reports(props:any){
       .then((confirmed) => {
         if (confirmed) {
           axios
-            .put(`https://localhost:44386/api/Users/lock-account?userId=${postData.madeBy}`)
+            .put(`https://localhost:44386/api/Users/lock-account?userId=${postData.madeBy}`, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            })
             .then((response:any) => {
               if(response.data.status=="Success"){
                 swal(`${response.data.message}`," ", "success")

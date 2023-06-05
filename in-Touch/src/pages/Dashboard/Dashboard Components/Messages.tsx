@@ -19,6 +19,9 @@ export const Messages = (props: any) => {
           .delete(
             "https://localhost:44386/api/SupportMessages/delete-support-message",
             {
+              headers: {
+                Authorization: `Bearer ${props.token}`,
+              },
               data: {
                 id: props.id,
               },
@@ -45,7 +48,11 @@ export const Messages = (props: any) => {
       if (confirmed) {
         axios
           .put(
-            `https://localhost:44386/api/Users/unlock-account?userId=${props.userId}`
+            `https://localhost:44386/api/Users/unlock-account?userId=${props.userId}`,{
+              headers: {
+                Authorization: `Bearer ${props.token}`,
+              }
+            }
           )
           .then((response: any) => {
             if (response.data.status == "Success") {

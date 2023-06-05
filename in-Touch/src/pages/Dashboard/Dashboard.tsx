@@ -57,10 +57,10 @@ export const Dashboard = (props:any) => {
         </div>
         <div id="page-content-wrapper">
           <div className="container-fluid">
-            {content === 0 && <HomeDashboard />}
-            {content === 1 && <ActiveUsers />}
-            {content === 2 && <MessagesFromUsers />}
-            {content === 3 && <ReportedPosts />}
+            {content === 0 && <HomeDashboard  token={props.token}/>}
+            {content === 1 && <ActiveUsers token={props.token} />}
+            {content === 2 && <MessagesFromUsers token={props.token} />}
+            {content === 3 && <ReportedPosts token={props.token} />}
             
           </div>
         </div>

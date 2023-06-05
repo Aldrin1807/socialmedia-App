@@ -8,10 +8,8 @@ import axios from "axios";
 import { BiMessageRoundedDetail } from "react-icons/bi";
 
 
-const HomeDashboard = () => {
+const HomeDashboard = (props:any) => {
    
-
-  const token = sessionStorage.getItem("token");
   const apiUrl = `https://localhost:44386/api/Users/get-users`;
   const [data, setData] = useState<TUser[]>([]);
 
@@ -19,7 +17,7 @@ const HomeDashboard = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(apiUrl, {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${props.token}` }
         });
         setData(response.data);
       } catch (error) {
@@ -27,10 +25,10 @@ const HomeDashboard = () => {
       }
     };
 
-    if (token) {
+    if (props.token) {
       fetchData();
     }
-  }, [token]);
+  }, [props.token]);
 
 
   
