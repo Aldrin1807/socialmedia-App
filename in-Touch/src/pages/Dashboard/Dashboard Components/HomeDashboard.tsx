@@ -10,8 +10,8 @@ import { BiMessageRoundedDetail } from "react-icons/bi";
 
 const HomeDashboard = (props:any) => {
    
-  const apiUrl = `https://localhost:44386/api/Users/get-users`;
-  const [data, setData] = useState<TUser[]>([]);
+  const apiUrl = `https://localhost:44386/api/Users/dashboard-analytics`;
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +21,7 @@ const HomeDashboard = (props:any) => {
         });
         setData(response.data);
       } catch (error) {
-        console.error("Error fetching users:", error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -30,7 +30,7 @@ const HomeDashboard = (props:any) => {
     }
   }, [props.token]);
 
-
+console.log(data);
   
   return (
     <>
@@ -41,7 +41,7 @@ const HomeDashboard = (props:any) => {
             <p className="text-uppercase mar-btm text-sm">Users Registered</p>
             <FiUsers className="icons" />
             <hr />
-            <p className="h2 text-thin">{data.length}</p>
+            <p className="h2 text-thin">{data[0]}</p>
           
         </div>
         </div>
@@ -52,7 +52,7 @@ const HomeDashboard = (props:any) => {
             <p className="text-uppercase mar-btm text-sm">Posts made</p>
             <TfiComments className="icons" />
             <hr />
-            <p className="h2 text-thin">20</p>
+            <p className="h2 text-thin">{data[1]}</p>
           
         </div>
         </div>
@@ -63,7 +63,7 @@ const HomeDashboard = (props:any) => {
             <p className="text-uppercase mar-btm text-sm">Messages</p>
             <BiMessageRoundedDetail className="icons" />
             <hr />
-            <p className="h2 text-thin">2</p>
+            <p className="h2 text-thin">{data[2]}</p>
            
         </div>
         </div>
@@ -75,7 +75,7 @@ const HomeDashboard = (props:any) => {
             
             <MdReportGmailerrorred className="icons" />
             <hr />
-            <p className="h2 text-thin">5</p>
+            <p className="h2 text-thin">{data[3]}</p>
            
         </div>
         </div>
