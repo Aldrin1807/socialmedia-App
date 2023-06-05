@@ -20,7 +20,7 @@ export const ReportedPosts = (props:any) => {
   return (
     <div>
       {reports.map((report: any) => (
-        <Reports postId={report.postId} userId={report.userId} />
+        <Reports postId={report.postId} userId={report.userId} token={props.token}/>
       ))}
     </div>
   );

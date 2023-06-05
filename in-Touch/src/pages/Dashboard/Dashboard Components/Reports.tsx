@@ -70,7 +70,7 @@ function Reports(props:any){
             axios
               .put(`https://localhost:44386/api/Posts/set-delete-attr?postId=${props.postId}`, {
                 headers: {
-                  Authorization: `Bearer ${token}`
+                  Authorization: `Bearer ${props.token}`
                 }
               })
               .then((response:any) => {
@@ -97,9 +97,9 @@ function Reports(props:any){
       .then((confirmed) => {
         if (confirmed) {
           axios
-            .put(`https://localhost:44386/api/Users/lock-account?userId=${postData.madeBy}`, {
+            .put(`https://localhost:44386/api/Users/lock-account?userId=${postData.madeBy}`,{}, {
               headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${props.token}`
               }
             })
             .then((response:any) => {
@@ -107,7 +107,7 @@ function Reports(props:any){
                 swal(`${response.data.message}`," ", "success")
                 setChange(!change)
               }else{
-                swal(`${response.data.message}`," ", "Error")
+                swal(`${response.data.message}`," ", "error")
               }
             })
         }

@@ -6,7 +6,7 @@ import { TUser } from '../../../types/types';
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
 
-export const ActiveUsers = () => {
+export const ActiveUsers = (props:any) => {
   const token = sessionStorage.getItem("token");
   const apiUrl = `https://localhost:44386/api/Users/get-users`;
   const [data, setData] = useState<TUser[]>([]);

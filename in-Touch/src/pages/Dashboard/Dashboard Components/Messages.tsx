@@ -29,7 +29,7 @@ export const Messages = (props: any) => {
           )
           .then((response: any) => {
             if (response.data.status == "Success") {
-              swal("Post successfully kept!", " ", "success");
+              swal("Message successfully deleted!", " ", "success");
             } else {
               swal(`${response.data.message}`, " ", "Error");
             }
@@ -48,7 +48,7 @@ export const Messages = (props: any) => {
       if (confirmed) {
         axios
           .put(
-            `https://localhost:44386/api/Users/unlock-account?userId=${props.userId}`,{
+            `https://localhost:44386/api/Users/unlock-account?userId=${props.userId}`,{},{
               headers: {
                 Authorization: `Bearer ${props.token}`,
               }
