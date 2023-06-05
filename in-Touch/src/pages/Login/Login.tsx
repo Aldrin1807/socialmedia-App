@@ -7,6 +7,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import swal from "sweetalert";
 import { ContactTeam } from '../../components/Modals/Modals';
+import jwtDecode from 'jwt-decode';
+
+
 
 function Login(){
   localStorage.clear();
@@ -47,7 +50,15 @@ function Login(){
         if(response.data.status=="Success"){
           console.log(response.data.status)
           sessionStorage.setItem("token",response.data.message);
-          navigate('/home');
+          const decoded = jwtDecode(response.data.message);
+          const role =decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+          if(role==='1'){
+            navigate('/dashboard');
+          }else{
+            navigate('/home');
+          }
+          console.log(decoded);
+;
         }else if(response.data.status=="Locked"){
           const el = document.createElement('div');
           const a = document.createElement('a');

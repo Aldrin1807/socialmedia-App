@@ -13,11 +13,12 @@ import { FiUsers } from "react-icons/fi";
 import { MdReportGmailerrorred } from "react-icons/md";
 import Header from "../../components/Header/Header";
 
-export const Dashboard = () => {
+export const Dashboard = (props:any) => {
   const [content, setContent] = useState(0);
   const handleNavClick = (index: any) => {
     setContent(index);
   };
+  
   return (
     <>
     <Header admin={true} />

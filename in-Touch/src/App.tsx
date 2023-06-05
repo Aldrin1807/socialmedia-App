@@ -14,6 +14,7 @@ import axios from "axios";
 import { TUser } from "./types/types";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
+import jwtDecode from "jwt-decode";
 
 function App() {
   const [user, setUser] = useState({
@@ -24,16 +25,21 @@ function App() {
   const token = sessionStorage.getItem("token");
 
   useEffect(() => {
-    axios
-      .get(`https://localhost:44386/api/Users/get-user-from-token?token=${token}`)
-      .then((response: any) => {
-        setUser({
-          id:response.data.id,
-          role:response.data.role
-        });
+    if(token){
+      const decodedToken = jwtDecode(token);
+      console.log(decodedToken)
+      const id = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
+      const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      setUser({
+        id: id,
+        role: role
       });
+      }
+    
   }, [token]);
 
+  console.log(user);
+  
   const location = useLocation();
   const excluded = ["/login", "/register", "/loader","/dashboard"];
   const notHeader = () => {
@@ -41,22 +47,33 @@ function App() {
     return !excluded.includes(currentPath);
   };
 
-
+  
   return (
     <div className="App">
-      {notHeader() && <Header id={user.id} role={user.role} />}
+      {notHeader() && <Header />}
 
-      <Routes>
-        <Route index element={<Navigate to="/home" />} />
-        <Route path="/home" element={<Home id={user.id} token={token} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={user.id ? <Profile id={user.id} /> : null} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/search" element={<Search id={user.id} />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/loader" element={<Loader />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+    
+        {user.role==='1'?(
+          <Routes>
+          <Route index element={<Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<Navigate to="/dashboard" />} />
+          </Routes>
+        ):(
+          <Routes>
+          <Route index element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home id={user.id} token={token}  />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/profile" element={user.id ? <Profile id={user.id} /> : null} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/search" element={<Search id={user.id} />} />
+          <Route path="/loader" element={<Loader />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+        )}
+     
     </div>
   );
 }

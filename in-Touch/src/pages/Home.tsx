@@ -18,6 +18,7 @@ import {
 import Requests from "../components/Requests/Requests";
 
 function Home(props: any) {
+
   const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${props.id}`;
 
   type Post = {
@@ -78,8 +79,7 @@ function Home(props: any) {
 
 
 
-  
- 
+
   return (
     <>
       <div className="home-content">
