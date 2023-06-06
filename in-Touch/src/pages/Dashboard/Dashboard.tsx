@@ -37,7 +37,7 @@ export const Dashboard = (props:any) => {
               onClick={() => handleNavClick(1)}
             >
               <FiUsers className="ikonat" />
-              Active Users
+             Users
             </Nav.Link>
             <Nav.Link
               className={`${content === 2 ? "active" : ""}`}

@@ -27,7 +27,7 @@ function App() {
   useEffect(() => {
     if(token){
       const decodedToken = jwtDecode(token);
-      console.log(decodedToken)
+     // console.log(decodedToken)
       const id = decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier'];
       const role = decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
       setUser({
@@ -38,7 +38,7 @@ function App() {
     
   }, [token]);
 
-  console.log(user);
+
   
   const location = useLocation();
   const excluded = ["/login", "/register", "/loader","/dashboard"];

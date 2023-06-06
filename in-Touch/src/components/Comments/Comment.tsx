@@ -63,7 +63,7 @@ function Comment(props:any){
               </span>
               <span className="comment-text">{comment.comment}</span>
             </div>
-            {props.user==comment.userId?(<div>
+            {props.user==comment.userId||props.del?(<div>
             <Dropdown>
               <Dropdown.Toggle variant="link" id="dropdown-basic">
                 ...

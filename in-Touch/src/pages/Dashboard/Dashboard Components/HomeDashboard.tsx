@@ -30,7 +30,7 @@ const HomeDashboard = (props:any) => {
     }
   }, [props.token]);
 
-console.log(data);
+
   
   return (
     <>

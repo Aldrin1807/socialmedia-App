@@ -294,6 +294,7 @@ useEffect(()=>{
         <Comment 
           postId={props.postId}
           user={props.id}
+          del={props.user}
         />
       </div>
     </div>

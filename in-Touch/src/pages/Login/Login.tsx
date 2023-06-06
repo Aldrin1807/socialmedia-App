@@ -57,7 +57,7 @@ function Login(){
           }else{
             navigate('/home');
           }
-          console.log(decoded);
+        //  console.log(decoded);
 ;
         }else if(response.data.status=="Locked"){
           const el = document.createElement('div');
