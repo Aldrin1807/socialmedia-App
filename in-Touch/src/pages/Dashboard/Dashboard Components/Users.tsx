@@ -6,6 +6,7 @@ import { TUser } from '../../../types/types';
 import axios from "axios";
 import Button from 'react-bootstrap/Button';
 import DataTable from 'react-data-table-component';
+import swal from "sweetalert";
 
 export const ActiveUsers = (props:any) => {
   const token = sessionStorage.getItem("token");
@@ -27,19 +28,93 @@ export const ActiveUsers = (props:any) => {
     if (token) {
       fetchData();
     }
-  }, [token]);
-
+  }, [token,data]);
 
 
  
   const handleDelete = (id:number) => {
-    // Implement the delete logic here
-    console.log(`Delete user with id: ${id}`);
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this user!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        axios.delete(`https://localhost:44386/api/Users/${id}`,{
+          headers: {
+            Authorization: `Bearer ${props.token}`,
+          }
+        })
+          .then(() => {
+            swal("Poof! The user has been deleted!", {
+              icon: "success",
+            });
+          })
+          .catch((error) => {
+            swal("Oops! Something went wrong.", error.message, "error");
+          });
+      } else {
+        swal("User is safe!");
+      }
+    });
   };
 
   const handleLockUnlock = (id:number, isLocked:boolean) => {
-    // Implement the lock/unlock logic here
-    console.log(`Toggle lock/unlock for user with id: ${id}, isLocked: ${isLocked}`);
+    if(isLocked){
+      swal({
+        title: "Are you sure?",
+        text: "Once unlocked, only you will be able to lock this account again!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          axios.put( `https://localhost:44386/api/Users/unlock-account?userId=${id}`,{},{
+            headers: {
+              Authorization: `Bearer ${props.token}`,
+            }
+          })
+            .then(() => {
+              swal("Poof! The user has been unlocked!", {
+                icon: "success",
+              });
+            })
+            .catch((error) => {
+              swal("Oops! Something went wrong.", error.message, "error");
+            });
+        } else {
+          swal("User is safely locked!");
+        }
+      });
+    }else{
+      swal({
+        title: "Are you sure?",
+        text: "Once locked, only you will be able to unlock this account again!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      }).then((willDelete) => {
+        if (willDelete) {
+          axios.put( `https://localhost:44386/api/Users/lock-account?userId=${id}`,{},{
+            headers: {
+              Authorization: `Bearer ${props.token}`,
+            }
+          })
+            .then(() => {
+              swal("Poof! The user has been locked!", {
+                icon: "success",
+              });
+            })
+            .catch((error) => {
+              swal("Oops! Something went wrong.", error.message, "error");
+            });
+        } else {
+          swal("User is safely unlocked!");
+        }
+      });
+    }
+    
   };
 
 
