@@ -51,6 +51,10 @@ function Profile(props: any) {
     image: "",
   });
 
+  //change pastaj shperndahet te modali per editim te prf dhe modali per ndryshim te fotos, ne menyre qe fotoja te updatohet pa reload
+  const [change,setChange] = useState(false);
+  const [pInfoModal, setPInfoModal] = useState(false);
+
   useEffect(() => {
     axios
       .get(apiUrls.userUrl, {
@@ -68,7 +72,7 @@ function Profile(props: any) {
           image: response.data.imagePath,
         });
       });
-  }, []);
+  }, [pInfoModal,change]);
 
   const [isFollowed, setIsFollowed] = useState(true);
 
@@ -191,8 +195,7 @@ function Profile(props: any) {
         });
     }
   };
-  const [pInfoModal, setPInfoModal] = useState(false);
-
+  
   const handleInfoModal = () => {
     setPInfoModal(!pInfoModal);
   };
@@ -333,6 +336,8 @@ function Profile(props: any) {
                   userData={userData}
                   currentUser={isCurrentUser}
                   token={token}
+                  change={change}
+                  setChange={setChange}
                 />
               </div>
             </div>

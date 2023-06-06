@@ -14,6 +14,7 @@ function PersonalInfo(props: any) {
   
     const handlePrfModal = ()=>{
       setPrfModal(!prfModal);
+ 
     }
   
     return (
@@ -45,7 +46,7 @@ function PersonalInfo(props: any) {
             </div>
           ) : null}
         </div>
-        <ChangeProfilePicture userId={props.userData.id} showModal={prfModal} setShowModal={setPrfModal} token={props.token} />
+        <ChangeProfilePicture userId={props.userData.id} showModal={prfModal} setShowModal={setPrfModal} token={props.token} change={props.change} setChange={props.setChange} />
         <ChangePassword userId={props.userData.id} showModal={passModal} setShowModal={setPassModal} token={props.token} />
     
       </>

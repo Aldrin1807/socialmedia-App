@@ -76,7 +76,7 @@ function Post(props:any) {
    .then((response:any)=>{
     setCommentCount(response.data);
    })
-  },[commentValue,props.change])
+  },[commentValue,props.change,props.postId])
   
 
 
@@ -148,7 +148,7 @@ useEffect(()=>{
       .then((response:any) => {
         setLikes(response.data);
       })
-},[liked,props.change])
+},[liked,props.change,props.postId])
 
       const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setCommentValue(event.target.value);

@@ -133,6 +133,7 @@ export function ChangeProfilePicture(props: any) {
     setImage(null);
     setEmptyError(false);
     props.setShowModal(!props.showModal);
+    props.setChange(!props.change);
   };
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -316,6 +317,7 @@ export function ChangePersonalInfo(props: any) {
                 icon: 'success',
               })
               handleToggleModal()
+              window.location.reload
               }else{
                 swal({
                   title: 'Error',
