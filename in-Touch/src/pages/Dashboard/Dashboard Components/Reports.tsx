@@ -86,7 +86,7 @@ function Reports(props:any){
 
     }
     const handleLockUser=()=>{
-
+      handleDeletePost()
     swal({
       title: 'Are you sure?',
       text: 'Only you can make it unlock again!',
@@ -119,28 +119,31 @@ function Reports(props:any){
     
 
     return(
-        <>
+        <div className='reports-msg'>
       <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>User with ID #{props.userId} has reported Post #{props.postId}</Accordion.Header>
         <Accordion.Body>
         <div className='report-content'>
-        <h2>Post #{props.postId}</h2>
+        <h2 className='primary-text'>Content of Post #{props.postId}</h2>
+        <h5 className='secondary-text'>Post was made by user with Id #{postData.madeBy}</h5>
+        <div className='contenti-rep'>
         {postData.imagePath &&
         <img  src={`https://localhost:44386/Post Images/${postData.imagePath}`} style={{width:"200px",height:"200px"}} alt="" /> 
         }
         <p>{postData.content}</p>
         </div>
+        </div>
         <div className='buttons' > 
-        <Button className='reports-btn btn-primary' onClick={handleDeleteReport}>Keep Post</Button>
-        <Button className='reports-btn btn-danger' onClick={handleDeletePost}>Delete Post</Button>
-        <Button className='reports-btn btn-danger' onClick={handleLockUser}>Lock this User</Button>
+        <Button className='buttonat' variant='primary' onClick={handleDeleteReport}>Keep Post</Button>
+        <Button className='buttonat' variant='danger' onClick={handleDeletePost}>Delete Post</Button>
+        <Button className='buttonat' variant='outline-primary' onClick={handleLockUser}>Lock User</Button>
         </div>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
 
-        </>
+        </div>
     )
 }
 export default Reports

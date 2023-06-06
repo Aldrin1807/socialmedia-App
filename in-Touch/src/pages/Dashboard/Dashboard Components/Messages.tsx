@@ -6,38 +6,7 @@ import swal from "sweetalert";
 export const Messages = (props: any) => {
   const [change,setChange]=useState(false);
 
-  const handleDeleteMessage = () => {
-    swal({
-      title: "Are you sure?",
-      text: "Once deleted, the Message cannot be recovered!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then((confirmed) => {
-      if (confirmed) {
-        axios
-          .delete(
-            "https://localhost:44386/api/SupportMessages/delete-support-message",
-            {
-              headers: {
-                Authorization: `Bearer ${props.token}`,
-              },
-              data: {
-                id: props.id,
-              },
-            }
-          )
-          .then((response: any) => {
-            if (response.data.status == "Success") {
-              swal("Message successfully deleted!", " ", "success");
-            } else {
-              swal(`${response.data.message}`, " ", "Error");
-            }
-          });
-      }
-    });
-  };
-  const handleUnlockUser = () => {
+  const handleUnlockUserandDelete = () => {
     swal({
       title: "Are you sure?",
       text: "Only you can lock it again!",
@@ -62,19 +31,39 @@ export const Messages = (props: any) => {
               swal(`${response.data.message}`, " ", "Error");
             }
           });
+          axios
+          .delete(
+            "https://localhost:44386/api/SupportMessages/delete-support-message",
+            {
+              headers: {
+                Authorization: `Bearer ${props.token}`,
+              },
+              data: {
+                id: props.id,
+              },
+            }
+          )
+          .then((response: any) => {
+            if (response.data.status == "Success") {
+              swal("Message successfully deleted!", " ", "success");
+            } else {
+              swal(`${response.data.message}`, " ", "Error");
+            }
+          });
       }
     });
   };
 
   return (
+    <div className='reports-msg'>
     <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>
-          User with ID #{props.userId} has sent Message #{props.id}
+          User with ID #{props.userId} has sent a message 
         </Accordion.Header>
         <Accordion.Body>
           <div className="report-content">
-            <h2>Message #{props.id}</h2>
+            <h2 className='primary-text'>Message</h2>
             {/* {postData.imagePath && (
               <img
                 src={`https://localhost:44386/Post Images/${postData.imagePath}`}
@@ -82,25 +71,24 @@ export const Messages = (props: any) => {
                 alt=""
               />
             )} */}
+             <div className='contenti-rep'>
             <p>{props.message}</p>
+            </div>
           </div>
-          <div className="buttons">
+          <div className="buttoni">
             <Button
-              className="reports-btn btn-primary"
-              onClick={handleUnlockUser}
+              className="buttonat"
+              onClick={handleUnlockUserandDelete}
+              variant="outline-primary"
             >
-              Unlock User
+              Unlock User and delete Message
             </Button>
-            <Button
-              className="reports-btn btn-danger"
-              onClick={handleDeleteMessage}
-            >
-              Delete Message
-            </Button>
+            
           </div>
         </Accordion.Body>
       </Accordion.Item>
     </Accordion>
+    </div>
   );
 };
 

@@ -8,14 +8,39 @@
     flex-direction: column;
   }
   .buttons{
-
         display: flex;
-        justify-content:flex-start;
+        justify-content:space-between;
         margin-top: 10px;
-
+      margin: 0 auto;
+      width: 40%;
+      align-items: center;
   }
-  .reports-btn{
-    width: 100px;
-    height: 60px;
-    margin-left: 2px;
+  .reports-msg{
+    margin: 0 auto;
+    width: 50%;
   }
+.buttoni{
+  display: flex;
+  justify-content: center;
+}
+.primary-text{
+  font-size: 1.5rem;
+  text-decoration: underline;
+}
+.secondary-text{
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+.contenti-rep{
+  border: 0.5px solid #ccc;
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
