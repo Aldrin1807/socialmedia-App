@@ -17,7 +17,11 @@ function Reports(props:any){
   const [change,setChange]=useState(false);
 
     useEffect(() => {
-      axios.get(`https://localhost:44386/api/Posts/get-post-info?postId=${props.postId}`)
+      axios.get(`https://localhost:44386/api/Posts/get-post-info?postId=${props.postId}`,{
+        headers: {
+          Authorization: `Bearer ${props.token}`
+        }
+      })
       .then((response:any)=>{
         setPostData({
           id:response.data.id,
@@ -45,6 +49,9 @@ function Reports(props:any){
                   userId: props.userId,
                   postId: props.postId,
                 },
+                headers: {
+                  Authorization: `Bearer ${props.token}`
+                }
               })
               .then((response:any) => {
                 if(response.data.status=="Success"){
@@ -85,41 +92,14 @@ function Reports(props:any){
         })
 
     }
-    const handleLockUser=()=>{
-      handleDeletePost()
-    swal({
-      title: 'Are you sure?',
-      text: 'Only you can make it unlock again!',
-      icon: 'warning',
-      buttons: true,
-      dangerMode: true,
-    })
-      .then((confirmed) => {
-        if (confirmed) {
-          axios
-            .put(`https://localhost:44386/api/Users/lock-account?userId=${postData.madeBy}`,{}, {
-              headers: {
-                Authorization: `Bearer ${props.token}`
-              }
-            })
-            .then((response:any) => {
-              if(response.data.status=="Success"){
-                swal(`${response.data.message}`," ", "success")
-                setChange(!change)
-              }else{
-                swal(`${response.data.message}`," ", "error")
-              }
-            })
-        }
-      })
+  
+    
 
 
-
-    }
     
 
     return(
-        <div className='reports-msg'>
+      <div className='reports-msg'>
       <Accordion>
       <Accordion.Item eventKey="0">
         <Accordion.Header>User with ID #{props.userId} has reported Post #{props.postId}</Accordion.Header>
