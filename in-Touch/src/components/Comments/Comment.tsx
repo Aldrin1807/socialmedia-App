@@ -12,7 +12,9 @@ function Comment(props:any){
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-  axios.get(getUrl)
+  axios.get(getUrl,{
+    headers: { Authorization: `Bearer ${props.token}` },
+  })
   .then((response:any)=>{
     setComments(response.data);
   })
@@ -29,7 +31,9 @@ function Comment(props:any){
     dangerMode: true,
   }).then((willDelete) => {
     if (willDelete) {
-      axios.delete(`https://localhost:44386/api/Comments/delete-comment?id=${id}`)
+      axios.delete(`https://localhost:44386/api/Comments/delete-comment?id=${id}`,{
+        headers: { Authorization: `Bearer ${props.token}` }
+      })
         .then((response:any) => {
           if(response.data.status=="Success"){
           swal("Poof! Your comment has been deleted!", {

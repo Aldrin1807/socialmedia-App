@@ -370,7 +370,7 @@ function Profile(props: any) {
                     </Nav.Link>
                   )}
                 </Nav>
-                {isCurrentUser&&content===0 ? <PostForm userID={props.id} /> : null}
+                {isCurrentUser&&content===0 ? <PostForm userID={props.id} token={token} /> : null}
                 {content === 0 && PostData.length===0?(
                   <p
                       style={{
@@ -406,6 +406,7 @@ function Profile(props: any) {
                         user={isCurrentUser}
                         id={props.id}
                         change={postChanged}
+                        token={token}
                       />
                     ))
                   : SavedPostData.map((post) => (
@@ -418,6 +419,7 @@ function Profile(props: any) {
                         user={false}
                         id={props.id}
                         change={postChanged}
+                        token={token}
                       />
                     ))}
               </div>

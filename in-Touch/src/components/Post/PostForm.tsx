@@ -44,7 +44,9 @@ function PostForm(props:any) {
       // for (const pair of form.entries()) {
       //   console.log(pair[0], pair[1]);
       // }
-      axios.post(apiUrl, form
+      axios.post(apiUrl,form,{
+        headers: { Authorization: `Bearer ${props.token}` }
+      }
         ).then((response) => {
           console.log(response.data);
           if(response.data.status=='Success'){

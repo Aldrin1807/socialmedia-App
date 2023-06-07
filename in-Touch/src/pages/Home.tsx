@@ -68,7 +68,9 @@ function Home(props: any) {
         });
       })
 
-      axios.get(`https://localhost:44386/api/Posts/check-deleted-post?userId=${props.id}`)
+      axios.get(`https://localhost:44386/api/Posts/check-deleted-post?userId=${props.id}`,{
+        headers: { Authorization: `Bearer ${props.token}` },
+      })
       .then((response:any)=>{
         if(response.data.status=="Error"){
           swal("One or more of your posts has been deleted", response.data.message, "error");
@@ -124,6 +126,7 @@ function Home(props: any) {
                       user={false}
                       id={props.id}
                       change={postChanged}
+                      token={props.token}
                     />
                   ))}
                 </div>
@@ -146,8 +149,8 @@ function Home(props: any) {
             </div>
           </div>
           <div className="col-md-3 " id="right">
-            <Requests id={props.id}  />
-            <Suggested id={props.id} className="sugg" />
+            <Requests id={props.id} token={props.token} />
+            <Suggested id={props.id} token={props.token} className="sugg" />
             
           </div>
         </div>

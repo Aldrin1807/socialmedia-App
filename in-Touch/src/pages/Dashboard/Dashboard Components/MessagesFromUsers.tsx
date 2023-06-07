@@ -18,7 +18,10 @@ export function MessagesFromUsers(props:any) {
   }, [messages]);
   return (
     <div>
-      {messages.map((message: any) => (
+      {messages.length==0?(
+        <h1 className="empty">No messages yet</h1>
+      ):(
+        messages.map((message: any) => (
         <Messages
           postId={message.postId}
           userId={message.userId}
@@ -26,7 +29,8 @@ export function MessagesFromUsers(props:any) {
           message={message.message}
           token={props.token}
         />
-      ))}
+      )))
+      }
     </div>
   );
 }

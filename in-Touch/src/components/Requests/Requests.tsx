@@ -13,7 +13,9 @@ function Requests (props:any){
 
 
     useEffect(()=>{
-      axios.get(getRequestsUrl)
+      axios.get(getRequestsUrl,{
+        headers: { Authorization: `Bearer ${props.token}` },
+      })
       .then((response:any)=>{
         setUser(response.data);
       })
@@ -25,6 +27,8 @@ function Requests (props:any){
       axios.post(handleAcceptUrl,{
         followRequestId:userTwo,
         followRequestedId:props.id
+      },{
+        headers: { Authorization: `Bearer ${props.token}` },
       })
         .then((response: any) => {
           console.log('Accept request successful');
@@ -41,7 +45,10 @@ function Requests (props:any){
         data:{
         followRequestId:userTwo,
         followRequestedId:props.id
-        }
+        },
+        
+          headers: { Authorization: `Bearer ${props.token}` },
+        
       })
         .then((response: any) => {
           console.log('Accept request successful');

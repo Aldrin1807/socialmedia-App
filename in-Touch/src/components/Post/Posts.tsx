@@ -19,7 +19,7 @@ function Post(props:any) {
  const reportUrl= `https://localhost:44386/api/Reports/make-report`;
  const commLikeUrl=`https://localhost:44386/api/Comments/get-nr-comments?postId=${props.postId}`;
  const deleteUrl=`https://localhost:44386/api/Posts/delete-post?postId=${props.postId}`;
- const isSaved = `https://localhost:44386/api/SavedPosts/is-liked?userId=${props.id}&postId=${props.postId}`
+ const isSaved = `https://localhost:44386/api/SavedPosts/is-saved?userId=${props.id}&postId=${props.postId}`
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClick() {
     if (inputRef.current) {
@@ -31,9 +31,12 @@ function Post(props:any) {
   
   const handleLikeClick = () => {
     if(!liked){
-      axios.post(postUrl,{
+      axios.post(postUrl,
+        {
         userId: props.id,
         postId: props.postId
+      },{
+        headers: { Authorization: `Bearer ${props.token}` },
       })
       .then(()=>{
           setLiked(true);
@@ -43,7 +46,8 @@ function Post(props:any) {
         data: {
           userId: props.id,
           postId: props.postId
-        }
+        },
+          headers: { Authorization: `Bearer ${props.token}` }
       })
       .then(()=>{
           setLiked(false);
@@ -61,7 +65,9 @@ function Post(props:any) {
         userId: props.id,
         postId: props.postId,
         comment: commentValue
-      })
+      },{
+        headers: { Authorization: `Bearer ${props.token}` },
+      },)
       .then((response:any)=>{
         setCommentValue("");
       })
@@ -72,7 +78,9 @@ function Post(props:any) {
 
 
   useEffect(()=>{
-   axios.get(commLikeUrl)
+   axios.get(commLikeUrl,{
+    headers: { Authorization: `Bearer ${props.token}` },
+    })
    .then((response:any)=>{
     setCommentCount(response.data);
    })
@@ -95,6 +103,8 @@ function Post(props:any) {
         axios.post(reportUrl, {
           userId: props.id,
           postId: props.postId
+        },{
+          headers: { Authorization: `Bearer ${props.token}` },
         }).then((response) => {
           if (response.data.status === "Success") {
             swal("Success!", "The post has been reported. Our team will review it shortly.", "success");
@@ -119,7 +129,9 @@ function Post(props:any) {
   })
   
  useEffect(()=>{
-    axios.get(isLikeUrl)
+    axios.get(isLikeUrl,{
+      headers: { Authorization: `Bearer ${props.token}` },
+    })
       .then((response:any)=>{
         setLiked(response.data);
       })
@@ -127,7 +139,9 @@ function Post(props:any) {
     
   
       useEffect(() => {
-        axios.get(userUrl)
+        axios.get(userUrl,{
+          headers: { Authorization: `Bearer ${props.token}` },
+        })
         .then((response:any)=>{
         setUserInfo({
           id:response.data.id,
@@ -144,7 +158,9 @@ function Post(props:any) {
 const [likes, setLikes] = useState(0);
 
 useEffect(()=>{
-    axios.get(getUrl)
+    axios.get(getUrl,{
+      headers: { Authorization: `Bearer ${props.token}` },
+    })
       .then((response:any) => {
         setLikes(response.data);
       })
@@ -165,7 +181,9 @@ useEffect(()=>{
           dangerMode: true,
         }).then((willDelete) => {
           if (willDelete) {
-            axios.delete(deleteUrl)
+            axios.delete(deleteUrl,{
+              headers: { Authorization: `Bearer ${props.token}` },
+            })
               .then(() => {
                 swal("Poof! Your post has been deleted!", {
                   icon: "success",
@@ -187,6 +205,8 @@ useEffect(()=>{
           axios.post('https://localhost:44386/api/SavedPosts/save-post',{
             userId: props.id,
             postId: props.postId
+          },{
+            headers: { Authorization: `Bearer ${props.token}` }
           })
           .then(()=>{
               setSaved(true);
@@ -196,7 +216,8 @@ useEffect(()=>{
             data: {
               userId: props.id,
               postId: props.postId
-            }
+            },
+              headers: { Authorization: `Bearer ${props.token}` }
           })
           .then(()=>{
               setSaved(false);
@@ -204,7 +225,9 @@ useEffect(()=>{
         }
       }
       useEffect(()=>{
-          axios.get(isSaved)
+          axios.get(isSaved,{
+            headers: { Authorization: `Bearer ${props.token}` }
+          })
           .then((response:any)=>{
             setSaved(response.data)
           })
@@ -295,6 +318,7 @@ useEffect(()=>{
           postId={props.postId}
           user={props.id}
           del={props.user}
+          token={props.token}
         />
       </div>
     </div>
