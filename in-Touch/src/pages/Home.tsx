@@ -75,8 +75,7 @@ function Home(props: any) {
         }
       })
     
-  }, [props.id]);
-
+  }, [props.id,PostData]);
 
 
 

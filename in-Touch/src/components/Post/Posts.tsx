@@ -156,7 +156,6 @@ useEffect(()=>{
 
     
 
-     
       const handleDelete = () => {
         swal({
           title: "Are you sure?",
@@ -171,6 +170,7 @@ useEffect(()=>{
                 swal("Poof! Your post has been deleted!", {
                   icon: "success",
                 });
+                
               })
               .catch((error) => {
                 swal("Oops! Something went wrong.", error.message, "error");

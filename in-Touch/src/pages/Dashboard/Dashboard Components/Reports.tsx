@@ -137,7 +137,6 @@ function Reports(props:any){
         <div className='buttons' > 
         <Button className='buttonat' variant='primary' onClick={handleDeleteReport}>Keep Post</Button>
         <Button className='buttonat' variant='danger' onClick={handleDeletePost}>Delete Post</Button>
-        <Button className='buttonat' variant='outline-primary' onClick={handleLockUser}>Lock User</Button>
         </div>
         </Accordion.Body>
       </Accordion.Item>
