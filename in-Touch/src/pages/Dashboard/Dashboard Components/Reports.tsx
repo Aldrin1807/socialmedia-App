@@ -75,7 +75,7 @@ function Reports(props:any){
         .then((confirmed) => {
           if (confirmed) {
             axios
-              .put(`https://localhost:44386/api/Posts/set-delete-attr?postId=${props.postId}`, {
+              .put(`https://localhost:44386/api/Posts/set-delete-attr?postId=${props.postId}`,{}, {
                 headers: {
                   Authorization: `Bearer ${props.token}`
                 }

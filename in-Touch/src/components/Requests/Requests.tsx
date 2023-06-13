@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import './Requests.css'
 import axios from 'axios';
+import swal from "sweetalert";
 
 function Requests (props:any){
 
@@ -32,6 +33,7 @@ function Requests (props:any){
       })
         .then((response: any) => {
           console.log('Accept request successful');
+          swal(`Request succesfully accepted`,"You can now interact with each other", "success")
           setChange(!change);
         })
         .catch((error: any) => {
@@ -46,16 +48,15 @@ function Requests (props:any){
         followRequestId:userTwo,
         followRequestedId:props.id
         },
-        
           headers: { Authorization: `Bearer ${props.token}` },
-        
       })
         .then((response: any) => {
-          console.log('Accept request successful');
+          console.log(response.data);
+          swal(`Request not accepted`,"The follow request has been declined.", "success")
           setChange(!change);
         })
         .catch((error: any) => {
-          console.error('Error accepting request:', error);
+          console.error('Error declining request:', error);
         });
     };
     
@@ -70,10 +71,12 @@ function Requests (props:any){
               <li className="request" key={userData.id}>
                 <div className="info">
                   <div className="profile-photo">
+                  <a href={`/profile?user=${userData.id}`} >
                     <img
                      src={`https://localhost:44386/User Images/${userData.imagePath}`}
                       alt=""
                     />
+                    </a>
                   </div>
                   <div>
                     <h5>{userData.firstName}</h5>

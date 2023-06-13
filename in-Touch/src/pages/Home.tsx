@@ -114,7 +114,7 @@ function Home(props: any) {
           </div>
           <div className="col-md-6 col-sm-10 ">
             <div className="container" id="postet" >
-          {props.id?(<PostForm userID={props.id} />):null} 
+          {props.id?(<PostForm userID={props.id} token={props.token} />):null} 
               {PostData && PostData.length > 0 ? (
                 <div>
                   {PostData.map((post) => (
