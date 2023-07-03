@@ -90,7 +90,7 @@ function Home(props: any) {
               <a href={`/profile`} className="profile">
                 <div className="profile-photo">
                   <img
-                    src={`https://localhost:44386/User Images/${userData.image}`}
+                    src={`https://intouchimages.blob.core.windows.net/user-images/${userData.image}`}
                     alt=""
                   />
                 </div>

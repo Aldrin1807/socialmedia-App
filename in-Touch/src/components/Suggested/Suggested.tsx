@@ -37,7 +37,7 @@ function Suggested(props:any){
                 <li key={user.id} className="list-item">
                     <a href={`/profile?user=${user.id}`} className="suggested">
                     <div className="friend-img">
-                        <img src={`https://localhost:44386/User Images/${user.imagePath}`} alt="" />
+                        <img src={`https://intouchimages.blob.core.windows.net/user-images/${user.imagePath}`} alt="" />
                     </div>
                     <div className="friend-info">
                         <h4>{user.firstName+" "+user.lastName}</h4>

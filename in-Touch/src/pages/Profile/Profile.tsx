@@ -259,7 +259,7 @@ function Profile(props: any) {
                       <div className="image-default">
                         <img
                           className="rounded-circle"
-                          src={`https://localhost:44386/User Images/${userData.image}`}
+                          src={`https://intouchimages.blob.core.windows.net/user-images/${userData.image}`}
                           alt="..."
                           style={{ width: "150px", height: "150px" }}
                         />

@@ -472,3 +472,88 @@ export const ContactTeam = (props:any) => {
     </>
   )
 }
+
+
+// export function KrijoSkuadren(props:any){
+//   const handleToggleModal = () => {
+//     props.setShowModal(!props.showModal);
+//   };
+
+//   const [emertimi,setEmertimi] = useState('')
+
+//   const onChange = (event:any) => {
+//     setEmertimi(event.target.value);
+//   };
+
+//   const handleSubmit=()=>{
+//     axios.post('https://localhost:44386/api/Skuadra/krijo-skuadren',{
+//       emertimi58914:emertimi
+//     })
+//   }
+//   return(
+//     <>
+//     <Modal show={props.showModal} onHide={handleToggleModal} top className="pinfo-modal">
+//       <Modal.Header closeButton>
+//         <Modal.Title>Create Skuadra</Modal.Title>
+//       </Modal.Header>
+//       <Modal.Body>
+//         <Form>
+//           <Form.Group controlId="">
+//             <Form.Label>Emertimi</Form.Label>
+//             <Form.Control type="text" name="emertimi" value={emertimi} onChange={onChange} />
+          
+//           </Form.Group>
+//         </Form>
+//       </Modal.Body>
+//       <Modal.Footer>
+//         <Button variant="outline-danger" onClick={handleToggleModal}>Cancel</Button>
+//         <Button variant="outline-primary" onClick={handleSubmit}>Create</Button>
+//       </Modal.Footer>
+//     </Modal>
+// </>
+//   )
+// }
+
+
+// export function UpdateSkuadra(props:any){
+//   const handleToggleModal = () => {
+//     props.setShowModal(!props.showModal);
+//   };
+
+//   const [emertimi,setEmertimi] = useState('')
+
+//   const onChange = (event:any) => {
+//     setEmertimi(event.target.value);
+//   };
+
+//   const handleSubmit=()=>{
+//     axios.put('https://localhost:44386/api/Skuadra/update-skuadren',{
+//       id58914:props.id,
+//       emertimi58914:emertimi
+//     }).then((response:any)=>{
+//       console.log(response.data);
+//     })
+//   }
+//   return(
+//     <>
+//     <Modal show={props.showModal} onHide={handleToggleModal} top className="pinfo-modal">
+//       <Modal.Header closeButton>
+//         <Modal.Title>update Skuadra</Modal.Title>
+//       </Modal.Header>
+//       <Modal.Body>
+//         <Form>
+//           <Form.Group controlId="">
+//             <Form.Label>Emertimi</Form.Label>
+//             <Form.Control type="text" name="emertimi" value={emertimi} onChange={onChange} />
+          
+//           </Form.Group>
+//         </Form>
+//       </Modal.Body>
+//       <Modal.Footer>
+//         <Button variant="outline-danger" onClick={handleToggleModal}>Cancel</Button>
+//         <Button variant="outline-primary" onClick={handleSubmit}>update</Button>
+//       </Modal.Footer>
+//     </Modal>
+// </>
+//   )
+// }

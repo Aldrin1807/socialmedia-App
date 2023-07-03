@@ -53,6 +53,7 @@ export const Dashboard = (props:any) => {
               <MdReportGmailerrorred className="ikonat" />
               Reports
             </Nav.Link>
+           
           </Nav>
         </div>
         <div id="page-content-wrapper">
@@ -61,7 +62,6 @@ export const Dashboard = (props:any) => {
             {content === 1 && <ActiveUsers token={props.token} />}
             {content === 2 && <MessagesFromUsers token={props.token} />}
             {content === 3 && <ReportedPosts token={props.token} />}
-            
           </div>
         </div>
       </div>

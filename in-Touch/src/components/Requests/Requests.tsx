@@ -73,7 +73,7 @@ function Requests (props:any){
                   <div className="profile-photo">
                   <a href={`/profile?user=${userData.id}`} >
                     <img
-                     src={`https://localhost:44386/User Images/${userData.imagePath}`}
+                     src={`https://intouchimages.blob.core.windows.net/user-images/${userData.imagePath}`}
                       alt=""
                     />
                     </a>

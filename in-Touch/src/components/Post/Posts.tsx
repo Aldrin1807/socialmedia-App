@@ -238,7 +238,7 @@ useEffect(()=>{
       <div className="post-header">
         <a href={`/profile?user=${userInfo.id}`} className="profile-link">
         <img
-          src={`https://localhost:44386/User Images/${userInfo.image}`}
+          src={`https://intouchimages.blob.core.windows.net/user-images/${userInfo.image}`}
           alt="User Profile"
           className="profile-img"
           style={{ width: "70px", height: "70px" }}
@@ -260,7 +260,7 @@ useEffect(()=>{
       </div>
       {props.imagePath ? (
         <img
-          src={`https://localhost:44386/Post Images/${props.imagePath}`}
+          src={`https://intouchimages.blob.core.windows.net/post-images/${props.imagePath}`}
           className="post-img"
           style={{ width: "675px", height: "300px" }}
         />

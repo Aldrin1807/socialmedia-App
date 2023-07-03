@@ -58,7 +58,7 @@ function Comment(props:any){
            <div className="comment-container">
             <div className="comment-image">
               <a className='comment-link' href={`/profile?user=${comment.userId}`}>
-                <img src={`https://localhost:44386/User Images/${comment.imagePath}`} alt="" />
+                <img src={`https://intouchimages.blob.core.windows.net/user-images/${comment.imagePath}`} alt="" />
               </a>
             </div>
             <div className="comment-details">
