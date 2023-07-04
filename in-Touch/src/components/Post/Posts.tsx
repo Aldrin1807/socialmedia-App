@@ -19,7 +19,7 @@ function Post(props:any) {
  const reportUrl= `https://api-intouch.azurewebsites.net/api/Reports/make-report`;
  const commLikeUrl=`https://api-intouch.azurewebsites.net/api/Comments/get-nr-comments?postId=${props.postId}`;
  const deleteUrl=`https://api-intouch.azurewebsites.net/api/Posts/delete-post?postId=${props.postId}`;
- const isSaved = `https://api-intouch.azurewebsites.net/SavedPosts/is-saved?userId=${props.id}&postId=${props.postId}`
+ const isSaved = `https://api-intouch.azurewebsites.net/api/SavedPosts/is-saved?userId=${props.id}&postId=${props.postId}`
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClick() {
     if (inputRef.current) {
