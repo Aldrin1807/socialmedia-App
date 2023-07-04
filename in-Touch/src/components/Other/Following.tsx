@@ -7,7 +7,7 @@ function Following(props:any){
     const userId =  params.get("user");
   
     const viewedUser = userId ?? props.id;
-      const getUrl = `https://localhost:44386/api/Users/user-following?userId=${viewedUser}`;
+      const getUrl = `https://api-intouch.azurewebsites.net/api/Users/user-following?userId=${viewedUser}`;
       const token = sessionStorage.getItem("token");
       type User = {
           id: number;

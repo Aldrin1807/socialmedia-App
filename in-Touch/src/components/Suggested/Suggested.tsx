@@ -22,7 +22,7 @@ function Suggested(props:any){
 
     useEffect(() => {
         axios
-          .get(`https://localhost:44386/api/Users/suggested-users?userId=${props.id}`,{
+          .get(`https://api-intouch.azurewebsites.net/api/Users/suggested-users?userId=${props.id}`,{
                 headers: { 'Authorization': `Bearer ${token}` }
           })
           .then((response: any) => {

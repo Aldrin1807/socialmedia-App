@@ -14,7 +14,7 @@ import swal from "sweetalert";
 
 function Header(props:any){
   const token = sessionStorage.getItem("token");
-  const tokenUrl = `https://localhost:44386/api/Users/is-token-available?token=${token}`
+  const tokenUrl = `https://api-intouch.azurewebsites.net/api/Users/is-token-available?token=${token}`
   const navigate = useNavigate();
 
  

@@ -202,7 +202,7 @@ useEffect(()=>{
       const[saved,setSaved] = useState(false)
       const handleSave=()=>{
         if(!saved){
-          axios.post('https://localhost:44386/api/SavedPosts/save-post',{
+          axios.post('https://api-intouch.azurewebsites.net/api/SavedPosts/save-post',{
             userId: props.id,
             postId: props.postId
           },{
@@ -212,7 +212,7 @@ useEffect(()=>{
               setSaved(true);
           })
         }else{
-          axios.delete('https://localhost:44386/api/SavedPosts/unsave-post',{
+          axios.delete('https://api-intouch.azurewebsites.net/api/SavedPosts/unsave-post',{
             data: {
               userId: props.id,
               postId: props.postId

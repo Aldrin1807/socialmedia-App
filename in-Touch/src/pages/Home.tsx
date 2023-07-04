@@ -19,7 +19,7 @@ import Requests from "../components/Requests/Requests";
 
 function Home(props: any) {
 
-  const apiUrl = `https://localhost:44386/api/Posts/get-posts?id=${props.id}`;
+  const apiUrl = `https://api-intouch.azurewebsites.net/api/Posts/get-posts?id=${props.id}`;
 
   type Post = {
     id: number;
@@ -38,7 +38,7 @@ function Home(props: any) {
     isPrivate: false,
     image: "",
   });
-  const userUrl =`https://localhost:44386/api/Users/get-user-info?id=${props.id}`;
+  const userUrl =`https://api-intouch.azurewebsites.net/api/Users/get-user-info?id=${props.id}`;
   const [PostData, setPostData] = useState<Post[]>([]);
   const [postChanged,setPostChanged] = useState(true)
   useEffect(() => {
@@ -68,7 +68,7 @@ function Home(props: any) {
         });
       })
 
-      axios.get(`https://localhost:44386/api/Posts/check-deleted-post?userId=${props.id}`,{
+      axios.get(`https://api-intouch.azurewebsites.net/api/Posts/check-deleted-post?userId=${props.id}`,{
         headers: { Authorization: `Bearer ${props.token}` },
       })
       .then((response:any)=>{

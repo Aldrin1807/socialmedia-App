@@ -8,7 +8,7 @@ function Search (props:any){
     const query =  params.get("query");
     const token = sessionStorage.getItem("token")
 
-    const getUrl = `https://localhost:44386/api/Users/search?userId=${props.id}&query=${query}`;
+    const getUrl = `https://api-intouch.azurewebsites.net/api/Users/search?userId=${props.id}&query=${query}`;
 
     type User = {
         id: number;
