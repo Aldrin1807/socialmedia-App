@@ -17,7 +17,7 @@ function Reports(props:any){
   const [change,setChange]=useState(false);
 
     useEffect(() => {
-      axios.get(`https://localhost:44386/api/Posts/get-post-info?postId=${props.postId}`,{
+      axios.get(`https://api-intouch.azurewebsites.net/api/Posts/get-post-info?postId=${props.postId}`,{
         headers: {
           Authorization: `Bearer ${props.token}`
         }
