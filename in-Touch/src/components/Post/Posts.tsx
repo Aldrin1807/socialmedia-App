@@ -10,16 +10,16 @@ import axios from "axios";
 import swal from "sweetalert";
 function Post(props:any) {
   
- const getUrl = `https://localhost:44386/api/Likes/get-post-likes?id=${props.postId}`;
- const postUrl = `https://localhost:44386/api/Likes/like-post`;
- const delUrl = `https://localhost:44386/api/Likes/unlike-post`;
- const isLikeUrl =`https://localhost:44386/api/Likes/is-liked?userId=${props.id}&postId=${props.postId}`;
- const userUrl = `https://localhost:44386/api/Posts/get-user-post-info?postId=${props.postId}`;
- const commUrl = `https://localhost:44386/api/Comments/make-comment`;
- const reportUrl= `https://localhost:44386/api/Reports/make-report`;
- const commLikeUrl=`https://localhost:44386/api/Comments/get-nr-comments?postId=${props.postId}`;
- const deleteUrl=`https://localhost:44386/api/Posts/delete-post?postId=${props.postId}`;
- const isSaved = `https://localhost:44386/api/SavedPosts/is-saved?userId=${props.id}&postId=${props.postId}`
+ const getUrl = `https://api-intouch.azurewebsites.net/api/Likes/get-post-likes?id=${props.postId}`;
+ const postUrl = `https://api-intouch.azurewebsites.net/api/Likes/like-post`;
+ const delUrl = `https://api-intouch.azurewebsites.net/api/Likes/unlike-post`;
+ const isLikeUrl =`https://api-intouch.azurewebsites.net/api/Likes/is-liked?userId=${props.id}&postId=${props.postId}`;
+ const userUrl = `https://api-intouch.azurewebsites.net/api/Posts/get-user-post-info?postId=${props.postId}`;
+ const commUrl = `https://api-intouch.azurewebsites.net/api/Comments/make-comment`;
+ const reportUrl= `https://api-intouch.azurewebsites.net/api/Reports/make-report`;
+ const commLikeUrl=`https://api-intouch.azurewebsites.net/api/Comments/get-nr-comments?postId=${props.postId}`;
+ const deleteUrl=`https://api-intouch.azurewebsites.net/api/Posts/delete-post?postId=${props.postId}`;
+ const isSaved = `https://api-intouch.azurewebsites.net/SavedPosts/is-saved?userId=${props.id}&postId=${props.postId}`
   const inputRef = useRef<HTMLInputElement>(null);
   function handleClick() {
     if (inputRef.current) {
