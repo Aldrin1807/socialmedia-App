@@ -7,7 +7,7 @@ export const ReportedPosts = (props:any) => {
 
   useEffect(() => {
     axios
-      .get("https://localhost:44386/api/Reports/get-reports", {
+      .get("https://api-intouch.azurewebsites.net/api/Reports/get-reports", {
         headers: {
           Authorization: `Bearer ${props.token}`
         }

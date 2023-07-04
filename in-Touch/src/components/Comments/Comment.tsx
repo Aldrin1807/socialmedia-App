@@ -7,7 +7,7 @@ import swal from "sweetalert";
 
 function Comment(props:any){
  
-  const getUrl = `https://localhost:44386/api/Comments/get-post-comments?postId=${props.postId}`;
+  const getUrl = `https://api-intouch.azurewebsites.net/api/Comments/get-post-comments?postId=${props.postId}`;
 
   const [comments, setComments] = useState([]);
 
@@ -31,7 +31,7 @@ function Comment(props:any){
     dangerMode: true,
   }).then((willDelete) => {
     if (willDelete) {
-      axios.delete(`https://localhost:44386/api/Comments/delete-comment?id=${id}`,{
+      axios.delete(`https://api-intouch.azurewebsites.net/api/Comments/delete-comment?id=${id}`,{
         headers: { Authorization: `Bearer ${props.token}` }
       })
         .then((response:any) => {

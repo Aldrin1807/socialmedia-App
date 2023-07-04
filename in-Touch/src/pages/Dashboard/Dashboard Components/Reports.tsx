@@ -44,7 +44,7 @@ function Reports(props:any){
         .then((confirmed) => {
           if (confirmed) {
             axios
-              .delete('https://localhost:44386/api/Reports/delete-report', {
+              .delete('https://api-intouch.azurewebsites.net/api/Reports/delete-report', {
                 data: {
                   userId: props.userId,
                   postId: props.postId,
@@ -75,7 +75,7 @@ function Reports(props:any){
         .then((confirmed) => {
           if (confirmed) {
             axios
-              .put(`https://localhost:44386/api/Posts/set-delete-attr?postId=${props.postId}`,{}, {
+              .put(`https://api-intouch.azurewebsites.net/api/Posts/set-delete-attr?postId=${props.postId}`,{}, {
                 headers: {
                   Authorization: `Bearer ${props.token}`
                 }
@@ -109,7 +109,7 @@ function Reports(props:any){
         <h5 className='secondary-text'>Post was made by user with Id #{postData.madeBy}</h5>
         <div className='contenti-rep'>
         {postData.imagePath &&
-        <img  src={`https://localhost:44386/Post Images/${postData.imagePath}`} style={{width:"200px",height:"200px"}} alt="" /> 
+        <img  src={`https://intouchimages.blob.core.windows.net/post-images/${postData.imagePath}`} style={{width:"200px",height:"200px"}} alt="" /> 
         }
         <p>{postData.content}</p>
         </div>

@@ -5,9 +5,9 @@ import swal from "sweetalert";
 
 function Requests (props:any){
 
-    const getRequestsUrl = `https://localhost:44386/api/FollowRequests/get-requests?userId=${props.id}`
-    const handleAcceptUrl = `https://localhost:44386/api/FollowRequests/handle-accept`;
-    const handleDeclineUrl =`https://localhost:44386/api/FollowRequests/handle-decline`;
+    const getRequestsUrl = `https://api-intouch.azurewebsites.net/api/FollowRequests/get-requests?userId=${props.id}`
+    const handleAcceptUrl = `https://api-intouch.azurewebsites.net/api/FollowRequests/handle-accept`;
+    const handleDeclineUrl =`https://api-intouch.azurewebsites.net/api/FollowRequests/handle-decline`;
     const [user,setUser] = useState([]);
 
     const [change,setChange] = useState(false);

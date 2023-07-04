@@ -50,7 +50,7 @@ export function ChangePassword(props: any) {
           dangerMode: true,
         }).then((confirmed) => {
           if (confirmed) {
-                axios.put('https://localhost:44386/api/Users/update-password', {
+                axios.put('https://api-intouch.azurewebsites.net/api/Users/update-password', {
                   id: props.userId,
                   oldPassword: values.oldPassword,
                   newPassword: values.newPassword
@@ -156,7 +156,7 @@ export function ChangeProfilePicture(props: any) {
         dangerMode: true,
       }).then((confirmed) => {
         if (confirmed) {
-          axios.put('https://localhost:44386/api/Users/update-profile-pic', formData, {
+          axios.put('https://api-intouch.azurewebsites.net/api/Users/update-profile-pic', formData, {
             headers: { 'Authorization': `Bearer ${props.token}` }
           })
             .then((response:any) => {
@@ -299,7 +299,7 @@ export function ChangePersonalInfo(props: any) {
   
         }else{
         if (confirmed) {
-          axios.put('https://localhost:44386/api/Users/update-user-info', {
+          axios.put('https://api-intouch.azurewebsites.net/api/Users/update-user-info', {
             id: values.id,
             firstName: values.firstname,
             lastName: values.lastname,
@@ -420,7 +420,7 @@ export const ContactTeam = (props:any) => {
     setMessageError(!messageValid);
 
     if(messageValid){
-      axios.post('https://localhost:44386/api/SupportMessages/send-support-message',{
+      axios.post('https://api-intouch.azurewebsites.net/api/SupportMessages/send-support-message',{
         usernameOrEmail: props.EmailorUsername,
         message: message,
       }).then((response:any)=>{

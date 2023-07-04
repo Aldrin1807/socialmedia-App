@@ -6,7 +6,7 @@ import axios from 'axios';
 import { CiImageOn } from "react-icons/ci";
 
 function PostForm(props:any) {
-  const apiUrl = 'https://localhost:44386/api/Posts/make-post'
+  const apiUrl = 'https://api-intouch.azurewebsites.net/api/Posts/make-post'
   const [error,setError] = useState(false);
   const [isLoading,setIsLoading] = useState(false);
   const [values,setValues]= useState({

@@ -10,7 +10,7 @@ import swal from "sweetalert";
 
 export const ActiveUsers = (props:any) => {
   const token = sessionStorage.getItem("token");
-  const apiUrl = `https://localhost:44386/api/Users/get-users`;
+  const apiUrl = `https://api-intouch.azurewebsites.net/api/Users/get-users`;
   const [data, setData] = useState<TUser[]>([]);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const ActiveUsers = (props:any) => {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        axios.delete(`https://localhost:44386/api/Users/${id}`,{
+        axios.delete(`https://api-intouch.azurewebsites.net/api/Users/${id}`,{
           headers: {
             Authorization: `Bearer ${props.token}`,
           }
@@ -70,7 +70,7 @@ export const ActiveUsers = (props:any) => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.put( `https://localhost:44386/api/Users/unlock-account?userId=${id}`,{},{
+          axios.put( `https://api-intouch.azurewebsites.net/api/Users/unlock-account?userId=${id}`,{},{
             headers: {
               Authorization: `Bearer ${props.token}`,
             }
@@ -96,7 +96,7 @@ export const ActiveUsers = (props:any) => {
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
-          axios.put( `https://localhost:44386/api/Users/lock-account?userId=${id}`,{},{
+          axios.put( `https://api-intouch.azurewebsites.net/api/Users/lock-account?userId=${id}`,{},{
             headers: {
               Authorization: `Bearer ${props.token}`,
             }

@@ -17,7 +17,7 @@ export const Messages = (props: any) => {
       if (confirmed) {
         axios
           .put(
-            `https://localhost:44386/api/Users/unlock-account?userId=${props.userId}`,{},{
+            `https://api-intouch.azurewebsites.net/api/Users/unlock-account?userId=${props.userId}`,{},{
               headers: {
                 Authorization: `Bearer ${props.token}`,
               }
@@ -33,7 +33,7 @@ export const Messages = (props: any) => {
           });
           axios
           .delete(
-            "https://localhost:44386/api/SupportMessages/delete-support-message",
+            "https://api-intouch.azurewebsites.net/api/SupportMessages/delete-support-message",
             {
               headers: {
                 Authorization: `Bearer ${props.token}`,

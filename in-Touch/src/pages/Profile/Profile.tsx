@@ -30,12 +30,12 @@ function Profile(props: any) {
   const isCurrentUser = viewedUser == props.id;
 
   const [apiUrls, setApiUrls] = useState({
-    apiUrl: `https://localhost:44386/api/Posts/get-user-post?userId=${viewedUser}`,
-    followsUrl: `https://localhost:44386/api/Users/get-user-followers-follows?userId=${viewedUser}`,
-    userUrl: `https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
-    followedUrl: `https://localhost:44386/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
-    requestedUrl: `https://localhost:44386/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`,
-    savedPostsUrl: `https://localhost:44386/api/SavedPosts/get-saved-posts?userId=${viewedUser}`,
+    apiUrl: `https://api-intouch.azurewebsites.net/api/Posts/get-user-post?userId=${viewedUser}`,
+    followsUrl: `https://api-intouch.azurewebsites.net/api/Users/get-user-followers-follows?userId=${viewedUser}`,
+    userUrl: `https://api-intouch.azurewebsites.net/api/Users/get-user-info?id=${viewedUser}`,
+    followedUrl: `https://api-intouch.azurewebsites.net/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
+    requestedUrl: `https://api-intouch.azurewebsites.net/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`,
+    savedPostsUrl: `https://api-intouch.azurewebsites.net/api/SavedPosts/get-saved-posts?userId=${viewedUser}`,
 
   });
 
@@ -126,7 +126,7 @@ function Profile(props: any) {
     if (!isFollowed) {
       axios
         .post(
-          "https://localhost:44386/api/Follows/follow-user",
+          "https://api-intouch.azurewebsites.net/api/Follows/follow-user",
           {
             followerId: props.id,
             followingId: userId,
@@ -140,7 +140,7 @@ function Profile(props: any) {
         });
     } else {
       axios
-        .delete("https://localhost:44386/api/Follows/unfollow-user", {
+        .delete("https://api-intouch.azurewebsites.net/api/Follows/unfollow-user", {
           headers: { Authorization: `Bearer ${token}` },
           data: {
             followerId: props.id,
@@ -169,7 +169,7 @@ function Profile(props: any) {
     if (!followRequest) {
       axios
         .post(
-          "https://localhost:44386/api/FollowRequests/request-follow",
+          "https://api-intouch.azurewebsites.net/api/FollowRequests/request-follow",
           {
             followRequestId: props.id,
             followRequestedId: userId,
@@ -183,7 +183,7 @@ function Profile(props: any) {
         });
     } else {
       axios
-        .delete("https://localhost:44386/api/FollowRequests/unrequest-follow", {
+        .delete("https://api-intouch.azurewebsites.net/api/FollowRequests/unrequest-follow", {
           headers: { Authorization: `Bearer ${token}` },
           data: {
             followRequestId: props.id,

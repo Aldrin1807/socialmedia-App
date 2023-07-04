@@ -10,7 +10,7 @@ import swal from "sweetalert";
 
 function Register() {
   const navigate = useNavigate();
-  const apiUrl = "https://localhost:44386/api/Auth/register"
+  const apiUrl = "https://api-intouch.azurewebsites.net/api/Auth/register"
 
   const [accountType, setAccountType] = useState('public');
   const [formData, setFormData] = useState({

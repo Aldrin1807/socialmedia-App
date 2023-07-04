@@ -7,7 +7,7 @@ export function MessagesFromUsers(props:any) {
 
   useEffect(() => {
     axios
-      .get("https://localhost:44386/api/SupportMessages/get-support-messages", {
+      .get("https://api-intouch.azurewebsites.net/api/SupportMessages/get-support-messages", {
         headers: {
           Authorization: `Bearer ${props.token}`
         }

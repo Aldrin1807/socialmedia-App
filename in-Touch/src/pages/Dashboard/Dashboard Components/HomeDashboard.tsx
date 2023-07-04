@@ -10,7 +10,7 @@ import { BiMessageRoundedDetail } from "react-icons/bi";
 
 const HomeDashboard = (props:any) => {
    
-  const apiUrl = `https://localhost:44386/api/Users/dashboard-analytics`;
+  const apiUrl = `https://api-intouch.azurewebsites.net/api/Users/dashboard-analytics`;
   const [data, setData] = useState([]);
 
   useEffect(() => {

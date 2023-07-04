@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 function Login(){
   localStorage.clear();
   const navigate = useNavigate();
-  const apiUrl = "https://localhost:44386/api/Auth/login"
+  const apiUrl = "https://api-intouch.azurewebsites.net/api/Auth/login"
   const [error,setError]=useState(false);
   const [Eerror,setEError]=useState(false);
   const [isLoading,setIsLoading] = useState(false);
