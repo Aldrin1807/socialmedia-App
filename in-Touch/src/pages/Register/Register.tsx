@@ -20,7 +20,7 @@ function Register() {
     email: '',
     password: '',
     isPrivate:false,
-    imageFile:null
+    imageFile: null ,
   });
   const [FirstLasterror,setFirstLasterror] = useState(false);
   const [Usererror,setUsererror] = useState(false);
@@ -182,7 +182,7 @@ function Register() {
 
             <label htmlFor="fileInput" className="image-input" style={FileError ? { borderColor: 'red' } : undefined} >
               <input type="file" id="fileInput" accept="image/*" onChange={handleFileChange} hidden />
-              {formData.imageFile ? <p>{formData.imageFile.name}</p> : <p>Upload image here. <b>Required!</b></p>}
+              {formData.imageFile ? <p>{(formData.imageFile as File).name}</p> : <p>Upload image here. <b>Required!</b></p>}
             </label>
             <p>
               Already have an account? <a href="/login">Sign in here!</a>

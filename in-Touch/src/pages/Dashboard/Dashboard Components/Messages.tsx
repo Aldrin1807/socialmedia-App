@@ -11,7 +11,7 @@ export const Messages = (props: any) => {
       title: "Are you sure?",
       text: "Only you can lock it again!",
       icon: "warning",
-      buttons: true,
+      buttons: ["Cancel", "Unlock"],
       dangerMode: true,
     }).then((confirmed) => {
       if (confirmed) {

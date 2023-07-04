@@ -37,7 +37,7 @@ export const ActiveUsers = (props:any) => {
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this user!",
       icon: "warning",
-      buttons: true,
+      buttons: ["Cancel", "Delete"],
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
@@ -66,7 +66,7 @@ export const ActiveUsers = (props:any) => {
         title: "Are you sure?",
         text: "Once unlocked, only you will be able to lock this account again!",
         icon: "warning",
-        buttons: true,
+        buttons: ["Cancel", "Unlock"],
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {
@@ -92,7 +92,7 @@ export const ActiveUsers = (props:any) => {
         title: "Are you sure?",
         text: "Once locked, only you will be able to unlock this account again!",
         icon: "warning",
-        buttons: true,
+        buttons: ["Cancel", "Lock"],
         dangerMode: true,
       }).then((willDelete) => {
         if (willDelete) {

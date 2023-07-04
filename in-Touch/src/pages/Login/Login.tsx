@@ -8,6 +8,7 @@ import axios from 'axios';
 import swal from "sweetalert";
 import { ContactTeam } from '../../components/Modals/Modals';
 import jwtDecode from 'jwt-decode';
+import Swal from 'sweetalert2';
 
 
 
@@ -19,7 +20,6 @@ function Login(){
   const [Eerror,setEError]=useState(false);
   const [isLoading,setIsLoading] = useState(false);
 
-  const [remember,setRemember] = useState(false);
   const [data,setData]=useState({
     EmailorUsername:'',
     Password:''
@@ -31,8 +31,7 @@ function Login(){
   const [contactModal,setContactModal]= useState(false);
   const handleToggleModal = () => {
     setContactModal(!contactModal);
-    swal.close();
-  };
+    };
 
   const handleLogin =()=>{
     
@@ -50,8 +49,8 @@ function Login(){
         if(response.data.status=="Success"){
           console.log(response.data.status)
           sessionStorage.setItem("token",response.data.message);
-          const decoded = jwtDecode(response.data.message);
-          const role =decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+          const decoded:any = jwtDecode(response.data.message);
+          const role = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
           if(role==='1'){
             navigate('/dashboard');
           }else{
@@ -63,13 +62,16 @@ function Login(){
           const el = document.createElement('div');
           const a = document.createElement('a');
           a.innerText = `${response.data.message}`;
-          a.onclick = handleToggleModal;
+          a.onclick = () => {
+            handleToggleModal();
+            Swal.close(); // Close the swal dialog when the button is clicked
+          };
           el.appendChild(a);
     
-          swal({
+          Swal.fire({
             title: 'Account Locked!',
-            content: el,
-            icon: 'error' 
+            html: el,
+            icon: 'error',
           });
           setIsLoading(false);
         }else{

@@ -21,13 +21,13 @@ function Comment(props:any){
 },[comments])
   const [showAllComments, setShowAllComments] = useState(false);
 
-
+  
   const handleDelete = (id:number) => {
   swal({
     title: "Are you sure?",
     text: "Once deleted, you will not be able to recover this comment!",
     icon: "warning",
-    buttons: true,
+    buttons: ["Cancel", "Delete"],
     dangerMode: true,
   }).then((willDelete) => {
     if (willDelete) {

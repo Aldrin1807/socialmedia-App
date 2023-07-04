@@ -45,7 +45,7 @@ function Header(props:any){
       title: "Login Expired",
       text: "Please log in again to access this page.",
       icon: "info",
-      buttons: false,
+      buttons: undefined,
       timer: 3000,
     }).then(() => {
       navigate("/login");

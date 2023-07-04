@@ -85,7 +85,7 @@ function PostForm(props:any) {
       <input type="file" id="fileInput" accept="image/*" onChange={handleFileChange} hidden />
       <label htmlFor="fileInput" className='add-image'>
         <CiImageOn className='image-icon' />
-        {values.Image?<p className='image-p'>{values.Image.name}</p>:<p className='image-p'>Add an image</p>}
+        {values.Image?<p className='image-p'>{(values.Image as File).name}</p>:<p className='image-p'>Add an image</p>}
       </label>
     </div>
   );

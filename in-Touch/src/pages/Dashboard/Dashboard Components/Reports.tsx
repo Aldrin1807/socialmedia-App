@@ -38,7 +38,7 @@ function Reports(props:any){
         title: 'Are you sure?',
         text: 'Once deleted, the report cannot be recovered!',
         icon: 'warning',
-        buttons: true,
+        buttons: ["Cancel", "Delete"],
         dangerMode: true,
       })
         .then((confirmed) => {
@@ -69,7 +69,7 @@ function Reports(props:any){
         title: 'Are you sure?',
         text: 'Once deleted, the post cannot be recovered!',
         icon: 'warning',
-        buttons: true,
+        buttons: ["Cancel", "Delete"],
         dangerMode: true,
       })
         .then((confirmed) => {

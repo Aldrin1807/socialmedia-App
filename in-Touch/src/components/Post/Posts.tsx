@@ -96,7 +96,7 @@ function Post(props:any) {
       title: "Are you sure?",
       text: "Do you want to report this post?",
       icon: "warning",
-      buttons: true,
+      buttons: ["Cancel", "Report"],
       dangerMode: true,
     }).then((willReport) => {
       if (willReport) {
@@ -177,7 +177,7 @@ useEffect(()=>{
           title: "Are you sure?",
           text: "Once deleted, you will not be able to recover this post!",
           icon: "warning",
-          buttons: true,
+          buttons: ["Cancel", "Delete"],
           dangerMode: true,
         }).then((willDelete) => {
           if (willDelete) {
