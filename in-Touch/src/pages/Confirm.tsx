@@ -19,9 +19,9 @@ function Confirm(){
   useEffect(() => {
     axios.get(`https://api-intouch.azurewebsites.net/api/Users/confirm-email?token=${token}`)
         .then((response) => {
-            setData(response.data);
+            setData(response.data.message);
         })
-}, []);
+}, [token]);
 
     return(
         <>
