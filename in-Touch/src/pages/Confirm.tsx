@@ -7,7 +7,10 @@ function Confirm(){
     const location = useLocation();
     const [token,setToken] = useState('');
 
-    const [data,setData] = useState('');
+    const [data,setData] = useState({
+        status:'',
+        message:''
+    });
     
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -19,7 +22,7 @@ function Confirm(){
   useEffect(() => {
     axios.get(`https://api-intouch.azurewebsites.net/api/Users/confirm-email?token=${token}`)
         .then((response) => {
-            setData(response.data.message);
+            setData(response.data);
         })
 }, [token]);
 
@@ -27,7 +30,9 @@ function Confirm(){
         <>
             <div style={{display:'flex',flexDirection:'column',width:'100wv',height:'100vh',alignItems:'center',marginTop:'3rem'}}>
                 <AiOutlineMail style={{fontSize:'10rem'}}  />
-                <h3>{data}</h3>
+                <h3>{data.message}</h3>
+                {data.status==='Success'&& <h3>You can now login  <a href="/login" style={{color:'black'}}>Click here</a></h3>}
+                {data.status==='Error' && <h3>Something went wrong.</h3>}
             </div>
         </>
     )
