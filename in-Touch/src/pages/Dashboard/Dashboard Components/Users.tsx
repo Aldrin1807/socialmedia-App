@@ -147,7 +147,7 @@ export const ActiveUsers = (props:any) => {
     ,
     {
       name: 'EmailConfirmed',
-      selector: (row:any) => row.emailConfirmed,
+      selector: (row:any) => row.emailConfirmed.toString(),
       sortable: false
     }
     ,

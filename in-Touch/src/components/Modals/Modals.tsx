@@ -257,7 +257,7 @@ export function ChangePersonalInfo(props: any) {
   const [Firsterror,setFirsterror] = useState(false);
   const [Lasterror,setLasterror] = useState(false);
   const [Usererror,setUsererror] = useState(false);
-  const [Emailerror,setEmailerror] = useState(false);
+  
  
 
   const handleSubmit = (event: any) => {
@@ -266,27 +266,27 @@ export function ChangePersonalInfo(props: any) {
 
     const FirstLastNameRegex = /^[a-zA-Z]{3,}$/;
     const UserNameRegex = /^[a-zA-Z0-9]{3,}$/;
-    const EmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
     const firstNameValid = FirstLastNameRegex.test(values.firstname);
     const lastNameValid = FirstLastNameRegex.test(values.lastname);
     const userNameValid = UserNameRegex.test(values.username);
-    const emailValid = EmailRegex.test(values.email);
+
 
     setFirsterror(!firstNameValid);
     setLasterror(!lastNameValid);
     setUsererror(!userNameValid);
-    setEmailerror(!emailValid);
+
 
     const sameData =
     values.firstname === props.userData.firstname &&
     values.lastname === props.userData.lastname &&
-    values.email === props.userData.email &&
+    values.username === props.userData.username &&
     values.isPrivate === props.userData.isPrivate;
 
     console.log(sameData);
 
-    if(firstNameValid && lastNameValid && userNameValid && emailValid){
+    if(firstNameValid && lastNameValid && userNameValid){
       swal({
         title: 'Confirmation',
         text: 'Are you sure you want to update your data?',
@@ -304,7 +304,6 @@ export function ChangePersonalInfo(props: any) {
             firstName: values.firstname,
             lastName: values.lastname,
             username: values.username,
-            email: values.email,
             isPrivate: values.isPrivate
           }, {
             headers: { 'Authorization': `Bearer ${props.token}` }
@@ -363,9 +362,7 @@ export function ChangePersonalInfo(props: any) {
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Email</Form.Label>
-          <Form.Control type="text"name="email"value={values.email} onChange={onChange}/>
-          {Emailerror?
-          <label htmlFor="" className="error-label">Email invalid</label>:''}
+          <Form.Control type="text"name="email"value={values.email} readOnly/>
         </Form.Group>
         <Form.Group controlId="">
           <Form.Label>Account type</Form.Label>
