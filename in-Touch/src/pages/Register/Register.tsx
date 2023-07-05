@@ -80,7 +80,7 @@ function Register() {
             ).then((response) => {
           console.log(response.data);
           if (response.data.status === 'Success') {
-            swal("Account registered successfully!", "Check your email to confirm the account before logging in.", "success")
+            swal("Account registered successfully!", "Check your email to confirm the account before logging in. You have 20 minutes to confirm.", "success")
             .then(() => {
               navigate('/login');
             });
