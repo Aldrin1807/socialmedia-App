@@ -146,6 +146,12 @@ export const ActiveUsers = (props:any) => {
     }
     ,
     {
+      name: 'EmailConfirmed',
+      selector: (row:any) => row.emailConfirmed,
+      sortable: false
+    }
+    ,
+    {
       name: 'Manage',
       selector: (row:any) => row.isLocked,
       sortable: true,
