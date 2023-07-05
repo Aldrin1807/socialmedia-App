@@ -15,6 +15,7 @@ import { TUser } from "./types/types";
 
 import { Dashboard } from "./pages/Dashboard/Dashboard";
 import jwtDecode from "jwt-decode";
+import Confirm from "./pages/Confirm";
 
 function App() {
   const [user, setUser] = useState({
@@ -41,7 +42,7 @@ function App() {
 
   
   const location = useLocation();
-  const excluded = ["/login", "/register", "/loader","/dashboard"];
+  const excluded = ["/login", "/register", "/loader","/dashboard","/confirm"];
   const notHeader = () => {
     const currentPath = location.pathname;
     return !excluded.includes(currentPath);
@@ -51,7 +52,6 @@ function App() {
   return (
     <div className="App">
       {notHeader() && <Header />}
-
     
         {user.role==='1'?(
           <Routes>
@@ -71,10 +71,13 @@ function App() {
           <Route path="/search" element={<Search id={user.id} />} />
           <Route path="/loader" element={<Loader />} />
           <Route path="/dashboard" element={<Navigate to="/home" />}/>
+          <Route path="/confirm" element={<Confirm />} />
           <Route path="*" element={<PageNotFound />} />
+          
         </Routes>
         )}
-     
+      
+
     </div>
   );
 }
