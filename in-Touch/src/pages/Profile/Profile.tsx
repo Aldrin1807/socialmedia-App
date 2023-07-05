@@ -32,7 +32,7 @@ function Profile(props: any) {
   const [apiUrls, setApiUrls] = useState({
     apiUrl: `https://api-intouch.azurewebsites.net/api/Posts/get-user-post?userId=${viewedUser}`,
     followsUrl: `https://api-intouch.azurewebsites.net/api/Users/get-user-followers-follows?userId=${viewedUser}`,
-    userUrl: `https://localhost:44386/api/Users/get-user-info?id=${viewedUser}`,
+    userUrl: `https://api-intouch.azurewebsites.net/api/Users/get-user-info?id=${viewedUser}`,
     followedUrl: `https://api-intouch.azurewebsites.net/api/Users/is-following?userOne=${props.id}&userTwo=${userId}`,
     requestedUrl: `https://api-intouch.azurewebsites.net/api/FollowRequests/is-requested?userOne=${props.id}&userTwo=${userId}`,
     savedPostsUrl: `https://api-intouch.azurewebsites.net/api/SavedPosts/get-saved-posts?userId=${viewedUser}`,
