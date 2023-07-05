@@ -8,4 +8,5 @@ export type TUser = {
     imagePath: string;
     image: string | null;
     role: string;
+    emailConfirmed: boolean;
   };
