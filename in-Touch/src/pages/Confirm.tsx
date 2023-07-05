@@ -21,7 +21,7 @@ function Confirm(){
         .then((response) => {
             setData(response.data);
         })
-}, [token]);
+}, []);
 
     return(
         <>
