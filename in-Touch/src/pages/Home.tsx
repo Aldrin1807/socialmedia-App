@@ -68,16 +68,20 @@ function Home(props: any) {
         });
       })
 
-      axios.get(`https://api-intouch.azurewebsites.net/api/Posts/check-deleted-post?userId=${props.id}`,{
-        headers: { Authorization: `Bearer ${props.token}` },
-      })
-      .then((response:any)=>{
-        if(response.data.status=="Error"){
-          swal("One or more of your posts has been deleted", response.data.message, "error");
-        }
-      })
+      
     
   }, [props.id,PostData]);
+
+  useEffect(()=>{
+    axios.get(`https://api-intouch.azurewebsites.net/api/Posts/check-deleted-post?userId=${props.id}`,{
+      headers: { Authorization: `Bearer ${props.token}` },
+    })
+    .then((response:any)=>{
+      if(response.data.status=="Error"){
+        swal("One or more of your posts has been deleted", response.data.message, "error");
+      }
+    })
+  },[props.id])
 
 
 
