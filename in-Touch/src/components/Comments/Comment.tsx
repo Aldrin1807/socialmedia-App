@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Dropdown } from 'react-bootstrap';
 import swal from "sweetalert";
 
-
 function Comment(props:any){
  
   const getUrl = `https://api-intouch.azurewebsites.net/api/Comments/get-post-comments?postId=${props.postId}`;

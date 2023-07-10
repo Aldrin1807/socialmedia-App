@@ -10,10 +10,7 @@ import axios from "axios";
 import { AiOutlineHome } from "react-icons/ai";
 
 import swal from "sweetalert";
-import {
-  MdOutlineExplore,
-  
-} from "react-icons/md";
+import { IoMdNotificationsOutline } from "react-icons/io";
 
 import Requests from "../components/Requests/Requests";
 
@@ -108,9 +105,10 @@ function Home(props: any) {
                   <AiOutlineHome id="Icons"></AiOutlineHome>
                   <h3>Home</h3>
                 </a>
-                <a href="" className="menu-item">
-                  <MdOutlineExplore id="Icons"></MdOutlineExplore>
-                  <h3>Lorem</h3>
+                <a href="" className="menu-item" >
+                  <IoMdNotificationsOutline id="Icons"></IoMdNotificationsOutline>
+                  <h3 style={{textDecorationLine:'line-through'}}>Notifications</h3>
+                  
                 </a>
                
               </div>         

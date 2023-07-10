@@ -35,7 +35,6 @@
 .home-content {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 
@@ -48,7 +47,7 @@
 }
 
 .home-content {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
   
 }
@@ -269,7 +268,14 @@ img {
     left: calc(20rem - 0.6rem);
     display: block;
   }
+  .home-content{
+    padding: 1rem;
+  }
+  .sidebar{
+    display: none;
+  }
 }
+
 @media screen and (max-width: 575px) {
   
 }
